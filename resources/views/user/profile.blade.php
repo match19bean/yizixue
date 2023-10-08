@@ -20,9 +20,24 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">您的頭像</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                        aria-labelledby="dropdownMenuLink" style="">
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit-avatar"
+                                            href="#">編輯</a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-body text-center">
-                                <img src="{{ asset('sb-admin/img/undraw_profile.svg') }}" alt="avatar"
-                                    class="rounded-circle img-fluid" style="width: 150px;">
+                                <a href="#" data-toggle="modal" data-target="#edit-avatar"><img
+                                        src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}" alt="avatar"
+                                        class="rounded-circle img-fluid" style="width: 150px;"></a>
                                 <h5 class="my-3">{{ Auth::user()->name }}</h5>
                                 <p class="text-muted mb-1">{{ Auth::user()->role == 'normal' ? '一般用戶' : 'VIP用戶' }}</p>
                             </div>
@@ -30,7 +45,7 @@
                         <div class="card mb-4 mb-lg-0">
                             <div class="card-body p-0">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">您感興趣的話題</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">您的專長</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,18 +53,17 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink" style="">
-                                            <a class="dropdown-item" data-toggle="modal" 
-                                            data-target="#edit-post-tag" href="#">編輯</a>
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#edit-post-tag"
+                                                href="#">編輯</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div id="checkbox">
-                                        @foreach ($Data['post_tags'] as $key => $value)
+                                        @foreach (explode(',', Auth::user()->tags) as $key => $value)
                                             <label>
-                                                <input type="checkbox" name="variety" value="{{ $value->slug }}"
-                                                    checked="checked" /><span
-                                                    class="round button">{{ $value->name }}</span>
+                                                <input type="checkbox" value="{{ $value }}" checked="checked" /><span
+                                                    class="round button">{{ $value }}</span>
                                             </label>
                                         @endforeach
                                     </div>
@@ -85,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-8">
                         <div class="card mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -108,6 +123,24 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">{{ Auth::user()->name }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">暱稱</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ Auth::user()->nickname }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">最高學歷</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ Auth::user()->university }}</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -146,6 +179,17 @@
                                         <p class="text-muted mb-0">{{ Auth::user()->address }}</p>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">學生證上傳</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <img style="max-width: 150px" id="blahStudentProof"
+                                            src="{{ url('/') . '/uploads/' . Auth::user()->student_proof }}"
+                                            alt="your image" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -174,6 +218,46 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 class="m-0 font-weight-bold text-primary">履歷</h6>
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink" style="">
+                                                <a class="dropdown-item" data-toggle="modal"
+                                                    data-target="#edit-profile-addition" href="#">編輯</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="uname" class="form-label">履歷自我介紹</label>
+                                                {!! $Data['profile_description'] !!}
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="uname" class="form-label">履歷影片</label>
+                                                <input type="text" value="{{ $Data['profile_video'] }}"
+                                                    name="profile_video" class="form-control" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="uname" class="form-label">履歷聲音</label>
+                                                <input type="text" value="{{ $Data['profile_voice'] }}"
+                                                    name="profile_voice" class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -236,6 +320,16 @@
                                     class="form-control">
                             </div>
                             <div class="mb-3">
+                                <label for="nickname" class="form-label">暱稱</label>
+                                <input type="text" value="{{ Auth::user()->nickname }}" name="nickname"
+                                    class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="university" class="form-label">最高學歷</label>
+                                <input type="text" value="{{ Auth::user()->university }}" name="university"
+                                    class="form-control">
+                            </div>
+                            <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" value="{{ Auth::user()->email }}" name="email"
                                     class="form-control">
@@ -255,6 +349,16 @@
                                 <input type="text" value="{{ Auth::user()->address }}" name="address"
                                     class="form-control">
                             </div>
+                            <div class="mb-3">
+                                <label for="student_proof" class="form-label">學生證上傳</label>
+                                <input type="file" id="imgInp_studentProof" name="student_proof"
+                                    class="form-control">
+                                <div class="card-body text-center">
+                                    <img style="max-width: 250px" id="blah"
+                                        src="{{ url('/') . '/uploads/' . Auth::user()->student_proof }}"
+                                        alt="your image" />
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
@@ -266,7 +370,50 @@
         </div>
         <!-- Modal 用戶基本資料-->
 
-        <!-- Modal 用戶簡介-->
+        <!-- Modal 用戶基本資料額外-->
+        <div class="modal fade" id="edit-profile-addition" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <form method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-header">
+                            <h5 class="modal-title">編輯您的履歷</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3" style="display:none">
+                                <input type="text" value="{{ Auth::user()->id }}" name="uid"
+                                    class="form-control" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="uname" class="form-label">履歷影片</label>
+                                <input type="text" value="{{ $Data['profile_video'] }}" name="profile_video"
+                                    class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="uname" class="form-label">履歷聲音</label>
+                                <input type="text" value="{{ $Data['profile_voice'] }}" name="profile_voice"
+                                    class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="uname" class="form-label">履歷自我介紹</label>
+                                <textarea id="article-ckeditor-profile_description" name="profile_description">{{ $Data['profile_description'] }}</textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="submit" class="btn btn-primary">更新</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 用戶基本資料額外-->
+
+        <!-- Modal 用戶Tags-->
         <div class="modal fade" id="edit-post-tag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
@@ -274,17 +421,27 @@
                     <form method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-header">
-                            <h5 class="modal-title">編輯您感興趣的話題</h5>
+                            <h5 class="modal-title">編輯您的專長</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
+                            <div class="mb-3" style="display:none">
+                                <input type="text" value={{ Auth::user()->id }} name="uid" class="form-control"
+                                    readonly>
+                            </div>
                             <div id="checkbox">
                                 @foreach ($Data['post_tags'] as $key => $value)
                                     <label>
-                                        <input type="checkbox" name="variety" value="{{ $value->slug }}"
-                                            checked="checked" /><span class="round button">{{ $value->name }}</span>
+                                        @if (strpos(Auth::user()->tags, $value->slug) > -1)
+                                            <input type="checkbox" name="tags[]" value="{{ $value->slug }}"
+                                                checked="checked" />
+                                            <span class="round button">{{ $value->name }}</span>
+                                        @else
+                                            <input type="checkbox" name="tags[]" value="{{ $value->slug }}" />
+                                            <span class="round button">{{ $value->name }}</span>
+                                        @endif
                                     </label>
                                 @endforeach
                             </div>
@@ -297,7 +454,44 @@
                 </div>
             </div>
         </div>
-        <!-- Modal 用戶簡介-->
+        <!-- Modal 用戶Tags-->
+
+        <!-- Modal 用戶頭像-->
+        <div class="modal fade" id="edit-avatar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <form method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-header">
+                            <h5 class="modal-title">編輯您的頭像</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3" style="display:none">
+                                <input type="text" value={{ Auth::user()->id }} name="uid" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="avatar" class="form-label">大圖</label>
+                                <input type="file" id="imgInp" name="avatar" class="form-control">
+                                <div class="card-body text-center">
+                                    <img style="max-width: 250px" id="blah"
+                                        src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}" alt="your image" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="submit" class="btn btn-primary">更新</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 用戶頭像-->
 
     </div>
     <!-- /.container-fluid -->

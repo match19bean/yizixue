@@ -30,7 +30,7 @@ class UserController extends AdminController
         // $grid->column('portfolio_id', __('Portfolio Id'));
         $grid->column('name', __('Name'));
         $grid->column('avatar', __('Avatar'))->display(function($image_path){
-            return '<img src="'.env('APP_URL').'/uploads/'.$image_path.'" style="width:90px;">';
+            return '<img src="'.url('/').'/uploads/'.$image_path.'" style="width:90px;">';
         });
         $grid->column('role', __('Role'));
         $grid->column('birth_day', __('Birth day'));

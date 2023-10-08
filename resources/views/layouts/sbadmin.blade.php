@@ -180,7 +180,7 @@
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{ asset('sb-admin/img/undraw_profile.svg') }}">
+                                    src="{{ url('/').'/uploads/'.Auth::user()->avatar }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -273,6 +273,7 @@
     <script src="{{ asset('vendor/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('article-ckeditor');
+        CKEDITOR.replace('article-ckeditor-profile_description');
     </script>
 
     <script>
@@ -280,6 +281,12 @@
             const [file] = imgInp.files
             if (file) {
                 blah.src = URL.createObjectURL(file)
+            }
+        }
+        imgInp_studentProof.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blahStudentProof.src = URL.createObjectURL(file)
             }
         }
     </script>
