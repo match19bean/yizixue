@@ -40,12 +40,94 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/home/post">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>文章</span></a>
+                <a class="nav-link" href="/user/profile">
+                    <i class="fas fa-user fa-tachometer-alt"></i>
+                    <span>個人檔案</span></a>
             </li>
-
-            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="/bulletinboard">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                    <span>佈告欄</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#post-list"
+                    aria-expanded="false" aria-controls="post-list">
+                    <i style="color:white !important" class="fa fa-book" aria-hidden="true"></i>
+                    <span>文章管理</span>
+                </a>
+                <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/home/post">添加文章</a>
+                        <a class="collapse-item" href="/home/post/me">我的文章</a>
+                        <a class="collapse-item" href="#">收藏文章</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#qa-list"
+                    aria-expanded="false" aria-controls="qa-list">
+                    <i style="color:white !important" class="fa fa-window-maximize" aria-hidden="true"></i>
+                    <span>問與答管理</span>
+                </a>
+                <div id="qa-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/qapage">添加問題</a>
+                        <a class="collapse-item" href="/qapage/me">我的問題</a>
+                        <a class="collapse-item" href="#">收藏問與答</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>我的訊息</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#invite-list"
+                    aria-expanded="false" aria-controls="invite-list">
+                    <i style="color:white !important" class="fa fa-users" aria-hidden="true"></i>
+                    <span>學長姊管理</span>
+                </a>
+                <div id="invite-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/home/post">邀請學長姊</a>
+                        <a class="collapse-item" href="cards.html">學長姐回覆</a>
+                        <a class="collapse-item" href="cards.html">收藏學長姐</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <span>付費加值</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <span>加值服務紀錄</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <span>聯繫案件</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                    <span>線上客服</span></a>
+            </li>
             <hr class="sidebar-divider">
 
             <!-- Heading -->
@@ -60,14 +142,6 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>調整</span>
                 </a>
-            </li>
-
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->
@@ -103,7 +177,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('sb-admin/img/undraw_profile.svg') }}">
                             </a>

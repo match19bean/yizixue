@@ -51,6 +51,17 @@ class PostController extends Controller
         return back();
     }
 
+    public function showMyAll()
+    {
+        $uid = Auth::user()->id;
+        $posts = Post::where('author', $uid)->get();
+        $Data = [
+            'posts' => $posts,
+        ];
+
+        return view('mypost')->with('Data', $Data);
+    }
+
     public function GetAll()
     {
         $post = Post::all();

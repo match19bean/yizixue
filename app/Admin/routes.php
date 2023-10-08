@@ -15,4 +15,6 @@ Route::group([
     $router->resource('users', UserController::class);
     $router->resource('categories', CategoryController::class);
     $router->resource('post-tags', PostTagController::class);
+    $router->resource('bulletin-boards', BulletinBoardController::class);
+    $router->resource('qn-as', QnAController::class);
 });

@@ -9,7 +9,7 @@
                     <label for="title" class="form-label">文章抬頭</label>
                     <input type="text" name="title" class="form-control">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" style="display:none">
                     <label for="author" class="form-label">作者</label>
                     <input type="text" value="{{$Data['_authId']}}" name="author" class="form-control" readonly>
                 </div>
