@@ -11,7 +11,7 @@
                 </div>
                 <div class="mb-3" style="display:none">
                     <label for="author" class="form-label">作者</label>
-                    <input type="text" value="{{Auth::user()->name}}" name="author" class="form-control" readonly>
+                    <input type="text" value="{{Auth::user()->id}}" name="author" class="form-control" readonly>
                 </div>
                 <div class="mb-3">
                     <textarea id="article-ckeditor" name="postbody"></textarea>

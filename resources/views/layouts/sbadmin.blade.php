@@ -284,7 +284,7 @@
             }
         }
         imgInp_studentProof.onchange = evt => {
-            const [file] = imgInp.files
+            const [file] = imgInp_studentProof.files
             if (file) {
                 blahStudentProof.src = URL.createObjectURL(file)
             }

@@ -22,7 +22,7 @@ class QnAController extends Controller
         $QnA = new QnA();
         $QnA->title = $title;
         $QnA->author = $author;
-        $QnA->postbody = $postbody;
+        $QnA->body = $postbody;
         $QnA->save();
 
         return back();
@@ -31,12 +31,12 @@ class QnAController extends Controller
     public function showMyAll()
     {
         $uid = Auth::user()->id;
-        $posts = Post::where('author', $uid)->get();
+        $qNa = QnA::where('author', $uid)->get();
         $Data = [
-            'posts' => $posts,
+            'qa' => $qNa,
         ];
 
-        return view('mypost')->with('Data', $Data);
+        return view('myqa')->with('Data', $Data);
     }
 
 }

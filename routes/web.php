@@ -30,4 +30,5 @@ Route::post('/user/profile/update', 'UserController@update')->name('update-profi
 
 Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
 Route::get('/qapage', 'QnAController@index')->name('qapage');
-Route::get('/qapage/create', 'QnAController@create')->name('create-qa');
+Route::get('/qapage/me', 'QnAController@showMyAll')->name('my-qa');
+Route::post('/qapage/create', 'QnAController@create')->name('create-qa');

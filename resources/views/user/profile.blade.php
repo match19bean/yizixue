@@ -185,7 +185,7 @@
                                         <p class="mb-0">學生證上傳</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <img style="max-width: 150px" id="blahStudentProof"
+                                        <img style="max-width: 150px"
                                             src="{{ url('/') . '/uploads/' . Auth::user()->student_proof }}"
                                             alt="your image" />
                                     </div>
@@ -354,7 +354,7 @@
                                 <input type="file" id="imgInp_studentProof" name="student_proof"
                                     class="form-control">
                                 <div class="card-body text-center">
-                                    <img style="max-width: 250px" id="blah"
+                                    <img style="max-width: 250px" id="blahStudentProof"
                                         src="{{ url('/') . '/uploads/' . Auth::user()->student_proof }}"
                                         alt="your image" />
                                 </div>
