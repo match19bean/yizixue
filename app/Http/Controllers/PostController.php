@@ -9,7 +9,7 @@ use App\Category;
 
 class PostController extends Controller
 {
-    public function index()
+    public function create()
     {
         $_categories = Category::all();
         $_categoriesMap = array();
@@ -21,10 +21,10 @@ class PostController extends Controller
             '_authId' => Auth()->user()->id,
             '_categories' => $_categoriesMap
         ];
-        return view('post')->with('Data', $Data);
+        return view('post.create')->with('Data', $Data);
     }
 
-    public function create(Request $req)
+    public function insert(Request $req)
     {
         $title = $req->title;
         $author = $req->author;
@@ -51,7 +51,7 @@ class PostController extends Controller
         return back();
     }
 
-    public function showMyAll()
+    public function all()
     {
         $uid = Auth::user()->id;
         $posts = Post::where('author', $uid)->get();
@@ -59,12 +59,27 @@ class PostController extends Controller
             'posts' => $posts,
         ];
 
-        return view('mypost')->with('Data', $Data);
+        return view('post.all')->with('Data', $Data);
     }
 
-    public function GetAll()
+    public function edit(Request $req)
     {
-        $post = Post::all();
-        return json_encode($post, JSON_UNESCAPED_UNICODE);
+        $uid = Auth::user()->id;
+        $posts = Post::where('author', $uid)->get();
+        if(isset($req->post_id)) {
+            $posts = Post::where('author', $uid)
+                    ->where('id', $req->post_id)
+                    ->get();
+        }
+
+        $Data = [
+            'posts' => $posts,
+        ];
+        return view('post.all')->with('Data', $Data);
+        
+    }
+
+    function update() {
+        
     }
 }

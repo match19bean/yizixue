@@ -60,8 +60,8 @@
                 <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/home/post">添加文章</a>
-                        <a class="collapse-item" href="/home/post/me">我的文章</a>
+                        <a class="collapse-item" href="/post">添加文章</a>
+                        <a class="collapse-item" href="/posts">我的文章</a>
                         <a class="collapse-item" href="#">收藏文章</a>
                     </div>
                 </div>

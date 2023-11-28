@@ -15,16 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/posts', 'PostController@all')->name('all-post');
+Route::get('/post', 'PostController@create')->name('post');
+Route::post('/post', 'PostController@create')->name('create-post');
+Route::put('/post', 'PostController@update')->name('update-post');
+Route::delete('/post', 'PostController@kill')->name('kill-post');
 
 Route::get('/user/get', 'UserController@getAll');
-Route::get('/post/get', 'PostController@getAll');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/post', 'PostController@index')->name('post');
-Route::get('/home/post/me', 'PostController@showMyAll')->name('my-post');
-Route::post('/home/post/create', 'PostController@create')->name('create-post');
 Route::get('/user/profile', 'UserController@profile')->name('profile');
 Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
 
