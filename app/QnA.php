@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class QnA extends Model
 {
-    protected $table = 'q_and_a';
+    protected $table = 'question_answer';
 }

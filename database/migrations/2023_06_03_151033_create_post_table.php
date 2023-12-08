@@ -15,13 +15,14 @@ class CreatePostTable extends Migration
     {
         Schema::create('post', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->string('title');
-            $table->string('author'); // uid
-            $table->string('image_path')->default('NA');
+            $table->string('uid'); // uid
+            $table->string('image_path')->nullable();
             $table->text('body');
-            $table->string('category')->default('NA');
-            $table->string('tag')->default('NA'); // tag 不能夠超過N個
-            $table->string('state')->default('approve'); // ban/approve
+            $table->string('category')->nullable();
+            $table->string('tag')->nullable(); // tag 不能夠超過N個
+            $table->string('state')->default('approve');
             $table->timestamps();
         });
     }

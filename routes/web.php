@@ -18,11 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/posts', 'PostController@all')->name('all-post');
-Route::get('/post', 'PostController@create')->name('post');
-Route::post('/post', 'PostController@create')->name('create-post');
-Route::put('/post', 'PostController@update')->name('update-post');
-Route::delete('/post', 'PostController@kill')->name('kill-post');
+Route::get('/list-posts', 'PostController@list')->name('list-all-posts');
+Route::get('/collect-posts', 'PostController@collect')->name('collect-posts');
+Route::get('/create-post', 'PostController@create')->name('create-post');
+Route::get('/edit-post/{uuid}', 'PostController@edit')->name('edit-post');
+Route::post('/save-post', 'PostController@save')->name('save-post');
+Route::post('/update-post', 'PostController@update')->name('update-post');
+Route::get('/delete-post/{uuid}', 'PostController@delete')->name('delete-post');
 
 Route::get('/user/get', 'UserController@getAll');
 Route::get('/user/profile', 'UserController@profile')->name('profile');

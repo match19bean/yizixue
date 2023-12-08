@@ -15,19 +15,25 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->string('name');
-            $table->string('role');
+            $table->string('nickname')->nullable();
+            $table->string('role')->default('normal');
+            $table->string('student_proof')->default('pending');
+            $table->string('school_id')->nullable();
+            $table->string('avatar')->nullable();
             $table->datetime('birth_day')->default('1900-01-01 00:00:00');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
-            $table->string('line')->unique();
-            $table->string('address');
+            $table->string('phone')->nullable();
+            $table->string('line')->nullable();
+            $table->string('address')->nullable();
             $table->string('password');
-            $table->string('ispaied')->default('false'); // true/false
+            $table->text('description')->nullable(); //簡單自我介紹
+            $table->string('skill_tags')->nullable(); //專長標籤
+            $table->integer('rate')->default(3); //評價分數
+            $table->boolean('ispaied')->default(false); // true/false
             $table->datetime('expired')->default('1900-01-01 00:00:00');
-            $table->string('state')->default('approve'); // ban/approve
-            $table->text('description')->nullable();
-            //tag
+            $table->string('state')->default('approve');
             $table->rememberToken();
             $table->timestamps();
         });

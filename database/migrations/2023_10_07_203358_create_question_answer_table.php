@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQAndATable extends Migration
+class CreateQuestionAnswerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateQAndATable extends Migration
      */
     public function up()
     {
-        Schema::create('q_and_a', function (Blueprint $table) {
+        Schema::create('question_answer', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->string('title');
-            $table->string('author'); // uid
+            $table->string('uid'); // uid
             $table->text('body');
             $table->timestamps();
         });

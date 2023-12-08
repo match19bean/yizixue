@@ -12,8 +12,9 @@ Route::group([
 ], function (Router $router) {
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('posts', PostController::class);
+    $router->resource('collect-posts', CollectPostController::class);
     $router->resource('users', UserController::class);
-    $router->resource('categories', CategoryController::class);
+    $router->resource('post-categories', PostCategoryController::class);
     $router->resource('post-tags', PostTagController::class);
     $router->resource('bulletin-boards', BulletinBoardController::class);
     $router->resource('qn-as', QnAController::class);

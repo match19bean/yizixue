@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAvatarToUserTable extends Migration
+class CreateCollectPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddAvatarToUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->nullable();
+        Schema::create('collect_post', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('uid');
+            $table->string('pid');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +28,6 @@ class AddAvatarToUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avatar');
+        Schema::dropIfExists('collect_post');
     }
 }
