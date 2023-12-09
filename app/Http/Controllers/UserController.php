@@ -7,7 +7,6 @@ use App\User;
 use App\PostTag;
 use App\ProfileVideo;
 use App\ProfileVoice;
-use App\ProfileDescription;
 use Auth;
 
 class UserController extends Controller
@@ -18,13 +17,11 @@ class UserController extends Controller
         $postTag = PostTag::all();
         $profileVideo = ProfileVideo::where('uid', $uid)->first();
         $profileVoice = ProfileVoice::where('uid', $uid)->first();
-        $profileDescription = ProfileDescription::where('uid', $uid)->first();
 
         $Data = [
             'post_tags' => $postTag,
             'profile_video' => isset($profileVideo->path)?$profileVideo->path:'',
             'profile_voice' => isset($profileVoice->path)?$profileVoice->path:'',
-            'profile_description' => isset($profileDescription->description)?$profileDescription->description:'',
         ];
         return view('user.profile')->with('Data', $Data);
     }
@@ -51,13 +48,6 @@ class UserController extends Controller
                 $ProfileVoice->path = $req->profile_voice;
                 $ProfileVoice->save();
             }
-            if(isset($req->profile_description)) {
-                $ProfileDescription = new ProfileDescription();
-                $ProfileDescription->uid = $uid;
-                $ProfileDescription->description = $req->profile_description;
-                $ProfileDescription->save();
-            }
-
         } catch (\Throwable $th) {}
 
         $User = User::where('id', $uid)->first();

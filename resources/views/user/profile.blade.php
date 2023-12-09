@@ -240,10 +240,6 @@
                                     <div class="card-body">
                                         <div class="card-body">
                                             <div class="mb-3">
-                                                <label for="uname" class="form-label">履歷自我介紹</label>
-                                                {!! $Data['profile_description'] !!}
-                                            </div>
-                                            <div class="mb-3">
                                                 <label for="uname" class="form-label">履歷影片</label>
                                                 <input type="text" value="{{ $Data['profile_video'] }}"
                                                     name="profile_video" class="form-control" readonly>
@@ -397,10 +393,6 @@
                                 <label for="uname" class="form-label">履歷聲音</label>
                                 <input type="text" value="{{ $Data['profile_voice'] }}" name="profile_voice"
                                     class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="uname" class="form-label">履歷自我介紹</label>
-                                <textarea id="article-ckeditor-profile_description" name="profile_description">{{ $Data['profile_description'] }}</textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

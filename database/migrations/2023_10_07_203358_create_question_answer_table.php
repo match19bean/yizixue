@@ -16,9 +16,11 @@ class CreateQuestionAnswerTable extends Migration
         Schema::create('question_answer', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('title');
             $table->string('uid'); // uid
+            $table->string('nickname')->nullable();
+            $table->string('title');
             $table->text('body');
+            $table->string('contact_time');
             $table->timestamps();
         });
     }

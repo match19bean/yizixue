@@ -273,7 +273,6 @@
     <script src="{{ asset('vendor/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('article-ckeditor');
-        CKEDITOR.replace('article-ckeditor-profile_description');
     </script>
 
     <script>
