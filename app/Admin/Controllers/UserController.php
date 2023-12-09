@@ -131,6 +131,17 @@ class UserController extends AdminController
         ])->default('approve');
         $form->text('remember_token', __('Remember token'));
 
+        $form->saving(function (Form $form) {
+            if ($form->password == null)
+            {
+                $form->password = $form->model()->password;
+            }
+            else
+            {
+                $form->password = bcrypt($form->password);
+            }
+        });
+
         return $form;
     }
 }
