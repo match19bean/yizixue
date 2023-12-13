@@ -37,7 +37,7 @@
                             <div class="card-body text-center">
                                 <a href="#" data-toggle="modal" data-target="#edit-avatar"><img
                                         src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}" alt="avatar"
-                                        class="rounded-circle img-fluid" style="width: 150px;"></a>
+                                        style="width: 150px;"></a>
                                 <h5 class="my-3">{{ Auth::user()->name }}</h5>
                                 <p class="text-muted mb-1">{{ Auth::user()->role == 'normal' ? '一般用戶' : 'VIP用戶' }}</p>
                             </div>
@@ -60,10 +60,10 @@
                                 </div>
                                 <div class="card-body">
                                     <div id="checkbox">
-                                        @foreach (explode(',', Auth::user()->tags) as $key => $value)
+                                        @foreach ($Data['user_skills'] as $key => $value)
                                             <label>
                                                 <input type="checkbox" value="{{ $value }}" checked="checked" /><span
-                                                    class="round button">{{ $value }}</span>
+                                                    class="round button">{{ $Data['skills']->where('id', $value)->first()->name }}</span>
                                             </label>
                                         @endforeach
                                     </div>
@@ -137,7 +137,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">最高學歷</p>
+                                        <p class="mb-0">大學</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">{{ Auth::user()->university }}</p>
@@ -321,7 +321,7 @@
                                     class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="university" class="form-label">最高學歷</label>
+                                <label for="university" class="form-label">大學</label>
                                 <input type="text" value="{{ Auth::user()->university }}" name="university"
                                     class="form-control">
                             </div>
@@ -424,14 +424,14 @@
                                     readonly>
                             </div>
                             <div id="checkbox">
-                                @foreach ($Data['post_tags'] as $key => $value)
+                                @foreach ($Data['skills'] as $key => $value)
                                     <label>
-                                        @if (strpos(Auth::user()->tags, $value->slug) > -1)
-                                            <input type="checkbox" name="tags[]" value="{{ $value->slug }}"
+                                        @if (in_array($value->id, $Data['user_skills']))
+                                            <input type="checkbox" name="skills[]" value="{{ $value->id }}"
                                                 checked="checked" />
                                             <span class="round button">{{ $value->name }}</span>
                                         @else
-                                            <input type="checkbox" name="tags[]" value="{{ $value->slug }}" />
+                                            <input type="checkbox" name="skills[]" value="{{ $value->id }}" />
                                             <span class="round button">{{ $value->name }}</span>
                                         @endif
                                     </label>

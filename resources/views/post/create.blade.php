@@ -11,20 +11,52 @@
                 </div>
                 <div class="mb-3" style="display:none">
                     <label for="author" class="form-label">作者</label>
-                    <input type="text" value="{{$Data['authId']}}" name="author" class="form-control" readonly>
+                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="image_path" class="form-label">大圖</label>
                     <input type="file" id="imgInp" name="image_path" class="form-control">
-                    <img id="blah" src="https://static.thenounproject.com/png/710742-200.png" alt="your image" />
+                    <img width=100 id="blah" src="https://cdn-icons-png.flaticon.com/512/5123/5123571.png"
+                        alt="your image" />
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">文章類別</label>
-                    <select class="form-control" name="category" aria-label="Default select example">
-                        @foreach($Data['categories'] as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
+                    <div id="checkbox">
+                        @foreach ($Data['categories'] as $category)
+                            <label>
+                                <input type="checkbox" name="category[]" value="{{ $category->id }}" /><span
+                                    class="round button">{{ $category->name }}</span>
+                            </label>
                         @endforeach
-                    </select>
+                    </div>
+                    <style>
+                        #checkbox input[type="checkbox"] {
+                            display: none;
+                        }
+
+                        #checkbox input:checked+.button {
+                            background: #5e7380;
+                            color: #fff;
+                        }
+
+                        #checkbox .button {
+                            display: inline-block;
+                            margin: 0 5px 10px 0;
+                            padding: 5px 10px;
+                            background: #f7f7f7;
+                            color: #333;
+                            cursor: pointer;
+                        }
+
+                        #checkbox .button:hover {
+                            background: #bbb;
+                            color: #fff;
+                        }
+
+                        #checkbox .round {
+                            border-radius: 5px;
+                        }
+                    </style>
                 </div>
                 <div class="mb-3">
                     <textarea id="article-ckeditor" name="postbody"></textarea>
@@ -36,13 +68,9 @@
                         <option value="approve">已審核</option>
                     </select>
                 </div>
-                <div class="mb-3">
-                    <label for="tag" class="form-label">Tag</label>
-                    <input type="text" name="tag" class="form-control">
-                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            
+
         </div>
     </div>
 @endsection

@@ -4,7 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Post;
 use App\User;
-use App\PostCategory;
+use App\GeneralCategory;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -89,7 +89,7 @@ class PostController extends AdminController
             $_usersMap[$item->id] = $item->name . "(". $item->id .")";
         }
 
-        $_categories = PostCategory::all();
+        $_categories = GeneralCategory::all();
         $_categoriesMap = array();
         foreach($_categories as $item)
         {

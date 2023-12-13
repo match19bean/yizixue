@@ -32,16 +32,17 @@ class UserController extends AdminController
         $grid->column('nickname', __('Nickname'));
         $grid->column('role', __('Role'));
         $grid->column('student_proof', __('Student proof'));
-        $grid->column('school_id', __('School id'));
         $grid->column('avatar', __('Avatar'));
         $grid->column('birth_day', __('Birth day'));
+        $grid->column('university', __('University'));
         $grid->column('email', __('Email'));
         $grid->column('phone', __('Phone'));
         $grid->column('line', __('Line'));
         $grid->column('address', __('Address'));
+        $grid->column('profile_video', __('Profile video'));
+        $grid->column('profile_voice', __('Profile voice'));
         $grid->column('password', __('Password'));
         $grid->column('description', __('Description'));
-        $grid->column('skill_tags', __('Skill tags'));
         $grid->column('rate', __('Rate'));
         $grid->column('ispaied', __('Ispaied'));
         $grid->column('expired', __('Expired'));
@@ -69,16 +70,17 @@ class UserController extends AdminController
         $show->field('nickname', __('Nickname'));
         $show->field('role', __('Role'));
         $show->field('student_proof', __('Student proof'));
-        $show->field('school_id', __('School id'));
         $show->field('avatar', __('Avatar'));
         $show->field('birth_day', __('Birth day'));
+        $show->field('university', __('University'));
         $show->field('email', __('Email'));
         $show->field('phone', __('Phone'));
         $show->field('line', __('Line'));
         $show->field('address', __('Address'));
+        $show->field('profile_video', __('Profile video'));
+        $show->field('profile_voice', __('Profile voice'));
         $show->field('password', __('Password'));
         $show->field('description', __('Description'));
-        $show->field('skill_tags', __('Skill tags'));
         $show->field('rate', __('Rate'));
         $show->field('ispaied', __('Ispaied'));
         $show->field('expired', __('Expired'));
@@ -99,37 +101,38 @@ class UserController extends AdminController
     {
         $form = new Form(new User());
 
-        $form->text('uuid', __('Uuid'))->default('usr-'.uniqid());
-        $form->text('name', '名字');
-        $form->text('nickname', '綽號');
-        $form->select('role', '身分')->options([
+        $form->text('uuid', __('Uuid'))->default('post-'.uniqid());
+        $form->text('name', __('Name'));
+        $form->text('nickname', __('Nickname'));
+        $form->select('role', __('Role'))->options([
             'normal'=>'學弟妹',
             'vip'=>'學長姐',
         ])->default('normal');
-        $form->select('student_proof', '學生身驗證')->options([
+        $form->select('student_proof', __('Student proof'))->options([
             'approve'=>'已通過驗證',
             'banned'=>'未通過驗證',
             'pending'=>'尚未驗證',
         ])->default('pending');
-        $form->text('school_id', '學校資料');
-        $form->image('avatar', '頭像');
-        $form->datetime('birth_day', '生日')->default(date('Y-m-d H:i:s'));
-        $form->email('email', 'Email');
-        $form->mobile('phone', '電話');
-        $form->text('line', 'Line');
-        $form->text('address', '聯絡地址');
-        $form->password('password', '密碼');
-        $form->textarea('description', '簡介');
-        $form->text('skill_tags', '專長標籤');
-        $form->number('rate', '評價')->default(3);
-        $form->switch('ispaied', '是否到期');
-        $form->datetime('expired', '到期日')->default(date('Y-m-d H:i:s'));
-        $form->select('state', '狀態')->options([
+        $form->image('avatar', __('Avatar'));
+        $form->datetime('birth_day', __('Birth day'))->default(date('Y-m-d'));
+        $form->text('university', __('University'));
+        $form->email('email', __('Email'));
+        $form->mobile('phone', __('Phone'));
+        $form->text('line', __('Line'));
+        $form->text('address', __('Address'));
+        $form->text('profile_video', __('Profile video'));
+        $form->text('profile_voice', __('Profile voice'));
+        $form->password('password', __('Password'));
+        $form->textarea('description', __('Description'));
+        $form->number('rate', __('Rate'))->default(3);
+        $form->switch('ispaied', __('Ispaied'));
+        $form->datetime('expired', __('Expired'))->default(date('Y-m-d'));
+        $form->select('state', __('State'))->options([
             'approve'=>'已開通',
             'banned'=>'未開通',
             'pending'=>'審核中',
         ])->default('approve');
-        $form->text('remember_token', __('Remember token'));
+        //$form->text('remember_token', __('Remember token'));
 
         $form->saving(function (Form $form) {
             if ($form->password == null)

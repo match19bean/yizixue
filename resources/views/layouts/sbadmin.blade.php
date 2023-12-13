@@ -76,9 +76,9 @@
                 <div id="qa-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/qapage">添加問題</a>
-                        <a class="collapse-item" href="/qapage/me">我的問題</a>
-                        <a class="collapse-item" href="#">收藏問與答</a>
+                        <a class="collapse-item" href="/create-qa">添加問題</a>
+                        <a class="collapse-item" href="/list-qa">我的問題</a>
+                        <a class="collapse-item" href="/collect-qa">收藏問與答</a>
                     </div>
                 </div>
             </li>
@@ -280,6 +280,7 @@
             const [file] = imgInp.files
             if (file) {
                 blah.src = URL.createObjectURL(file)
+                imgInp.width = 200
             }
         }
         imgInp_studentProof.onchange = evt => {

@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Category;
+use App\QACategoryRelation;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CategoryController extends AdminController
+class QACategoryRelationController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Category';
+    protected $title = 'QACategoryRelation';
 
     /**
      * Make a grid builder.
@@ -24,11 +24,11 @@ class CategoryController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Category());
+        $grid = new Grid(new QACategoryRelation());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->column('slug', __('Slug'));
+        $grid->column('category_id', __('Category id'));
+        $grid->column('qa_id', __('Qa id'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -43,11 +43,11 @@ class CategoryController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Category::findOrFail($id));
+        $show = new Show(QACategoryRelation::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
-        $show->field('slug', __('Slug'));
+        $show->field('category_id', __('Category id'));
+        $show->field('qa_id', __('Qa id'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -61,10 +61,10 @@ class CategoryController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Category());
+        $form = new Form(new QACategoryRelation());
 
-        $form->text('name', __('Name'));
-        $form->text('slug', __('Slug'));
+        $form->text('category_id', __('Category id'));
+        $form->text('qa_id', __('Qa id'));
 
         return $form;
     }

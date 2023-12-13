@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileVoiceTable extends Migration
+class CreateQaCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateProfileVoiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_voice', function (Blueprint $table) {
+        Schema::create('qa_category', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('uid');
-            $table->string('path');
+            $table->string('slug')->unique();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateProfileVoiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_voice');
+        Schema::dropIfExists('qa_category');
     }
 }

@@ -27,8 +27,8 @@ class PostCategoryController extends AdminController
         $grid = new Grid(new PostCategory());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
         $grid->column('slug', __('Slug'));
+        $grid->column('name', __('Name'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -46,8 +46,8 @@ class PostCategoryController extends AdminController
         $show = new Show(PostCategory::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
         $show->field('slug', __('Slug'));
+        $show->field('name', __('Name'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -63,8 +63,8 @@ class PostCategoryController extends AdminController
     {
         $form = new Form(new PostCategory());
 
-        $form->text('name', __('Name'));
         $form->text('slug', __('Slug'));
+        $form->text('name', __('Name'));
 
         return $form;
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTagTable extends Migration
+class CreateUserSkillRelationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePostTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_tag', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('slug')->unique();
-            $table->string('name');
+        Schema::create('user_skill_relation', function (Blueprint $table) {
+            // $table->increments('id');
+            $table->string('skill_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePostTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tag');
+        Schema::dropIfExists('user_skill_relation');
     }
 }

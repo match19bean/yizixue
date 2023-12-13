@@ -3,40 +3,143 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\QnA;
 use Auth;
+use App\QnA;
+use App\User;
+use App\QACategory;
+use App\QACategoryRelation;
+use App\CollectQA;
+
 
 class QnAController extends Controller
 {
-    public function index()
+    public function list()
     {
-        return view('qapage');
+        $uid = Auth::user()->id;
+        $QnA = QnA::where('uid', $uid)->get();
+        $Data = [
+            'QandA' => $QnA,
+        ];
+
+        return view('qa.list')->with('Data', $Data);
     }
 
-    public function create(Request $req)
+    public function create()
     {
-        $title = $req->title;
-        $author = $req->author;
-        $postbody = $req->postbody;
+        $categories = QACategory::all();
+        $Data = [
+            'authId' => Auth()->user()->id,
+            'categories' => $categories
+        ];
+        return view('qa.create')->with('Data', $Data);
+    }
 
+    public function save(Request $req)
+    {
         $QnA = new QnA();
-        $QnA->title = $title;
-        $QnA->author = $author;
-        $QnA->body = $postbody;
+        $QnA->uuid = 'qa-'.uniqid();
+        $QnA->nickname = $req->nickname;
+        $QnA->title = $req->title;
+        $QnA->uid = $req->author;
+        $QnA->state = $req->state;
+        $QnA->body = $req->qabody;
+        $QnA->contact_time = $req->contact_time;
+        $QnA->save();
+
+        $category = $req->category;
+        if(isset($category)) 
+        {
+            $qaId = $QnA->id;
+            if($category!='') {
+                foreach ($category as $cId)
+                {                   
+                    $qaCategoryRelation = new QACategoryRelation();
+                    $qaCategoryRelation->category_id = $cId;
+                    $qaCategoryRelation->qa_id = $qaId;
+                    $qaCategoryRelation->save();
+                }
+            }
+        }
+
+        return back();
+    }
+
+    public function edit($uuid)
+    {
+        $uid = Auth::user()->id;
+        $QnA = QnA::where('uuid', $uuid)->first();
+        $categories = QACategory::all();
+        $qaCategoryRelation = QACategoryRelation::where('qa_id', $QnA->id)->get();
+        $selectCategories = [];
+        foreach($qaCategoryRelation as $ele) {
+            array_push($selectCategories, $ele->category_id);
+        }
+
+        $Data = [
+            'qa' => $QnA,
+            'authId' => Auth()->user()->id,
+            'categories' => $categories,
+            'selectCategories' => $selectCategories
+        ];
+        return view('qa.edit')->with('Data', $Data);
+    }
+
+    public function update(Request $req) 
+    {
+        $QnA = QnA::where('uuid', $req->uuid)->first();
+            
+        $QnA->nickname = $req->nickname;
+        $QnA->title = $req->title;
+        $QnA->uid = $req->author;
+        $QnA->state = $req->state;
+        $QnA->body = $req->qabody;
+        $QnA->contact_time = $req->contact_time;
+
+        $category = $req->category;
+        if(isset($category)) 
+        {
+            $qaId = $QnA->id;
+            if($category!='') {
+                $qaCategory = QACategoryRelation::where('qa_id', $qaId)->delete();
+                foreach ($category as $cId)
+                {                   
+                    $qaCategoryRelation = new QACategoryRelation();
+                    $qaCategoryRelation->category_id = $cId;
+                    $qaCategoryRelation->qa_id = $qaId;
+                    $qaCategoryRelation->save();
+                }
+            }
+        }
+
         $QnA->save();
 
         return back();
     }
 
-    public function showMyAll()
+    public function delete($uuid) 
     {
-        $uid = Auth::user()->id;
-        $qNa = QnA::where('author', $uid)->get();
+        $QnA = QnA::where('uuid', $uuid)->first();
+        $QnA->delete();
+
+        return back();
+    }
+
+    public function collect()
+    {
+        $uid = User::where('id', Auth::user()->id)->first()->uuid;
+        $collect = CollectQA::where('uid', $uid)->get();
+        
+        $qaList = [];
+        foreach($collect as $ele) {
+            $qa = Post::where('uuid', $ele->pid)->first();
+            array_push($qaList, $qa);
+        }
+
         $Data = [
-            'qa' => $qNa,
+            'qa' => $qaList,
         ];
 
-        return view('myqa')->with('Data', $Data);
+        return view('qa.collect')->with('Data', $Data);
     }
 
 }

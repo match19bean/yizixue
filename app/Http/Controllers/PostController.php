@@ -8,6 +8,7 @@ use App\User;
 use App\Post;
 use App\CollectPost;
 use App\PostCategory;
+use App\PostCategoryRelation;
 
 class PostController extends Controller
 {
@@ -24,15 +25,10 @@ class PostController extends Controller
 
     public function create()
     {
-        $_categories = PostCategory::all();
-        $_categoriesMap = array();
-        foreach($_categories as $item)
-        {
-            $_categoriesMap[$item->id] = $item->name . "(". $item->slug .")";
-        }
+        $categories = PostCategory::all();
         $Data = [
             'authId' => Auth()->user()->id,
-            'categories' => $_categoriesMap
+            'categories' => $categories
         ];
         return view('post.create')->with('Data', $Data);
     }
@@ -55,12 +51,25 @@ class PostController extends Controller
         $Post->uuid = 'post-'.uniqid();
         $Post->title = $title;
         $Post->uid = $author;
-        $Post->category = $category;
         $Post->image_path = '/images/'.$fileName;
         $Post->state = $state;
-        $Post->tag = $tag;
         $Post->body = $postbody;
         $Post->save();
+
+        if(isset($category)) 
+        {
+            
+            $pId = $Post->id;
+            if($category!='') {
+                foreach ($category as $cId)
+                {                   
+                    $postCategoryRelation = new PostCategoryRelation();
+                    $postCategoryRelation->category_id = $cId;
+                    $postCategoryRelation->post_id = $pId;
+                    $postCategoryRelation->save();
+                }
+            }
+        }
 
         return back();
     }
@@ -69,16 +78,18 @@ class PostController extends Controller
     {
         $uid = Auth::user()->id;
         $post = Post::where('uuid', $uuid)->first();
-        $_categories = PostCategory::all();
-        $_categoriesMap = array();
-        foreach($_categories as $item)
-        {
-            $_categoriesMap[$item->id] = $item->name . "(". $item->slug .")";
+        $categories = PostCategory::all();
+        $postCategoryRelation = PostCategoryRelation::where('post_id', $post->id)->get();
+        $selectCategories = [];
+        foreach($postCategoryRelation as $ele) {
+            array_push($selectCategories, $ele->category_id);
         }
+
         $Data = [
             'post' => $post,
             'authId' => Auth()->user()->id,
-            'categories' => $_categoriesMap
+            'categories' => $categories,
+            'selectCategories' => $selectCategories
         ];
         return view('post.edit')->with('Data', $Data);
     }
@@ -105,10 +116,24 @@ class PostController extends Controller
             
         $Post->title = $title;
         $Post->uid = $author;
-        $Post->category = $category;
+
+        if(isset($category)) 
+        {
+            $pId = $Post->id;
+            if($category!='') {
+                $postCategory = PostCategoryRelation::where('post_id', $pId)->delete();
+                foreach ($category as $cId)
+                {                   
+                    $postCategoryRelation = new PostCategoryRelation();
+                    $postCategoryRelation->category_id = $cId;
+                    $postCategoryRelation->post_id = $pId;
+                    $postCategoryRelation->save();
+                }
+            }
+        }
+
         $Post->image_path = $imageFile;
         $Post->state = $state;
-        $Post->tag = $tag;
         $Post->body = $postbody;
         $Post->save();
 
@@ -119,6 +144,7 @@ class PostController extends Controller
     {
         $Post = Post::where('uuid', $uuid)->first();
         $Post->delete();
+        PostCategoryRelation::where('post_id', $Post->id)->delete();
 
         return back();
     }
@@ -133,8 +159,6 @@ class PostController extends Controller
             $post = Post::where('uuid', $ele->pid)->first();
             array_push($posts, $post);
         }
-
-        // dd($collect);
 
         $Data = [
             'posts' => $posts,

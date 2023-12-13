@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "doctrine/dbal": "^2.0",
-        "encore/laravel-admin": "1.*",
+        "encore/laravel-admin": "^1.8",
         "fideloper/proxy": "~3.3",
         "laravel-admin-ext/ckeditor": "^1.0",
         "laravel/framework": "5.5.*",

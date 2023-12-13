@@ -16,7 +16,7 @@ class CreateCollectPostTable extends Migration
         Schema::create('collect_post', function (Blueprint $table) {
             $table->increments('id');
             $table->string('uid');
-            $table->string('pid');
+            $table->string('post_id');
             $table->timestamps();
         });
     }

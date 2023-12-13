@@ -17,11 +17,9 @@ class CreatePostTable extends Migration
             $table->increments('id');
             $table->uuid('uuid');
             $table->string('title');
-            $table->string('uid'); // uid
+            $table->string('uid');
             $table->string('image_path')->nullable();
             $table->text('body');
-            $table->string('category')->nullable();
-            $table->string('tag')->nullable(); // tag 不能夠超過N個
             $table->string('state')->default('approve');
             $table->timestamps();
         });

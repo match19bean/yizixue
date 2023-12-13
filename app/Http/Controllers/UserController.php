@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\PostTag;
-use App\ProfileVideo;
-use App\ProfileVoice;
+use App\Skill;
+use App\UserSkillRelation;
 use Auth;
 
 class UserController extends Controller
@@ -14,14 +13,19 @@ class UserController extends Controller
     public function profile() 
     {
         $uid = Auth::user()->id;
-        $postTag = PostTag::all();
-        $profileVideo = ProfileVideo::where('uid', $uid)->first();
-        $profileVoice = ProfileVoice::where('uid', $uid)->first();
+        $skills = Skill::all();
+        $user_skill_relation = UserSkillRelation::where('user_id', $uid)->get();
+        $userSkills = [];
+        foreach($user_skill_relation as $ele) {
+            array_push($userSkills, $ele->skill_id);
+        }
 
         $Data = [
-            'post_tags' => $postTag,
-            'profile_video' => isset($profileVideo->path)?$profileVideo->path:'',
-            'profile_voice' => isset($profileVoice->path)?$profileVoice->path:'',
+            'skills' => $skills,
+            'profile_video' => Auth::user()->profile_video,
+            'profile_voice' => Auth::user()->profile_voice,
+            'user_skills' => $userSkills,
+            'user' => Auth::user()
         ];
         return view('user.profile')->with('Data', $Data);
     }
@@ -35,21 +39,6 @@ class UserController extends Controller
     public function update(Request $req) 
     {
         $uid = $req->uid;
-        try {
-            if(isset($req->profile_video)) {
-                $ProfileVideo = new ProfileVideo();
-                $ProfileVideo->uid = $uid;
-                $ProfileVideo->path = $req->profile_video;
-                $ProfileVideo->save();
-            }
-            if(isset($req->profile_voice)) {
-                $ProfileVoice = new ProfileVoice();
-                $ProfileVoice->uid = $uid;
-                $ProfileVoice->path = $req->profile_voice;
-                $ProfileVoice->save();
-            }
-        } catch (\Throwable $th) {}
-
         $User = User::where('id', $uid)->first();
         $User->name = isset($req->name)?$req->name:$User->name;
         $User->nickname = isset($req->nickname)?$req->nickname:$User->nickname;
@@ -59,7 +48,25 @@ class UserController extends Controller
         $User->line = isset($req->line)?$req->line:$User->line;
         $User->address = isset($req->address)?$req->address:$User->address;
         $User->description = isset($req->description)?$req->description:$User->description;
-        $User->tags = isset($req->tags)?implode(",", $req->tags):$User->tags;
+        $User->profile_video = isset($req->profile_video)?$req->profile_video:$User->profile_video;
+        $User->profile_voice = isset($req->profile_voice)?$req->profile_voice:$User->profile_voice;
+        if(isset($req->skills)) 
+        {
+            // dd($req->skills);
+            if($req->skills!='') {
+                $purgeSkills = UserSkillRelation::where('user_id', $uid)->delete();
+                foreach ($req->skills as $sId)
+                {
+                    $userSkillRelation = new UserSkillRelation();
+                    $userSkillRelation->updateOrCreate(
+                        [
+                            'skill_id' => $sId,
+                            'user_id' => $uid
+                        ]
+                    );
+                }
+            }
+        }
         $User->avatar = $User->avatar;
         $User->student_proof = $User->student_proof;
 
@@ -79,5 +86,24 @@ class UserController extends Controller
 
         $User->save();
         return back();        
+    }
+
+    public function getUserBySkill(Request $req) 
+    {
+        $skillId = $req->skill_id;
+        $users = [];
+        $user_skill_relation = UserSkillRelation::where('skill_id', $skillId)->get();
+        foreach($user_skill_relation as $ele)
+        {
+            $user = User::where('id', $ele->user_id)->first();
+            //dd($user);
+            array_push($users, $user);
+        }
+
+        $Data = [
+            'users' => $users,
+        ];
+
+        return $Data;
     }
 }

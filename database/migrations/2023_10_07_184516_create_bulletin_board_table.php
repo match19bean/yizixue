@@ -15,7 +15,9 @@ class CreateBulletinBoardTable extends Migration
     {
         Schema::create('bulletin_board', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->text('message');
+            $table->string('state')->default('approve');
             $table->timestamps();
         });
     }
