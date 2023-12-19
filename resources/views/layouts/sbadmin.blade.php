@@ -98,9 +98,8 @@
                 <div id="invite-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/home/post">邀請學長姊</a>
-                        <a class="collapse-item" href="cards.html">學長姐回覆</a>
-                        <a class="collapse-item" href="cards.html">收藏學長姐</a>
+                        <a class="collapse-item" href="/user/invite-list">邀請學長姊</a>
+                        <a class="collapse-item" href="/user/collect-user">收藏學長姐</a>
                     </div>
                 </div>
             </li>

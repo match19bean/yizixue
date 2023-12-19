@@ -126,12 +126,12 @@ class QnAController extends Controller
 
     public function collect()
     {
-        $uid = User::where('id', Auth::user()->id)->first()->uuid;
+        $uid = Auth::user()->id;
         $collect = CollectQA::where('uid', $uid)->get();
         
         $qaList = [];
         foreach($collect as $ele) {
-            $qa = Post::where('uuid', $ele->pid)->first();
+            $qa = QnA::where('id', $ele->qa_id)->first();
             array_push($qaList, $qa);
         }
 

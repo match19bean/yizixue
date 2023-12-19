@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Skill;
 use App\UserSkillRelation;
+use App\Invite;
+use App\CollectUser;
 use Auth;
 
 class UserController extends Controller
@@ -105,5 +107,42 @@ class UserController extends Controller
         ];
 
         return $Data;
+    }
+
+    public function showInviteList()
+    {
+        $uid = Auth::user()->id;
+        $inviteList = Invite::where('to_uid', $uid)->get();
+        $userList = [];
+        foreach($inviteList as $ele)
+        {
+            $inviteUser = User::where('id', $ele->from_uid)->first();
+            array_push($userList, $inviteUser);
+        }
+
+        $Data = [
+            'InviteList' => $inviteList,
+            'Users' => $userList
+        ];
+
+        return view('user.invite-list')->with('Data', $Data);
+    }
+
+    public function collect()
+    {
+        $uid = Auth::user()->id;
+        $collect = CollectUser::where('uid', $uid)->get();
+        
+        $users = [];
+        foreach($collect as $ele) {
+            $user = User::where('id', $ele->user_id)->first();
+            array_push($users, $user);
+        }
+
+        $Data = [
+            'Users' => $users,
+        ];
+
+        return view('user.collect')->with('Data', $Data);
     }
 }

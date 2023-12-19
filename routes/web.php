@@ -37,9 +37,13 @@ Route::post('/update-qa', 'QnAController@update')->name('update-qa');
 Route::get('/delete-qa/{uuid}', 'QnAController@delete')->name('delete-qa');
 
 Route::get('/user/get', 'UserController@getAll');
+Route::get('/user/collect-user', 'UserController@collect')->name('collect-user');
 Route::get('/user/skill', 'UserController@getUserBySkill');
 Route::get('/user/profile', 'UserController@profile')->name('profile');
 Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
+Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
+Route::get('/user/invite-list', 'UserController@showInviteList');
+Route::post('/user/accept-invite/{id}', 'UserController@getInviteList')->name('accept-invite');
 
 Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
 

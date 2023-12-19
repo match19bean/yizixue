@@ -65,7 +65,7 @@
                     </style>
                 </div>
                 <div class="mb-3">
-                    <textarea id="article-ckeditor" name="qabody">{{ $Data['post']->body }}</textarea>
+                    <textarea id="article-ckeditor" name="postbody">{{ $Data['post']->body }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="state" class="form-label">狀態</label>
@@ -73,10 +73,6 @@
                         <option value="pending" {{ $Data['post']->state == 'pending' ? 'selected' : '' }}>審核中</option>
                         <option value="approve" {{ $Data['post']->state == 'approve' ? 'selected' : '' }}>已審核</option>
                     </select>
-                </div>
-                <div class="mb-3">
-                    <label for="tag" class="form-label">Tag</label>
-                    <input type="text" name="tag" class="form-control" value="{{ $Data['post']->tag }}">
                 </div>
                 <button type="submit" class="btn btn-primary">更新</button>
             </form>

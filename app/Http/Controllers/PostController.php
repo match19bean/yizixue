@@ -151,14 +151,15 @@ class PostController extends Controller
 
     public function collect()
     {
-        $uid = User::where('id', Auth::user()->id)->first()->uuid;
+        $uid = Auth::user()->id;
         $collect = CollectPost::where('uid', $uid)->get();
         
         $posts = [];
         foreach($collect as $ele) {
-            $post = Post::where('uuid', $ele->pid)->first();
+            $post = Post::where('id', $ele->post_id)->first();
             array_push($posts, $post);
         }
+
 
         $Data = [
             'posts' => $posts,
