@@ -3,53 +3,65 @@
 @section('content')
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content" style="margin:15px">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">您收集的所有QA</h6>
+
+            <div class="row justify-content-md-center">
+                <div style="margin-bottom: 10px;" class="col-xl-10 col-lg-7">
+                    <div style="background: #4C2A70; padding:5px" class="card text-white shadow">
+                        <h2 style="margin: 0;" class="text-center">發布的問題</h2>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <table class="table table-bordered dataTable" id="dataTable" width="100%"
-                                        cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                        style="width: 100%;">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
-                                                    style="width: 93px;">QA</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Position: activate to sort column ascending"
-                                                    style="width: 136px;">QA內容</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Office: activate to sort column ascending"
-                                                    style="width: 68px;">分類</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Age: activate to sort column ascending"
-                                                    style="width: 31px;">時間</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($Data['qa'] as $key => $qa)
-                                        <tr>
-                                            <td>{{$qa->title}}</td>
-                                            <td>{!!substr($qa->body, 0, 300)!!}...</td>
-                                            <td>{{$qa->category}}</td>
-                                            <td>{{$qa->created_at}}</td>
-                                        </tr>
+                <div class="col-xl-10 col-lg-7">
+                    <div class="card shadow mb-4">
+                        @foreach ($Data['QandA'] as $key => $qa)
+                        <!-- Card Body -->
+                        <div style="background: #FFFFFF;"
+                            class="card-body d-flex justify-content-center">
+                            <div class="col-xl-10 col-lg-7">
+                                <div class="card d-flex justify-content-center shadow" style="border-right: 50px solid #4C2A70">
+                                    <!-- Card Header - Dropdown -->
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                        <p class="m-0 font-weight-bold text-primary"></p>
+                                        <div class="dropdown no-arrow">
+                                            <a style="margin:5px" class="dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">動作:</div>
+                                                <a class="dropdown-item" href="/view-qa/{{ $qa->uuid }}">查看</a>
+                                                <a class="dropdown-item" href="/edit-qa/{{ $qa->uuid }}">編輯</a>
+                                                <a class="dropdown-item" href="/delete-qa/{{ $qa->uuid }}">刪除</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <?php
+                                            $QAcategories = $Data['QACategoryRelation']->where('qa_id', $qa->id)->get();
+                                        ?>
+                                        <h4 style="align-items: center;">
+                                        {{ substr($qa->title, 0, 25) }}...
+                                        @foreach ($QAcategories as $cateId)
+                                            <?php
+                                                $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
+                                            ?>
+                                            <span style="background: #4C2A70; color:#FFFFFF" href="#" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+                                                #{{$cate->name}}
+                                            </span>
                                         @endforeach
-                                            
-                                        </tbody>
-                                    </table>
+                                        </h4>
+                                        <p>{!! substr($qa->body, 0, 300) !!}...</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

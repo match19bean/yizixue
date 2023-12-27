@@ -17,8 +17,12 @@ class QnAController extends Controller
     {
         $uid = Auth::user()->id;
         $QnA = QnA::where('uid', $uid)->get();
+        $QACategory = new QACategory;
+        $QACategoryRelation = new QACategoryRelation;
         $Data = [
             'QandA' => $QnA,
+            'QACategory' => $QACategory,
+            'QACategoryRelation' => $QACategoryRelation
         ];
 
         return view('qa.list')->with('Data', $Data);
@@ -128,6 +132,8 @@ class QnAController extends Controller
     {
         $uid = Auth::user()->id;
         $collect = CollectQA::where('uid', $uid)->get();
+        $QACategory = new QACategory;
+        $QACategoryRelation = new QACategoryRelation;
         
         $qaList = [];
         foreach($collect as $ele) {
@@ -136,7 +142,9 @@ class QnAController extends Controller
         }
 
         $Data = [
-            'qa' => $qaList,
+            'QandA' => $qaList,
+            'QACategory' => $QACategory,
+            'QACategoryRelation' => $QACategoryRelation
         ];
 
         return view('qa.collect')->with('Data', $Data);
