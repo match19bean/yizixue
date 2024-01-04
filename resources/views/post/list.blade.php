@@ -2,60 +2,62 @@
 
 @section('content')
     <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content" style="margin:15px">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">您的所有文章</h6>
+
+        <div class="row justify-content-md-center">
+            <div style="margin-bottom: 10px;" class="col-xl-10 col-lg-7">
+                <div style="background: #4C2A70; padding:5px" class="card text-white shadow">
+                    <h2 style="margin: 0;" class="text-center">發布的問題</h2>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <table class="table table-bordered dataTable" id="dataTable" width="100%"
-                                        cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                        style="width: 100%;">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
-                                                    style="width: 93px;">文章名稱</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Position: activate to sort column ascending"
-                                                    style="width: 136px;">內容簡介</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Office: activate to sort column ascending"
-                                                    style="width: 68px;">分類</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Age: activate to sort column ascending"
-                                                    style="width: 31px;">時間</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Age: activate to sort column ascending"
-                                                    style="width: 31px;">動作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($Data['posts'] as $key => $post)
-                                        <tr>
-                                            <td>{{$post->title}}</td>
-                                            <td>{!!substr($post->body, 0, 300)!!}...</td>
-                                            <td>{{$post->category}}</td>
-                                            <td>{{$post->created_at}}</td>
-                                            <td>
-                                            <a href="/view-post/{{$post->uuid}}" type="button" class="btn btn-success" data-dismiss="modal">查看文章</a>
-                                            <a href="/edit-post/{{$post->uuid}}" type="button" class="btn btn-primary" data-dismiss="modal">編輯文章</a>
-                                            <a href="/delete-post/{{$post->uuid}}" type="button" class="btn btn-danger" data-dismiss="modal">刪除文章</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                            
-                                        </tbody>
-                                    </table>
+            </div>
+            <div class="col-xl-10 col-lg-7">
+                <div class="card shadow mb-4">
+                    @foreach ($Data['posts'] as $key => $post)
+                        <!-- Card Body -->
+                        <div style="background: #FFFFFF;" class="card-body d-flex justify-content-center">
+                            <div class="col-xl-10 col-lg-7">
+                                <div class="card d-flex justify-content-center shadow"
+                                    style="border-right: 50px solid #4C2A70">
+                                    <!-- Card Header - Dropdown -->
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                        <p class="m-0 font-weight-bold text-primary"></p>
+                                        <div class="dropdown no-arrow">
+                                            <a style="margin:5px" class="dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">動作:</div>
+                                                <a class="dropdown-item" href="/view-post/{{ $post->uuid }}">查看</a>
+                                                <a class="dropdown-item" href="/edit-post/{{ $post->uuid }}">編輯</a>
+                                                <a class="dropdown-item" href="/delete-post/{{ $post->uuid }}">刪除</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <?php
+                                        $QAcategories = $Data['QACategoryRelation']->where('post_id', $post->id)->get();
+                                        ?>
+                                        <h4 style="align-items: center;">
+                                            {{ substr($post->title, 0, 25) }}...
+                                            @foreach ($QAcategories as $cateId)
+                                                <?php
+                                                $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
+                                                ?>
+                                                <span style="background: #4C2A70; color:#FFFFFF" href="#"
+                                                    class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+                                                    #{{ $cate->name }}
+                                                </span>
+                                            @endforeach
+                                        </h4>
+                                        <p>{!! substr($post->body, 0, 300) !!}...</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

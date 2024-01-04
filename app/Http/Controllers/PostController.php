@@ -16,8 +16,12 @@ class PostController extends Controller
     {
         $uid = Auth::user()->id;
         $posts = Post::where('uid', $uid)->get();
+        $QACategory = new PostCategory;
+        $QACategoryRelation = new PostCategoryRelation;
         $Data = [
             'posts' => $posts,
+            'QACategory' => $QACategory,
+            'QACategoryRelation' => $QACategoryRelation
         ];
 
         return view('post.list')->with('Data', $Data);
