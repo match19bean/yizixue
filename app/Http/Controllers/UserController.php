@@ -8,6 +8,7 @@ use App\Skill;
 use App\UserSkillRelation;
 use App\Invite;
 use App\CollectUser;
+use App\PostCategory;
 use Auth;
 
 class UserController extends Controller
@@ -122,7 +123,10 @@ class UserController extends Controller
 
         $Data = [
             'InviteList' => $inviteList,
-            'Users' => $userList
+            'Skills' => new Skill,
+            'UserSkillRelation' => new UserSkillRelation,
+            'Users' => $userList,
+            'PostCategory' => new PostCategory
         ];
 
         return view('user.invite-list')->with('Data', $Data);

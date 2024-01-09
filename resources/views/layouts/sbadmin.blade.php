@@ -13,12 +13,39 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
+<style>
+    input[type="text"],
+    select.form-control {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #4C2A70;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    input[type="text"]:focus,
+    select.form-control:focus {
+        background: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    #upload-img-div {
+        background-image: url('');
+        background-size: cover;
+        background-position: center;
+        border: 1px solid #bbb;
+    }
+</style>
 
 <body id="page-top">
 
@@ -50,11 +77,13 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#post-list" aria-expanded="false" aria-controls="post-list">
+                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
+                    data-target="#post-list" aria-expanded="false" aria-controls="post-list">
                     <i style="color:white !important" class="fa fa-book" aria-hidden="true"></i>
                     <span>文章管理</span>
                 </a>
-                <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/create-post">添加文章</a>
                         <a class="collapse-item" href="/list-posts">我的文章</a>
@@ -64,11 +93,13 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#qa-list" aria-expanded="false" aria-controls="qa-list">
+                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
+                    data-target="#qa-list" aria-expanded="false" aria-controls="qa-list">
                     <i style="color:white !important" class="fa fa-window-maximize" aria-hidden="true"></i>
                     <span>問與答管理</span>
                 </a>
-                <div id="qa-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                <div id="qa-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/create-qa">添加問題</a>
                         <a class="collapse-item" href="/list-qa">我的問題</a>
@@ -84,11 +115,13 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#invite-list" aria-expanded="false" aria-controls="invite-list">
+                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
+                    data-target="#invite-list" aria-expanded="false" aria-controls="invite-list">
                     <i style="color:white !important" class="fa fa-users" aria-hidden="true"></i>
                     <span>學長姊管理</span>
                 </a>
-                <div id="invite-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                <div id="invite-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/user/invite-list">邀請學長姊</a>
                         <a class="collapse-item" href="/user/collect-user">收藏學長姐</a>
@@ -128,7 +161,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>調整</span>
                 </a>
@@ -165,12 +199,16 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                                <img class="img-profile rounded-circle" src="{{ url('/').'/uploads/'.Auth::user()->avatar }}">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="/user/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     修改基本資料
@@ -180,12 +218,14 @@
                                     系統設定
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal"
+                                    onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </div>
@@ -225,7 +265,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -259,13 +300,24 @@
     </script>
 
     <script>
-        imgInp.onchange = evt => {
-            const [file] = imgInp.files
-            if (file) {
-                blah.src = URL.createObjectURL(file)
-                imgInp.width = 200
+        $('#OpenImgUpload').click(function() {
+            $('#imgInp').trigger('click');
+        });
+
+
+        document.getElementById('imgInp').addEventListener('change', readURL, true);
+
+        function readURL() {
+            var file = document.getElementById("imgInp").files[0];
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                document.getElementById('upload-img-div').style.backgroundImage = "url(" + reader.result + ")";
             }
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {}
         }
+
         imgInp_studentProof.onchange = evt => {
             const [file] = imgInp_studentProof.files
             if (file) {

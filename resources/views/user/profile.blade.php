@@ -1,4 +1,32 @@
 @extends('layouts.sbadmin')
+<style>
+    #checkbox input[type="checkbox"] {
+        display: none;
+    }
+
+    #checkbox input:checked+.button {
+        background: #5e7380;
+        color: #fff;
+    }
+
+    #checkbox .button {
+        display: inline-block;
+        margin: 0 5px 10px 0;
+        padding: 5px 10px;
+        background: #f7f7f7;
+        color: #333;
+        cursor: pointer;
+    }
+
+    #checkbox .button:hover {
+        background: #bbb;
+        color: #fff;
+    }
+
+    #checkbox .round {
+        border-radius: 5px;
+    }
+</style>
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -67,34 +95,6 @@
                                             </label>
                                         @endforeach
                                     </div>
-                                    <style>
-                                        #checkbox input[type="checkbox"] {
-                                            display: none;
-                                        }
-
-                                        #checkbox input:checked+.button {
-                                            background: #5e7380;
-                                            color: #fff;
-                                        }
-
-                                        #checkbox .button {
-                                            display: inline-block;
-                                            margin: 0 5px 10px 0;
-                                            padding: 5px 10px;
-                                            background: #f7f7f7;
-                                            color: #333;
-                                            cursor: pointer;
-                                        }
-
-                                        #checkbox .button:hover {
-                                            background: #bbb;
-                                            color: #fff;
-                                        }
-
-                                        #checkbox .round {
-                                            border-radius: 5px;
-                                        }
-                                    </style>
                                 </div>
                             </div>
                         </div>

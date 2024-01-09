@@ -6,7 +6,7 @@
         <div class="row justify-content-md-center">
             <div style="margin-bottom: 10px;" class="col-xl-10 col-lg-7">
                 <div style="background: #4C2A70; padding:5px" class="card text-white shadow">
-                    <h2 style="margin: 0;" class="text-center">發布的問題</h2>
+                    <h2 style="margin: 0;" class="text-center">發布的文章</h2>
                 </div>
             </div>
             <div class="col-xl-10 col-lg-7">
@@ -37,22 +37,29 @@
                                     </div>
                                     <!-- Card Body -->
                                     <div class="card-body">
-                                        <?php
-                                        $QAcategories = $Data['QACategoryRelation']->where('post_id', $post->id)->get();
-                                        ?>
-                                        <h4 style="align-items: center;">
-                                            {{ substr($post->title, 0, 25) }}...
-                                            @foreach ($QAcategories as $cateId)
+                                        <div class="row">
+                                            <div class="col">
+                                                <img width=320 src="/uploads{{ $post->image_path }}">
+                                            </div>
+                                            <div class="col-8">
                                                 <?php
-                                                $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
+                                                $QAcategories = $Data['QACategoryRelation']->where('post_id', $post->id)->get();
                                                 ?>
-                                                <span style="background: #4C2A70; color:#FFFFFF" href="#"
-                                                    class="d-none d-sm-inline-block btn btn-sm shadow-sm">
-                                                    #{{ $cate->name }}
-                                                </span>
-                                            @endforeach
-                                        </h4>
-                                        <p>{!! substr($post->body, 0, 300) !!}...</p>
+                                                <h4 style="align-items: center;">
+                                                    {{ substr($post->title, 0, 105) }}...
+                                                    @foreach ($QAcategories as $cateId)
+                                                        <?php
+                                                        $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
+                                                        ?>
+                                                        <span style="background: #4C2A70; color:#FFFFFF" href="#"
+                                                            class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+                                                            #{{ $cate->name }}
+                                                        </span>
+                                                    @endforeach
+                                                </h4>
+                                                <p>{!! substr($post->body, 0, 300) !!}...</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

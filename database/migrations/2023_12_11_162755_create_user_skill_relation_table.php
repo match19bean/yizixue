@@ -14,7 +14,7 @@ class CreateUserSkillRelationTable extends Migration
     public function up()
     {
         Schema::create('user_skill_relation', function (Blueprint $table) {
-            // $table->increments('id');
+            $table->increments('id');
             $table->string('skill_id');
             $table->string('user_id');
             $table->timestamps();

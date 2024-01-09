@@ -55,15 +55,23 @@
                                     <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control"
                                         readonly>
                                 </div>
-                                <div class="mb-3" style="border: 2px solid #4C2A70; padding: 10px; border-radius: 5px;">
-                                    <label for="image_path" class="form-label">點擊添加圖片</label>
-                                    <input type="file" id="imgInp" name="image_path" class="form-control">
-                                    <img width=100 id="blah"
-                                        src="https://cdn-icons-png.flaticon.com/512/5123/5123571.png" alt="your image" />
+                                <div id='upload-img-div' class="mb-3"
+                                    style="border: 2px solid #4C2A70; 
+                                padding: 10px; border-radius: 5px; width:100%;">
+                                    <input type="file" id="imgInp" name="image_path" class="form-control"
+                                        style="display:none">
+                                    <a type="button" id="OpenImgUpload"
+                                        style="
+                                        display: flex;
+                                        justify-content: center;
+                                        align-content: center;
+                                        flex-wrap: wrap;
+                                        padding: 200px;">點擊添加圖片</a>
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label" style="color:#4C2A70;">選擇主題</label>
-                                    <div id="checkbox" style="border: 2px solid #4C2A70; padding: 10px; border-radius: 5px;">
+                                    <div id="checkbox"
+                                        style="border: 2px solid #4C2A70; padding: 10px; border-radius: 5px;">
                                         @foreach ($Data['categories'] as $category)
                                             <label>
                                                 <input type="checkbox" name="category[]" value="{{ $category->id }}" /><span
