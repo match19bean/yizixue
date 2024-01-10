@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\PostTag;
+use App\UserRelation;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class PostTagController extends AdminController
+class UserRelationController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'PostTag';
+    protected $title = 'UserRelation';
 
     /**
      * Make a grid builder.
@@ -24,11 +24,11 @@ class PostTagController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new PostTag());
+        $grid = new Grid(new UserRelation());
 
         $grid->column('id', __('Id'));
-        $grid->column('slug', __('Slug'));
-        $grid->column('name', __('Name'));
+        $grid->column('normal_user_id', __('Normal user id'));
+        $grid->column('vip_user_id', __('Vip user id'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -43,11 +43,11 @@ class PostTagController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(PostTag::findOrFail($id));
+        $show = new Show(UserRelation::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('slug', __('Slug'));
-        $show->field('name', __('Name'));
+        $show->field('normal_user_id', __('Normal user id'));
+        $show->field('vip_user_id', __('Vip user id'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -61,10 +61,10 @@ class PostTagController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new PostTag());
+        $form = new Form(new UserRelation());
 
-        $form->text('slug', __('Slug'));
-        $form->text('name', __('Name'));
+        $form->text('normal_user_id', __('Normal user id'));
+        $form->text('vip_user_id', __('Vip user id'));
 
         return $form;
     }

@@ -26,7 +26,6 @@ class PostCategoryRelationController extends AdminController
     {
         $grid = new Grid(new PostCategoryRelation());
 
-        $grid->column('id', __('Id'));
         $grid->column('category_id', __('Category id'));
         $grid->column('post_id', __('Post id'));
         $grid->column('created_at', __('Created at'));
@@ -45,7 +44,6 @@ class PostCategoryRelationController extends AdminController
     {
         $show = new Show(PostCategoryRelation::findOrFail($id));
 
-        $show->field('id', __('Id'));
         $show->field('category_id', __('Category id'));
         $show->field('post_id', __('Post id'));
         $show->field('created_at', __('Created at'));

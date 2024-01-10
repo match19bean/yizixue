@@ -59,10 +59,10 @@
                                             margin-bottom:20px;
                                             margin-top:20px">
                                             <i class="fa fa-heart" style="font-size:30px; color:red; margin:5px">
-                                                <span style="color:black">5</span>
+                                                <span style="color:black">{{rand(5,30)}}</span>
                                             </i>
                                             <i class="fa fa-bookmark" style="font-size:30px; margin:5px">
-                                                <span style="color:black">3</span>
+                                                <span style="color:black">{{rand(5,30)}}</span>
                                             </i>
                                             </div>
                                             <div

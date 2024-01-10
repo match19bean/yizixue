@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\CollectPost;
+use App\UserSkillRelation;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CollectPostController extends AdminController
+class UserSkillRelationController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'CollectPost';
+    protected $title = 'UserSkillRelation';
 
     /**
      * Make a grid builder.
@@ -24,11 +24,11 @@ class CollectPostController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new CollectPost());
+        $grid = new Grid(new UserSkillRelation());
 
         $grid->column('id', __('Id'));
-        $grid->column('uid', __('Uid'));
-        $grid->column('post_id', __('Post id'));
+        $grid->column('skill_id', __('Skill id'));
+        $grid->column('user_id', __('User id'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -43,11 +43,11 @@ class CollectPostController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(CollectPost::findOrFail($id));
+        $show = new Show(UserSkillRelation::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('uid', __('Uid'));
-        $show->field('post_id', __('Post id'));
+        $show->field('skill_id', __('Skill id'));
+        $show->field('user_id', __('User id'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -61,10 +61,10 @@ class CollectPostController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new CollectPost());
+        $form = new Form(new UserSkillRelation());
 
-        $form->text('uid', __('Uid'));
-        $form->text('post_id', __('Post id'));
+        $form->text('skill_id', __('Skill id'));
+        $form->text('user_id', __('User id'));
 
         return $form;
     }

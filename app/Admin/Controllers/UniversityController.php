@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\GeneralCategory;
+use App\University;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class GeneralCategoryController extends AdminController
+class UniversityController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'GeneralCategory';
+    protected $title = 'University';
 
     /**
      * Make a grid builder.
@@ -24,7 +24,7 @@ class GeneralCategoryController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new GeneralCategory());
+        $grid = new Grid(new University());
 
         $grid->column('id', __('Id'));
         $grid->column('slug', __('Slug'));
@@ -43,7 +43,7 @@ class GeneralCategoryController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(GeneralCategory::findOrFail($id));
+        $show = new Show(University::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('slug', __('Slug'));
@@ -61,10 +61,11 @@ class GeneralCategoryController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new GeneralCategory());
+        $form = new Form(new University());
 
         $form->text('slug', __('Slug'));
         $form->text('name', __('Name'));
+        $form->image('image_path', __('Image'));
 
         return $form;
     }

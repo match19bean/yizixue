@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\CollectPost;
+use App\Invite;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CollectPostController extends AdminController
+class InviteController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'CollectPost';
+    protected $title = 'Invite';
 
     /**
      * Make a grid builder.
@@ -24,11 +24,12 @@ class CollectPostController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new CollectPost());
+        $grid = new Grid(new Invite());
 
         $grid->column('id', __('Id'));
-        $grid->column('uid', __('Uid'));
-        $grid->column('post_id', __('Post id'));
+        $grid->column('from_uid', __('From uid'));
+        $grid->column('to_uid', __('To uid'));
+        $grid->column('status', __('Status'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -43,11 +44,12 @@ class CollectPostController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(CollectPost::findOrFail($id));
+        $show = new Show(Invite::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('uid', __('Uid'));
-        $show->field('post_id', __('Post id'));
+        $show->field('from_uid', __('From uid'));
+        $show->field('to_uid', __('To uid'));
+        $show->field('status', __('Status'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -61,10 +63,11 @@ class CollectPostController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new CollectPost());
+        $form = new Form(new Invite());
 
-        $form->text('uid', __('Uid'));
-        $form->text('post_id', __('Post id'));
+        $form->text('from_uid', __('From uid'));
+        $form->text('to_uid', __('To uid'));
+        $form->text('status', __('Status'));
 
         return $form;
     }

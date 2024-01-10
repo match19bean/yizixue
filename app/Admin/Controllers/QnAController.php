@@ -27,9 +27,13 @@ class QnAController extends AdminController
         $grid = new Grid(new QnA());
 
         $grid->column('id', __('Id'));
+        $grid->column('uuid', __('Uuid'));
+        $grid->column('uid', __('Uid'));
+        $grid->column('nickname', __('Nickname'));
         $grid->column('title', __('Title'));
-        $grid->column('author', __('Author'));
         $grid->column('body', __('Body'));
+        $grid->column('state', __('State'));
+        $grid->column('contact_time', __('Contact time'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -47,9 +51,13 @@ class QnAController extends AdminController
         $show = new Show(QnA::findOrFail($id));
 
         $show->field('id', __('Id'));
+        $show->field('uuid', __('Uuid'));
+        $show->field('uid', __('Uid'));
+        $show->field('nickname', __('Nickname'));
         $show->field('title', __('Title'));
-        $show->field('author', __('Author'));
         $show->field('body', __('Body'));
+        $show->field('state', __('State'));
+        $show->field('contact_time', __('Contact time'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -65,9 +73,13 @@ class QnAController extends AdminController
     {
         $form = new Form(new QnA());
 
+        $form->text('uuid', __('Uuid'));
+        $form->text('uid', __('Uid'));
+        $form->text('nickname', __('Nickname'));
         $form->text('title', __('Title'));
-        $form->text('author', __('Author'));
         $form->textarea('body', __('Body'));
+        $form->text('state', __('State'))->default('approve');
+        $form->text('contact_time', __('Contact time'));
 
         return $form;
     }
