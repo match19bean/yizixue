@@ -5,10 +5,64 @@
         <div id="content" style="margin:15px">
             <form method="POST" action="{{ route('update-qa') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <input type="text" name="uuid" class="form-control" value="{{ $Data['qa']->uuid }}">
+                <input type="text" name="uuid" class="form-control" value="{{ $Data['qa']->uuid }}" readonly style="display: none;">
                 <div class="mb-3">
                     <label for="title" class="form-label">QA問題</label>
                     <input type="text" name="title" class="form-control" value="{{ $Data['qa']->title }}">
+                </div>
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">暱稱</label>
+                    <input type="text" name="nickname" class="form-control" value="{{ $Data['qa']->nickname }}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" name="email" class="form-control" value="{{ $Data['qa']->email }}">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">聯絡電話</label>
+                    <input type="text" name="phone" class="form-control" value="{{ $Data['qa']->phone }}">
+                </div>
+                <div class="mb-3">
+                    <label for="contact_time" class="form-label">聯絡時間</label>
+                    <div class="row">
+                        <div class="col-5">
+                            {{--                                            <select class="form-control" name="contact_time" aria-label="Default select example">--}}
+                            {{--                                                <option value="morning">上午</option>--}}
+                            {{--                                                <option value="afternoon">下午</option>--}}
+                            {{--                                                <option value="night">晚上</option>--}}
+                            {{--                                            </select>--}}
+                            <input type="datetime-local" class="form-control" name="contact_time" value="{{ $Data['qa']->contact_time }}">
+                        </div>
+                        <div class="col-2 text-center">
+                            -
+                        </div>
+                        <div class="col-5">
+                            {{--                                            <select class="form-control" name="contact_time_end" aria-label="Default select example">--}}
+                            {{--                                                <option value="morning">上午</option>--}}
+                            {{--                                                <option value="afternoon">下午</option>--}}
+                            {{--                                                <option value="night">晚上</option>--}}
+                            {{--                                            </select>--}}
+                            <input type="datetime-local" class="form-control" name="contact_time_end" value="{{ $Data['qa']->contact_time_end }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="contact_time" class="form-label">金額</label>
+                    <div class="row">
+                        <div class="col-5">
+                            <input type="number" class="form-control" name="amount_down" value="{{ $Data['qa']->amount_down }}">
+                        </div>
+                        <div class="col-2 text-center">
+                            -
+                        </div>
+                        <div class="col-5">
+                            <input type="number" class="form-control" name="amount_up" value="{{ $Data['qa']->amount_up }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="place" class="form-label">地點</label>
+                    <input type="text" name="place" class="form-control" value="{{ $Data['qa']->place }}">
                 </div>
                 <div class="mb-3" style="display:none">
                     <label for="author" class="form-label">作者</label>

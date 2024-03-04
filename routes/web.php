@@ -12,6 +12,18 @@
 */
 
 Route::get('/', 'FrontPageController@index');
+Route::get('introduction/{id}', 'IntroductionController@getDetial')->name('get-introduciton');
+Route::get('article-list/{user}', 'ArticleController@getAllArticle')->name('article-list');
+Route::get('article/{article}', 'ArticleController@getArticle')->name('article');
+Route::get('study-abroad', 'ArticleController@studyAbroad')->name('study-abroad');
+Route::get('senior', 'SeniorController@index')->name('senior');
+
+//line login
+Route::get('/line', 'LoginController@pageLine');
+Route::get('/callback/login', 'LoginController@lineLoginCallBack');
+
+Route::get('qna', 'GuestQaController@index')->name('qna');
+Route::get('qna/{id}', 'GuestQaController@show')->name('qna.show');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

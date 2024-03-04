@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
 use App\QnA;
@@ -40,14 +41,22 @@ class QnAController extends Controller
 
     public function save(Request $req)
     {
+
         $QnA = new QnA();
         $QnA->uuid = 'qa-'.uniqid();
         $QnA->nickname = $req->nickname;
+        $QnA->email = $req->email;
         $QnA->title = $req->title;
+        $QnA->phone = $req->phone;
+        $QnA->line = $req->line;
+        $QnA->place = $req->place;
         $QnA->uid = $req->author;
         $QnA->state = $req->state;
         $QnA->body = $req->qabody;
         $QnA->contact_time = $req->contact_time;
+        $QnA->contact_time_end = $req->contact_time_end;
+        $QnA->amount_up = $req->amount_up;
+        $QnA->amount_down = $req->amount_down;
         $QnA->save();
 
         $category = $req->category;
@@ -97,7 +106,12 @@ class QnAController extends Controller
         $QnA->uid = $req->author;
         $QnA->state = $req->state;
         $QnA->body = $req->qabody;
-        $QnA->contact_time = $req->contact_time;
+        $QnA->phone = $req->phone;
+        $QnA->line = $req->line;
+        $QnA->email =$req->email;
+        $QnA->place = $req->place;
+        $QnA->contact_time = Carbon::parse($req->contact_time)->format('Y-m-d H:i:s');
+        $QnA->contact_time_end = Carbon::parse($req->contact_time_end)->format('Y-m-d H:i:s');
 
         $category = $req->category;
         if(isset($category)) 

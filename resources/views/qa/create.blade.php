@@ -27,8 +27,62 @@
                                         readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tag" class="form-label">使用別稱</label>
-                                    <input type="text" name="nickname" class="form-control">
+                                    <label for="nickname" class="form-label">使用別稱</label>
+                                    <input type="text" name="nickname" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" name="email" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">聯絡電話</label>
+                                    <input type="text" name="phone" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="line" class="form-label">Line</label>
+                                    <input type="text" name="line" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact_time" class="form-label">聯絡時間</label>
+                                    <div class="row">
+                                        <div class="col-5">
+                                            {{--                                            <select class="form-control" name="contact_time" aria-label="Default select example">--}}
+                                            {{--                                                <option value="morning">上午</option>--}}
+                                            {{--                                                <option value="afternoon">下午</option>--}}
+                                            {{--                                                <option value="night">晚上</option>--}}
+                                            {{--                                            </select>--}}
+                                            <input type="datetime-local" class="form-control" name="contact_time">
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            -
+                                        </div>
+                                        <div class="col-5">
+                                            {{--                                            <select class="form-control" name="contact_time_end" aria-label="Default select example">--}}
+                                            {{--                                                <option value="morning">上午</option>--}}
+                                            {{--                                                <option value="afternoon">下午</option>--}}
+                                            {{--                                                <option value="night">晚上</option>--}}
+                                            {{--                                            </select>--}}
+                                            <input type="datetime-local" class="form-control" name="contact_time_end">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact_time" class="form-label">金額</label>
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <input type="number" class="form-control" name="amount_down">
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            -
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="number" class="form-control" name="amount_up">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="place" class="form-label">地點</label>
+                                    <input type="text" name="place" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label">問題類別</label>
@@ -77,14 +131,6 @@
                                     <select class="form-control" name="state" aria-label="Default select example">
                                         <option value="pending">審核中</option>
                                         <option value="approve">已審核</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="contact_time" class="form-label">聯絡時間</label>
-                                    <select class="form-control" name="contact_time" aria-label="Default select example">
-                                        <option value="morning">上午</option>
-                                        <option value="afternoon">下午</option>
-                                        <option value="night">晚上</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">送出</button>

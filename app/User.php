@@ -18,6 +18,8 @@ class User extends Authenticatable
     //     'name', 'email', 'password',
     // ];
 
+    protected $guarded = [];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -26,4 +28,34 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function skills()
+    {
+        return $this->hasMany(UserSkillRelation::class, 'user_id', 'id');
+    }
+
+    public function post()
+    {
+        return $this->hasMany( Post::class, 'uid', 'id');
+    }
+
+    public function postCategory()
+    {
+        return $this->hasMany(UserPostCategoryRelation::class);
+    }
+
+    public function collectUser()
+    {
+        return $this->hasMany(CollectUser::class, 'uid', 'id');
+    }
+
+    public function likeUser()
+    {
+        return $this->hasMany(LikeUser::class, 'uid', 'id');
+    }
+
+    public function reference()
+    {
+        return $this->hasMany(UserReference::class);
+    }
 }

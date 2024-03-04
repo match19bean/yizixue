@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\QACategory;
+use App\QACategoryRelation;
 use Illuminate\Http\Request;
 use App\User;
 use App\Skill;
@@ -21,7 +23,8 @@ class FrontPageController extends Controller
             'UserSkillRelation' => new UserSkillRelation,
             'Users' => User::all(),
             'University' => University::all(),
-            'PostCategory' => new PostCategory
+            'PostCategory' => new PostCategory,
+            'Qas' => QACategoryRelation::all()->groupBy('category_id')
         ];
 
         return view('welcome')->with('Data', $Data);
