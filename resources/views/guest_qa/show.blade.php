@@ -52,7 +52,7 @@
                 <div class="card-header text-white text-center" style="background-color: #4C2A70">
                     <h3>聯絡資訊</h3>
                 </div>
-                @if(auth()->check() && (auth()->user()->role === 'vip') && auth()->user()->expired >= now() ))
+                @if(auth()->check() &&  auth()->user()->expired >= now() )
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
@@ -88,9 +88,11 @@
                     </div>
                 </div>
                 @endif
-                <div class="card-footer text-white text-center" style="background-color: #4C2A70">
-                    <h4>點擊查看</h4>
-                </div>
+                @if(auth()->guest() || auth()->user()->expired < now())
+                    <div class="card-footer text-white text-center" style="background-color: #4C2A70">
+                        <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white"><h4>點擊查看</h4></a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

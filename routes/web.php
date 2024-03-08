@@ -17,6 +17,8 @@ Route::get('article-list/{user}', 'ArticleController@getAllArticle')->name('arti
 Route::get('article/{article}', 'ArticleController@getArticle')->name('article');
 Route::get('study-abroad', 'ArticleController@studyAbroad')->name('study-abroad');
 Route::get('senior', 'SeniorController@index')->name('senior');
+Route::any('line-pay/confirm', 'LinePayController@confirm')->name('line-pay-confirm');
+Route::any('line-pay/cancel', 'LinePayController@cancel')->name('line-pay-cancel');
 
 //line login
 Route::get('/line', 'LoginController@pageLine');
@@ -57,3 +59,7 @@ Route::post('/user/accept-invite/{id}', 'UserController@getInviteList')->name('a
 
 Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
 
+Route::get('pay-product', 'PayProductController@index')->name('pay-product-list');
+Route::post('pay-product/{id}', 'PayProductController@store')->name('pay-product');
+
+Route::get('pay-order', 'PayOrderController@index')->name('pay-order-list');

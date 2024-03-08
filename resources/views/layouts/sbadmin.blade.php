@@ -130,13 +130,13 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('pay-product-list') }} ">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
                     <span>付費加值</span></a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('pay-order-list') }}">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
                     <span>加值服務紀錄</span></a>
             </li>
