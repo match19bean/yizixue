@@ -316,9 +316,15 @@
                                 <div style="margin:20px; border: 1px solid black; border-radius:10px">
                                     <div class="card">
                                         <div>
+                                            @if($university->image_path)
                                             <img style="height: 200px;"
                                                 src="/uploads/{{ $university->image_path }}"
                                                 alt="Card image cap">
+                                            @else
+                                                <img style="height: 200px;"
+                                                     src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                                     alt="Card image cap">
+                                            @endif
                                         </div>
                                     </div>
                                     <div>
@@ -326,7 +332,7 @@
                                             <h5 style="color:white">{{ $university->name }}</h5>
                                         </div>
                                         <div style="text-align:center; margin:20px">
-                                            <h5>目前有<a href="#">{{rand(20,200)}}</a>位在校學生</h5>
+                                            <h5>目前有<a href="#">{{$university->users->count()}}</a>位在校學生</h5>
                                         </div>
 
                                     </div>

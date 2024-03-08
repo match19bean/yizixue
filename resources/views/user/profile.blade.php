@@ -140,7 +140,7 @@
                                         <p class="mb-0">大學</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">{{ Auth::user()->university }}</p>
+                                        <p class="text-muted mb-0">{{ is_null(Auth::user()->universityItem)? '' : Auth::user()->universityItem->name }}</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -322,8 +322,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="university" class="form-label">大學</label>
-                                <input type="text" value="{{ Auth::user()->university }}" name="university"
-                                    class="form-control">
+                                <select name="university" id="university" class="form-control">
+                                    @if(!is_null($Data['universities']))
+                                        @foreach($Data['universities'] as $university)
+                                            <option class="form-control" value="{{$university->id}}" @if(Auth::user()->university == $university->id) selected @endif>{{$university->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+{{--                                <input type="text" value="{{ Auth::user()->university }}" name="university"--}}
+{{--                                    class="form-control">--}}
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>

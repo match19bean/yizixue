@@ -22,7 +22,7 @@ class FrontPageController extends Controller
             'Skills' => new Skill,
             'UserSkillRelation' => new UserSkillRelation,
             'Users' => User::all(),
-            'University' => University::all(),
+            'University' => University::with('users')->inRandomOrder()->get(),
             'PostCategory' => new PostCategory,
             'Qas' => QACategoryRelation::all()->groupBy('category_id')
         ];

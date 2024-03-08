@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\University;
 use Illuminate\Http\Request;
 use App\User;
 use App\Skill;
@@ -27,6 +28,7 @@ class UserController extends Controller
             'skills' => $skills,
             'profile_video' => Auth::user()->profile_video,
             'profile_voice' => Auth::user()->profile_voice,
+            'universities' => University::all(),
             'user_skills' => $userSkills,
             'user' => Auth::user()
         ];

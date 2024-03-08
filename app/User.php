@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserReference::class);
     }
+
+    public function universityItem()
+    {
+        return $this->belongsTo(University::class, 'university');
+    }
 }
