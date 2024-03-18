@@ -16,6 +16,10 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/sbf-style.css') }}" rel="stylesheet" />
 
+    <!-- Broccoli DIY css -->
+    <link rel="stylesheet" href="{{ asset('css/broccoli-color.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/welcomeP.css')}}">
+    <!-- End of Broccoli code -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
@@ -25,51 +29,28 @@
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <style>
-        .middle {
-            width: 50px;
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .name-card {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-left: 50px;
-            padding-right: 50px;
-            background: #BD9EBE;
-            text-align: center;
-        }
-        footer a {
-            text-decoration: none;
-            color: white;
-        }
-        footer .col-md-3 p {
-            font-size: 1.5rem;
-        }
-    </style>
-
 </head>
 
 <body>
 <!-- Responsive navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand p-5" href="{{url('/')}}">
-        <img src="{{asset('uploads/images/logo.png')}}" alt="logo" class="w-25" id="logo">
+<nav id="mainNav" class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="{{url('/')}}">
+        <img id="logoImg" src="{{asset('uploads/images/logo.png')}}" alt="logo" class="w-25" id="logo">
     </a>
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link text-white" href="{{route('senior')}}">學長姐|快找</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{{route('study-abroad')}}">留學誌|推薦</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{{route('login')}}">註冊  |登入</a></li>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('senior')}}">學長姐|快找</a></li>
+                <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('study-abroad')}}">留學誌|推薦</a></li>
+                <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('login')}}">註冊  |登入</a></li>
+                <li class="nav-item">
+                    <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
+                    </svg>
+                </li>
             </ul>
         </div>
     </div>
@@ -143,6 +124,7 @@
         }
     });
 </script>
+<script src="{{ asset('js/broccoli-header.js')}}"></script>
 </body>
 
 </html>
