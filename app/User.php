@@ -54,7 +54,7 @@ class User extends Authenticatable
         return $this->hasMany(LikeUser::class, 'uid', 'id');
     }
 
-    public function reference()
+    public function references()
     {
         return $this->hasMany(UserReference::class);
     }

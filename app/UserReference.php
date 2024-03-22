@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserReference extends Model
 {
     //
-    protected $fillable = ['user_id', 'image_path'];
+    protected $fillable = ['user_id', 'image_path', 'file_name'];
 
     public function user()
     {
