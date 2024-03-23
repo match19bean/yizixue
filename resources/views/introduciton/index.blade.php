@@ -116,7 +116,7 @@
                                                 {!! \Illuminate\Support\Str::limit($post->body) !!}
                                             </p>
                                             <p class="text-right">
-                                                發布日期：{{$Data['user']->created_at->format('Y/m/d')}}
+                                                發布日期：{{$post->created_at->format('Y/m/d')}}
                                             </p>
                                         </div>
                                     </div>
