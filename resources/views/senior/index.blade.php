@@ -13,7 +13,11 @@
                     <div class="studentProfile">
                         <!-- avatar -->
                         <div class="studentImg">
-                            <img src="{{asset('uploads/'.$user->avatar)}}" alt="user avatar">
+                            @if(is_null($user->avatar))
+                                <img src="https://random.imagecdn.app/300/300" alt="user avatar">
+                            @else
+                                <img src="{{asset('uploads/'.$user->avatar)}}" alt="user avatar" width="300" height="300">
+                            @endif
                         </div>
                         <!-- video btn -->
                         <div class="videoBtn">
