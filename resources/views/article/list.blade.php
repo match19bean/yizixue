@@ -52,7 +52,8 @@
     <!-- post cards -->
     <!-- from study-abroad -->
     <div class="postsSection-artical-list">
-        @if(!is_null($Data['posts']))
+{{--        {{dd($Data['posts']->total)}}--}}
+        @if($Data['posts']->total())
             @foreach($Data['posts'] as $post)
                 <div class="m-2 cardborder">
                     <!-- Post images -->
@@ -137,23 +138,24 @@
 {{--                    </div>--}}
 {{--                </div>--}}
             @endforeach
+                <div class="pageNav">
+                    <div class="d-flex" style="flex-direction: row; justify-content: space-evenly; ">
+                        @if($Data['posts']->hasPages())
+                            <p class="text-primary">留學誌</p>
+                        @endif
+                        {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
+                    </div>
+                </div>
         @else
             <div class="m-2 row text-center">
-                <p class="vh-100">
+                <p>
                     目前尚未發表文章
                 </p>
             </div>
         @endif
     </div>
 
-    <div class="pageNav">
-        <div class="d-flex" style="flex-direction: row; justify-content: space-evenly; ">
-            @if($Data['posts']->hasPages())
-            <p class="text-primary">留學誌</p>
-            @endif
-            {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
-        </div>
-    </div>
+
 </div>
 <script>
 $('.socialIcons .fa-heart').click(function(){
