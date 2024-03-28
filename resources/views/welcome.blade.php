@@ -90,7 +90,7 @@
                                         <!-- student profile pic -->
                                         <div class="studentProfile">
                                             <div class="studentImg">
-                                                @if(is_null($user_avatar))
+                                                @if(is_null($user->avatar))
                                                     <img src="https://random.imagecdn.app/300/300" alt="Card image cap">
                                                 @else
                                                     <img src="/uploads/{{ $user->avatar }}" alt="Card image cap">
