@@ -62,7 +62,12 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-compass fa-tachometer-alt"></i>
+                    <span>易子學前台</span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/user/profile">

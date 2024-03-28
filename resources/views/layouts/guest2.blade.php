@@ -73,12 +73,16 @@
 
                     <li class="nav-item"><a class="nav-link text-white" href="{{route('senior')}}">學長姐|快找</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{{route('study-abroad')}}">留學誌|推薦</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="{{route('login')}}">註冊  |登入</a></li>
-                    <li class="nav-item">
-                        <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
-                            <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
-                        </svg>
-                    </li>
+                    @if(auth()->check())
+                        <li class="nav-item"><a class="nav-link text-white" href="{{route('home')}}">易子學系統</a></li>
+                    @else
+                        <li class="nav-item"><a class="nav-link text-white" href="{{route('login')}}">註冊  |登入</a></li>
+                    @endif
+                        <li class="nav-item">
+                            <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                                <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
+                            </svg>
+                        </li>
                 </ul>
             </div>
         </div>
