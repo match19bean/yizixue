@@ -90,7 +90,12 @@
                                         <!-- student profile pic -->
                                         <div class="studentProfile">
                                             <div class="studentImg">
-                                                <img src="/uploads/{{ $user->avatar }}" alt="Card image cap">
+                                                @if(is_null($user_avatar))
+                                                    <img src="https://random.imagecdn.app/300/300" alt="Card image cap">
+                                                @else
+                                                    <img src="/uploads/{{ $user->avatar }}" alt="Card image cap">
+                                                @endif
+
                                             </div>
                                             <!-- video Btn -->
                                             <div class="videoBtn">
@@ -111,7 +116,7 @@
                                         <!-- name card -->
                                         <div class="name-card">
                                             <h4>{{ $user->name }}</h4>
-                                            <h4>{{ $user->university }}</h4>
+                                            <h4>{{ $user->universityItem->name }}</h4>
                                         </div>
                                         <!-- post tag -->
                                         <div class="postTags">
