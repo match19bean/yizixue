@@ -137,6 +137,12 @@
 {{--                    </div>--}}
 {{--                </div>--}}
             @endforeach
+        @else
+            <div class="m-2 row text-center">
+                <p class="vh-100">
+                    目前尚未發表文章
+                </p>
+            </div>
         @endif
     </div>
 
