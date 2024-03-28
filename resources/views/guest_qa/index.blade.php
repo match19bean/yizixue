@@ -7,7 +7,7 @@
 
     <div class="row">
         @if(!is_null($qas))
-            @foreach($qas as $num => $qa)
+            @forelse($qas as $num => $qa)
               <div class="row m-4">
                   <div class="col-11 text-lg p-3" style="border-left-style: solid; border-top-style: solid; border-bottom-style: solid; border-color: #6D757D;">
                       <h2 class="d-flex">
@@ -48,10 +48,20 @@
                                 </div>
                             </div>
                         @endforeach
+                    @else
+                        <p class="vh-100">
+                            目前尚無文章
+                        </p>
                     @endif
                 </div>
               @endif
-            @endforeach
+            @empty
+                <div class="row">
+                    <p class="vh-100">
+                        目前尚無資料
+                    </p>
+                </div>
+            @endforelse
             <div class="row">
                 <nav>
                     {{$qas->links('vendor.pagination.bootstrap-4')}}
