@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
+
     public function getAllArticle($user_id)
     {
         $user = User::find($user_id);

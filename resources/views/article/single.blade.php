@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <div style="background-color: #BD9EBE" class="text-white w-100" >
                                 <h2 class="card-title text-center " >{{ $Data['article']->author->name }}</h2>
-                                <h6 class="card-title text-center " style="background-color: #BD9EBE" >{{ $Data['article']->author->university }}</h6>
+                                <h6 class="card-title text-center " style="background-color: #BD9EBE" >{{ $Data['article']->author->universityItem->chinese_name }}</h6>
                             </div>
 
                             @if(!is_null($Data['article']->author->postCategory))

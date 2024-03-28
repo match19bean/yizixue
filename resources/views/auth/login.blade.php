@@ -1,29 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+{{--<!DOCTYPE html>--}}
+{{--<html lang="en">--}}
 
-<head>
+{{--<head>--}}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{{--    <meta charset="utf-8">--}}
+{{--    <meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
+{{--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--}}
+{{--    <meta name="description" content="">--}}
+{{--    <meta name="author" content="">--}}
 
-    <title>SB Admin 2 - Login</title>
+{{--    <title>SB Admin 2 - Login</title>--}}
 
-    <!-- Custom fonts for this template-->
-    <link href="{{asset('sb-admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+{{--    <!-- Custom fonts for this template-->--}}
+{{--    <link href="{{asset('sb-admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link--}}
+{{--        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"--}}
+{{--        rel="stylesheet">--}}
 
-    <!-- Custom styles for this template-->
-    <link href="{{asset('sb-admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+{{--    <!-- Custom styles for this template-->--}}
+{{--    <link href="{{asset('sb-admin/css/sb-admin-2.min.css')}}" rel="stylesheet">--}}
 
-</head>
+{{--</head>--}}
+@extends('layouts.guest2')
 
-<body class="bg-gradient-warning">
 
+
+@section('content')
     <div class="container">
 
         <!-- Outer Row -->
@@ -35,18 +37,18 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+
+                            <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-bg mb-4" style="color: #4C2A70">會員登入</h1>
                                     </div>
 
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         {{ csrf_field() }}
 
                                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                            <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" required autofocus>
+                                            <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" placeholder="會員帳號" autofocus>
                                             @if ($errors->has('email'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -55,7 +57,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <input id="password" type="password" class="form-control form-control-user" name="password" required>
+                                            <input id="password" type="password" class="form-control form-control-user" name="password" placeholder="輸入密碼" required>
                                             @if ($errors->has('password'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('password') }}</strong>
@@ -66,39 +68,32 @@
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
                                                 <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                                    <label  style="color: #4C2A70;">
+                                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 記住帳號
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                Login
+                                            <button type="submit" class=" text-white btn btn-user btn-block" style="background-color: #4C2A70">
+                                                登入
                                             </button>
 
                                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                Forgot Your Password?
+                                                忘記密碼?
                                             </a>
                                         </div>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
-                                        <a href="{{url('line')}}" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        <a href="{{url('line')}}" class="btn btn-success bg-success btn-user btn-block">
+                                            Login with Line
                                         </a>
                                     </form>
 
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <div class="form-group">
+                                            <a class="btn text-white btn-block btn-user" style="background-color: #4C2A70" href="{{route('register')}}">註冊</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -122,6 +117,4 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('sb-admin/js/sb-admin-2.min.js')}}"></script>
 
-</body>
-
-</html>
+@endsection

@@ -63,3 +63,5 @@ Route::get('pay-product', 'PayProductController@index')->name('pay-product-list'
 Route::post('pay-product/{id}', 'PayProductController@store')->name('pay-product');
 
 Route::get('pay-order', 'PayOrderController@index')->name('pay-order-list');
+
+Route::get('university-list', 'UniversityController@index')->name('university-list');

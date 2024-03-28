@@ -54,7 +54,7 @@
                 </div>
                 <!-- call to action -->
                 <div class="py-4 callToAction">
-                    <div class="card-body text-white py-2 part1" style="background-color: #4C2A70; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                    <div class="card-body text-white py-2 part1" style="background-color: #4C2A70;">
                         讓專業持續變現
                     </div>
                     <div class="card-body part2">
@@ -89,11 +89,16 @@
                                     <h5 class="text-break">
                                         {{isset($post->post) ? $post->post->title : $post->title}}
                                     </h5>
-                                    <p class="text-break">#test</p>
+                                    <p class="text-break">
+                                        @forelse($post->category as $cate)
+                                            {{$cate->postCategory->name}}
+                                        @empty
+                                        @endforelse
+                                    </p>
                                 </div>
                                 <div class="text-break content">
                                     {!! isset($post->post) ? \Illuminate\Support\Str::limit($post->post->body) : \Illuminate\Support\Str::limit($post->body) !!}
-                                    <p class="readMore">...閱讀更多</p>
+                                    <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                                 </div>
                                 <div class="socialIcons">
                                     <i class="fa fa-heart" style="font-size:30px; color:red;">
