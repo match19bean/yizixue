@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 @empty
-                    <div class="row">
+                    <div class="row text-center">
                         <p class="vh-100">
                             目前尚無資料
                         </p>
