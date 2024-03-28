@@ -222,7 +222,7 @@
         <!-- news -->
         <section class="newsSection">
             <div style="text-align:center;">
-                <a style="background:#45ecd9; border: none" class="btn btn-primary btn-lg px-5" href="#features">最新 ｜ 消息</a>
+                <a style="background:#45ecd9; border: none" class="btn btn-primary btn-lg px-5" href="{{route('study-abroad')}}">最新 ｜ 消息</a>
             </div>
             <div class="bg-light">
                 <div class="newsCard">
