@@ -21,7 +21,13 @@
 
     </style>
     <div class="row text-gray-600">
-        <h4 class="mt-3">首頁 > 學校</h4>
+        <h4 class="mt-3">首頁 > 學校 <span class="searchbar text-right">
+                <form action="{{route('university-list')}}" method="get">
+                    <input type="text" name="filter">
+                </form>
+            </span>
+        </h4>
+
     </div>
 
     <section class=" border-bottom">
@@ -51,6 +57,11 @@
                     </div>
                 </div>
                 @empty
+                    <div class="row">
+                        <p class="vh-100">
+                            目前尚無資料
+                        </p>
+                    </div>
                 @endforelse
             </div>
         </div>

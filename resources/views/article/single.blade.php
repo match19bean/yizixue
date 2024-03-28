@@ -111,7 +111,7 @@
     <div class="row" style="border: 2px solid black; height: 2px;"></div>
 
     <div class="mt-5">
-        <h2>你可能感興趣的文章</h2>
+        <h2>您可能感興趣的文章</h2>
 
         <div class="row row-cols-2">
             @if(!is_null($Data['interested']))

@@ -80,9 +80,9 @@
                                                 登入
                                             </button>
 
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                忘記密碼?
-                                            </a>
+{{--                                            <a class="btn btn-link" href="{{ route('password.request') }}">--}}
+{{--                                                忘記密碼?--}}
+{{--                                            </a>--}}
                                         </div>
                                         <a href="{{url('line')}}" class="btn btn-success bg-success btn-user btn-block">
                                             Login with Line

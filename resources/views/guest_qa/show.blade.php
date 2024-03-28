@@ -33,7 +33,7 @@
             </div>
             <div class="row mt-3 border-bottom-secondary d-flex">
                 <span for="" class="btn text-white w-25 mb-1" style="background-color: #4C2A70">時間</span>
-                <p class="w-75 align-bottom pt-2 text-center">{{$qna->contact_time}}-{{$qna->contact_time_end}}</p>
+                <p class="w-75 align-bottom pt-2 text-center">{{ Carbon\Carbon::parse($qna->contact_time)->format('Y-m-d H:i:s')}}  至 {{ \Carbon\Carbon::parse($qna->contact_time_end)->format('Y-m-d H:i:s')}}</p>
             </div>
             <div class="row mt-3 border-bottom-secondary d-flex">
                 <span for="" class="btn text-white w-25 mb-1" style="background-color: #4C2A70">地點</span>
@@ -107,7 +107,7 @@
                         <div class="col-11 text-lg p-3" style="border-left-style: solid; border-top-style: solid; border-bottom-style: solid; border-color: #6D757D;">
                             <h2 class="d-flex">
                                 <i class="fa fa-circle px-3" style="color:gray"></i>
-                                <a href="{{route('qna.show', $qa->id)}}" class="text-decoration-none"></a>{{$qa->qa->title}}
+                                <a href="{{route('qna.show', $qa->qa_id)}}" class="text-decoration-none text-black-50">{{$qa->qa->title}}</a>
                                 <span class="w-100 text-right">
                                     @if($qa->category)
                                         <span class="btn px-4 text-center text-white" style="background-color: #4C2A70">

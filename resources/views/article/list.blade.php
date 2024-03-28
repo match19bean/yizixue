@@ -79,9 +79,9 @@
                             <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                         </div>
                         <div class="socialIcons">
-                            <i class="fa fa-heart" style="font-size:30px; color:red;">
+                            <i class="fa fa-heart text-danger" style="font-size:30px;" data-id="{{$post->id}}">
                             </i>
-                            <i class="fa fa-bookmark" style="font-size:30px;">
+                            <i class="fa fa-bookmark" style="font-size:30px;" data-id="{{$post->id}}">
                                 <span style="color:black"></span>
                             </i>
                             <i>
@@ -149,5 +149,47 @@
         </div>
     </div>
 </div>
+<script>
+$('.socialIcons .fa-heart').click(function(){
+    let that = $(this);
+    $.ajax({
+        url: "{{route('like-post')}}",
+        method: 'GET',
+        data: {id: $(this).data('id')},
+        success: function (res) {
+            if(res.operator === 'no') {
+                alert(res.message);
+            } else if(res.operator === 'add') {
+                that.removeClass('text-black').addClass('text-danger');
+            } else if(res.operator === 'reduce') {
+                that.removeClass('text-danger').addClass('text-black');
+            }
+        },
+        error: function(error) {
+            console.log(error)
+        }
+    });
+});
 
+$('.socialIcons .fa-bookmark').click(function(){
+    let that = $(this);
+    $.ajax({
+        url: "{{route('collect-post')}}",
+        method: 'GET',
+        data: {id: $(this).data('id')},
+        success: function (res) {
+            if(res.operator === 'no') {
+                alert(res.message);
+            } else if(res.operator === 'add') {
+                that.removeClass('text-black').addClass('text-danger');
+            } else if(res.operator === 'reduce') {
+                that.removeClass('text-danger').addClass('text-black');
+            }
+        },
+        error: function(error) {
+            console.log(error)
+        }
+    });
+});
+</script>
 @endsection

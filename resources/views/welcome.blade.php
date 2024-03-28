@@ -105,10 +105,10 @@
                                             </div>
                                             <!-- react icons -->
                                             <div class="react">
-                                                <i class="fa fa-heart">
+                                                <i class="fa fa-heart" data-id="{{$user->id}}">
                                                     <span>{{rand(5,30)}}</span>
                                                 </i>
-                                                <i class="fa fa-bookmark">
+                                                <i class="fa fa-bookmark" data-id="{{$user->id}}">
                                                     <span>{{rand(5,30)}}</span>
                                                 </i>
                                             </div>
@@ -272,5 +272,47 @@
         </section>
 
 
+    <script>
+        $('.fa-heart').click(function(){
+            let that = $(this);
+            $.ajax({
+                url: 'like-user/' + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if(res.operator === 'no') {
+                        alert(res.message);
+                    } else if(res.operator === 'add') {
+                        that.removeClass('text-gray').addClass('text-danger');
+                    } else if(res.operator === 'reduce') {
+                        that.removeClass('text-danger').addClass('text-black');
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        })
+
+        $('.fa-bookmark').click(function(){
+            let that = $(this);
+            $.ajax({
+                url: 'collect-user/' + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if(res.operator === 'no') {
+                        alert(res.message);
+                    } else if(res.operator === 'add') {
+                        that.removeClass('text-gray').addClass('text-danger');
+                    } else if(res.operator === 'reduce') {
+                        that.removeClass('text-danger').addClass('text-black');
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+
+        })
+    </script>
 
 @endsection

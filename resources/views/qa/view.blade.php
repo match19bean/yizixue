@@ -3,24 +3,23 @@
 @section('content')
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content" style="margin:15px">
-            <form method="POST" action="{{ route('update-qa') }}" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <input type="text" name="uuid" class="form-control" value="{{ $Data['qa']->uuid }}" readonly style="display: none;">
+            <form >
+                <input type="text" name="uuid" class="form-control" value="{{ $Data['qa']->uuid }}" disabled style="display: none;">
                 <div class="mb-3">
                     <label for="title" class="form-label">QA問題</label>
-                    <input type="text" name="title" class="form-control" value="{{ $Data['qa']->title }}">
+                    <input type="text" name="title" class="form-control" disabled value="{{ $Data['qa']->title }}">
                 </div>
                 <div class="mb-3">
                     <label for="nickname" class="form-label">暱稱</label>
-                    <input type="text" name="nickname" class="form-control" value="{{ $Data['qa']->nickname }}">
+                    <input type="text" name="nickname" class="form-control" value="{{ $Data['qa']->nickname }}" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" name="email" class="form-control" value="{{ $Data['qa']->email }}">
+                    <input type="text" name="email" class="form-control" value="{{ $Data['qa']->email }}" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">聯絡電話</label>
-                    <input type="text" name="phone" class="form-control" value="{{ $Data['qa']->phone }}">
+                    <input type="text" name="phone" class="form-control" value="{{ $Data['qa']->phone }}" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="contact_time" class="form-label">聯絡時間</label>
@@ -31,7 +30,7 @@
                             {{--                                                <option value="afternoon">下午</option>--}}
                             {{--                                                <option value="night">晚上</option>--}}
                             {{--                                            </select>--}}
-                            <input type="datetime-local" class="form-control" name="contact_time" value="{{ $Data['qa']->contact_time }}">
+                            <input type="datetime-local" class="form-control" name="contact_time" value="{{ $Data['qa']->contact_time }}" disabled>
                         </div>
                         <div class="col-2 text-center">
                             -
@@ -42,7 +41,7 @@
                             {{--                                                <option value="afternoon">下午</option>--}}
                             {{--                                                <option value="night">晚上</option>--}}
                             {{--                                            </select>--}}
-                            <input type="datetime-local" class="form-control" name="contact_time_end" value="{{ $Data['qa']->contact_time_end }}">
+                            <input type="datetime-local" class="form-control" name="contact_time_end" value="{{ $Data['qa']->contact_time_end }}" disabled>
                         </div>
                     </div>
                 </div>
@@ -50,23 +49,23 @@
                     <label for="contact_time" class="form-label">金額</label>
                     <div class="row">
                         <div class="col-5">
-                            <input type="number" class="form-control" name="amount_down" value="{{ $Data['qa']->amount_down }}">
+                            <input type="number" class="form-control" name="amount_down" value="{{ $Data['qa']->amount_down }}" disabled>
                         </div>
                         <div class="col-2 text-center">
                             -
                         </div>
                         <div class="col-5">
-                            <input type="number" class="form-control" name="amount_up" value="{{ $Data['qa']->amount_up }}">
+                            <input type="number" class="form-control" name="amount_up" value="{{ $Data['qa']->amount_up }}" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="place" class="form-label">地點</label>
-                    <input type="text" name="place" class="form-control" value="{{ $Data['qa']->place }}">
+                    <input type="text" name="place" class="form-control" value="{{ $Data['qa']->place }}" disabled>
                 </div>
                 <div class="mb-3" style="display:none">
                     <label for="author" class="form-label">作者</label>
-                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control" readonly>
+                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">QA類別</label>
@@ -75,10 +74,10 @@
                             <label>
                                 @if (in_array($category->id, $Data['selectCategories']))
                                     <input type="checkbox" name="category[]" value="{{ $category->id }}"
-                                        checked="checked" />
+                                           checked="checked" disabled/>
                                     <span class="round button">{{ $category->name }}</span>
                                 @else
-                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" />
+                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" disabled/>
                                     <span class="round button">{{ $category->name }}</span>
                                 @endif
                             </label>
@@ -115,11 +114,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="state" class="form-label">內容</label>
-                    <textarea id="article-ckeditor" name="qabody">{{ $Data['qa']->body }}</textarea>
+                    <textarea id="article-ckeditor" name="qabody" disabled>{{ $Data['qa']->body }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="state" class="form-label">狀態</label>
-                    <select class="form-control" name="state" aria-label="Default select example">
+                    <select class="form-control" name="state" aria-label="Default select example" disabled>
                         <option value="pending" {{ $Data['qa']->state == 'pending' ? 'selected' : '' }}>審核中</option>
                         <option value="approve" {{ $Data['qa']->state == 'approve' ? 'selected' : '' }}>已審核</option>
                     </select>
@@ -132,7 +131,7 @@
 {{--                        <option value="night">晚上</option>--}}
 {{--                    </select>--}}
 {{--                </div>--}}
-                <button type="submit" class="btn btn-primary">更新</button>
+{{--                <button type="submit" class="btn btn-primary">更新</button>--}}
             </form>
 
         </div>

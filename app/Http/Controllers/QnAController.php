@@ -99,6 +99,8 @@ class QnAController extends Controller
 
     public function update(Request $req) 
     {
+        logger($req->contact_time);
+        logger(Carbon::parse($req->contact_time));
         $QnA = QnA::where('uuid', $req->uuid)->first();
             
         $QnA->nickname = $req->nickname;
@@ -164,4 +166,25 @@ class QnAController extends Controller
         return view('qa.collect')->with('Data', $Data);
     }
 
+    public function show($slug)
+    {
+        $uid = Auth::user()->id;
+        $QnA = QnA::where('uuid', $slug)->first();
+        $categories = QACategory::all();
+        $qaCategoryRelation = QACategoryRelation::where('qa_id', $QnA->id)->get();
+        $selectCategories = [];
+        foreach($qaCategoryRelation as $ele) {
+            array_push($selectCategories, $ele->category_id);
+        }
+
+        $Data = [
+            'qa' => $QnA,
+            'authId' => Auth()->user()->id,
+            'categories' => $categories,
+            'selectCategories' => $selectCategories
+        ];
+
+
+        return view('qa.view')->with('Data', $Data);
+    }
 }

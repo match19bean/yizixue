@@ -15,6 +15,13 @@ class UniversityController extends Controller
         {
             $query->where("country", Str::upper($request->country));
         }
+
+        if($request->filled('filter')){
+            $query->orWhere('chinese_name', 'LIKE', '%'.$request->filter. '%')
+                ->orWhere('english_name', 'LIKE', '%'.$request->filter.'%')
+                ->orWhere('country', 'LIKE', '%'.$request->filter.'%');
+        }
+
         $universities = $query->with('users')->paginate();
         return view('university.index', compact(['universities']));
     }

@@ -19,7 +19,9 @@ class GuestQaController extends Controller
     public function show($id)
     {
         $qna = QnA::find($id);
-
+        if(is_null($qna)){
+            return redirect()->back();
+        }
         $sameqna = QACategoryRelation::whereIn('category_id', $qna->categoryRelation->pluck('category_id'))->inRandomOrder()->paginate();
 
         return view('guest_qa.show', compact(['qna', 'sameqna']));

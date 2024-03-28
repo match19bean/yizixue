@@ -24,13 +24,17 @@ Route::get('service-agreement', 'ContractController@serviceAgreement')->name('se
 Route::get('disclaimer', 'ContractController@disclaimer')->name('disclaimer');
 Route::get('subscription-agreement', 'ContractController@subscriptionAgreement')->name('subscription-agreement');
 
-
 //line login
 Route::get('/line', 'LoginController@pageLine');
 Route::get('/callback/login', 'LoginController@lineLoginCallBack');
 
 Route::get('qna', 'GuestQaController@index')->name('qna');
 Route::get('qna/{id}', 'GuestQaController@show')->name('qna.show');
+Route::get('like-user/{id}', 'LikeController@likeUser')->name('like-user');
+Route::get('collect-user/{id}', 'CollectController@collectUser')->name('collect-user');
+Route::get('like-post', 'LikeController@likePost')->name('like-post');
+Route::get('collect-post', 'CollectController@collectPost')->name('collect-post');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -48,6 +52,7 @@ Route::get('/delete-post/{uuid}', 'PostController@delete')->name('delete-post');
 Route::get('/list-qa', 'QnAController@list')->name('list-all-qa');
 Route::get('/collect-qa', 'QnAController@collect')->name('collect-qa');
 Route::get('/create-qa', 'QnAController@create')->name('create-qa');
+Route::get('/view-qa/{uuid}', 'QnAController@show')->name('view-qa');
 Route::get('/edit-qa/{uuid}', 'QnAController@edit')->name('edit-qa');
 Route::post('/save-qa', 'QnAController@save')->name('save-qa');
 Route::post('/update-qa', 'QnAController@update')->name('update-qa');

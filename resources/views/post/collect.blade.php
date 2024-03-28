@@ -36,8 +36,13 @@
                                         @foreach ($Data['posts'] as $key => $post)
                                         <tr>
                                             <td>{{$post->title}}</td>
-                                            <td>{!!substr($post->body, 0, 300)!!}...</td>
-                                            <td>{{$post->category}}</td>
+                                            <td>{!!substr($post->body, 0, 70)!!}...</td>
+                                            <td>
+                                                @forelse($post->category as $relation)
+                                                    {{$relation->postCategory->name}},
+                                                @empty
+                                                @endforelse
+                                            </td>
                                             <td>{{$post->created_at}}</td>
                                         </tr>
                                         @endforeach
