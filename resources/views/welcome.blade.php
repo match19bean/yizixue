@@ -98,9 +98,13 @@
                                         <div class="postTags">
                                             <?php
                                             $PostCategory = $Data['PostCategory']->all();
+                                            $count=0
                                             ?>
                                             @foreach ($PostCategory as $cate)
-                                                <span href="#">#{{ $cate->name }}</span>
+                                                @if($count<3)
+                                                    <span href="#">#{{ $cate->name }}</span>
+                                                @endif
+                                                {{$count++}}
                                             @endforeach
                                         </div>
                                         <?php
@@ -130,97 +134,52 @@
 
         <!-- QA section -->
         <section class="py-5" id="Qa">
-            <div class="row p-5">
-                <!-- @if(!is_null($Data['Qas']))
-                    @foreach($Data['Qas'] as $qa)
-                        <div class="col-3 text-center">
-                            <div class="row">
-                                <div class="fa-2x">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-lightbulb fa-stack-2x text-left mt-4" style="margin-left: -10px;"></i>
-                                        <i class="fa fa-calendar-alt fa-stack-2x text-right"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <h3 class="w-75 mt-4 mx-auto text-white" style="background-color: #73E9DD;">
-                                    {{$qa->first()->category->name}}
-                                </h3>
-                                @for($i=0; $i<3; $i++)
-                                    <h5 class="text-center mx-auto" style="color:#B9CBF8;">
-                                        @if(isset($qa[$i]))
-                                            {{$qa[$i]->qa->title}}
-                                        @endif
-                                    </h5>
-                                @endfor
-                            </div>
-                        </div>
-                    @endforeach
-
-                @endif -->
-
+            <div class="row">
                 <!-- QA section 1 -->
                 <div class="qaSection">
-                    <div class="card">
-                        <svg width="70" height="70">
-                        <rect width="70" height="70" x="0" y="0" fill="gray"/>
-                        </svg>
-                        <h5>海外留學</h5>
-                        <p>到美國念高中是不是比較容易申請</p>
-                        <p>歐洲留學是不是比較便宜</p>
-                        <p>30歲才準備出國來得及嗎</p>
-                    </div>
-                    <div class="card">
-                        <svg width="70" height="70">
-                        <rect width="70" height="70" x="0" y="0" fill="gray"/>
-                        </svg>
-                        <h5>海外留學</h5>
-                        <p>到美國念高中是不是比較容易申請</p>
-                        <p>歐洲留學是不是比較便宜</p>
-                        <p>30歲才準備出國來得及嗎</p>
-                    </div>
-                    <div class="card">
-                        <svg width="80" height="80">
-                        <rect width="80" height="80" x="0" y="0" fill="gray"/>
-                        </svg>
-                        <h5>海外留學</h5>
-                        <p>到美國念高中是不是比較容易申請</p>
-                        <p>歐洲留學是不是比較便宜</p>
-                        <p>30歲才準備出國來得及嗎</p>
-                    </div>
+                    @foreach($Data['QaCategory']->take(4) as $category)
+                        <div class="card">
+                            <svg width="80" height="80">
+                                <rect width="80" height="80" x="0" y="0" fill="gray"/>
+                            </svg>
+                            <h5>{{$category->name}}</h5>
+                            @for($int=0;$int<3; $int++)
+                                @if(!is_null($category->QACategoryRelation->get($int)))
+                                    <p>{{str_replace(' ', '&nbsp;', mb_str_pad($category->QACategoryRelation->get($int)->qa->title, 30, " ", STR_PAD_BOTH))}}</p>
+                                @else
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </p>
+                                @endif
+                            @endfor
+                        </div>
+                    @endforeach
                 </div>
                 <!-- QA section 2 -->
                 <div class="qaSection">
-                    <div class="card">
-                        <svg width="80" height="80">
-                        <rect width="80" height="80" x="0" y="0" fill="gray"/>
-                        </svg>
-                        <h5>海外留學</h5>
-                        <p>到美國念高中是不是比較容易申請</p>
-                        <p>歐洲留學是不是比較便宜</p>
-                        <p>30歲才準備出國來得及嗎</p>
-                    </div>
-                    <div class="card">
-                        <svg width="80" height="80">
-                        <rect width="80" height="80" x="0" y="0" fill="gray"/>
-                        </svg>
-                        <h5>海外留學</h5>
-                        <p>到美國念高中是不是比較容易申請</p>
-                        <p>歐洲留學是不是比較便宜</p>
-                        <p>30歲才準備出國來得及嗎</p>
-                    </div>
-                    <div class="card">
-                        <svg width="80" height="80">
-                        <rect width="80" height="80" x="0" y="0" fill="gray"/>
-                        </svg>
-                        <h5>海外留學</h5>
-                        <p>到美國念高中是不是比較容易申請</p>
-                        <p>歐洲留學是不是比較便宜</p>
-                        <p>30歲才準備出國來得及嗎</p>
-                    </div>
+                    @foreach($Data['QaCategory']->take(-4) as $category)
+                        <div class="card">
+                            <svg width="80" height="80">
+                                <rect width="80" height="80" x="0" y="0" fill="gray"/>
+                            </svg>
+                            <h5>{{$category->name}}</h5>
+                            @for($int=0;$int<3; $int++)
+                                @if(!is_null($category->QACategoryRelation->get($int)))
+                                    <p>{{str_replace(' ', '&nbsp;', mb_str_pad($category->QACategoryRelation->get($int)->qa->title, 30, " ", STR_PAD_BOTH))}}</p>
+                                @else
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </p>
+                                @endif
+                            @endfor
+                        </div>
+                    @endforeach
                 </div>
-                    <a href="" class="text-center text-decoration-none text-black">查看更多問答</a>
+                <a href="{{route('qna')}}" class="text-center text-decoration-none text-black">查看更多問答</a>
             </div>
         </section>
 
@@ -252,6 +211,17 @@
                 </div>
             </div>
         </section>
+
+        <section class="localOlder">
+            <h6>地區找學長姐</h6>
+            <div>
+                <p>美國｜加拿⼤｜英國｜澳洲｜紐⻄蘭｜其他英語系國家</p>
+                <p>法國｜德國｜義⼤利｜其他歐語系國家</p>
+                <p>台灣｜⽇本｜韓國｜其他亞洲</p>
+                <p>中國｜香港｜澳⾨</p>
+            </div>
+        </section>
+
 
 
 @endsection

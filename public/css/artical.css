@@ -1,0 +1,176 @@
+@font-face {
+  font-family: Rubik;
+  src: url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+}
+.searchBar {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.searchBar form {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  width: 30vw;
+}
+.searchBar form svg {
+  width: 2.5rem;
+  background-color: #4C2A70;
+  border-radius: 20px;
+  grid-column: 1/3;
+  grid-row: 1/2;
+  z-index: 2;
+}
+.searchBar form svg g {
+  transform: scale(0.6);
+  transform-origin: 167.9px 167.9px;
+}
+.searchBar form input {
+  border: solid 3px #4C2A70;
+  border-radius: 0 50px 50px 0;
+  grid-column: 2/21;
+  grid-row: 1/2;
+}
+
+.list-group a {
+  font-size: 1.3rem;
+}
+.list-group .border-bottom-light {
+  border-bottom: solid 1px white !important;
+}
+
+.callToAction .part1, .callToAction .part2 {
+  border: solid 2px #4C2A70;
+}
+.callToAction .part1 {
+  border-radius: 10px 10px 0 0;
+}
+.callToAction .part2 {
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  box-shadow: 0 3px 3px #C1C1C1;
+}
+.callToAction .part2 p {
+  font-size: 0.9rem;
+  color: gray;
+}
+.callToAction button {
+  border-radius: 10px;
+  border: solid 1px white;
+  box-shadow: 0 3px 3px #C1C1C1;
+  margin: 3%;
+}
+
+.postsSection .cardborder {
+  border: solid 1px #BD9EBE;
+  box-shadow: 0px 5px 5px #C1C1C1;
+  border-radius: 20px;
+  padding: 1%;
+}
+.postsSection .postImg {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+  width: 12rem;
+  height: 100%;
+}
+.postsSection .postImg .postPhoto {
+  border-radius: 20px;
+  width: 100%;
+  grid-column: 1/6;
+  grid-row: 1/5;
+}
+.postsSection .postImg .userimg {
+  border-radius: 100%;
+  width: 100%;
+  grid-column: 1/4;
+  grid-row: 3/6;
+}
+.postsSection .postImg p {
+  font-size: 1.5rem;
+  grid-column: 5/6;
+  grid-row: 4/6;
+  padding-left: 10px;
+  text-align: end;
+  padding: 5px 10px 5px 10px;
+  margin: 0;
+  background-color: #BD9EBE;
+}
+.postsSection .postTitle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: end;
+}
+.postsSection .postTitle h5 {
+  font-size: 2rem;
+  color: #4C2A70;
+}
+.postsSection .postTitle h5, .postsSection .postTitle p {
+  margin: 0 10px 0 0;
+}
+.postsSection .postTitle p {
+  font-size: 1rem;
+  color: black;
+}
+.postsSection .content {
+  color: #C1C1C1;
+  border-bottom: solid 2px #C1C1C1;
+  margin-top: 3%;
+}
+.postsSection .content .readMore {
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: end;
+  margin: 0;
+  color: #4C2A70;
+}
+.postsSection .socialIcons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 3%;
+}
+.postsSection .socialIcons i {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 5px;
+}
+.postsSection .socialIcons i::after {
+  content: "8";
+  font-size: 1rem;
+  font-family: Rubik;
+  text-decoration: none;
+  font-style: normal;
+  align-items: self-end;
+}
+.postsSection .socialIcons svg {
+  width: 2.2rem;
+}
+.postsSection .socialIcons svg path {
+  fill: black;
+}
+.postsSection .socialIcons svg circle {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 9;
+  stroke-miterlimit: 10;
+}
+.postsSection .socialIcons p {
+  margin: 0;
+  text-align: end;
+  color: #4C2A70;
+  font-size: 0.8rem;
+}
+
+.pageNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.pageNav p {
+  margin: 0 30px 0 30px;
+}/*# sourceMappingURL=artical.css.map */

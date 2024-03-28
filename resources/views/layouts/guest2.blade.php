@@ -52,13 +52,15 @@
             font-size: 1.5rem;
         }
     </style>
-
+    <!-- broccoli style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/broccoli-color.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/artical.css') }}">
 </head>
 
 <body>
 <!-- Responsive navbar-->
 <div class="container-fluid px-5">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
         <a class="navbar-brand p-5" href="{{url('/')}}">
             <img src="{{asset('uploads/images/logo.png')}}" alt="logo" class="w-25" id="logo">
         </a>

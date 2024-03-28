@@ -24,8 +24,11 @@ class FrontPageController extends Controller
             'Users' => User::all(),
             'University' => University::with('users')->inRandomOrder()->get(),
             'PostCategory' => new PostCategory,
-            'Qas' => QACategoryRelation::all()->groupBy('category_id')
+            'Qas1' => QACategoryRelation::whereIn('category_id',[1,2,3,4])->get()->groupBy('category_id'),
+            'Qas2' => QACategoryRelation::whereIn('category_id',[5,6,7,8])->get()->groupBy('category_id'),
+            'QaCategory' => QACategory::with('QACategoryRelation')->get()
         ];
+//        dd($Data['Qas1']);
 
         return view('welcome')->with('Data', $Data);
     }

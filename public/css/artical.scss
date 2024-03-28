@@ -1,0 +1,169 @@
+@import "broccoli-color";
+// font
+@font-face {
+    font-family: Rubik;
+    src: url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+}
+
+.searchBar{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    form{
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        width: 30vw;
+        svg{
+            width: 2.5rem;
+            background-color: $primePurple;
+            border-radius: 20px;
+            grid-column: 1/3;
+            grid-row: 1/2;
+            z-index: 2;
+            g{transform: scale(0.6); transform-origin: 167.9px 167.9px;}
+        }
+        input{
+            border: solid 3px $primePurple;
+            border-radius: 0 50px 50px 0;
+            grid-column: 2/21;
+            grid-row: 1/2;
+        }
+    }
+}
+
+.list-group{
+    a{
+        font-size: 1.3rem;
+    }
+    .border-bottom-light{
+        border-bottom: solid 1px white !important;
+    }
+}
+
+.callToAction{
+    .part1, .part2{
+        border: solid 2px $primePurple;
+    }
+    .part1{
+    border-radius: 10px 10px 0 0;
+    }
+   .part2{
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+    box-shadow: 0 3px 3px $primeGray;
+    p{font-size: 0.9rem; color: gray;}
+   }
+   button{
+    border-radius: 10px;
+    border: solid 1px white;
+    box-shadow: 0 3px 3px $primeGray;
+    margin: 3%;
+   }
+}
+
+.postsSection{
+    .cardborder{
+        border: solid 1px $primePurpleLight;
+        box-shadow: 0px 5px 5px $primeGray;
+        border-radius: 20px;
+        padding: 1%;
+    }
+    .postImg{
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-template-rows: repeat(5, auto);
+        width: 12rem;
+        height: 100%;
+        .postPhoto{
+            border-radius: 20px; 
+            width: 100%;
+            grid-column: 1/6;
+            grid-row: 1/5;
+        }
+        .userimg{
+            border-radius: 100%; 
+            width: 100%;
+            grid-column: 1/4;
+            grid-row: 3/6;
+        }
+        p{
+            font-size: 1.5rem;
+            grid-column: 5/6;
+            grid-row: 4/6;
+            padding-left: 10px; 
+            text-align: end;
+            padding: 5px 10px 5px 10px;
+            margin: 0;
+            background-color: $primePurpleLight;
+        }
+    }
+
+    .postTitle{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: end;
+        h5{font-size:2rem; color: $primePurple;}
+        h5, p{margin:0 10px 0 0;}
+        p{font-size: 1rem; color: black;}
+    }
+    .content{
+        color: $primeGray;
+        border-bottom: solid 2px $primeGray;
+        margin-top: 3%;
+        .readMore{
+            width: 100%;
+            font-size: 0.8rem;
+            text-align: end;
+            margin: 0;
+            color: $primePurple;
+        }
+    }
+    .socialIcons{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+        margin-top: 3%;
+        i{
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin: 5px;
+            &::after{
+                content: '8';
+                font-size: 1rem;
+                font-family: Rubik;
+                text-decoration: none;
+                font-style: normal;
+                align-items: self-end;
+            }
+        }
+        svg{
+            width: 2.2rem;
+            path{fill:black;}
+            circle{
+                fill: none;
+                stroke:#000000;
+                stroke-width:9;
+                stroke-miterlimit:10;
+            }
+            
+        }
+        p{
+            margin: 0;
+            text-align: end;
+            color: $primePurple;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.pageNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    p{margin: 0 30px 0 30px;}
+}
