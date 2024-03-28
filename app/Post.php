@@ -20,7 +20,7 @@ class Post extends Model
 
     public function collectPost()
     {
-        return $this->hasMany(collectPost::class, 'post_id');
+        return $this->hasMany(CollectPost::class, 'post_id');
     }
 
     public function likePost()
