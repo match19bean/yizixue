@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\University;
 use App\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -115,7 +116,7 @@ class UserController extends AdminController
         ])->default('pending');
         $form->image('avatar', __('Avatar'));
         $form->datetime('birth_day', __('Birth day'))->default(date('Y-m-d'));
-        $form->text('university', __('University'));
+        $form->select('university', __('University'))->options(University::pluck('chinese_name', 'id'));
         $form->email('email', __('Email'));
         $form->mobile('phone', __('Phone'));
         $form->text('line', __('Line'));

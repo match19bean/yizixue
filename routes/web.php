@@ -19,6 +19,11 @@ Route::get('study-abroad', 'ArticleController@studyAbroad')->name('study-abroad'
 Route::get('senior', 'SeniorController@index')->name('senior');
 Route::any('line-pay/confirm', 'LinePayController@confirm')->name('line-pay-confirm');
 Route::any('line-pay/cancel', 'LinePayController@cancel')->name('line-pay-cancel');
+Route::get('membership-agreement', 'ContractController@membershipAgreement')->name('membership-agreement');
+Route::get('service-agreement', 'ContractController@serviceAgreement')->name('service-agreement');
+Route::get('disclaimer', 'ContractController@disclaimer')->name('disclaimer');
+Route::get('subscription-agreement', 'ContractController@subscriptionAgreement')->name('subscription-agreement');
+
 
 //line login
 Route::get('/line', 'LoginController@pageLine');
