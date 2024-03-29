@@ -133,10 +133,12 @@ function newsSlide(){
     $.each(posts[currentNews-1].category, function(i, object){
         tags += '#'+object.post_category.name;
     });
+    // let text = posts[currentNews-1].body.text();
+    // console.log(text);
     // 根據 currentPic 切換tags
     $(".info .tag").text(tags);
     $(".info .meta").text(posts[currentNews-1].title);
-    $(".info .brief").html(posts[currentNews-1].body);
+    $(".info .brief").text(encodeHTML(posts[currentNews-1].body));
     $(".info a").attr('href', 'article/'+posts[currentNews-1].id);
 
     // if (currentNews === 1) {
@@ -148,4 +150,11 @@ function newsSlide(){
     // else if (currentNews === 3) {
     //     $("#newsTopic").text(posts[3-1].title);
     // }
+}
+
+function encodeHTML(dirtyString) {
+    var container = document.createElement('div');
+    var text = document.createTextNode(dirtyString);
+    container.appendChild(text);
+    return container.innerHTML; // innerHTML will be a xss safe string
 }

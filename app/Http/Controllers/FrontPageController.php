@@ -40,7 +40,7 @@ class FrontPageController extends Controller
         $posts->transform(function($item){
             return [
                 'id' => $item->id,
-                'body' => Str::limit(htmlspecialchars($item->body)),
+                'body' => Str::limit(strip_tags($item->body)),
                 'title' => $item->title,
                 'image_path' => $item->image_path,
                 "category" => $item->category

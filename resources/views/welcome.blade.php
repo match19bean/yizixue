@@ -237,7 +237,7 @@
                             @endforelse
                         </p>
                         <p class="meta">{{$Data['Post']->title}}</p>
-                        <p class="brief">{!! \Illuminate\Support\Str::limit($Data['Post']->body) !!}</p>
+                        <p class="brief">{!!  \Illuminate\Support\Str::limit(strip_tags($Data['Post']->body)) !!}</p>
                         <a href="{{route('article', $Data['Post']->id)}}">閱讀完整文章</a>
                     </div>
                 </div>
