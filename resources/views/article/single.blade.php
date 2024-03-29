@@ -73,7 +73,7 @@
                                 </div>
                             @endif
 
-                            <a href="{{route('article-lsit', $Data['article']->author->id)}}" class="btn btn-outline text-center w-100">查看更多</a>
+                            <a href="{{route('article-list', $Data['article']->author->id)}}" class="btn btn-outline text-center w-100">查看更多</a>
                         </div>
                     </div>
                 </div>
