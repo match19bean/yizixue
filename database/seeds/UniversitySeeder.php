@@ -444,11 +444,11 @@ class UniversitySeeder extends Seeder
                 'name' => $university['chinese_name'],
                 'english_name' => $university['english_name'],
                 'chinese_name' => $university['chinese_name'],
-                'country' => $university['country'],
-                'area' => $university['area'],
-                'state' => $university['state'],
-                'school_badge' => $university['school_badge'],
-                'image_path' => 'university/'.$university['country'].'/'.$university['school_badge'].'.png'
+                'country' => \Illuminate\Support\Str::upper($university['country']),
+                'area' => \Illuminate\Support\Str::upper($university['area']),
+                'state' => \Illuminate\Support\Str::upper($university['state']),
+                'school_badge' => \Illuminate\Support\Str::upper($university['school_badge']),
+                'image_path' => 'university/'.\Illuminate\Support\Str::upper($university['country']).'/'.\Illuminate\Support\Str::upper($university['school_badge']).'.png'
             ]);
         }
     }
