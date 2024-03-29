@@ -93,7 +93,7 @@
                                 </h5>
                                 <p class="text-break">
                                     @forelse($post->category as $cate)
-                                        {{$cate->postCategory->name}}
+                                        <span class="mx-4" style="color: #4C2A70;">#{{$cate->postCategory->name}} </span>
                                     @empty
                                     @endforelse
                                 </p>

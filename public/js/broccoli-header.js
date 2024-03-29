@@ -136,7 +136,7 @@ function newsSlide(){
     // 根據 currentPic 切換tags
     $(".info .tag").text(tags);
     $(".info .meta").text(posts[currentNews-1].title);
-    $(".info .brief").text(posts[currentNews-1].brief);
+    $(".info .brief").html(posts[currentNews-1].body);
     $(".info a").attr('href', 'article/'+posts[currentNews-1].id);
 
     // if (currentNews === 1) {
