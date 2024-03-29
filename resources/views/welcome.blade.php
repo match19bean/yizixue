@@ -259,9 +259,12 @@
                     <a href="{{route('university-list', ['country'=>'CANADA'])}}" class="text-decoration-none text-black">加拿⼤</a>｜
                     <a href="{{route('university-list', ['country'=>'UK'])}}" class="text-decoration-none text-black">英國</a>｜
                     <a href="{{route('university-list', ['country'=>'AUSTRALIA'])}}" class="text-decoration-none text-black">澳洲</a>｜
+                    <a href="{{route('university-list', ['country'=>'NEW ZEALAND'])}}" class="text-decoration-none text-black">紐⻄蘭</a>｜
+
+
                 </p>
                 <p>
-                    <a href="{{route('university-list', ['country'=>'NEW ZEALAND'])}}" class="text-decoration-none text-black">紐⻄蘭</a>｜
+
                     <a href="{{route('university-list', ['country'=>'FRANCE'])}}" class="text-decoration-none text-black">法國</a>｜
                     <a href="{{route('university-list', ['country'=>'GERMANY'])}}" class="text-decoration-none text-black">德國</a>｜
                 </p>

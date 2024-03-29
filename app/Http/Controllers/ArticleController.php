@@ -47,7 +47,8 @@ class ArticleController extends Controller
             if($request->filter === 'latest'){
                 $Data['posts'] = Post::orderBy('created_at', 'desc')->paginate();
             } elseif ($request->filter === 'popular') {
-                $Data['posts'] = LikePost::select('post_id')->groupBy('post_id')->with('post', 'post.author')->paginate();
+                $ids = LikePost::select('post_id')->groupBy('post_id')->pluck('post_id');
+                $Data['posts'] = Post::whereIn('id', $ids)->with('author')->paginate();
             }
         } elseif ($request->filled('category_id')) {
             $Data['posts'] = Post::whereIn('id', PostCategoryRelation::select('post_id')->where('category_id', $request->category_id))->paginate();

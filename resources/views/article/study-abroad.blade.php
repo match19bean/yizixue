@@ -73,15 +73,15 @@
             </div>
             <!-- posts -->
             <div class="col-9 postsSection">
-
                 @forelse($Data['posts'] as $post)
 
                     <div class="row m-2 cardborder">
                         <!-- Post images -->
                         <div class="postImg">
                             <!-- img -->
-                            <img class="postPhoto" src="{{ isset($post->post) ? asset('uploads/'.$post->post->image_path) : asset('uploads/'.$post->image_path) }}" alt="">
-                            <img class="userimg" src="{{ isset($post->post->author->avatar)? asset('uploads/'.$post->post->author->avatar) : asset('uploads/images/default avatar.png') }}" alt="">
+                            <img class="postPhoto" src="{{ asset('uploads/'.$post->image_path) }}" alt="">
+
+                            <img class="userimg" src="{{ isset($post->author->avatar)? asset('uploads/'.$post->author->avatar) : asset('uploads/images/default avatar.png') }}" alt="">
                             <!-- namecard -->
                             <p class="text-white namecard">{{ isset($post->post) ? $post->post->author->name : $post->author->name  }}</p>
                         </div>
@@ -132,7 +132,6 @@
     <!-- navigation -->
     <div class="pagNav">
         <div class="d-flex" style="flex-direction: row; justify-content: space-evenly; ">
-                <p class="text-primary">留學誌</p>
             {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
         </div>
     </div>
