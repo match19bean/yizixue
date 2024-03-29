@@ -103,9 +103,9 @@
                                 <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                             </div>
                             <div class="socialIcons">
-                                <i class="fa fa-heart" style="font-size:30px; color:red;">
+                                <i class="fa fa-heart" style="font-size:30px;" data-id="{{$post->id}}">
                                 </i>
-                                <i class="fa fa-bookmark" style="font-size:30px;">
+                                <i class="fa fa-bookmark" style="font-size:30px;" data-id="{{$post->id}}">
                                     <span style="color:black"></span>
                                 </i>
                                 <i>
@@ -136,12 +136,48 @@
             {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
         </div>
     </div>
-{{--    <div class="pageNav">--}}
-{{--        <p class="text-primary">留學誌</p>--}}
-{{--        <p class="text-secondary">上一頁</p>--}}
-{{--        <p class="text-primary">1</p>--}}
-{{--        <p>2</p>--}}
-{{--        <p>下一頁</p>--}}
-{{--    </div>--}}
 
+    <script>
+        $('.socialIcons .fa-heart').click(function(){
+            let that = $(this);
+            $.ajax({
+                url: "{{route('like-post')}}",
+                method: 'GET',
+                data: {id: $(this).data('id')},
+                success: function (res) {
+                    if(res.operator === 'no') {
+                        alert(res.message);
+                    } else if(res.operator === 'add') {
+                        that.removeClass('text-black').addClass('text-danger');
+                    } else if(res.operator === 'reduce') {
+                        that.removeClass('text-danger').addClass('text-black');
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        });
+
+        $('.socialIcons .fa-bookmark').click(function(){
+            let that = $(this);
+            $.ajax({
+                url: "{{route('collect-post')}}",
+                method: 'GET',
+                data: {id: $(this).data('id')},
+                success: function (res) {
+                    if(res.operator === 'no') {
+                        alert(res.message);
+                    } else if(res.operator === 'add') {
+                        that.removeClass('text-black').addClass('text-danger');
+                    } else if(res.operator === 'reduce') {
+                        that.removeClass('text-danger').addClass('text-black');
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        });
+    </script>
 @endsection
