@@ -65,8 +65,10 @@
                         <br>
                         建立留學諮詢事業
                         <br>
-                        <div class="text-white" style="background-color: #BD9EBE;">
-                            立即成為學長姐
+                        <div style="background-color: #BD9EBE;">
+                            <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white">
+                                立即成為學長姐
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +85,7 @@
 
                             <img class="userimg" src="{{ isset($post->author->avatar)? asset('uploads/'.$post->author->avatar) : asset('uploads/images/default avatar.png') }}" alt="">
                             <!-- namecard -->
-                            <p class="text-white namecard">{{ isset($post->post) ? $post->post->author->name : $post->author->name  }}</p>
+                            <p class="text-white namecard"><a href="{{route('get-introduction', $post->author->id)}}" class="text-decoration-none text-white">{{ $post->author->name  }}</a></p>
                         </div>
                         <!-- Post Contents -->
                         <div class="col-9">

@@ -17,7 +17,11 @@
             object-fit: cover;
             object-position: center;
         }
-
+        .ellipsis{
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     </style>
         <!-- Header-->
         <header>
@@ -54,7 +58,8 @@
                                     </div>
                                     <div>
                                         <div class="name-card">
-                                            <h5><a class="text-decoration-none text-white" href="{{route('senior', ['university' => $university->slug])}}">{{ $university->name }}</a></h5>
+                                            <h6 class="ellipsis text-white">{{$university->chinese_name}}</h6>
+                                            <h5 class="ellipsis"><a class="text-decoration-none text-white" href="{{route('senior', ['university' => $university->slug])}}">{{ $university->english_name }}</a></h5>
                                         </div>
                                         <div class="info">
                                             <h5>目前有<a href="#">{{$university->users->count()}}</a>位在校學生</h5>
