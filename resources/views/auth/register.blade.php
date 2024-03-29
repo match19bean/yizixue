@@ -116,7 +116,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('nickname') ? ' has-error' : '' }}">
-                                    <input id="nickname" type="text" class="form-control form-control-user" name="nickname" value="{{ old('nickname') }}" placeholder="會員姓名" autofocus>
+                                    <input id="nickname" type="text" class="form-control form-control-user" name="nickname" value="{{ old('nickname') }}" placeholder="會員暱稱" autofocus>
                                     @if ($errors->has('nickname'))
                                         <span class="help-block alert-danger">
                                                     <strong>{{ $errors->first('nickname') }}</strong>
