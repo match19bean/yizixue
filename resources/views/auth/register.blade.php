@@ -115,6 +115,15 @@
                                                 </span>
                                     @endif
                                 </div>
+                                <div class="form-group{{ $errors->has('nickname') ? ' has-error' : '' }}">
+                                    <input id="nickname" type="text" class="form-control form-control-user" name="nickname" value="{{ old('nickname') }}" placeholder="會員姓名" autofocus>
+                                    @if ($errors->has('nickname'))
+                                        <span class="help-block alert-danger">
+                                                    <strong>{{ $errors->first('nickname') }}</strong>
+                                                </span>
+                                    @endif
+                                </div>
+
 
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" placeholder="會員帳號" autofocus>

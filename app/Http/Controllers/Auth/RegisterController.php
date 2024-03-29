@@ -53,7 +53,8 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'university' => 'required|exists:university,id',
             'password' => 'required|string|min:6|confirmed',
-            'check_contract' => 'required|boolean'
+            'check_contract' => 'required|boolean',
+            'nickname' => 'required|string'
         ], [
             'name.required' => '姓名欄位必需填寫',
             'name.string' => '姓名必需填寫文字',
@@ -67,6 +68,7 @@ class RegisterController extends Controller
             'password.confirmed' => '密碼與確認密碼必需一致',
             'check_contract.required' => '必需同意規約、條款、聲明',
             'university.exists' => '學校選擇錯誤請重新選擇',
+            'nickname.required' => '暱稱為必填欄位'
         ]);
     }
 
@@ -83,7 +85,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'university' => $data['university']
+            'university' => $data['university'],
+            'nickname' => $data['nickname']
         ]);
     }
 
