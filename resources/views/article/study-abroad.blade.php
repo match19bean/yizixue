@@ -81,7 +81,7 @@
                         <div class="postImg">
                             <!-- img -->
                             <img class="postPhoto" src="{{ isset($post->post) ? asset('uploads/'.$post->post->image_path) : asset('uploads/'.$post->image_path) }}" alt="">
-                            <img class="userimg" src="{{ asset('uploads/images/user2-160x160.jpg') }}" alt="">
+                            <img class="userimg" src="{{ isset($post->post->author->avatar)? asset('uploads/'.$post->post->author->avatar) : asset('uploads/images/default avatar.png') }}" alt="">
                             <!-- namecard -->
                             <p class="text-white namecard">{{ isset($post->post) ? $post->post->author->name : $post->author->name  }}</p>
                         </div>
