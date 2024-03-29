@@ -20,23 +20,25 @@ class FrontPageController extends Controller
 {
     public function index()
     {
+        $users = User::where('expired', '>=', now())->get();
+
         $Data = [
             'Skills' => new Skill,
             'UserSkillRelation' => new UserSkillRelation,
-            'Users' => User::all(),
+            'Users' => $users,
             'University' => University::with('users')->inRandomOrder()->limit(6)->get(),
             'PostCategory' => new PostCategory,
             'QaCategory' => QACategory::with('QACategoryRelation')->get(),
-            'Post' => Post::inRandomOrder()->first()
+            'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first()
         ];
 
-//        dd($Data['University']);
         return view('welcome')->with('Data', $Data);
     }
 
     public function random()
     {
-        $posts = Post::with('category.postCategory')->inRandomOrder()->limit(3)->get();
+        $users = User::where('expired', ">=", now())->pluck('id');
+        $posts = Post::whereIn('uid', $users)->with('category.postCategory')->inRandomOrder()->limit(3)->get();
         $posts->transform(function($item){
             return [
                 'id' => $item->id,

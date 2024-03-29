@@ -29,6 +29,12 @@ class PostController extends Controller
 
     public function create()
     {
+        $user = auth()->user();
+
+        if(is_null($user) || $user->expired < now()){
+            return redirect()->route('pay-product-list');
+        }
+
         $categories = PostCategory::all();
         $Data = [
             'authId' => Auth()->user()->id,

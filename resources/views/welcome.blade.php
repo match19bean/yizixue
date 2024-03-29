@@ -226,6 +226,7 @@
             </div>
             <div class="bg-light">
                 <div class="newsCard">
+                    @if(!is_null($Data['Post']))
                     <img src="{{asset('uploads/'.$Data['Post']->image_path)}}" alt="news-pic">
                     <div class="info">
                         <h5 id="newsTopic">{{$Data['Post']->title}}</h5>
@@ -240,6 +241,7 @@
                         <p class="brief">{!!  \Illuminate\Support\Str::limit(strip_tags($Data['Post']->body)) !!}</p>
                         <a href="{{route('article', $Data['Post']->id)}}">閱讀完整文章</a>
                     </div>
+                    @endif
                 </div>
             </div>
         </section>
