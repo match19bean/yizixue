@@ -124,32 +124,21 @@ function newsSlide(){
     } else {
         currentNews = 1;
     }
+    if(posts[currentNews-1] !== undefined){
+        // 根據 currentPic 切換標題
+        $("#newsTopic").text(posts[currentNews-1].title);
+        // 根據 currentPic 切換圖片
+        $(".newsCard img").attr("src", "uploads"+posts[currentNews-1].image_path);
+        let tags = '';
+        $.each(posts[currentNews-1].category, function(i, object){
+            tags += '#'+object.post_category.name;
+        });
 
-    // 根據 currentPic 切換標題
-    $("#newsTopic").text(posts[currentNews-1].title);
-    // 根據 currentPic 切換圖片
-    $(".newsCard img").attr("src", "uploads"+posts[currentNews-1].image_path);
-    let tags = '';
-    $.each(posts[currentNews-1].category, function(i, object){
-        tags += '#'+object.post_category.name;
-    });
-    // let text = posts[currentNews-1].body.text();
-    // console.log(text);
-    // 根據 currentPic 切換tags
-    $(".info .tag").text(tags);
-    $(".info .meta").text(posts[currentNews-1].title);
-    $(".info .brief").text(encodeHTML(posts[currentNews-1].body));
-    $(".info a").attr('href', 'article/'+posts[currentNews-1].id);
-
-    // if (currentNews === 1) {
-    //
-    //
-    // } else if (currentNews === 2) {
-    //     $("#newsTopic").text(posts[2-1].title);
-    // }
-    // else if (currentNews === 3) {
-    //     $("#newsTopic").text(posts[3-1].title);
-    // }
+        $(".info .tag").text(tags);
+        $(".info .meta").text(posts[currentNews-1].title);
+        $(".info .brief").text(encodeHTML(posts[currentNews-1].body));
+        $(".info a").attr('href', 'article/'+posts[currentNews-1].id);
+    }
 }
 
 function encodeHTML(dirtyString) {
