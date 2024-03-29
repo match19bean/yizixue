@@ -148,7 +148,7 @@
                                         </div>
                                         <!-- </a> -->
                                     </div>
-                                    <p><a href="{{route('introduction',$user->id)}}" class="text-decoration-none text-black">點擊查看更多</a></p>
+                                    <p><a href="{{route('get-introduction',$user->id)}}" class="text-decoration-none text-black">點擊查看更多</a></p>
                                 </div>
                             </div>
                         @endforeach
