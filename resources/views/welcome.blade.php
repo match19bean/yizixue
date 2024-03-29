@@ -136,16 +136,19 @@
                                         ?>
                                         <!-- skill tag -->
                                         <div class="skillTags">
-                                            @foreach ($UserSkillRelation as $cateId)
+                                            @foreach ($UserSkillRelation as $key => $cateId)
                                                 <?php
                                                 $cate = $Data['Skills']->where('id', $cateId->skill_id)->first();
                                                 ?>
+
+                                                @if($key<6)
                                                 <span href="#">#{{ $cate->name }}</span>
+                                                @endif
                                             @endforeach
                                         </div>
                                         <!-- </a> -->
                                     </div>
-                                    <p><a href="{{route('article-list',$user->id)}}" class="text-decoration-none text-black">點擊查看更多</a></p>
+                                    <p><a href="{{route('introduction',$user->id)}}" class="text-decoration-none text-black">點擊查看更多</a></p>
                                 </div>
                             </div>
                         @endforeach
@@ -166,10 +169,12 @@
                             <svg width="80" height="80">
                                 <rect width="80" height="80" x="0" y="0" fill="gray"/>
                             </svg>
-                            <h5>{{$category->name}}</h5>
+                            <h5><a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a></h5>
                             @for($int=0;$int<3; $int++)
                                 @if(!is_null($category->QACategoryRelation->get($int)))
-                                    <p>{{str_replace(' ', '&nbsp;', mb_str_pad($category->QACategoryRelation->get($int)->qa->title, 30, " ", STR_PAD_BOTH))}}</p>
+                                    <p>
+                                        <a href="{{route('qna.show', $category->QACategoryRelation->get($int)->qa->id)}}" class="text-decoration-none text-primary" style="font-size: 0.8rem; letter-spacing: normal">{{$category->QACategoryRelation->get($int)->qa->title}}</a>
+                                    </p>
                                 @else
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -188,11 +193,11 @@
                             <svg width="80" height="80">
                                 <rect width="80" height="80" x="0" y="0" fill="gray"/>
                             </svg>
-                            <h5>{{$category->name}}</h5>
+                            <h5><a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a></h5>
                             @for($int=0;$int<3; $int++)
                                 @if(!is_null($category->QACategoryRelation->get($int)))
                                     <p>
-                                        {{str_replace(' ', '&nbsp;', mb_str_pad($category->QACategoryRelation->get($int)->qa->title, 30, " ", STR_PAD_BOTH))}}
+                                        <a href="{{route('qna.show', $category->QACategoryRelation->get($int)->qa->id)}}" class="text-decoration-none text-primary" style="font-size: 0.8rem; letter-spacing: normal">{{$category->QACategoryRelation->get($int)->qa->title}}</a>
                                     </p>
                                 @else
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

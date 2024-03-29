@@ -47,6 +47,9 @@
             </div>
             <div class="row">
                 <div class="col-4 pl-5">
+                    <div class="mb-3 text-center">
+                        <h2>{{$Data['article']->title}}</h2>
+                    </div>
                     <div class="card" style="width: 18rem;">
                         <img src="{{asset('uploads/'.$Data['article']->author->avatar)}}" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -70,7 +73,7 @@
                                 </div>
                             @endif
 
-                            <a href="#" class="btn btn-outline text-center w-100">查看更多</a>
+                            <a href="{{route('article-lsit', $Data['article']->author->id)}}" class="btn btn-outline text-center w-100">查看更多</a>
                         </div>
                     </div>
                 </div>
