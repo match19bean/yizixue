@@ -119,7 +119,7 @@
             <!-- posts cards -->
             <div class="row postCard">
                 <div class="col-12">
-                    <a class=" text-black" href="{{route('article', $Data['user']->id)}}" style="text-decoration: none;"><h2>我的文章</h2></a>
+                    <a class=" text-black" href="{{route('article-list', $Data['user']->id)}}" style="text-decoration: none;"><h2>我的文章</h2></a>
                 </div>
                 <div class="row row-cols-2">
                     @if(!is_null($Data['user']->post))
