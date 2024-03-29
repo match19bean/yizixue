@@ -74,12 +74,12 @@
                     <i class="fas fa-user fa-tachometer-alt"></i>
                     <span>個人檔案</span></a>
             </li>
-{{--            <hr class="sidebar-divider">--}}
-{{--            <li class="nav-item active">--}}
-{{--                <a class="nav-link" href="/bulletinboard">--}}
-{{--                    <i class="fa fa-bookmark" aria-hidden="true"></i>--}}
-{{--                    <span>佈告欄</span></a>--}}
-{{--            </li>--}}
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="/bulletinboard">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                    <span>佈告欄</span></a>
+            </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
@@ -108,7 +108,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/create-qa">添加問題</a>
                         <a class="collapse-item" href="/list-qa">我的問題</a>
-{{--                        <a class="collapse-item" href="/collect-qa">收藏問與答</a>--}}
+                        <a class="collapse-item" href="/collect-qa">收藏問與答</a>
                     </div>
                 </div>
             </li>
