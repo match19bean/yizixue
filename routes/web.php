@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'FrontPageController@index');
-Route::get('introduction/{id}', 'IntroductionController@getDetial')->name('get-introduciton');
+Route::get('introduction/{id}', 'IntroductionController@getDetial')->name('get-introduction');
 Route::get('article-list/{user}', 'ArticleController@getAllArticle')->name('article-list');
 Route::get('article/{article}', 'ArticleController@getArticle')->name('article');
 Route::get('study-abroad', 'ArticleController@studyAbroad')->name('study-abroad');
