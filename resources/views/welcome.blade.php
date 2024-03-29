@@ -96,7 +96,7 @@
                                         <div class="studentProfile">
                                             <div class="studentImg">
                                                 @if(is_null($user->avatar))
-                                                    <img src="https://random.imagecdn.app/300/300" alt="Card image cap">
+                                                    <img src="{{asset('uploads/images/default avatar.png')}}" alt="Card image cap">
                                                 @else
                                                     <img src="/uploads/{{ $user->avatar }}" alt="Card image cap">
                                                 @endif
@@ -147,7 +147,10 @@
                                                 ?>
 
                                                 @if($key<6)
-                                                <span href="#">#{{ $cate->name }}</span>
+                                                    <span href="#">#{{ $cate->name }}</span>
+                                                    @if($key==2)
+                                                        <br>
+                                                    @endif
                                                 @endif
                                             @endforeach
                                         </div>
@@ -265,20 +268,22 @@
                     <a href="{{route('university-list', ['country'=>'UK'])}}" class="text-decoration-none text-black">英國</a>｜
                     <a href="{{route('university-list', ['country'=>'AUSTRALIA'])}}" class="text-decoration-none text-black">澳洲</a>｜
                     <a href="{{route('university-list', ['country'=>'NEW ZEALAND'])}}" class="text-decoration-none text-black">紐⻄蘭</a>｜
-
-
+                    其他英語系國家
                 </p>
-                <p>
-
+                <p class="ml-5">
                     <a href="{{route('university-list', ['country'=>'FRANCE'])}}" class="text-decoration-none text-black">法國</a>｜
                     <a href="{{route('university-list', ['country'=>'GERMANY'])}}" class="text-decoration-none text-black">德國</a>｜
+                    義大利｜
+                    其他歐語系國家
                 </p>
-                <p>
+                <p class="ml-5">
                     <a href="{{route('university-list', ['country'=>'TAIWAN'])}}" class="text-decoration-none text-black">台灣</a>｜
                     <a href="{{route('university-list', ['country'=>'JAPAN'])}}" class="text-decoration-none text-black">⽇本</a>｜
                     <a href="{{route('university-list', ['country'=>'KOREA'])}}" class="text-decoration-none text-black">韓國</a>｜
+                    其他亞洲
                 </p>
-                <p>
+                <p class="ml-5">
+                    中國|
                     <a href="{{route('university-list', ['country'=>'SINGAPORE'])}}" class="text-decoration-none text-black">新加坡</a>
                     <a href="{{route('university-list', ['country'=>'HONG KONG'])}}" class="text-decoration-none text-black">香港</a>｜
                     <a href="{{route('university-list', ['country'=>'MACAU'])}}" class="text-decoration-none text-black">澳⾨</a>
