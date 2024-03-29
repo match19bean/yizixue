@@ -151,22 +151,27 @@
                                 </div>
                                 <div class="card-body">
                                     <div>
-                                        @if(!is_null($Data['user']->references))
-                                            @foreach ($Data['user']->references as $key => $value)
-                                                @switch(pathinfo($value->file_name)['extension'])
-                                                    @case('pdf')
-                                                        <object data="{{$value->file_path}}" type="application/pdf"></object>
-                                                        @break
-                                                    @case('png')
-                                                    @case('jpg')
-                                                    @case('jpeg')
-                                                        <img src="{{asset('uploads'.$value->image_path)}}" alt="">
-                                                        @break
-                                                    @default
-                                                        @break
-                                                @endswitch
-                                            @endforeach
-                                        @endif
+                                        <table class="table-responsive table">
+                                            <tr>
+                                                <th>檔案</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        @forelse ($Data['user']->references as $key => $value)
+                                            <tr>
+                                                <td>
+                                                    {{$value->file_name}}
+                                                </td>
+                                                <td>
+                                                    <form action="{{route('references-delete', $value->id)}}" method="post">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-danger">刪除</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                        @endforelse
+                                        </table>
                                     </div>
                                 </div>
                             </div>

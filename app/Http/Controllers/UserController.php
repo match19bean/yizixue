@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\University;
 use App\UserPostCategoryRelation;
+use App\UserReference;
 use Illuminate\Http\Request;
 use App\User;
 use App\Skill;
@@ -195,5 +196,18 @@ class UserController extends Controller
         ];
 
         return view('user.collect')->with('Data', $Data);
+    }
+
+    public function referenceDelete($id)
+    {
+        $reference = UserReference::find($id);
+        if(is_null($reference)) {
+            return redirect()->back();
+        }
+    }
+
+    public function referenceDownload(Request $request)
+    {
+
     }
 }

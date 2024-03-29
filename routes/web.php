@@ -30,10 +30,18 @@ Route::get('/callback/login', 'LoginController@lineLoginCallBack');
 
 Route::get('qna', 'GuestQaController@index')->name('qna');
 Route::get('qna/{id}', 'GuestQaController@show')->name('qna.show');
+
+
+//LIKE
 Route::get('like-user/{id}', 'LikeController@likeUser')->name('like-user');
-Route::get('collect-user/{id}', 'CollectController@collectUser')->name('collect-user');
 Route::get('like-post', 'LikeController@likePost')->name('like-post');
+//Collect
+Route::get('collect-user/{id}', 'CollectController@collectUser')->name('collect-user');
 Route::get('collect-post', 'CollectController@collectPost')->name('collect-post');
+
+//reference
+Route::delete('reference-delete/{id}', 'UserController@referenceDelete')->name('reference-delete');
+Route::post('reference-download/{id}', 'UserController@referenceDownload')->name('reference-download');
 
 
 Auth::routes();
@@ -68,10 +76,7 @@ Route::get('/user/invite-list', 'UserController@showInviteList');
 Route::post('/user/accept-invite/{id}', 'UserController@getInviteList')->name('accept-invite');
 
 Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
-
 Route::get('pay-product', 'PayProductController@index')->name('pay-product-list');
 Route::post('pay-product/{id}', 'PayProductController@store')->name('pay-product');
-
 Route::get('pay-order', 'PayOrderController@index')->name('pay-order-list');
-
 Route::get('university-list', 'UniversityController@index')->name('university-list');
