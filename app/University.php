@@ -14,9 +14,4 @@ class University extends Model
     {
         return $this->hasMany(User::class, 'university', 'id');
     }
-
-    public function vips()
-    {
-        return $this->hasMany(User::class, 'university')
-    }
 }
