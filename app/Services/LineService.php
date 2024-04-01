@@ -13,7 +13,8 @@ class LineService
         $url .= 'response_type=code';
         $url .= '&client_id=' . config('line.channel_id');
 //        $url .= '&client_id=1657565787';
-        $url .= '&redirect_uri=http://35.234.27.81//callback/login';
+//        $url .= '&redirect_uri=http://35.234.27.81/callback/login';
+        $url .= '&redirect_uri='.url('callback/login');
         $url .= '&state=test'; // 暫時固定方便測試
         $url .= '&scope=openid%20profile%20email';
 
@@ -27,7 +28,8 @@ class LineService
             'form_params' => [
                 'grant_type' => 'authorization_code',
                 'code' => $code,
-                'redirect_uri' => 'http://35.234.27.81/callback/login',
+//                'redirect_uri' => 'http://35.234.27.81/callback/login',
+                'redirect_uri' => url('callback/login'),
                 'client_id' => config('line.channel_id'),
                 'client_secret' => config('line.secret')
             ]
