@@ -282,22 +282,34 @@ header{
         .card{
             border: solid 2px $primePurple;
             border-radius: 10%;
-            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 15rem;
             svg{
                 margin: 5px;
             }
-            h5{background-color: $homepageBtn; 
-                color: white;
-                font-size: 1rem; 
-                font-weight: 800;
-                width: 80%;
-                text-align: center;
-                padding: 5%;
+            div{
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                h5{
+                    color: white;
+                    font-size: 1rem; 
+                    font-weight: 800;
+                    text-align: center;
+                    width: 85%;
+                    background-color: $primePurpleLight; 
+                    padding: 5%;
+                }
             }
-            p{color: $schoolMember; font-size: 0.8rem;}
+            p{
+                padding-left: 1rem;
+                width: 100%;
+                color: $schoolMember; 
+                font-size: 0.8rem;
+                text-align: start;
+            }
         }
     }
     a{font-size: 1.5rem; letter-spacing: 0.5rem; font-weight: 500; color: $primeGray;}
@@ -384,10 +396,31 @@ header{
 }
 
 // footer
-footer a {
-    text-decoration: none;
-    color: white;
-}
-footer .col-md-3 p {
-    font-size: 1.5rem;
+
+footer{
+    .col-md-4{
+        img{
+            width: 15rem;
+            margin: 3rem;
+        }
+        .copyright{
+            font-size: 0.6rem;
+        }
+    }
+    .row{
+        height: 100%;
+        .col-md-3{
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 5px;
+            letter-spacing: 0.5rem;
+            h6{font-size: 1.2rem;}
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+    
 }

@@ -116,8 +116,6 @@ function newsSlide(){
     // 清除之前的 setTimeout
     clearTimeout(timeout2);
 
-
-
     // 切換到下一張圖片
     if (currentNews < totalNews) {
         currentNews++;

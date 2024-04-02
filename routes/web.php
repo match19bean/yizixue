@@ -34,14 +34,14 @@ Route::get('qna/{id}', 'GuestQaController@show')->name('qna.show');
 
 //LIKE
 Route::get('like-user/{id}', 'LikeController@likeUser')->name('like-user');
-Route::get('like-post', 'LikeController@likePost')->name('like-post');
+Route::get('like-post/{id}', 'LikeController@likePost')->name('like-post');
 //Collect
 Route::get('collect-user/{id}', 'CollectController@collectUser')->name('collect-user');
-Route::get('collect-post', 'CollectController@collectPost')->name('collect-post');
+Route::get('collect-post/{id}', 'CollectController@collectPost')->name('collect-post');
 
 //reference
 Route::delete('reference-delete/{id}', 'UserController@referenceDelete')->name('reference-delete');
-Route::post('reference-download/{id}', 'UserController@referenceDownload')->name('reference-download');
+Route::get('reference-download/{id}', 'UserController@referenceDownload')->name('reference-download');
 
 
 Auth::routes();
@@ -50,11 +50,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 //PostController
 Route::get('/list-posts', 'PostController@list')->name('list-all-posts');
 Route::get('/collect-posts', 'PostController@collect')->name('collect-posts');
-Route::get('/create-post', 'PostController@create')->name('create-post');
+Route::get('create-post', 'PostController@create')->name('create-post');
 Route::get('/edit-post/{uuid}', 'PostController@edit')->name('edit-post');
 Route::post('/save-post', 'PostController@save')->name('save-post');
 Route::post('/update-post', 'PostController@update')->name('update-post');
 Route::get('/delete-post/{uuid}', 'PostController@delete')->name('delete-post');
+Route::get('view-post/{uuid}', 'PostController@show')->name('view-post');
 
 //QnAController
 Route::get('/list-qa', 'QnAController@list')->name('list-all-qa');

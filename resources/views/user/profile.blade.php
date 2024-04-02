@@ -63,9 +63,17 @@
                                 </div>
                             </div>
                             <div class="card-body text-center">
-                                <a href="#" data-toggle="modal" data-target="#edit-avatar"><img
+                                <a href="#" data-toggle="modal" data-target="#edit-avatar">
+                                    @if(!is_null(Auth::user()->avatar))
+                                    <img
                                         src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}" alt="avatar"
-                                        style="width: 150px;"></a>
+                                        style="width: 150px;">
+                                    @else
+                                    <img
+                                            src="{{ url('/') . '/uploads/images/default_avatar.png'}}" alt="avatar"
+                                            style="width: 150px;">
+                                    @endif
+                                </a>
                                 <h5 class="my-3">{{ Auth::user()->name }}</h5>
                                 <p class="text-muted mb-1">{{ Auth::user()->role == 'normal' ? '一般用戶' : 'VIP用戶' }}</p>
                             </div>
@@ -115,12 +123,12 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    @if($errors->any())
-                                        <div class="alert alert-danger alert-dismissible text-center">
-                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                                            {{$errors->first('message')}}
-                                        </div>
-                                    @endif
+{{--                                    @if($errors->any())--}}
+{{--                                        <div class="alert alert-danger alert-dismissible text-center">--}}
+{{--                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>--}}
+{{--                                            {{$errors->first('message')}}--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
 {{--                                    {{$errors->first('message')}}--}}
                                     <div id="checkbox">
                                         @foreach ($Data['user_categories'] as $key => $value)
@@ -137,6 +145,12 @@
                             <div class="card-body p-0">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">參考文件</h6>
+                                    @if($errors->has('references'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('references')}}1
+                                        </div>
+                                    @endif
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -151,7 +165,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div>
-                                        <table class="table-responsive table">
+                                        <table class=" table">
                                             <tr>
                                                 <th>檔案</th>
                                                 <th>操作</th>
@@ -159,10 +173,10 @@
                                         @forelse ($Data['user']->references as $key => $value)
                                             <tr>
                                                 <td>
-                                                    {{$value->file_name}}
+                                                    <a href="{{route('reference-download', $value->id)}}">{{$value->file_name}}</a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{route('references-delete', $value->id)}}" method="post">
+                                                    <form action="{{route('reference-delete', $value->id)}}" method="post">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-danger">刪除</button>
@@ -661,11 +675,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="uname" class="form-label">參考文件</label>
-                                <input type="file" name="references[]"
-                                       class="form-control">
-                                <input type="file" name="references[]"
-                                       class="form-control">
-                                <input type="file" name="references[]"
+                                <input type="file" name="references"
                                        class="form-control">
                             </div>
 

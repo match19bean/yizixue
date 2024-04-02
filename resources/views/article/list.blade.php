@@ -8,14 +8,21 @@
     </style>
 <div class="container-fluid py-5">
     <div class="row">
-        <h4 class="mt-3">首頁 > {{$Data['user']->name}} > {{$Data['user']->name}}的文章</h4>
+        <h4 class="mt-3">
+            <a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a> >
+            <a href="{{route('get-introduction', $Data['user']->id)}}" class="text-decoration-none text-black">{{$Data['user']->name}} </a>>
+            {{$Data['user']->name}}的文章</h4>
     </div>
 
     <!-- user info section -->
     <div class="row mt-3" style="background-color: #CCAACE; border-radius: 5rem;">
         <div class="col-3">
             <div class="ml-5 my-3 mr-3">
-                <img src="{{ asset('uploads/'.$Data['user']->avatar) }}" alt="" class="w-100">
+                @if(is_null($Data['user']->avatar))
+                    <img src="{{ asset('uploads/images/default_avatar.png') }}" alt="" class="w-100">
+                @else
+                    <img src="{{ asset('uploads/'.$Data['user']->avatar) }}" alt="" class="w-100">
+                @endif
             </div>
         </div>
         <div class="col-4 text-center text-white">
@@ -52,20 +59,19 @@
     <!-- post cards -->
     <!-- from study-abroad -->
     <div class="postsSection-artical-list">
-{{--        {{dd($Data['posts']->total)}}--}}
         @if($Data['posts']->total())
             @foreach($Data['posts'] as $post)
                 <div class="m-2 cardborder">
                     <!-- Post images -->
                     <div class="postImg">
                         <!-- img -->
-                        <img class="postPhoto" src="{{ isset($post->post) ? asset('uploads/'.$post->post->image_path) : asset('uploads/'.$post->image_path) }}" alt="">
+                        <img class="postPhoto" src="{{ asset('uploads/'.$post->image_path) }}" alt="">
                     </div>
                     <!-- Post Contents -->
                     <div class="col-9">
                         <div class="postTitle" style="font-size:2rem;">
                             <h5 class="text-break">
-                                {{isset($post->post) ? $post->post->title : $post->title}}
+                                {{ $post->title }}
                             </h5>
                             <p class="text-break">
                                 @forelse($post->category as $cate)
@@ -76,15 +82,34 @@
                         </div>
 
                         <div class="text-break content">
-                            {!! isset($post->post) ? \Illuminate\Support\Str::limit($post->post->body) : \Illuminate\Support\Str::limit($post->body) !!}
+                            {!!  \Illuminate\Support\Str::limit($post->body) !!}
                             <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                         </div>
                         <div class="socialIcons">
-                            <i class="fa fa-heart text-danger" style="font-size:30px;" data-id="{{$post->id}}">
+                            @if(auth()->check())
+                            <i class="fa fa-heart" style="font-size:30px;
+                            color: @if(auth()->user()->likePost->where('post_id', $post->id)->count() == 1) red @else black @endif
+                            " data-id="{{$post->id}}">
+                                <span style="font-size: 1rem; color:black">
+                                    {{$post->likePost->count()}}
+                                </span>
                             </i>
-                            <i class="fa fa-bookmark" style="font-size:30px;" data-id="{{$post->id}}">
-                                <span style="color:black"></span>
+                            <i class="fa fa-bookmark" style="
+                            font-size:30px;
+                            color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count() == 1) red @else black @endif ;
+                            " data-id="{{$post->id}}">
+                                <span style="font-size: 1rem; color:black">
+                                    {{$post->collectPost->count()}}
+                                </span>
                             </i>
+                            @else
+                                <i class="fa fa-heart" style="font-size:30px; color:black;" data-id="{{$post->id}}">
+                                    <span style="color:black">{{$post->likePost->count()}}</span>
+                                </i>
+                                <i class="fa fa-bookmark" style="font-size:30px; color:black;" data-id="{{$post->id}}">
+                                    <span style="color:black">{{$post->collectPost->count()}}</span>
+                                </i>
+                            @endif
                             <i>
                                 <svg viewBox="0 0 512 512" >
                                     <path d="M295.4,235.2c32.9,0,59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5s-59.5,26.7-59.5,59.5c0,2.5,0.1,5,0.4,7.4l-58.4,29.1
@@ -95,57 +120,16 @@
                                 </svg>
                             </i>
 
-                            <p>發表日期：{{ isset($post->post) ? $post->post->created_at->format('Y/m/d') : $post->created_at->format('Y/m/d')  }}</p>
+                            <p>發表日期：{{  $post->created_at->format('Y/m/d')  }}</p>
                         </div>
                     </div>
                 </div>
-{{--                <div class="col my-2">--}}
-{{--                    <div class="card">--}}
-{{--                        <div class="card-body">--}}
-{{--                            <div class="row row-cols-2">--}}
-{{--                                <div class="col">--}}
-{{--                                    <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;"><img src="{{ asset('uploads'.$post->image_path)  }}" alt="" class="w-100" height="300"></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="col">--}}
-{{--                                    <p>--}}
-{{--                                        <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;"><h3> {{$post->title}} </h3></a>--}}
-{{--                                    </p>--}}
-{{--                                    <p>--}}
-{{--                                        <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;">--}}
-{{--                                            {!! \Illuminate\Support\Str::limit($post->body) !!}--}}
-{{--                                        </a>--}}
-{{--                                    </p>--}}
-{{--                                    <hr>--}}
-{{--                                    <div class="mt-5">--}}
-{{--                                        <div--}}
-{{--                                                style="text-align: right";>--}}
-{{--                                            <i class="fa fa-heart-o" style="font-size:20px; color:red; margin:5px">--}}
-{{--                                                <span style="color:black">{{rand(5,30)}}</span>--}}
-{{--                                            </i>--}}
-{{--                                            <i class="fa fa-bookmark-o" style="font-size:20px; margin:5px">--}}
-{{--                                                <span style="color:black">{{rand(5,30)}}</span>--}}
-{{--                                            </i>--}}
-{{--                                            <i class="fa fa-share-alt" style="font-size:20px; margin:5px;">--}}
-{{--                                            </i>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <p class="text-right">--}}
-{{--                                        發布日期：{{$Data['user']->created_at->format('Y/m/d')}}--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
             @endforeach
-                <div class="pageNav">
-                    <div class="d-flex" style="flex-direction: row; justify-content: space-evenly; ">
-                        @if($Data['posts']->hasPages())
-                            <p class="text-primary">留學誌</p>
-                        @endif
-                        {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
-                    </div>
+            <div class="pageNav">
+                <div class="d-flex" style="flex-direction: row; justify-content: space-evenly; ">
+                    {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
                 </div>
+            </div>
         @else
             <div class="m-2 row text-center">
                 <p>
@@ -161,16 +145,15 @@
 $('.socialIcons .fa-heart').click(function(){
     let that = $(this);
     $.ajax({
-        url: "{{route('like-post')}}",
+        url: "{{url('like-post')}}"+"/"+$(this).data('id'),
         method: 'GET',
-        data: {id: $(this).data('id')},
         success: function (res) {
             if(res.operator === 'no') {
                 alert(res.message);
             } else if(res.operator === 'add') {
-                that.removeClass('text-black').addClass('text-danger');
+                that.css('color', 'red').children('span').text(res.total);
             } else if(res.operator === 'reduce') {
-                that.removeClass('text-danger').addClass('text-black');
+                that.css('color', 'black').children('span').text(res.total);
             }
         },
         error: function(error) {
@@ -182,16 +165,15 @@ $('.socialIcons .fa-heart').click(function(){
 $('.socialIcons .fa-bookmark').click(function(){
     let that = $(this);
     $.ajax({
-        url: "{{route('collect-post')}}",
+        url: "{{url('collect-post')}}"+"/"+$(this).data('id'),
         method: 'GET',
-        data: {id: $(this).data('id')},
         success: function (res) {
             if(res.operator === 'no') {
                 alert(res.message);
             } else if(res.operator === 'add') {
-                that.removeClass('text-black').addClass('text-danger');
+                that.css('color', 'red').children('span').text(res.total);
             } else if(res.operator === 'reduce') {
-                that.removeClass('text-danger').addClass('text-black');
+                that.css('color', 'black').children('span').text(res.total);
             }
         },
         error: function(error) {

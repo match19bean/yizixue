@@ -281,26 +281,34 @@ header .headerCard .slogan #topic {
 #Qa .qaSection .card {
   border: solid 2px #4C2A70;
   border-radius: 10%;
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 15rem;
 }
 #Qa .qaSection .card svg {
   margin: 5px;
 }
-#Qa .qaSection .card h5 {
-  background-color: #45ecd9;
+#Qa .qaSection .card div {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+#Qa .qaSection .card div h5 {
   color: white;
   font-size: 1rem;
   font-weight: 800;
-  width: 80%;
   text-align: center;
+  width: 85%;
+  background-color: #BD9EBE;
   padding: 5%;
 }
 #Qa .qaSection .card p {
+  padding-left: 1rem;
+  width: 100%;
   color: #4676ED;
   font-size: 0.8rem;
+  text-align: start;
 }
 #Qa a {
   font-size: 1.5rem;
@@ -402,11 +410,27 @@ header .headerCard .slogan #topic {
   flex-direction: row;
 }
 
-footer a {
+footer .col-md-4 img {
+  width: 15rem;
+  margin: 3rem;
+}
+footer .col-md-4 .copyright {
+  font-size: 0.6rem;
+}
+footer .row {
+  height: 100%;
+}
+footer .row .col-md-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 5px;
+  letter-spacing: 0.5rem;
+}
+footer .row .col-md-3 h6 {
+  font-size: 1.2rem;
+}
+footer .row .col-md-3 a {
   text-decoration: none;
   color: white;
-}
-
-footer .col-md-3 p {
-  font-size: 1.5rem;
 }/*# sourceMappingURL=welcomeP.css.map */

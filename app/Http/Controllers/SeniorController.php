@@ -11,8 +11,12 @@ class SeniorController extends Controller
     public function index(Request $request)
     {
 
+
         $query = (new User)->query();
         $query->where('role', 'vip')->where('expired', '>=', now());
+        if(auth()->check()){
+            $query->where('id', '!=', auth()->user()->id);
+        }
         if($request->filled('university'))
         {
             $university = University::where('slug', $request->university)->get();
@@ -20,7 +24,6 @@ class SeniorController extends Controller
                 $query->where('university', $university->first()->id);
             }
         }
-
 
         $users = $query->inRandomOrder()->paginate();
 

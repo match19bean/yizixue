@@ -31,7 +31,10 @@ class PostController extends Controller
     {
         $user = auth()->user();
 
-        if(is_null($user) || $user->expired < now()){
+        if(is_null($user)){
+            return redirect()->back();
+        }
+        if($user->expired < now()){
             return redirect()->route('pay-product-list');
         }
 
@@ -176,5 +179,21 @@ class PostController extends Controller
         ];
 
         return view('post.collect')->with('Data', $Data);
+    }
+
+    public function show($uuid)
+    {
+        $uid = Auth::user()->id;
+        $post = Post::where('uuid', $uuid)->where('uid', $uid)->first();
+
+        if(is_null($post)) {
+            return redirect()->back();
+        }
+
+        $Data = [
+            'article' => $post
+        ];
+
+        return view('post.show')->with('Data', $Data);
     }
 }

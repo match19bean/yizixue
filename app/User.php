@@ -44,14 +44,38 @@ class User extends Authenticatable
         return $this->hasMany(UserPostCategoryRelation::class);
     }
 
+    //收藏其他人
     public function collectUser()
     {
-        return $this->hasMany(CollectUser::class, 'uid', 'id');
+        return $this->hasMany(CollectUser::class, 'uid');
     }
 
+    //喜歡其他人
     public function likeUser()
     {
-        return $this->hasMany(LikeUser::class, 'uid', 'id');
+        return $this->hasMany(LikeUser::class, 'uid');
+    }
+
+    //自己被收藏
+    public function collectedUser()
+    {
+        return $this->hasMany(CollectUser::class, 'user_id');
+    }
+
+    //自己被喜歡
+    public function likedUser()
+    {
+        return $this->hasMany(LikeUser::class, 'user_id');
+    }
+
+    public function likePost()
+    {
+        return $this->hasMany(LikePost::class, 'uid');
+    }
+
+    public function collectPost()
+    {
+        return $this->hasMany(CollectPost::class, 'uid');
     }
 
     public function references()

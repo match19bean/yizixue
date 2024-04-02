@@ -1,28 +1,5 @@
 @extends('layouts.guest')
 @section('content')
-    <style>
-        .card-relate{
-            position: relative;
-            width: 100%;
-            padding-top: 100%;
-        }
-        .card-relate img{
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        .ellipsis{
-            overflow:hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-    </style>
         <!-- Header-->
         <header>
             <div class="headerCard">
@@ -48,21 +25,22 @@
                             | 學校</a>
                     </div>
                     <div class="owl-carousel owl-theme cards">
+
                         @foreach ($Data['University'] as $key => $university)
                             <div class="item">
                                 <div>
                                     <div class="card">
-                                        <div class="card-relate">
-                                            <img src="{{asset($university->image_path)}}" alt="Card image cap">
+                                        <div>
+                                            <img src="{{asset($university->image_path)}}" width="200" height="200" alt="Card image cap">
                                         </div>
                                     </div>
                                     <div>
                                         <div class="name-card">
-                                            <h6 class="ellipsis text-white">{{$university->chinese_name}}</h6>
-                                            <h5 class="ellipsis"><a class="text-decoration-none text-white" href="{{route('senior', ['university' => $university->slug])}}">{{ $university->english_name }}</a></h5>
+                                            <h6 class="ellipsis text-white">{{ \Illuminate\Support\Str::limit($university->chinese_name, 10) }}</h6>
+                                            <small class="ellipsis"><a class="text-decoration-none text-white" href="{{route('senior', ['university' => $university->slug])}}">{{ \Illuminate\Support\Str::limit($university->english_name, 20) }}</a></small>
                                         </div>
                                         <div class="info">
-                                            <h5>目前有<a href="#">{{$university->users->count()}}</a>位在校學生</h5>
+                                            <h5>目前有<a href="#">{{$university->vip->count()}}</a>位在校學長姐</h5>
                                         </div>
 
                                     </div>
@@ -96,26 +74,50 @@
                                         <div class="studentProfile">
                                             <div class="studentImg">
                                                 @if(is_null($user->avatar))
-                                                    <img src="{{asset('uploads/images/default avatar.png')}}" alt="Card image cap">
+                                                    <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap" width="200" height="200">
                                                 @else
-                                                    <img src="/uploads/{{ $user->avatar }}" alt="Card image cap">
+                                                    <img src="/uploads/{{ $user->avatar }}" alt="Card image cap" width="200" height="200">
                                                 @endif
 
                                             </div>
                                             <!-- video Btn -->
                                             <div class="videoBtn">
-                                                <a href="{{ $user->profile_video }}" class="text">
-                                                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
-                                                </a>
+                                                @if(is_null($user->profile_video))
+                                                    <a class="text" onClick="alert('學長姐尚未上傳影音');">
+                                                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                                                    </a>
+                                                @else
+                                                    <a href="{{ $user->profile_video }}" class="text">
+                                                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                                                    </a>
+                                                @endif
                                             </div>
                                             <!-- react icons -->
                                             <div class="react">
-                                                <i class="fa fa-heart" data-id="{{$user->id}}">
-                                                    <span>{{rand(5,30)}}</span>
-                                                </i>
-                                                <i class="fa fa-bookmark" data-id="{{$user->id}}">
-                                                    <span>{{rand(5,30)}}</span>
-                                                </i>
+                                                @if(auth()->check())
+                                                    <i class="fa fa-heart"
+                                                       style="
+                                                       color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                                       "
+                                                      data-id="{{$user->id}}"
+                                                    >
+                                                        <span class="text-black">{{$user->likedUser->count()}}</span>
+                                                    </i>
+                                                    <i class="fa fa-bookmark" data-id="{{$user->id}}"
+                                                    style="
+                                                        color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                                    "
+                                                    >
+                                                        <span class="text-black">{{$user->collectedUser->count()}}</span>
+                                                    </i>
+                                                @else
+                                                    <i class="fa fa-heart" style="color: black;" data-id="{{$user->id}}">
+                                                        <span class="text-black">{{$user->likedUser->count()}}</span>
+                                                    </i>
+                                                    <i class="fa fa-bookmark" data-id="{{$user->id}}">
+                                                        <span class="text-black">{{$user->collectedUser->count()}}</span>
+                                                    </i>
+                                                @endif
                                             </div>
                                         </div>
                                         <!-- name card -->
@@ -174,10 +176,16 @@
                 <div class="qaSection">
                     @foreach($Data['QaCategory']->take(4) as $category)
                         <div class="card">
-                            <svg width="80" height="80">
-                                <rect width="80" height="80" x="0" y="0" fill="gray"/>
+                            <svg width="70" height="70">
+                                <rect width="70" height="70" x="0" y="0" fill="gray"/>
                             </svg>
-                            <h5><a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a></h5>
+                            <div>
+                                <h5>
+                                    <a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">
+                                        {{$category->name}}
+                                    </a>
+                                </h5>
+                            </div>
                             @for($int=0;$int<3; $int++)
                                 @if(!is_null($category->QACategoryRelation->get($int)))
                                     <p>
@@ -198,10 +206,14 @@
                 <div class="qaSection">
                     @foreach($Data['QaCategory']->take(-4) as $category)
                         <div class="card">
-                            <svg width="80" height="80">
-                                <rect width="80" height="80" x="0" y="0" fill="gray"/>
+                            <svg width="70" height="70">
+                                <rect width="70" height="70" x="0" y="0" fill="gray"/>
                             </svg>
-                            <h5><a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a></h5>
+                            <div>
+                                <h5>
+                                    <a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a>
+                                </h5>
+                            </div>
                             @for($int=0;$int<3; $int++)
                                 @if(!is_null($category->QACategoryRelation->get($int)))
                                     <p>
@@ -270,19 +282,19 @@
                     <a href="{{route('university-list', ['country'=>'NEW ZEALAND'])}}" class="text-decoration-none text-black">紐⻄蘭</a>｜
                     其他英語系國家
                 </p>
-                <p class="ml-5">
+                <p>
                     <a href="{{route('university-list', ['country'=>'FRANCE'])}}" class="text-decoration-none text-black">法國</a>｜
                     <a href="{{route('university-list', ['country'=>'GERMANY'])}}" class="text-decoration-none text-black">德國</a>｜
                     義大利｜
                     其他歐語系國家
                 </p>
-                <p class="ml-5">
+                <p>
                     <a href="{{route('university-list', ['country'=>'TAIWAN'])}}" class="text-decoration-none text-black">台灣</a>｜
                     <a href="{{route('university-list', ['country'=>'JAPAN'])}}" class="text-decoration-none text-black">⽇本</a>｜
                     <a href="{{route('university-list', ['country'=>'KOREA'])}}" class="text-decoration-none text-black">韓國</a>｜
                     其他亞洲
                 </p>
-                <p class="ml-5">
+                <p>
                     中國|
                     <a href="{{route('university-list', ['country'=>'SINGAPORE'])}}" class="text-decoration-none text-black">新加坡</a>
                     <a href="{{route('university-list', ['country'=>'HONG KONG'])}}" class="text-decoration-none text-black">香港</a>｜
@@ -302,9 +314,11 @@
                     if(res.operator === 'no') {
                         alert(res.message);
                     } else if(res.operator === 'add') {
-                        that.removeClass('text-gray').addClass('text-danger');
+                        that.css('color', 'red');
+                        that.children('span').text(res.total);
                     } else if(res.operator === 'reduce') {
-                        that.removeClass('text-danger').addClass('text-black');
+                        that.css('color', 'black');
+                        that.children('span').text(res.total);
                     }
                 },
                 error: function(error) {

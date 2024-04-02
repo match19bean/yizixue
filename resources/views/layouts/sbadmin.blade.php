@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- broccoli style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/broccoli-color.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/artical.css') }}">
 
 </head>
 <style>
@@ -90,9 +93,9 @@
                 <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/create-post">添加文章</a>
-                        <a class="collapse-item" href="/list-posts">我的文章</a>
-                        <a class="collapse-item" href="/collect-posts">收藏文章</a>
+                        <a class="collapse-item" href="{{route('create-post')}}">添加文章</a>
+                        <a class="collapse-item" href="{{route('list-all-posts')}}">我的文章</a>
+                        <a class="collapse-item" href="{{route('collect-posts')}}">收藏文章</a>
                     </div>
                 </div>
             </li>
@@ -208,8 +211,13 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                @if(!is_null(Auth::user()->avatar))
                                 <img class="img-profile rounded-circle"
                                     src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}">
+                                @else
+                                    <img class="img-profile rounded-circle"
+                                         src="{{ url('/') . '/uploads/images/default_avatar.png' }}">
+                                @endif
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

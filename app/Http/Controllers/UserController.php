@@ -49,6 +49,12 @@ class UserController extends Controller
     public function update(Request $req) 
     {
 
+        $req->validate([
+            'references' => 'file|max:2048'
+        ], [
+            'references.max.file' => '檔案不得超過2M',
+        ]);
+
         if($req->filled('post_categories')){
             if(count($req->post_categories) >3 ){
                 return back()->withInput()->withErrors(['message' => '主題不得超過三個']);
@@ -124,15 +130,15 @@ class UserController extends Controller
         }
 
         if($req->file('references')){
-            foreach($req->references as $reference) {
-                $fileName = time().'-'.$reference->getClientOriginalName();
-                $reference->storeAs('references', $fileName, 'admin');
+//            foreach($req->references as $reference) {
+                $fileName = time().'-'.$req->references->getClientOriginalName();
+                $req->references->storeAs('references', $fileName, 'admin');
                 $User->references()->create([
                     'user_id' => auth()->user()->id,
                     'image_path' => '/references/'.$fileName,
-                    'file_name' => $reference->getClientOriginalName()
+                    'file_name' => $req->references->getClientOriginalName()
                 ]);
-            }
+//            }
         }
 
         $User->save();
@@ -200,14 +206,25 @@ class UserController extends Controller
 
     public function referenceDelete($id)
     {
-        $reference = UserReference::find($id);
+        $reference = UserReference::where('id', $id)->where('user_id', auth()->user()->id)->first();
         if(is_null($reference)) {
             return redirect()->back();
         }
+
+        unlink(public_path('uploads'.$reference->image_path));
+        $reference->delete();
+
+        return redirect()->back();
+
     }
 
-    public function referenceDownload(Request $request)
+    public function referenceDownload($id)
     {
+        $file = UserReference::where('id', $id)->where('user_id', auth()->user()->id)->first();
+        if(is_null($file)){
+            return redirect()->back();
+        }
 
+        return response()->download(public_path('uploads'.$file->image_path, $file->file_name));
     }
 }

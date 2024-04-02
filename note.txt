@@ -279,3 +279,150 @@
 {{--</body>--}}
 
 {{--</html>--}}
+
+
+
+
+// senior page org doc
+<!-- senior cards -->
+    <div class="row row-cols-3">
+
+        @if(!is_null($users))
+            @foreach($users as $user)
+                <div class="col" style="border: 2px solid black; border-radius: 20px;">
+                    <div class="row">
+
+                        <div class="col-6">
+
+                            <img src="{{asset('uploads/'.$user->avatar)}}" alt="user avatar" class="w-100">
+
+                            <div class="row text-center text-white" style="background-color: #BD9EBE;">
+                                <h3>{{$user->name}}</h3>
+                                <h6>{{$user->university}}</h6>
+                            </div>
+                        </div>
+                        <div class="col-6 text-center">
+                            <div class="mt-5">
+
+                                <img class="w-25" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center py-1">
+                        @if(!is_null($user->postCategory))
+                            @foreach($user->postCategory as $category)
+                                <div class="col-4 text-white px-3 py-1">
+                                    <span class="w-75 px-5 py-2" style="background-color: #4C2A70;">
+                                        {{$category->postCategory->name}}
+                                    </span>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="row text-center py-1">
+                        @if(!is_null($user->skills))
+                            @foreach($user->skills as $skill)
+                                <div class="col-4 px-3 py-1">
+                                    <span class="w-75 px-5 py-1 m-2" style="border-radius: 10px; border: 1px solid #4C2A70; color: #4C2A70;">
+                                        {{$skill->skill->name}}
+                                    </span>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="row text-center">
+                        <a href="" class="text-decoration-none text-black-50" style="font-size:1.5rem;">點擊查看更多</a>
+                    </div>
+                </div>
+            @endforeach
+            <div class="col-12 mt-3 text-center">
+                {!! $users->links('vendor.pagination.bootstrap-4') !!}
+            </div>
+        @endif
+    </div>
+
+
+    //from introduction
+                    <!-- <div class="owl-carousel owl-theme">
+                    @foreach ($Data['vip'] as $key => $user)
+                        <div class="item">
+                            <div class="card p-3">
+                                <div>
+                                    <img style="height: 200px;"
+                                            src="/uploads/{{ $user->avatar }}"
+                                            alt="Card image cap">
+                                </div>
+                                <div class="name-card">
+                                    <h5 style="color:white">{{ $user->name }}</h5>
+                                </div>
+                                <div class="row row-cols-3 mt-2">
+                                    @foreach($user->postCategory as $postCategoryRelation)
+                                        <div class="col">
+                                            <span class="btn w-100 text-white" style="background-color: #4C2A70; border-radius: 0;">
+                                                {{$postCategoryRelation->postCategory->name}}
+                                            </span>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <div class="row row-cols-3 mt-2">
+                                    @foreach($user->skills as $skillRelation)
+                                        <div class="col text-center">
+                                            <span class="btn w-100 my-1" style="border-color: #4C2A70; color: #4C2A70;">{{$skillRelation->skill->name}}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <div style="text-align:center; margin:20px">
+                                    <a href="{{url('introduction/'.$user->id)}}" style="text-decoration: none; color: dimgrey">點擊查看更多</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div> -->
+
+// article-list section
+    <div class="row row-cols-2">
+        @if(!is_null($Data['posts']))
+            @foreach($Data['posts'] as $post)
+                <div class="col my-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row row-cols-2">
+                                <div class="col">
+                                    <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;"><img src="{{ asset('uploads'.$post->image_path)  }}" alt="" class="w-100" height="300"></a>
+                                </div>
+                                <div class="col">
+                                    <p>
+                                        <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;"><h3> {{$post->title}} </h3></a>
+                                    </p>
+                                    <p>
+                                        <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;">
+                                            {!! \Illuminate\Support\Str::limit($post->body) !!}
+                                        </a>
+                                    </p>
+                                    <hr>
+                                    <div class="mt-5">
+                                        <div
+                                                style="text-align: right";>
+                                            <i class="fa fa-heart-o" style="font-size:20px; color:red; margin:5px">
+                                                <span style="color:black">{{rand(5,30)}}</span>
+                                            </i>
+                                            <i class="fa fa-bookmark-o" style="font-size:20px; margin:5px">
+                                                <span style="color:black">{{rand(5,30)}}</span>
+                                            </i>
+                                            <i class="fa fa-share-alt" style="font-size:20px; margin:5px;">
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <p class="text-right">
+                                        發布日期：{{$Data['user']->created_at->format('Y/m/d')}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+    </div>

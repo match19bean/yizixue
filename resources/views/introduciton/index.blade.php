@@ -8,7 +8,7 @@
             <!-- name card -->
             <div class="nameCard row justify-content-center text-white" style="color: #4C2A70; background-color: #BD9EBE;">
                 <h2 class='text-center text-white w-100'>{{$Data['user']->name}}</h2>
-                <h6 class="text-center w-100">{{$Data['user']->university}}</h6>
+                <h6 class="text-center w-100">{{$Data['user']->universityItem->name}}</h6>
             </div>
             <!-- post categ -->
             <div class="postCateg row row-cols-3 mt-3">
@@ -34,12 +34,28 @@
             </div>
             <!-- react -->
             <div class="react">
-                <i class="fa fa-heart" style="color:red; margin:5px">
-                    <span style="color:black">{{$Data['user']->likeUser->count()}}</span>
-                </i>
-                <i class="fa fa-bookmark" style="margin:5px">
-                    <span style="color:black">{{$Data['user']->collectUser->count()}}</span>
-                </i>
+                @if(auth()->check())
+                    <i class="fa fa-heart" style="
+                    margin:5px;
+                    color:  @if($Data['user']->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif
+                    " data-id="{{$Data['user']->id}}">
+                        <span style="color:black">{{$Data['user']->likedUser->count()}}</span>
+                    </i>
+                    <i class="fa fa-bookmark" style="
+                    margin:5px;
+                    color:  @if($Data['user']->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif
+                    "  data-id="{{$Data['user']->id}}">
+                        <span style="color:black">{{$Data['user']->collectedUser->count()}}</span>
+                    </i>
+
+                @else
+                    <i class="fa fa-heart text-black" style="margin:5px">
+                        <span style="color:black">{{$Data['user']->likedUser->count()}}</span>
+                    </i>
+                    <i class="fa fa-bookmark" style="margin:5px">
+                        <span style="color:black">{{$Data['user']->collectedUser->count()}}</span>
+                    </i>
+                @endif
                 <svg viewBox="0 0 512 512" >
                     <path d="M295.4,235.2c32.9,0,59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5s-59.5,26.7-59.5,59.5c0,2.5,0.1,5,0.4,7.4l-58.4,29.1
                         c-10.7-10.4-25.2-16.7-41.3-16.7c-32.9,0-59.5,26.7-59.5,59.5s26.7,59.5,59.5,59.5c16.1,0,30.6-6.3,41.3-16.7l58.4,29.1
@@ -101,7 +117,7 @@
                     <h2>學歷經歷</h2>
                 </div>
                 <p class="col-12">
-                    {{ $Data['user']->university }}
+                    {{ $Data['user']->universityItem->name }}
                 </p>
             </div>
             <hr>
@@ -174,7 +190,11 @@
                                     <!-- student profile pic -->
                                     <div class="studentProfile">
                                         <div class="studentImg">
-                                            <img src="/uploads/{{ $user->avatar }}" alt="Card image cap">
+                                            @if(is_null($user->avatar))
+                                                <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap">
+                                            @else
+                                                <img src="{{ asset('uploads/'.$user->avatar) }}" alt="Card image cap">
+                                            @endif
                                         </div>
                                         <!-- video Btn -->
                                         <div class="videoBtn">
@@ -184,29 +204,54 @@
                                         </div>
                                         <!-- react icons -->
                                         <div class="react">
-                                            <i class="fa fa-heart">
-                                                <span>{{rand(5,30)}}</span>
-                                            </i>
-                                            <i class="fa fa-bookmark">
-                                                <span>{{rand(5,30)}}</span>
-                                            </i>
+                                            @if(auth()->check())
+                                                <i class="fa fa-heart"
+                                                style="
+                                                color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                                "
+                                                data-id="{{$user->id}}"
+                                                >
+                                                    <span class="text-black">{{$user->likedUser->count()}}</span>
+                                                </i>
+                                                <i class="fa fa-bookmark" data-id="{{$user->id}}"
+                                                   style="
+                                                   color:@if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                                   "
+                                                >
+                                                    <span class="text-black">{{$user->collectedUser->count()}}</span>
+                                                </i>
+                                            @else
+                                                <i class="fa fa-heart text-black" data-id="{{$user->id}}">
+                                                    <span class="text-black">{{$user->likedUser->count()}}</span>
+                                                </i>
+                                                <i class="fa fa-bookmark" data-id="{{$user->id}}">
+                                                    <span class="text-black">{{$user->collectedUser->count()}}</span>
+                                                </i>
+                                            @endif
                                         </div>
                                     </div>
                                     <!-- name card -->
                                     <div class="name-card">
                                         <h4>{{ $user->name }}</h4>
-                                        <h4>{{ $user->university }}</h4>
+                                        <h4>{{ $user->universityItem->name }}</h4>
                                     </div>
                                     <!-- post tag -->
                                     <div class="postTags">
-                                        @foreach($user->postCategory as $postCategoryRelation)
+                                        @foreach($user->postCategory as $key => $postCategoryRelation)
+                                            @if($key<3)
                                             <span href="#">{{$postCategoryRelation->postCategory->name}}</span>
+                                            @endif
                                         @endforeach
                                     </div>
                                     <!-- skill tag -->
                                     <div class="skillTags">
-                                        @foreach($user->skills as $skillRelation)
+                                        @foreach($user->skills as $key => $skillRelation)
+                                            @if($key<6)
                                             <span href="#">{{$skillRelation->skill->name}}</span>
+                                                @if($key==2)
+                                                    <br>
+                                                @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                     <!-- more info -->
@@ -219,5 +264,51 @@
             </div>
         </div>
     </div>
-    </div>
+
+    <script>
+        $('.fa-heart').click(function(){
+            let that = $(this);
+            $.ajax({
+                url: "{{url('like-user')}}"+"/"+$(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if(res.operator === 'no') {
+                        alert(res.message);
+                    } else if(res.operator === 'add') {
+                        that.css('color', 'red');
+                        that.children('span').text(res.total);
+                    } else if(res.operator === 'reduce') {
+                        that.css('color', 'black');
+                        that.children('span').text(res.total);
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+        })
+
+        $('.fa-bookmark').click(function(){
+            let that = $(this);
+            $.ajax({
+                url: "{{url('collect-user')}}" +"/"+ $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if(res.operator === 'no') {
+                        alert(res.message);
+                    } else if(res.operator === 'add') {
+                        that.css('color', 'red');
+                        that.children('span').text(res.total);
+                    } else if(res.operator === 'reduce') {
+                        that.css('color','black');
+                        that.children('span').text(res.total);
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            });
+
+        })
+    </script>
 @endsection

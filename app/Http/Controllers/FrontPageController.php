@@ -26,7 +26,7 @@ class FrontPageController extends Controller
             'Skills' => new Skill,
             'UserSkillRelation' => new UserSkillRelation,
             'Users' => $users,
-            'University' => University::with('users')->inRandomOrder()->limit(6)->get(),
+            'University' => University::withCount('vip')->orderBy('vip_count', 'desc')->limit(15)->get(),
             'PostCategory' => new PostCategory,
             'QaCategory' => QACategory::with('QACategoryRelation')->get(),
             'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first()

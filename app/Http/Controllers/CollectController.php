@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CollectPost;
 use App\CollectUser;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class CollectController extends Controller
@@ -29,7 +30,8 @@ class CollectController extends Controller
             CollectUser::where('uid', $uid)->where('user_id', $id)->delete();
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'reduce'
+                'operator' => 'reduce',
+                'total' => User::find($id)->collectedUser->count(),
             ]);
         } else {
             CollectUser::create([
@@ -38,13 +40,14 @@ class CollectController extends Controller
             ]);
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'add'
+                'operator' => 'add',
+                'total' => User::find($id)->collectedUser->count(),
             ]);
         }
 
     }
 
-    public function collectPost(Request $request)
+    public function collectPost($id)
     {
         if(!auth()->check()){
             return response()->json([
@@ -53,7 +56,7 @@ class CollectController extends Controller
             ]);
         }
         $uid = auth()->user()->id;
-        $post = Post::find($request->id);
+        $post = Post::find($id);
         if(is_null($post)){
             return response()->json([
                 'message' => '文章不存在請重新操作',
@@ -66,21 +69,23 @@ class CollectController extends Controller
                 'operator' => 'no'
             ]);
         }
-        $collect = CollectPost::where('uid', $uid)->where('post_id', $request->id)->get();
+        $collect = CollectPost::where('uid', $uid)->where('post_id', $id)->get();
         if($collect->isNotEmpty()){
-            CollectPost::where('uid', $uid)->where('post_id', $request->id)->delete();
+            CollectPost::where('uid', $uid)->where('post_id', $id)->delete();
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'reduce'
+                'operator' => 'reduce',
+                'total' => Post::find($id)->collectPost->count(),
             ]);
         } else {
             CollectPost::create([
                 'uid' => $uid,
-                'post_id' => $request->id
+                'post_id' => $id
             ]);
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'add'
+                'operator' => 'add',
+                'total' => Post::find($id)->collectPost->count(),
             ]);
         }
 

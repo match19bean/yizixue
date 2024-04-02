@@ -46,11 +46,10 @@
     width: 100%;
     display: flex;
     justify-content: end;
-
     form {
         display: grid;
         grid-template-columns: repeat(20, 1fr);
-        width: 30vw;
+        width: 25rem;
 
         svg {
             width: 2.5rem;
@@ -66,11 +65,17 @@
             }
         }
 
-        input {
+        .inputDiv {
             border: solid 3px $primePurple;
             border-radius: 0 50px 50px 0;
             grid-column: 2/21;
             grid-row: 1/2;
+            display: flex;
+            justify-content: center;
+            input{
+                width: 90%;
+                border: none;
+            }
         }
     }
 }
@@ -89,7 +94,9 @@
 
     .part1,
     .part2 {
+        margin: 0;
         border: solid 2px $primePurple;
+        letter-spacing: 0.5rem;
     }
 
     .part1 {
@@ -139,20 +146,21 @@
 
         .userimg {
             border-radius: 100%;
-            width: 100%;
+            width: 4rem;
             grid-column: 1/4;
             grid-row: 3/6;
         }
 
         p {
-            font-size: 1.5rem;
+            width: 6rem;
+            font-size: 1.2rem;
             grid-column: 5/6;
             grid-row: 4/6;
-            padding-left: 10px;
             text-align: end;
             padding: 5px 10px 5px 10px;
-            margin: 0;
+            margin: 0.2rem;
             background-color: $primePurpleLight;
+            text-wrap: nowrap;
         }
     }
 
@@ -803,4 +811,280 @@
             font-size: 0.8rem;
         }
     }
+}
+
+// Collect post
+.collectPost{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    h2{
+        width: 100%;
+        text-align: center;
+        padding: 1rem 3rem;
+        background-color: $primePurple;
+        color: white;
+        border-radius: 1rem;
+    }
+    .postsSection {
+        margin-top: 3rem;
+        background-color: $primePurpleLight;
+        width: 100%;
+        border-radius: 2rem;
+        padding: 2rem 3rem 2rem 3rem;
+        .cardborder {
+            border: solid 1px $primePurpleLight;
+            box-shadow: 0px 5px 5px $primeGray;
+            border-radius: 20px;
+            padding: 1%;
+            background-color: white;
+            margin: 3rem;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+    
+        .postImg {
+            display: grid;
+            grid-template-columns: repeat(5, auto);
+            grid-template-rows: repeat(5, auto);
+            width: 12rem;
+            height: 100%;
+    
+            .postPhoto {
+                border-radius: 20px;
+                width: 100%;
+                grid-column: 1/6;
+                grid-row: 1/5;
+            }
+    
+            .userimg {
+                border-radius: 100%;
+                width: 4rem;
+                grid-column: 1/4;
+                grid-row: 3/6;
+            }
+    
+            p {
+                width: 6rem;
+                font-size: 1.2rem;
+                grid-column: 5/6;
+                grid-row: 4/6;
+                text-align: end;
+                padding: 5px 10px 5px 10px;
+                margin: 0.2rem;
+                background-color: $primePurpleLight;
+                text-wrap: nowrap;
+            }
+        }
+    
+        .postTitle {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: end;
+    
+            h5 {
+                font-size: 2rem;
+                color: $primePurple;
+            }
+    
+            h5,
+            p {
+                margin: 0 10px 0 0;
+            }
+    
+            p {
+                font-size: 1rem;
+                color: black;
+            }
+        }
+    
+        .content {
+            color: $primeGray;
+            border-bottom: solid 2px $primeGray;
+            margin-top: 3%;
+    
+            .readMore {
+                width: 100%;
+                font-size: 0.8rem;
+                text-align: end;
+                margin: 0;
+                color: $primePurple;
+            }
+        }
+    
+        .socialIcons {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: end;
+            margin-top: 3%;
+    
+            i {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                margin: 5px;
+    
+                &::after {
+                    content: '8';
+                    font-size: 1rem;
+                    font-family: Rubik;
+                    text-decoration: none;
+                    font-style: normal;
+                    align-items: self-end;
+                }
+            }
+    
+            svg {
+                width: 2.2rem;
+    
+                path {
+                    fill: black;
+                }
+    
+                circle {
+                    fill: none;
+                    stroke: #000000;
+                    stroke-width: 9;
+                    stroke-miterlimit: 10;
+                }
+    
+            }
+    
+            p {
+                margin: 0;
+                text-align: end;
+                color: $primePurple;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+// Create Question
+.createQ{
+    .progress{
+        background-color: white;
+        width: 100%;
+        height: 2rem;
+        border-radius: 30px;
+        .pBar{
+            height: 2rem;
+            width: 50%;
+            fill: $primePurple;
+        }
+    }
+    input[type="text"] {
+        color: white;
+    }
+}
+
+// single Article
+.singleArticle{
+    h2{
+        font-size: 5rem;
+    }
+    .postCategory{
+        span{
+            border: none;
+        }
+    }
+    .socialIcons{
+        svg {
+            width: 2.2rem;
+    
+            path {
+                fill: black;
+            }
+    
+            circle {
+                fill: none;
+                stroke: #000000;
+                stroke-width: 9;
+                stroke-miterlimit: 10;
+            }
+    
+        }
+    } 
+    .authorDetail{
+        background-color: $primeGray;
+        border: #000000 1rem solid;
+        border-radius: 50px;
+        .authorCard{
+            border-radius: 30px;
+            width:20rem;
+            background-color: white;
+            height: fit-content;
+            padding: 1rem;
+            box-shadow: 10px 10px 10px $darkGray;
+            .avatar{
+                width: 100%;
+                display: grid;
+                grid-template-columns: 10% 90%;
+                grid-template-rows: 80% 20%;
+                img{
+                    width: 100%;
+                    grid-column: 1/3;
+                    grid-row: 1/3;
+                    border-radius: 30px;
+                }
+                div{
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                    h2{font-size: 2rem;}
+                }
+                .tags{
+                    justify-content: center !important;
+                }
+            }
+        }
+    .moreArticles{
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 30px;
+        box-shadow: 10px 10px 10px $darkGray;
+        img{border-radius: 30px;}
+    }
+    }
+    .moreArticles{
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 30px;
+        box-shadow: 10px 10px 10px $primeGray;
+        img{border-radius: 30px;}
+    }
+}
+
+// footer
+footer{
+    .col-md-4{
+        img{
+            width: 15rem;
+            margin: 3rem;
+        }
+        .copyright{
+            font-size: 0.6rem;
+        }
+    }
+    .row{
+        height: 100%;
+        .col-md-3{
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 5px;
+            letter-spacing: 0.5rem;
+            h6{font-size: 1.2rem;}
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+    
 }

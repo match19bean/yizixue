@@ -4,7 +4,10 @@
     <div class="px-5">
         <!-- tag -->
         <div class="row">
-            <h4 class="mt-3">首頁 > 留學誌 </h4>
+            <h4 class="mt-3">
+                <a class="text-decoration-none text-black" href="{{url('/')}}">首頁</a> >
+                留學誌
+            </h4>
         </div>
         <!-- search bar -->
         <div class="searchBar">
@@ -17,8 +20,10 @@
                         <rect x="45.3" y="183.6" transform="matrix(0.7071 0.7071 -0.7071 0.7071 206.129 22.7085)" fill="#FFFFFF" width="60.7" height="153.2"/>
                     </g>
                 </svg>
-                <input type="search" name="title">
-                <button type="submit" style="display: none;"></button>
+                <div class="inputDiv">
+                    <input type="search" name="title">
+                    <button type="submit" style="display: none;"></button>
+                </div>
             </form>
         </div>
         <!-- title -->
@@ -54,24 +59,26 @@
                     </div>
                 </div>
                 <!-- call to action -->
-                <div class="py-4 callToAction">
-                    <div class="card-body text-white py-2 part1" style="background-color: #4C2A70;">
-                        讓專業持續變現
-                    </div>
-                    <div class="card-body part2">
-                        我們一起幫助學弟妹
-                        <br>
-                        更為自己創造收入
-                        <br>
-                        建立留學諮詢事業
-                        <br>
-                        <div style="background-color: #BD9EBE;">
-                            <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white">
-                                立即成為學長姐
-                            </a>
+
+                    <div class="py-4 callToAction">
+                        <h5 class="card-body text-white py-2 part1" style="background-color: #4C2A70;">
+                            讓專業持續變現
+                        </h5>
+                        <div class="card-body part2">
+                            <p>
+                            我們一起幫助學弟妹
+                            <br>
+                            更為自己創造收入
+                            <br>
+                            建立留學諮詢事業
+                            <br>
+                            </p>
+                            <button class="text-white" style="background-color: #BD9EBE;">
+                                <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white">立即成為學長姐</a>
+                            </button>
                         </div>
                     </div>
-                </div>
+
             </div>
             <!-- posts -->
             <div class="col-9 postsSection">
@@ -82,8 +89,7 @@
                         <div class="postImg">
                             <!-- img -->
                             <img class="postPhoto" src="{{ asset('uploads/'.$post->image_path) }}" alt="">
-
-                            <img class="userimg" src="{{ isset($post->author->avatar)? asset('uploads/'.$post->author->avatar) : asset('uploads/images/default avatar.png') }}" alt="">
+                            <img class="userimg" src="{{ isset($post->author->avatar)? asset('uploads/'.$post->author->avatar) : asset('uploads/images/default_avatar.png') }}" alt="">
                             <!-- namecard -->
                             <p class="text-white namecard"><a href="{{route('get-introduction', $post->author->id)}}" class="text-decoration-none text-white">{{ $post->author->name  }}</a></p>
                         </div>
@@ -91,7 +97,7 @@
                         <div class="col-9">
                             <div class="postTitle" style="font-size:2rem;">
                                 <h5 class="text-break">
-                                    {{isset($post->post) ? $post->post->title : $post->title}}
+                                    {{ $post->title }}
                                 </h5>
                                 <p class="text-break">
                                     @forelse($post->category as $cate)
@@ -101,15 +107,37 @@
                                 </p>
                             </div>
                             <div class="text-break content">
-                                {!! isset($post->post) ? \Illuminate\Support\Str::limit($post->post->body) : \Illuminate\Support\Str::limit($post->body) !!}
+                                {!! \Illuminate\Support\Str::limit($post->body) !!}
                                 <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                             </div>
                             <div class="socialIcons">
-                                <i class="fa fa-heart" style="font-size:30px;" data-id="{{$post->id}}">
-                                </i>
-                                <i class="fa fa-bookmark" style="font-size:30px;" data-id="{{$post->id}}">
-                                    <span style="color:black"></span>
-                                </i>
+                                @if(auth()->check())
+                                    <i class="fa fa-heart" style="font-size:30px;
+                                    color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                        <span style="color:black; font-size: 1rem;">
+                                            {{$post->likePost->count()}}
+                                        </span>
+                                    </i>
+                                    <i class="fa fa-bookmark" style="font-size:30px;
+                                    color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                        <span style="color:black; font-size: 1rem;">
+                                            {{$post->collectPost->count()}}
+                                        </span>
+                                    </i>
+                                @else
+                                    <i class="fa fa-heart" style="font-size:30px; color: black;" data-id="{{$post->id}}">
+                                        <span style="color:black; font-size: 1rem;">
+                                            {{$post->likePost->count()}}
+                                        </span>
+                                    </i>
+                                    <i class="fa fa-bookmark" style="font-size:30px; color: black;" data-id="{{$post->id}}">
+                                        <span style="color:black; font-size: 1rem;">
+                                            {{$post->collectPost->count()}}
+                                        </span>
+                                    </i>
+                                @endif
                                 <i>
                                     <svg viewBox="0 0 512 512" >
                                         <path d="M295.4,235.2c32.9,0,59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5s-59.5,26.7-59.5,59.5c0,2.5,0.1,5,0.4,7.4l-58.4,29.1
@@ -120,7 +148,7 @@
                                     </svg>
                                 </i>
 
-                                <p>發表日期：{{ isset($post->post) ? $post->post->created_at->format('Y/m/d') : $post->created_at->format('Y/m/d')  }}</p>
+                                <p>發表日期：{{ $post->created_at->format('Y/m/d') }}</p>
                             </div>
                         </div>
                     </div>
@@ -142,16 +170,16 @@
         $('.socialIcons .fa-heart').click(function(){
             let that = $(this);
             $.ajax({
-                url: "{{route('like-post')}}",
+                url: "{{url('like-post')}}"+"/"+$(this).data('id'),
                 method: 'GET',
-                data: {id: $(this).data('id')},
                 success: function (res) {
                     if(res.operator === 'no') {
                         alert(res.message);
                     } else if(res.operator === 'add') {
-                        that.removeClass('text-black').addClass('text-danger');
+                        that.css('color', 'red').children('span').text(res.total);
+
                     } else if(res.operator === 'reduce') {
-                        that.removeClass('text-danger').addClass('text-black');
+                        that.css('color', 'black').children('span').text(res.total);
                     }
                 },
                 error: function(error) {
@@ -163,16 +191,15 @@
         $('.socialIcons .fa-bookmark').click(function(){
             let that = $(this);
             $.ajax({
-                url: "{{route('collect-post')}}",
+                url: "{{url('collect-post')}}"+"/"+$(this).data('id'),
                 method: 'GET',
-                data: {id: $(this).data('id')},
                 success: function (res) {
                     if(res.operator === 'no') {
                         alert(res.message);
                     } else if(res.operator === 'add') {
-                        that.removeClass('text-black').addClass('text-danger');
+                        that.css('color', 'red').children('span').text(res.total);
                     } else if(res.operator === 'reduce') {
-                        that.removeClass('text-danger').addClass('text-black');
+                        that.css('color', 'black').children('span').text(res.total);
                     }
                 },
                 error: function(error) {

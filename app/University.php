@@ -14,4 +14,9 @@ class University extends Model
     {
         return $this->hasMany(User::class, 'university', 'id');
     }
+
+    public function vip()
+    {
+        return $this->hasMany(User::class, 'university', 'id')->where('expired', '>=', now());
+    }
 }

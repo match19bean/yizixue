@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\LikePost;
 use App\LikeUser;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -23,7 +24,8 @@ class LikeController extends Controller
             LikeUser::where('uid', $uid)->where('user_id', $id)->delete();
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'reduce'
+                'operator' => 'reduce',
+                'total' => User::find($id)->likedUser->count(),
             ]);
         } else {
             LikeUser::create([
@@ -32,12 +34,13 @@ class LikeController extends Controller
             ]);
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'add'
+                'operator' => 'add',
+                'total' => User::find($id)->likedUser->count(),
             ]);
         }
     }
 
-    public function likePost(Request $request)
+    public function likePost($id)
     {
         if(!auth()->check()){
             return response()->json([
@@ -46,7 +49,7 @@ class LikeController extends Controller
             ]);
         }
         $uid = auth()->user()->id;
-        $post = Post::find($request->id);
+        $post = Post::find($id);
         if(is_null($post)){
             return response()->json([
                 'message' => '文章不存在請重新操作',
@@ -59,26 +62,28 @@ class LikeController extends Controller
 //                'operator' => 'no'
 //            ]);
 //        }
-        $collect = LikePost::where('uid', $uid)->where('post_id', $request->id)->get();
+        $collect = LikePost::where('uid', $uid)->where('post_id', $id)->get();
         if($collect->isNotEmpty()){
-            LikePost::where('uid', $uid)->where('post_id', $request->id)->delete();
+            LikePost::where('uid', $uid)->where('post_id', $id)->delete();
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'reduce'
+                'operator' => 'reduce',
+                'total' => Post::find($id)->likePost->count(),
             ]);
         } else {
             LikePost::create([
                 'uid' => $uid,
-                'post_id' => $request->id
+                'post_id' => $id
             ]);
             return response()->json([
                 'message' => '操作成功',
-                'operator' => 'add'
+                'operator' => 'add',
+                'total' => Post::find($id)->likePost->count(),
             ]);
         }
     }
 
-    public function likeQa(Request $request)
+    public function likeQa($id)
     {
 
     }

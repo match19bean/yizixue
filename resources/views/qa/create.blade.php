@@ -1,7 +1,7 @@
 @extends('layouts.sbadmin')
 
 @section('content')
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column createQ">
         <div id="content" style="margin:15px">
 
             <div class="row justify-content-md-center">
@@ -15,6 +15,10 @@
                     <div class="card shadow mb-4">
                         <!-- Card Body -->
                         <div style="background: #BD9EBE; color:#FFFFFF" class="card-body">
+                        <svg class="progress">
+                            <rect class="pBar" x="0" y="0" rx="15" ry="15"/>
+                        </svg>
+                        <p>完成度 50%</p>
                             <form method="POST" action="{{ route('save-qa') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="mb-3">

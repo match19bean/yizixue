@@ -55,6 +55,7 @@
     <!-- broccoli style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/broccoli-color.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/artical.css') }}">
+
 </head>
 
 <body>
@@ -74,15 +75,29 @@
                     <li class="nav-item"><a class="nav-link text-white" href="{{route('senior')}}">學長姐|快找</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="{{route('study-abroad')}}">留學誌|推薦</a></li>
                     @if(auth()->check())
-                        <li class="nav-item"><a class="nav-link text-white" href="{{route('home')}}">易子學系統</a></li>
+                        <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('home')}}">易子學系統</a></li>
+                        <li class="nav-item">
+                            <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
+                                        @if(!is_null(auth()->user()->avatar))
+                                            <image x="0" y="0" xlink:href="{{asset('uploads/'.auth()->user()->avatar)}}" width="80" height="80"></image>
+                                        @else
+                                            <image x="0" y="0" xlink:href="{{asset('uploads/images/default_avatar.png')}}" width="80" height="80"></image>
+                                        @endif
+                                    </pattern>
+                                </defs>
+                                <circle cx="40" cy="40" r="30" fill="url(#image)"/>
+                            </svg>
+                        </li>
                     @else
-                        <li class="nav-item"><a class="nav-link text-white" href="{{route('login')}}">註冊  |登入</a></li>
-                    @endif
+                        <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('login')}}">註冊  |登入</a></li>
                         <li class="nav-item">
                             <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
                                 <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
                             </svg>
                         </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -97,12 +112,11 @@
 <div class="container-fluid px-5 mt-3">
     <footer class="py-5 bg-dark footer">
         <div class="row text-center text-white">
-            <div class="col-md-4">
-                <p style="font-size: 3.5rem;">行 家 在 線</p>
-                <p class="text-uppercase"><span style="font-size: 1.5rem;">H</span>ANG <span style="font-size:1.5rem;">J</span>IA</p>
-                <p>@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
-                <p>統一編號：83453577</p>
-            </div>
+        <div class="col-md-4">
+            <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
+            <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
+            <p>統一編號：83453577</p>
+        </div>
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-3">
@@ -115,13 +129,13 @@
                         <p>關於 | 會員</p>
                         <a href="{{route('senior')}}">找學長姐</a>
                         <br>
-                        <a href="">找學校</a>
+                        <a href="{{route('university-list')}}">找學校</a>
                         <br>
-                        <a href="">問與答</a>
+                        <a href="{{route('qna')}}">問與答</a>
                     </div>
                     <div class="col-md-3">
                         <p>關於 | 學長姐</p>
-                        <a href="">成為學長姐</a>
+                        <a href="{{route('pay-product-list')}}">成為學長姐</a>
                         <br>
                         <a href="">教戰手則</a>
                     </div>
