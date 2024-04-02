@@ -8,7 +8,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">所有加值服務</h6>
                 </div>
                 <div class="card-body">
-                    <div class="row text-center">
+                    <div class="text-center w-75 mx-auto">
                             @if(!is_null($products))
                                 @foreach($products as $product)
                                     <div class="card">
