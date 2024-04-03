@@ -59,6 +59,7 @@ class LoginController extends Controller
                 }else{
                     $user = User::create([
                         'name' => $user_profile['displayName'],
+                        'nickname' => $user_profile['displayName'],
                         'uuid' => 'post-'.uniqid(),
                         'email' => $user_profile['userId'].'@line.yizixue',
                         'password' => bcrypt('password'),
