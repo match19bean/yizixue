@@ -132,10 +132,10 @@ function newsSlide(){
             tags += '#'+object.post_category.name;
         });
 
-        $(".info .tag").text(tags);
-        $(".info .meta").text(posts[currentNews-1].title);
-        $(".info .brief").text(encodeHTML(posts[currentNews-1].body));
-        $(".info a").attr('href', 'article/'+posts[currentNews-1].id);
+        $(".newsCard .info .tag").text(tags);
+        $(".newsCard .info .meta").text(posts[currentNews-1].title);
+        $(".newsCard .info .brief").text(encodeHTML(posts[currentNews-1].body));
+        $(".newsCard .info a").attr('href', 'article/'+posts[currentNews-1].id);
     }
 }
 
