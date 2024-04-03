@@ -94,7 +94,7 @@
         @empty
             <div class="row">
                 <p class="vh-100">
-                    目前尚無學生資料
+                    目前尚無學長姐資料
                 </p>
             </div>
         @endforelse
