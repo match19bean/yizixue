@@ -43,7 +43,7 @@
                                                     <img src="{{asset('uploads/'.$user->avatar)}}" alt="" width="200" height="200">
                                                 @endif
                                             </td>
-                                            <td>{{$user->universityItem->name}}</td>
+                                            <td>{{!is_null($user->universityItem) ? $user->universityItem->name : ''}}</td>
                                             <td>
                                                 <form action="{{route('delete-collect', $user->id)}}" method="post">
                                                     {{csrf_field()}}

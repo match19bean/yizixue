@@ -28,7 +28,7 @@
         <div class="col-4 text-center text-white">
             <div class="d-flex flex-column">
                 <h2 class="mt-5" style="font-size: 3rem;">{{$Data['user']->name}}</h2>
-                <h5 class="mt-2">{{$Data['user']->universityItem->name}}</h5>
+                <h5 class="mt-2">{{!is_null($Data['user']->universityItem) ? $Data['user']->universityItem->name:''}}</h5>
                 @if(!is_null($Data['user']->postCategory))
                     <div class="row w-100 row-cols-3 text-center mt-5">
                         @foreach($Data['user']->postCategory as $theme)

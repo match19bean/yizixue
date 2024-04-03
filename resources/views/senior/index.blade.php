@@ -59,7 +59,7 @@
                     <!-- name card -->
                     <div class="name-card">
                         <h4>{{$user->name}}</h4>
-                        <h4>{{$user->universityItem->chinese_name}}</h4>
+                        <h4>{{!is_null($user->universityItem) ? $user->universityItem->chinese_name:''}}</h4>
                     </div>
                     <!-- post tags -->
                     <div class="postTags">

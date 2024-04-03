@@ -99,7 +99,9 @@
                             <img src="{{asset('uploads/'.$Data['article']->author->avatar)}}" alt="...">
                             <div style="background-color: #BD9EBE" class="text-white" >
                                 <h2 class="card-title text-center " >{{ $Data['article']->author->name }}</h2>
-                                <h6 class="card-title text-center " style="background-color: #BD9EBE" >{{ $Data['article']->author->universityItem->name }}</h6>
+                                <h6 class="card-title text-center " style="background-color: #BD9EBE" >
+                                    {{ !is_null($Data['article']->universityItem) ? $Data['article']->author->universityItem->name: '' }}
+                                </h6>
                             </div>
                         </div>
                         @if(!is_null($Data['article']->author->postCategory))
