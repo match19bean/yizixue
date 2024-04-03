@@ -48,7 +48,7 @@
                                         <h5><a class="text-decoration-none text-white" href="{{route('senior', ['university' => $university->slug])}}">{{ $university->name }}</a></h5>
                                     </div>
                                     <div class="text-center">
-                                        <h5>目前有<a href="#" class="text-decoration-none text-black">{{$university->users->count()}}</a>位在校學生</h5>
+                                        <h5>目前有<a href="#" class="text-decoration-none text-black">{{$university->vip->count()}}</a>位在校學長姐</h5>
                                     </div>
 
                                 </div>
