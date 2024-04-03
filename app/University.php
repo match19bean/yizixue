@@ -17,6 +17,6 @@ class University extends Model
 
     public function vip()
     {
-        return $this->hasMany(User::class, 'university', 'id')->where('expired', '>=', now());
+        return $this->hasMany(User::class, 'university', 'id')->where('role', 'vip')->where('expired', '>=', now());
     }
 }
