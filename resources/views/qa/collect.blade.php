@@ -30,9 +30,9 @@
                                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                 aria-labelledby="dropdownMenuLink">
                                                 <div class="dropdown-header">動作:</div>
-                                                <a class="dropdown-item" href="/view-qa/{{ $qa->uuid }}">查看</a>
-                                                <a class="dropdown-item" href="/edit-qa/{{ $qa->uuid }}">編輯</a>
-                                                <a class="dropdown-item" href="/delete-qa/{{ $qa->uuid }}">刪除</a>
+                                                <a class="dropdown-item" href="/view-collect-qa/{{ $qa->uuid }}">查看</a>
+{{--                                                <a class="dropdown-item" href="/edit-qa/{{ $qa->uuid }}">編輯</a>--}}
+                                                <a class="dropdown-item" href="/delete-collect-qa/{{ $qa->uuid }}">刪除</a>
                                             </div>
                                         </div>
                                     </div>

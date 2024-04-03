@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\CollectPost;
+use App\CollectQA;
 use App\CollectUser;
 use App\Post;
+use App\QnA;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -88,6 +90,48 @@ class CollectController extends Controller
                 'total' => Post::find($id)->collectPost->count(),
             ]);
         }
+    }
 
+    public function collectQa($id)
+    {
+        if(!auth()->check()){
+            return response()->json([
+                'message' => '請登入後再操作',
+                'operator' => 'no'
+            ]);
+        }
+        $uid = auth()->user()->id;
+        $post = QnA::find($id);
+        if(is_null($post)){
+            return response()->json([
+                'message' => '問與答不存在請重新操作',
+                'operator' => 'no'
+            ]);
+        }
+        if($uid===$post->author->id){
+            return response()->json([
+                'message' => '無法收藏自己的問與答',
+                'operator' => 'no'
+            ]);
+        }
+        $collect = CollectQA::where('uid', $uid)->where('qa_id', $id)->get();
+        if($collect->isNotEmpty()){
+            CollectQA::where('uid', $uid)->where('qa_id', $id)->delete();
+            return response()->json([
+                'message' => '操作成功',
+                'operator' => 'reduce',
+                'total' => QnA::find($id)->collectQa->count(),
+            ]);
+        } else {
+            CollectQA::create([
+                'uid' => $uid,
+                'qa_id' => $id
+            ]);
+            return response()->json([
+                'message' => '操作成功',
+                'operator' => 'add',
+                'total' => QnA::find($id)->collectQa->count(),
+            ]);
+        }
     }
 }

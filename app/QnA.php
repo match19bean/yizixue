@@ -35,4 +35,10 @@ class QnA extends Model
     {
         return $this->hasMany(QACategoryRelation::class, 'qa_id');
     }
+
+    public function collectQa()
+    {
+        return $this->hasMany(CollectQA::class, 'qa_id');
+    }
+
 }

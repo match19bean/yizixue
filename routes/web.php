@@ -38,6 +38,7 @@ Route::get('like-post/{id}', 'LikeController@likePost')->name('like-post');
 //Collect
 Route::get('collect-user/{id}', 'CollectController@collectUser')->name('collect-user');
 Route::get('collect-post/{id}', 'CollectController@collectPost')->name('collect-post');
+Route::get('collect-qa/{id}', 'CollectController@collectQa')->name('collect-qa');
 
 //reference
 Route::delete('reference-delete/{id}', 'UserController@referenceDelete')->name('reference-delete');
@@ -62,10 +63,12 @@ Route::get('/list-qa', 'QnAController@list')->name('list-all-qa');
 Route::get('/collect-qa', 'QnAController@collect')->name('collect-qa');
 Route::get('/create-qa', 'QnAController@create')->name('create-qa');
 Route::get('/view-qa/{uuid}', 'QnAController@show')->name('view-qa');
+Route::get('/view-collect-qa/{uuid}', 'QnAController@showCollectQa')->name('view-collect-qa');
 Route::get('/edit-qa/{uuid}', 'QnAController@edit')->name('edit-qa');
 Route::post('/save-qa', 'QnAController@save')->name('save-qa');
 Route::post('/update-qa', 'QnAController@update')->name('update-qa');
 Route::get('/delete-qa/{uuid}', 'QnAController@delete')->name('delete-qa');
+Route::get('/delete-collect-qa/{uuid}', 'QnAController@delectCollectQa')->name('delete-collect-qa');
 
 Route::get('/user/get', 'UserController@getAll');
 Route::get('/user/collect-user', 'UserController@collect')->name('collect-user');
