@@ -56,7 +56,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
-                            <img class="w-100" src="{{asset('uploads/'.$qna->author->avatar)}}" alt="user avatar">
+                            @if(!is_null($qna->author->avatar))
+                                <img class="w-100" src="{{asset('uploads/'.$qna->author->avatar)}}" alt="user avatar">
+                            @else
+                                <img class="w-100" src="{{asset('uploads/images/default_avatar.png')}}" alt="user avatar">
+                            @endif
                         </div>
                         <div class="col-9 text-white text-center" style="background-color: #BD9EBE">
                             <span style="font-size: 1.5rem;">{{$qna->nickname}}</span>
