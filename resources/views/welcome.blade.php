@@ -40,7 +40,7 @@
                                             <small class="ellipsis"><a class="text-decoration-none text-white" href="{{route('senior', ['university' => $university->slug])}}">{{ \Illuminate\Support\Str::limit($university->english_name, 20) }}</a></small>
                                         </div>
                                         <div class="info">
-                                            <h5>目前有<a href="#">{{$university->vip->count()}}</a>位在校學長姐</h5>
+                                            <h5>目前有<a href="{{route('senior', ['university' => $university->slug])}}">{{$university->vip->count()}}</a>位在校學長姐</h5>
                                         </div>
 
                                     </div>
