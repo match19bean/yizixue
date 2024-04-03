@@ -198,9 +198,15 @@
                                         </div>
                                         <!-- video Btn -->
                                         <div class="videoBtn">
-                                            <a href="#" class="text">
-                                                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
-                                            </a>
+                                            @if(is_null($user->profile_video))
+                                                <a class="text" onClick="alert('學長姐尚未上傳影音');">
+                                                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                                                </a>
+                                            @else
+                                                <a href="{{ $user->profile_video }}" class="text" target="_blank">
+                                                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                                                </a>
+                                            @endif
                                         </div>
                                         <!-- react icons -->
                                         <div class="react">

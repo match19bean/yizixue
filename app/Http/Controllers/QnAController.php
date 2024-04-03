@@ -139,6 +139,8 @@ class QnAController extends Controller
     public function delete($uuid) 
     {
         $QnA = QnA::where('uuid', $uuid)->first();
+        QACategoryRelation::where('qa_id', $QnA->id)->delete();
+        CollectQA::where('qa_id', $QnA->id)->delete();
         $QnA->delete();
 
         return back();
@@ -183,7 +185,6 @@ class QnAController extends Controller
             'categories' => $categories,
             'selectCategories' => $selectCategories
         ];
-
 
         return view('qa.view')->with('Data', $Data);
     }

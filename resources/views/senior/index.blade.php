@@ -88,7 +88,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <a href="{{route('article-list', $user->id)}}" class="text-center text-black-50">點擊查看更多</a>
+                    <a href="{{route('get-introduction', $user->id)}}" class="text-center text-black-50">點擊查看更多</a>
                 </div>
             </div>
         @empty

@@ -227,4 +227,13 @@ class UserController extends Controller
 
         return response()->download(public_path('uploads'.$file->image_path, $file->file_name));
     }
+
+    public function deleteCollect($id)
+    {
+
+
+        CollectUser::where('uid', auth()->user()->id)->where('user_id', $id)->delete();
+
+        return redirect()->back();
+    }
 }

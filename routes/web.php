@@ -75,6 +75,7 @@ Route::post('/user/profile/update', 'UserController@update')->name('update-profi
 Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
 Route::get('/user/invite-list', 'UserController@showInviteList');
 Route::post('/user/accept-invite/{id}', 'UserController@getInviteList')->name('accept-invite');
+Route::delete('/user/delete-collect/{id}', 'UserController@deleteCollect')->name('delete-collect');
 
 Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
 Route::get('pay-product', 'PayProductController@index')->name('pay-product-list');

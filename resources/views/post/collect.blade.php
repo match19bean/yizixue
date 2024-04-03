@@ -6,15 +6,16 @@
     <h2>收藏的文章</h2>
     <!-- broccoli post -->
     <div class="postsSection">
+{{--        {{dd($Data['posts'])}})--}}
             @foreach ($Data['posts'] as $key => $post)
                 <div class="cardborder">
                     <!-- Post images -->
                     <div class="postImg">
                         <!-- img -->
-                        <img class="postPhoto" src="{{ isset($post->post) ? asset('uploads/'.$post->post->image_path) : asset('uploads/'.$post->image_path) }}" alt="">
-                        <img class="userimg" src="{{ asset('uploads/images/user2-160x160.jpg') }}" alt="">
+                        <img class="postPhoto" src="{{ asset('uploads/'.$post->image_path) }}" alt="">
+                        <img class="userimg" src="{{ asset('uploads/'.$post->author->avatar) }}" alt="">
                         <!-- namecard -->
-                        <p class="text-white namecard">Name</p>
+                        <p class="text-white namecard">{{ $post->author->name }}</p>
                     </div>
                     <!-- Post Contents -->
                     <div class="">
@@ -22,18 +23,22 @@
                             <h5 class="text-break">
                             {{$post->title}}
                             </h5>
-                            <p class="text-break">#Category</p>
+                            @forelse($post->category as $cate)
+                                <p class="text-break">#{{$cate->postCategory->name}}</p>
+                            @empty
+                            @endforelse
                         </div>
 
                         <div class="text-break content">
                             {!!substr($post->body, 0, 300)!!}...
-                            <p class="readMore">...閱讀更多</p>
+                            <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none" style="color: #4C2A70;">...閱讀更多</a></p>
                         </div>
                         <div class="socialIcons">
                                 <i class="fa fa-heart" style="font-size:30px; color:red;">
+                                    <span style="color:black;"></span>
                                 </i>
                                 <i class="fa fa-bookmark" style="font-size:30px;">
-                                    <span style="color:black"></span>
+                                    <span style="color:black;"></span>
                                 </i>
                                 <i>
                                     <svg viewBox="0 0 512 512" >

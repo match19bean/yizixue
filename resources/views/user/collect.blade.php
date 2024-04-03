@@ -35,16 +35,21 @@
                                         <tbody>
                                         @foreach ($Data['Users'] as $key => $user)
                                         <tr>
-                                            <td>{{$user->name}}</td>
+                                            <td><a href="{{route('get-introduction', $user->id)}}">{{$user->name}}</a></td>
                                             <td>
                                                 @if(is_null($user->avatar))
+                                                    <img src="{{asset('uploads/images/default_avatar.png')}}" alt="" width="200" height="200">
                                                 @else
-                                                <img src="{{asset('uploads/'.$user->avatar)}}" alt="" width="200" height="200">
+                                                    <img src="{{asset('uploads/'.$user->avatar)}}" alt="" width="200" height="200">
                                                 @endif
                                             </td>
                                             <td>{{$user->universityItem->name}}</td>
                                             <td>
-                                            <a href="/user/delete-collect/{{$user->id}}" type="button" class="btn btn-primary" data-dismiss="modal">刪除</a>
+                                                <form action="{{route('delete-collect', $user->id)}}" method="post">
+                                                    {{csrf_field()}}
+                                                    {{method_field('DELETE')}}
+                                                    <button type="submit" class="btn btn-primary" data-dismiss="modal">刪除</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

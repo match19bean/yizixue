@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LikePost;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -12,6 +13,10 @@ use App\PostCategoryRelation;
 
 class PostController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function list()
     {
         $uid = Auth::user()->id;
@@ -156,8 +161,14 @@ class PostController extends Controller
     public function delete($uuid) 
     {
         $Post = Post::where('uuid', $uuid)->first();
-        $Post->delete();
+        if(is_null($Post)){
+            return back();
+        }
         PostCategoryRelation::where('post_id', $Post->id)->delete();
+        LikePost::where('post_id', $Post->id)->delete();
+        CollectPost::where('post_Id', $Post->id)->delete();
+        unlink(public_path('uploads'.$Post->image_path));
+        $Post->delete();
 
         return back();
     }
