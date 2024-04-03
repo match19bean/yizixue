@@ -50,9 +50,15 @@ class UserController extends Controller
     {
 
         $req->validate([
-            'references' => 'file|max:2048'
+            'references' => 'file|max:2048',
+            'description' => 'max:500|nullable',
+            'skills' => 'array|min:0|max:12',
+            'post_categories' => 'array|min:0|max:3'
         ], [
             'references.max.file' => '檔案不得超過2M',
+            'description.max' => '字數不得超過500字',
+            'skills.max' => '專長不得超過12個',
+            'post_categories.max' => '主是不得超過3個'
         ]);
 
         if($req->filled('post_categories')){

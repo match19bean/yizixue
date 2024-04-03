@@ -82,6 +82,12 @@
                             <div class="card-body p-0">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">您的專長</h6>
+                                    @if($errors->has('skills'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('skills')}}
+                                        </div>
+                                    @endif
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,6 +116,12 @@
                             <div class="card-body p-0">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">您的主題</h6>
+                                    @if($errors->has('post_categories'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('post_categories')}}
+                                        </div>
+                                    @endif
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -148,7 +160,7 @@
                                     @if($errors->has('references'))
                                         <div class="alert alert-danger alert-dismissible text-center">
                                             <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                                            {{$errors->first('references')}}1
+                                            {{$errors->first('references')}}
                                         </div>
                                     @endif
                                     <div class="dropdown no-arrow">
@@ -308,6 +320,12 @@
                                     <div
                                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                         <h6 class="m-0 font-weight-bold text-primary">簡介</h6>
+                                        @if($errors->has('description'))
+                                            <div class="alert alert-danger alert-dismissible text-center">
+                                                <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                                {{$errors->first('description')}}
+                                            </div>
+                                        @endif
                                         <div class="dropdown no-arrow">
                                             <a class="dropdown-toggle" href="#" role="button"
                                                 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
