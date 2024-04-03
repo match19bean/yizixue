@@ -34,7 +34,7 @@ class LoginController extends Controller
             $code = $request->input('code', '');
             $response = $this->lineService->getLineToken($code);
             $user_profile = $this->lineService->getUserProfile($response['access_token']);
-
+            logger($user_profile);
             $user = Auth::user();
             if($user != null)
             {
