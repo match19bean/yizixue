@@ -14,9 +14,9 @@ class SeniorController extends Controller
 
         $query = (new User)->query();
         $query->where('role', 'vip')->where('expired', '>=', now());
-        if(auth()->check()){
-            $query->where('id', '!=', auth()->user()->id);
-        }
+//        if(auth()->check()){
+//            $query->where('id', '!=', auth()->user()->id);
+//        }
         if($request->filled('university'))
         {
             $university = University::where('slug', $request->university)->get();
