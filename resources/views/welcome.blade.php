@@ -171,6 +171,13 @@
 
         <!-- QA section -->
         <section class="py-5" id="Qa">
+            <div>
+                <div style="text-align:center; margin-bottom:100px;">
+                    <a style="background:#45ecd9; border: none" class="btn btn-primary btn-lg px-5 text-white" href="{{route('qna')}}">
+                        諮詢｜問與答
+                    </a>
+                </div>
+            </div>
             <div class="row">
                 <!-- QA section 1 -->
                 <div class="qaSection">
@@ -230,7 +237,7 @@
                         </div>
                     @endforeach
                 </div>
-                <a href="{{route('qna')}}" class="text-center text-decoration-none text-black">查看更多問答</a>
+{{--                <a href="{{route('qna')}}" class="text-center text-decoration-none text-black">查看更多問答</a>--}}
             </div>
         </section>
 

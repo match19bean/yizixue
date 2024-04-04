@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{ asset('css/broccoli-color.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcomeP.css')}}">
     <!-- End of Broccoli code -->
+
+    <!-- owl js -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
@@ -124,20 +126,20 @@
 <script>
     $(".owl-carousel").owlCarousel({
         loop: true, // 循環播放
-        margin: 10, // 外距 10px
+        margin: 50, // 外距 10px
         nav: true, // 顯示點點
         responsive: {
             0: {
-                items: 5 // 螢幕大小為 0~600 顯示 1 個項目
+                items: 1 // 螢幕大小為 0~600 顯示 1 個項目
             },
             600: {
-                items: 5 // 螢幕大小為 600~1000 顯示 3 個項目
+                items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
             },
             800: {
                 items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
             },
             1500: {
-                items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+                items: 6 // 螢幕大小為 1000 以上 顯示 5 個項目
             }
         }
     });

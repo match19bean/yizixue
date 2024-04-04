@@ -81,13 +81,9 @@ header .headerCard .slogan #topic {
 .uCardSection .row {
   justify-content: end;
 }
-.uCardSection .owl-stage {
-  width: -moz-max-content !important;
-  width: max-content !important;
-}
 .uCardSection .owl-stage .owl-item {
-  width: 15rem !important;
-  margin-right: 2rem !important;
+  width: 15rem;
+  margin-right: 2rem;
 }
 .uCardSection .cards {
   padding: 0 !important;
@@ -408,6 +404,8 @@ header .headerCard .slogan #topic {
 .localOlder div {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  font-weight: 800;
 }
 
 footer .col-md-4 img {

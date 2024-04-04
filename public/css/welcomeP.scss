@@ -82,10 +82,10 @@ header{
         justify-content: end;
     }
     .owl-stage{
-        width: max-content !important;
+        // width: fit-content;
         .owl-item{
-            width: 15rem !important;
-            margin-right: 2rem !important;
+            width: 15rem;
+            margin-right: 2rem;
         }
     }
     .cards{
@@ -392,6 +392,8 @@ header{
     div{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        font-weight: 800;
     }
 }
 
