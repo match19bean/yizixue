@@ -189,6 +189,9 @@
                                 </a>
                             </div>
                         @empty
+                            <div>
+                                尚無參考文件下載
+                            </div>
                         @endforelse
                     </div>
                 </div>
