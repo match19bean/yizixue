@@ -168,7 +168,7 @@ header .headerCard .slogan #topic {
 }
 
 .studentC {
-  height: 24.5rem !important;
+  height: 27rem !important;
   padding: 10px;
   display: grid;
   grid-template-rows: auto 30px;
@@ -246,16 +246,13 @@ header .headerCard .slogan #topic {
 .studentC .cards .skillTags {
   grid-row: 11/13;
   grid-column: 1/2;
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin: 5%;
   text-align: center;
 }
 .studentC .cards .skillTags span {
   font-size: 12px;
-  padding: 5px;
+  padding: 1px !important;
   margin: 5px;
-  line-height: 35px;
   color: #4C2A70;
   border: 1px solid #4C2A70;
   border-radius: 5px;

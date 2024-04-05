@@ -175,7 +175,7 @@ header{
 }
 
 .studentC{
-    height: 24.5rem !important;
+    height: 27rem !important;
     padding: 10px;
     display: grid;
     grid-template-rows: auto 30px;
@@ -246,15 +246,12 @@ header{
         .skillTags{
             grid-row: 11/13;
             grid-column: 1/2;
-            text-align: center;
-            margin-bottom:5px;
-            margin-top:5px;
+            margin: 5%;
             text-align: center;
             span{
                 font-size:12px;
-                padding: 5px;
+                padding: 1px !important;
                 margin: 5px;
-                line-height: 35px;
                 color: $primePurple;
                 border: 1px solid $primePurple;
                 border-radius:5px;

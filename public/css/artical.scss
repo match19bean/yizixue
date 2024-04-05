@@ -1088,3 +1088,91 @@ footer{
     }
     
 }
+
+// QA section
+.question-and-answer-page{
+    .qaSection{
+        .border-b-line{
+            border-bottom: 0.1rem solid #858796 !important;
+            .w-75.align-bottom.pt-2{
+                font-size: 1.3rem;
+            }
+        }
+        .attachment{
+            // background-color: aqua;
+            padding: 1.5rem 0 1.5rem;
+            justify-content: space-evenly;
+            .file{
+                background-color: $primePurpleLight;
+                justify-content: center;
+                align-items: end;
+                padding-bottom: 0.5rem;
+                width: 8rem;
+                height: 8rem;
+                border-radius: 10%;
+                svg{
+                    width: 80%;
+                    height: 75%;
+                    background-color: white;
+                    border-radius: 10%;
+                }
+            }
+        }
+        .avatarName{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            .avatar{
+                grid-column: 3/5;
+                grid-row: 1/2;
+                z-index: 2;
+                img{
+                    border-radius: 50%;
+                    border: solid $darkGray 2px;
+                }
+            }
+            .nameCard{
+                grid-column: 4/13;
+                grid-row: 1/2;
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .contact{
+            p{
+                margin: 0;
+            }
+            svg{
+                width: 80%;
+                text{font-size: 3rem;}
+            }
+        }
+        .card-header{
+            border-radius: 1rem 1rem 0 0 !important;
+        }
+        .card-footer{
+            border-radius: 0 0 1rem 1rem !important;
+        }
+    }
+    .similarQ{
+        div.titleInfo{
+            display: grid;
+            grid-template-columns: repeat(12, auto);
+            grid-template-rows: 50% 50%;
+            i{grid-column: 1/2; grid-row: 1/2;}
+            a{grid-column: 2/13; grid-row: 1/2;}
+            span{
+                grid-column: 1/13; grid-row: 2/3;
+                span{font-size: 0.6rem;}
+            }
+        }
+        .qStyle{
+            padding: 0;
+            svg{
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+}

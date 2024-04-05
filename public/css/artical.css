@@ -956,4 +956,93 @@ footer .row .col-md-3 h6 {
 footer .row .col-md-3 a {
   text-decoration: none;
   color: white;
+}
+
+.question-and-answer-page .qaSection .border-b-line {
+  border-bottom: 0.1rem solid #858796 !important;
+}
+.question-and-answer-page .qaSection .border-b-line .w-75.align-bottom.pt-2 {
+  font-size: 1.3rem;
+}
+.question-and-answer-page .qaSection .attachment {
+  padding: 1.5rem 0 1.5rem;
+  justify-content: space-evenly;
+}
+.question-and-answer-page .qaSection .attachment .file {
+  background-color: #BD9EBE;
+  justify-content: center;
+  align-items: end;
+  padding-bottom: 0.5rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 10%;
+}
+.question-and-answer-page .qaSection .attachment .file svg {
+  width: 80%;
+  height: 75%;
+  background-color: white;
+  border-radius: 10%;
+}
+.question-and-answer-page .qaSection .avatarName {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.question-and-answer-page .qaSection .avatarName .avatar {
+  grid-column: 3/5;
+  grid-row: 1/2;
+  z-index: 2;
+}
+.question-and-answer-page .qaSection .avatarName .avatar img {
+  border-radius: 50%;
+  border: solid #5b5b5b 2px;
+}
+.question-and-answer-page .qaSection .avatarName .nameCard {
+  grid-column: 4/13;
+  grid-row: 1/2;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.question-and-answer-page .qaSection .contact p {
+  margin: 0;
+}
+.question-and-answer-page .qaSection .contact svg {
+  width: 80%;
+}
+.question-and-answer-page .qaSection .contact svg text {
+  font-size: 3rem;
+}
+.question-and-answer-page .qaSection .card-header {
+  border-radius: 1rem 1rem 0 0 !important;
+}
+.question-and-answer-page .qaSection .card-footer {
+  border-radius: 0 0 1rem 1rem !important;
+}
+.question-and-answer-page .similarQ div.titleInfo {
+  display: grid;
+  grid-template-columns: repeat(12, auto);
+  grid-template-rows: 50% 50%;
+}
+.question-and-answer-page .similarQ div.titleInfo i {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.question-and-answer-page .similarQ div.titleInfo a {
+  grid-column: 2/13;
+  grid-row: 1/2;
+}
+.question-and-answer-page .similarQ div.titleInfo span {
+  grid-column: 1/13;
+  grid-row: 2/3;
+}
+.question-and-answer-page .similarQ div.titleInfo span span {
+  font-size: 0.6rem;
+}
+.question-and-answer-page .similarQ .qStyle {
+  padding: 0;
+}
+.question-and-answer-page .similarQ .qStyle svg {
+  height: 100%;
+  width: auto;
 }/*# sourceMappingURL=artical.css.map */
