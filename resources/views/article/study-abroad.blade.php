@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <!-- call to action -->
-
+                @if(auth()->guest() || !auth()->user()->isVip())
                     <div class="py-4 callToAction">
                         <h5 class="card-body text-white py-2 part1" style="background-color: #4C2A70;">
                             讓專業持續變現
@@ -78,7 +78,7 @@
                             </button>
                         </div>
                     </div>
-
+                @endif
             </div>
             <!-- posts -->
             <div class="col-9 postsSection">

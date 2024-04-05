@@ -87,4 +87,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(University::class, 'university');
     }
+
+    public function isVip()
+    {
+        return $this->role === 'vip' && $this->expired >= now();
+    }
 }
