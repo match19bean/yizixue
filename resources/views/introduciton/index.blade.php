@@ -177,6 +177,20 @@
             <div class="row">
                 <div class="col-12">
                     <h2>參考文件</h2>
+                    <div class="attachment d-flex flex-row">
+                        <!-- files -->
+                        @forelse($Data['user']->references as $reference)
+                            <div class="file d-flex">
+                                <svg>
+                                    <rect width="100%" height="100%" x="0" y="0" fill="white" />
+                                </svg>
+                                <a href="{{route('reference-download', $reference->id)}}" class="text-decoration-none text-black">
+                                    {{$reference->file_name}}
+                                </a>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
                 </div>
             </div>
             <hr>
