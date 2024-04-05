@@ -28,4 +28,5 @@ Route::group([
     $router->resource('user-relations', UserRelationController::class);
     $router->resource('user-skill-relations', UserSkillRelationController::class);
     $router->resource('pay-products', PayProductController::class);
+    $router->resource('carousels', CarouselController::class);
 });
