@@ -88,7 +88,7 @@
                                                     </a>
                                                 @else
                                                     <a href="{{ $user->profile_video }}" class="text">
-                                                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                                                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" target="_blank" alt="Card image cap">
                                                     </a>
                                                 @endif
                                             </div>
