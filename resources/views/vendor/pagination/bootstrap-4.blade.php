@@ -3,7 +3,7 @@
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
 {{--            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>--}}
-{{--            <p class="text-primary">&laquo;</p>--}}
+            <p class="text-primary">&laquo;</p>
         @else
 {{--            <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></li>--}}
             <p class="text-secondary"><a class="text-secondary text-decoration-none" href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;</a></p>
