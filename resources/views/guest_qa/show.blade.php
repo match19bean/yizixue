@@ -77,15 +77,15 @@
                 <div class="card-header text-white text-center" style="background-color: #4C2A70">
                     <h3>聯絡資訊</h3>
                 </div>
-                @if(auth()->check() &&  auth()->user()->expired >= now() )
+
                 <div class="card-body">
                     <!-- name card -->
                     <div class="avatarName mb-3">
                         <div class="avatar">
                             @if(!is_null($qna->author->avatar))
-                                <img class="w-100" src="{{asset('uploads/'.$qna->author->avatar)}}" alt="user avatar">
+                                <img class="w-100 d-none" src="{{asset('uploads/'.$qna->author->avatar)}}" alt="user avatar">
                             @else
-                                <img class="w-100" src="{{asset('uploads/images/default_avatar.png')}}" alt="user avatar">
+                                <img class="w-100 d-none" src="{{asset('uploads/images/default_avatar.png')}}" alt="user avatar">
                             @endif
                         </div>
                         <div class="nameCard text-white" style="background-color: #BD9EBE">
@@ -100,7 +100,11 @@
                         <svg class="px-3 mx-3" viewBox="0 0 675 126">
                             <rect x="45" width="630" height="126" rx="20" ry="20" fill="#BD9EBE"/>
                             <path d="M60.5,18.5c0,0-41,8-60-19c0,0,11,47.2,60,47.2" fill="#BD9EBE"/>
-                            <text x="30%" y="60%" fill="#ffffff">{{$qna->phone}}</text>
+                            @if(auth()->guest() || !auth()->user()->isVip())
+                                <text x="30%" y="60%" fill="#ffffff">{{mb_substr($qna->phone, 0,1)}}*************</text>
+                            @else
+                                <text x="30%" y="60%" fill="#ffffff">{{$qna->phone}}</text>
+                            @endif
                         </svg>
                     </div>
                     <div class="row contact mb-3">
@@ -110,7 +114,11 @@
                         <svg class="px-3 mx-3" viewBox="0 0 675 126">
                             <rect x="45" width="630" height="126" rx="20" ry="20" fill="#BD9EBE"/>
                             <path d="M60.5,18.5c0,0-41,8-60-19c0,0,11,47.2,60,47.2" fill="#BD9EBE"/>
-                            <text x="30%" y="60%" fill="#ffffff">{{$qna->email}}</text>
+                            @if(auth()->guest() || !auth()->user()->isVip())
+                                <text x="30%" y="60%" fill="#ffffff">{{mb_substr($qna->email,0,1)}} ******@ {{ explode('@',$qna->email)[1] }}</text>
+                            @else
+                                <text x="30%" y="60%" fill="#ffffff">{{$qna->email}}</text>
+                            @endif
                         </svg>
                     </div>
                     <div class="row contact mb-3">
@@ -120,17 +128,18 @@
                         <svg class="px-3 mx-3" viewBox="0 0 675 126">
                             <rect x="45" width="630" height="126" rx="20" ry="20" fill="#BD9EBE"/>
                             <path d="M60.5,18.5c0,0-41,8-60-19c0,0,11,47.2,60,47.2" fill="#BD9EBE"/>
-                            <text x="30%" y="60%" fill="#ffffff">{{$qna->line}}</text>
+                            @if(auth()->guest() || !auth()->user()->isVip())
+                                <text x="30%" y="60%" fill="#ffffff">{{mb_substr($qna->line, 0, 1)}}</text>
+                            @else
+                                <text x="30%" y="60%" fill="#ffffff">{{$qna->line}}</text>
+                            @endif
                         </svg>
                     </div>
                 </div>
-                <div class="card-footer text-white text-center" style="background-color: #4C2A70">
-                    <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white"><h4>點擊查看</h4></a>
-                </div>
-                @endif
-                @if(auth()->guest() || auth()->user()->expired < now())
+                @if(auth()->guest() || !auth()->user()->isVip())
                     <div class="card-footer text-white text-center" style="background-color: #4C2A70">
-                        <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white"><h4>點擊查看</h4></a>
+{{--                        <a href="{{route('pay-product-list')}}" class="text-decoration-none text-white"><h4>點擊查看</h4></a>--}}
+                        <h4>點擊查看</h4>
                     </div>
                 @endif
             </div>
