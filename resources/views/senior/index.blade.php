@@ -2,9 +2,56 @@
 
 @section('content')
 <!-- breadcrumb -->
-    <div class="row text-gray-600">
-        <h4 class="mt-3">
-            <a href="{{url('/')}}" class="text-black text-decoration-none">首頁</a> > 學長姐</h4>
+    <div class="row text-gray-600 seniorListPage">
+            <!-- taggle menu section -->
+        <div class="row text-gray-600">
+            <h4 class="mt-3 col-6"><a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a> > 學長姊</h4>
+            <div class="col-6 d-flex justify-content-end">
+                <svg id="burger" width="50px" height="50px" viewbox="0 0 50 50" onclick="toggle()">
+                    <g>
+                        <rect width="30" height="5" x="10" y="10" fill="gray" />
+                        <rect width="30" height="5" x="10" y="20" fill="gray" />
+                        <rect width="30" height="5" x="10" y="30" fill="gray" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+        <div id="toggleBar">
+            <div class="col d-flex flex-column">
+                <h6>英語系國家</h6>
+                <a href="{{route('senior', ['area' => 'northeast'])}}" class="text-decoration-none">美國東北部</a>
+                <a href="{{route('senior', ['area' => 'west'])}}" class="text-decoration-none">美國西北部</a>
+                <a href="{{route('senior', ['area' => 'midwest'])}}" class="text-decoration-none">美國中西部</a>
+                <a href="{{route('senior', ['area' => 'south'])}}" class="text-decoration-none">美國南部</a>
+                <a href="{{route('senior', ['country' => 'canada'])}}" class="text-decoration-none">加拿大</a>
+                <a href="{{route('senior', ['country' => 'uk'])}}" class="text-decoration-none">英國</a>
+                <a href="{{route('senior', ['country' => 'australia'])}}" class="text-decoration-none">澳洲</a>
+                <a href="{{route('senior', ['country' => 'new zealand'])}}" class="text-decoration-none">其他</a>
+            </div>
+            <div class="col d-flex flex-column">
+                <h6>歐語系國家</h6>
+                <a href="{{route('senior', ['country' => 'france'])}}" class="text-decoration-none">法國</a>
+                <a href="{{route('senior', ['country' => 'germany'])}}" class="text-decoration-none">德國</a>
+                <a>義大利</a>
+                <a>其他</a>
+            </div>
+            <div class="col d-flex flex-column">
+                <h6>亞洲國家</h6>
+                <a href="{{route('senior', ['country' => 'taiwan'])}}" class="text-decoration-none">台灣</a>
+                <a href="{{route('senior', ['country' => 'japan'])}}" class="text-decoration-none">日本</a>
+                <a href="{{route('senior', ['country' => 'korea'])}}" class="text-decoration-none">韓國</a>
+                <a>其他</a>
+            </div>
+            <div class="col d-flex flex-column">
+                <h6>中國相關</h6>
+                <a>中國</a>
+                <a href="{{route('senior', ['country' => 'singapore'])}}" class="text-decoration-none">新加坡</a>
+                <a href="{{route('senior', ['country' => 'hong kong'])}}" class="text-decoration-none">香港</a>
+                <a href="{{route('senior', ['country' => 'macau'])}}" class="text-decoration-none">澳門</a>
+                <a>其他</a>
+            </div>
+        </div>
+        <!-- end of toggle menu section -->
     </div>
 
     <!-- senior cards broccoli ver -->

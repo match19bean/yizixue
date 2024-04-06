@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\University;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SeniorController extends Controller
 {
@@ -14,9 +15,7 @@ class SeniorController extends Controller
 
         $query = (new User)->query();
         $query->where('role', 'vip')->where('expired', '>=', now());
-//        if(auth()->check()){
-//            $query->where('id', '!=', auth()->user()->id);
-//        }
+
         if($request->filled('university'))
         {
             $university = University::where('slug', $request->university)->get();
@@ -25,7 +24,23 @@ class SeniorController extends Controller
             }
         }
 
-        $users = $query->inRandomOrder()->paginate();
+        if($request->filled('area'))
+        {
+            $university = University::where('area', Str::upper($request->area))->get();
+            if($university->isNotEmpty()){
+                $query->whereIn('university', $university->pluck('id'));
+            }
+        }
+
+        if($request->filled('country'))
+        {
+            $university = University::where('country', Str::upper($request->country))->get();
+            if($university->isNotEmpty()){
+                $query->whereIn('university', $university->pluck('id'));
+            }
+        }
+
+        $users = $query->paginate();
 
         return view('senior.index', compact('users'));
     }

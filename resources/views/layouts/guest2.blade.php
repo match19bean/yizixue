@@ -172,6 +172,14 @@
             }
         }
     });
+
+    //broccoli toggle bar function
+    function toggle() {
+        var burger = $("#burger");
+        var togglebar = $("#toggleBar");
+        burger.toggleClass("burgerTurn");
+        togglebar.toggleClass("noShow");
+    }
 </script>
 </body>
 
