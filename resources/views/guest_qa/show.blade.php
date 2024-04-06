@@ -53,21 +53,36 @@
                 <!-- attachments -->
                 <div class="attachment d-flex flex-row">
                     <!-- files -->
-                    <div class="file d-flex">
-                        <svg>
-                            <rect width="100%" height="100%" x="0" y="0" fill="white" />
-                        </svg>
-                    </div>
-                    <div class="file d-flex">
-                        <svg>
-                            <rect width="100%" height="100%" x="0" y="0" fill="white" />
-                        </svg>
-                    </div>
-                    <div class="file d-flex">
-                        <svg>
-                            <rect width="100%" height="100%" x="0" y="0" fill="white" />
-                        </svg>
-                    </div>
+                    @forelse($qna->attachments as $attachment)
+                        <a  class="text-decoration-none text-black">
+                            <div class="file d-flex">
+                                <svg>
+                                    <rect width="100%" height="80%" x="0" y="0" fill="white" />
+                                    <foreignObject width="120" height="100">
+                                        <body xmlns="http://www.w3.org/1999/xhtml">
+                                        <p style="font-size: 0.8rem;">{{pathinfo($attachment->file_name)['filename']}}</p>
+                                        </body>
+                                    </foreignObject>
+                                </svg>
+                            </div>
+                        </a>
+                    @empty
+                    @endforelse
+{{--                    <div class="file d-flex">--}}
+{{--                        <svg>--}}
+{{--                            <rect width="100%" height="100%" x="0" y="0" fill="white" />--}}
+{{--                        </svg>--}}
+{{--                    </div>--}}
+{{--                    <div class="file d-flex">--}}
+{{--                        <svg>--}}
+{{--                            <rect width="100%" height="100%" x="0" y="0" fill="white" />--}}
+{{--                        </svg>--}}
+{{--                    </div>--}}
+{{--                    <div class="file d-flex">--}}
+{{--                        <svg>--}}
+{{--                            <rect width="100%" height="100%" x="0" y="0" fill="white" />--}}
+{{--                        </svg>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

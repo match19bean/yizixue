@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\QnaAttachment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
@@ -42,6 +43,19 @@ class QnAController extends Controller
     public function save(Request $req)
     {
 
+        $req->validate([
+            'attachment.*' => 'file|max:2000|nullable',
+            "amount_up" => "integer|max:999999999|min:0",
+            "amount_down" => "integer|max:999999999|min:0",
+        ],[
+            'attachment.*.max' => "上傳檔案不得超過2M",
+            "amount_up.min" => "上限值不得低於:min",
+            "amount_up.max" => "上限值不得高於:max",
+            "amount_down.min" => "下限值不得低於:min",
+            "amount_down.max" => "下限值不得高於:max",
+        ]);
+
+
         $QnA = new QnA();
         $QnA->uuid = 'qa-'.uniqid();
         $QnA->nickname = $req->nickname;
@@ -71,6 +85,18 @@ class QnAController extends Controller
                     $qaCategoryRelation->qa_id = $qaId;
                     $qaCategoryRelation->save();
                 }
+            }
+        }
+
+        if($req->file('attachments')){
+            foreach($req->attachments as $attachment) {
+                $fileName = time().'-'.$attachment->getClientOriginalName();
+                $attachment->storeAs('qa_attachment', $fileName, 'admin');
+                QnaAttachment::create([
+                    'qa_id' => $QnA->id,
+                    'file_path' => '/qa_attachment/'.$fileName,
+                    'file_name' => $attachment->getClientOriginalName()
+                ]);
             }
         }
 

@@ -131,6 +131,18 @@
                                     <textarea id="article-ckeditor" name="qabody"></textarea>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="avatar" class="form-label">參考文件</label>
+                                    @if($errors->has('attachments'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->all()}}
+                                        </div>
+                                    @endif
+                                    <input type="file" id="imgInp" name="attachments[]" class="form-control">
+                                    <input type="file" id="imgInp" name="attachments[]" class="form-control">
+                                    <input type="file" id="imgInp" name="attachments[]" class="form-control">
+                                </div>
+                                <div class="mb-3">
                                     <label for="state" class="form-label">狀態</label>
                                     <select class="form-control" name="state" aria-label="Default select example">
                                         <option value="pending">審核中</option>

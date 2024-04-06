@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Integer;
 
 class QnA extends Model
 {
@@ -11,10 +12,10 @@ class QnA extends Model
 
     protected $guarded = [];
 
-//    protected $casts = [
-//        'contact_time' => 'datetime',
-//        'contact_time_end' => 'datetime'
-//    ];
+    protected $casts = [
+        'amount_up' => 'integer',
+        'amount_down' => 'integer'
+    ];
 
     public function getContactTime($date)
     {
@@ -39,6 +40,11 @@ class QnA extends Model
     public function collectQa()
     {
         return $this->hasMany(CollectQA::class, 'qa_id');
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(QnaAttachment::class, 'qa_id');
     }
 
 }
