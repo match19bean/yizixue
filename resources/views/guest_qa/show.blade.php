@@ -144,7 +144,7 @@
                             <rect x="45" width="630" height="126" rx="20" ry="20" fill="#BD9EBE"/>
                             <path d="M60.5,18.5c0,0-41,8-60-19c0,0,11,47.2,60,47.2" fill="#BD9EBE"/>
                             @if(auth()->guest() || !auth()->user()->isVip())
-                                <text x="30%" y="60%" fill="#ffffff">{{mb_substr($qna->line, 0, 1)}}</text>
+                                <text x="30%" y="60%" fill="#ffffff">{{mb_substr($qna->line, 0, 1)}}*************</text>
                             @else
                                 <text x="30%" y="60%" fill="#ffffff">{{$qna->line}}</text>
                             @endif
