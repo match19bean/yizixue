@@ -226,8 +226,11 @@ class UserController extends Controller
 
     public function referenceDownload($id)
     {
-        $file = UserReference::where('id', $id)->where('user_id', auth()->user()->id)->first();
+        $file = UserReference::where('id', $id)->first();
         if(is_null($file)){
+            return redirect()->back();
+        }
+        if(!file_exists(public_path('uploads'.$file->image_path))){
             return redirect()->back();
         }
 

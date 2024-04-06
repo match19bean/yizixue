@@ -68,7 +68,8 @@
             </div>
             <p class="state">在學中</P>
             <div class="socialBtn">
-                <i class="bi bi-facebook"></i>
+                <!-- commited the social btns -->
+                <!-- <i class="bi bi-facebook"></i>
                 <i class="bi bi-instagram"></i>
                 <svg viewBox="0 0 100 100">
                     <path fill="#ffffff" d="M48.8,0.2c0.9,0,1.8,0,2.7,0c0.5,0.3,1.1,0.2,1.7,0.2c2,0.1,4,0.3,5.9,0.7c13.6,2.7,24.3,9.6,32.2,21
@@ -94,8 +95,25 @@
                             C32.5,52.2,32.6,50.2,32.6,48.2C32.6,48.2,32.6,48.2,32.6,48.2z"/>
                     <path fill="#ffffff" d="M46.7,48.4c0,2,0,4,0,6c0,1.1-0.3,1.5-1.5,1.5c-1.1,0-1.6-0.4-1.6-1.5c0-4,0-8.1,0-12.1
                             c0-1.1,0.4-1.5,1.6-1.5c1.1,0,1.4,0.3,1.4,1.5C46.7,44.3,46.7,46.3,46.7,48.4z"/>
-                </svg>
-
+                </svg> -->
+                @if(is_null($Data['user']->profile_video))
+                <a class="text" onClick="alert('學長姐尚未上傳影音');">
+                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                </a>
+                @else
+                <a href="{{$Data['user']->profile_video}}" class="text" target="_blank">
+                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
+                </a>
+                @endif
+                @if(is_null($Data['user']->profile_voice))
+                    <a class="text" onClick="alert('學長姐尚未上傳影音');">
+                        <i class="bi bi-mic-fill"></i>
+                    </a>
+                @else
+                    <a href="{{$Data['user']->profile_voice}}" target="_blank">
+                        <i class="bi bi-mic-fill"></i>
+                    </a>
+                @endif
             </div>
         </div>
         <!-- detail section -->
@@ -175,19 +193,24 @@
             <hr>
             <!-- carousel section -->
             <div class="row">
-                <div class="col-12">
+                <div>
                     <h2>參考文件</h2>
+                    <!-- attachments -->
                     <div class="attachment d-flex flex-row">
                         <!-- files -->
                         @forelse($Data['user']->references as $reference)
-                            <div class="file d-flex">
-                                <svg>
-                                    <rect width="100%" height="100%" x="0" y="0" fill="white" />
-                                </svg>
-                                <a href="{{route('reference-download', $reference->id)}}" class="text-decoration-none text-black">
-                                    {{$reference->file_name}}
-                                </a>
-                            </div>
+                            <a href="{{route('reference-download', $reference->id)}}" class="text-decoration-none text-black">
+                                <div class="file d-flex">
+                                    <svg>
+                                        <rect width="100%" height="80%" x="0" y="0" fill="white" />
+                                        <foreignObject width="120" height="100">
+                                            <body xmlns="http://www.w3.org/1999/xhtml">
+                                            <p style="font-size: 0.8rem;">{{pathinfo($reference->file_name)['filename']}}</p>
+                                            </body>
+                                        </foreignObject>
+                                    </svg>
+                                </div>
+                            </a>
                         @empty
                             <div>
                                 尚無參考文件下載

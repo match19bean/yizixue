@@ -6,6 +6,39 @@
     src: url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 }
 
+@mixin taggleMenuFunction(){
+    #burger{
+        cursor: pointer;
+        transition: 0.1s;
+    }
+    .burgerTurn{transform: rotate(90deg);}
+    #toggleBar{
+        display: none;transition: 0.1s; transform-origin: 50% 0%;
+        flex-direction: row;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-top: solid 0.2rem $primeGray;
+        border-bottom: solid 0.2rem $primeGray;
+        div{
+            h6{font-weight: 800; 
+                background-color: $primePurpleLight;
+                color: white;
+                padding: 0.1rem;
+                border-radius: 3rem 3rem;
+                padding-left: 0.5rem;
+            }
+            a{
+                color: $primePurple;
+                padding-left: 0.5rem;
+            }
+        }
+    }
+    .noShow{
+        display: flex !important;
+        animation: toggleIn 0.1s both;
+    }
+}
+
 // navbar
 .navbar {
     width: 100%;
@@ -261,6 +294,11 @@
 }
 
 // Senior page style
+    // for taggle menu
+    .seniorListPage{
+        @include taggleMenuFunction();
+    }
+
 .item {
     width: 100%;
     border-radius: 30px;
@@ -479,6 +517,7 @@
             gap: 1rem;
             background-color: $primePurple;
             padding: 1rem;
+            a img{width: 3rem;}
             i{
                 font-size: 2.5rem;
                 color: white;
@@ -522,6 +561,26 @@
                         }
                     }
                 }
+            }
+        }
+    }
+    .attachment{
+        // background-color: aqua;
+        padding: 1.5rem 0 1.5rem;
+        justify-content: space-evenly;
+        .file{
+            background-color: $primePurpleLight;
+            justify-content: center;
+            align-items: end;
+            padding-bottom: 0.5rem;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 10%;
+            svg{
+                width: 80%;
+                height: 75%;
+                background-color: white;
+                border-radius: 10%;
             }
         }
     }
@@ -1176,3 +1235,13 @@ footer{
         }
     }
 }
+
+// university list page
+@keyframes toggleIn {
+    from{transform: scaleY(0);}
+    to{transform: scaleY(1);}
+}
+.uniListPage{
+    @include taggleMenuFunction();
+}
+
