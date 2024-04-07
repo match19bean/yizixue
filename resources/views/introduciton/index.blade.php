@@ -207,7 +207,7 @@
                                         <rect width="100%" height="80%" x="0" y="0" fill="white" />
                                         <foreignObject width="120" height="100">
                                             <body xmlns="http://www.w3.org/1999/xhtml">
-                                            <p style="font-size: 0.8rem;">{{pathinfo($reference->file_name)['filename']}}</p>
+                                            <p style="font-size: 0.8rem;">{{pathinfo($reference->file_name)['basename']}}</p>
                                             </body>
                                         </foreignObject>
                                     </svg>
@@ -234,11 +234,13 @@
                                     <!-- student profile pic -->
                                     <div class="studentProfile">
                                         <div class="studentImg">
-                                            @if(is_null($user->avatar))
-                                                <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap">
-                                            @else
-                                                <img src="{{ asset('uploads/'.$user->avatar) }}" alt="Card image cap">
-                                            @endif
+                                            <a href="{{route('get-introduction', $user->id)}}" class="text-decoration-none">
+                                                @if(is_null($user->avatar))
+                                                    <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap">
+                                                @else
+                                                    <img src="{{ asset('uploads/'.$user->avatar) }}" alt="Card image cap">
+                                                @endif
+                                            </a>
                                         </div>
                                         <!-- video Btn -->
                                         <div class="videoBtn">
@@ -281,10 +283,12 @@
                                         </div>
                                     </div>
                                     <!-- name card -->
+                                    <a href="{{route('get-introduction', $user->id)}}" class="text-decoration-none">
                                     <div class="name-card">
                                         <h4>{{ $user->name }}</h4>
                                         <h6>{{ !is_null($user->universityItem) ? $user->universityItem->english_name:'' }}</h6>
                                     </div>
+                                    </a>
                                     <!-- post tag -->
                                     <div class="postTags">
                                         @foreach($user->postCategory as $key => $postCategoryRelation)

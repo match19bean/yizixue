@@ -20,7 +20,7 @@ class PostController extends Controller
     public function list()
     {
         $uid = Auth::user()->id;
-        $posts = Post::where('uid', $uid)->get();
+        $posts = Post::where('uid', $uid)->orderBy('id', 'desc')->get();
         $QACategory = new PostCategory;
         $QACategoryRelation = new PostCategoryRelation;
         $Data = [

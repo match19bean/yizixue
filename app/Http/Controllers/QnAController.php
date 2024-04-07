@@ -18,7 +18,7 @@ class QnAController extends Controller
     public function list()
     {
         $uid = Auth::user()->id;
-        $QnA = QnA::where('uid', $uid)->get();
+        $QnA = QnA::where('uid', $uid)->orderBy('id','desc')->get();
         $QACategory = new QACategory;
         $QACategoryRelation = new QACategoryRelation;
         $Data = [

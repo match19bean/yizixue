@@ -60,7 +60,7 @@
                                     <rect width="100%" height="80%" x="0" y="0" fill="white" />
                                     <foreignObject width="120" height="100">
                                         <body xmlns="http://www.w3.org/1999/xhtml">
-                                        <p style="font-size: 0.8rem;">{{pathinfo($attachment->file_name)['filename']}}</p>
+                                        <p style="font-size: 0.8rem;">{{pathinfo($attachment->file_name)['basename']}}</p>
                                         </body>
                                     </foreignObject>
                                 </svg>
