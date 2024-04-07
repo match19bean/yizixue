@@ -54,7 +54,7 @@
                 <div class="attachment d-flex flex-row">
                     <!-- files -->
                     @forelse($qna->attachments as $attachment)
-                        <a href="{{route('attachment-download', $attachment->id)}}" class="text-decoration-none text-black">
+                        <a href="{{route('download-attachment', $attachment->id)}}" class="text-decoration-none text-black">
                             <div class="file d-flex">
                                 <svg>
                                     <rect width="100%" height="80%" x="0" y="0" fill="white" />
