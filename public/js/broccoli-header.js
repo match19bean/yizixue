@@ -19,7 +19,7 @@ $.ajax({
         });
     },
     error: function(error){
-        console.log(error);
+        // console.log(error);
     }
 })
 
@@ -68,7 +68,6 @@ function headerSlide(){
 function changePic(index)
 {
     let image_path = backendImages[index-1] !== undefined ? backendImages[index-1] : images[index-1];
-    console.log(image_path);
     $('#topic').text(text[index]+"，");
     $("#bannerImg").attr("src", image_path);
 }
