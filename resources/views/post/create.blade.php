@@ -70,6 +70,12 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label" style="color:#4C2A70;">選擇主題</label>
+                                    @if($errors->has('category'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('category')}}
+                                        </div>
+                                    @endif
                                     <div id="checkbox"
                                         style="border: 2px solid #4C2A70; padding: 10px; border-radius: 5px;">
                                         @foreach ($Data['categories'] as $category)

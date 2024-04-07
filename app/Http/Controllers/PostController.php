@@ -53,6 +53,13 @@ class PostController extends Controller
 
     public function save(Request $req)
     {
+
+        $req->validate([
+            'category' => 'array|max:3'
+        ],[
+            'category.max' => '不得超過:max個主題'
+        ]);
+
         $title = $req->title;
         $author = $req->author;
         $category = $req->category;
@@ -114,6 +121,12 @@ class PostController extends Controller
 
     public function update(Request $req) 
     {
+        $req->validate([
+            'category' => 'array|max:3'
+        ],[
+            'category.max' => '不得超過:max個主題'
+        ]);
+
         $title = $req->title;
         $author = $req->author;
         $category = $req->category;
