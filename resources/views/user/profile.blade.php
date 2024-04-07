@@ -244,7 +244,7 @@
                                         <p class="mb-0">大學</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0">{{ is_null(Auth::user()->universityItem)? '' : Auth::user()->universityItem->name }}</p>
+                                        <p class="text-muted mb-0">{{ is_null(Auth::user()->universityItem)? '' : Auth::user()->universityItem->english_name }}</p>
                                     </div>
                                 </div>
                                 <hr>
