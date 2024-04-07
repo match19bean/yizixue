@@ -68,7 +68,9 @@ Route::get('/edit-qa/{uuid}', 'QnAController@edit')->name('edit-qa');
 Route::post('/save-qa', 'QnAController@save')->name('save-qa');
 Route::post('/update-qa', 'QnAController@update')->name('update-qa');
 Route::get('/delete-qa/{uuid}', 'QnAController@delete')->name('delete-qa');
-Route::get('/delete-collect-qa/{uuid}', 'QnAController@delectCollectQa')->name('delete-collect-qa');
+Route::get('/delete-collect-qa/{uuid}', 'QnAController@deleteCollectQa')->name('delete-collect-qa');
+Route::get('/delete-attachment/{id}', 'QnAController@deleteAttachment')->name('delete-attachment');
+Route::get('/download-attachment/{id}', 'QnAController@attachmentDownload')->name('download-attachment');
 
 Route::get('/user/get', 'UserController@getAll');
 Route::get('/user/collect-user', 'UserController@collect')->name('collect-user');

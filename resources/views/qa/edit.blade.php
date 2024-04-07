@@ -70,6 +70,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">QA類別</label>
+                    @if($errors->has('category'))
+                        <div class="alert alert-danger alert-dismissible text-center">
+                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                            {{$errors->first('category')}}
+                        </div>
+                    @endif
                     <div id="checkbox">
                         @foreach ($Data['categories'] as $category)
                             <label>
@@ -116,6 +122,26 @@
                 <div class="mb-3">
                     <label for="state" class="form-label">內容</label>
                     <textarea id="article-ckeditor" name="qabody">{{ $Data['qa']->body }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="avatar" class="form-label">參考文件</label>
+                    @if($errors->has('attachments'))
+                        <div class="alert alert-danger alert-dismissible text-center">
+                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                            {{$errors->first('attachments')}}
+                        </div>
+                    @endif
+                    @if($Data['qa']->attachments->count() < 3)
+                        @for($i=$Data['qa']->attachments->count();$i<3;$i++)
+                        <input type="file" id="imgInp" name="attachments[]" class="form-control">
+                        @endfor
+                    @endif
+                    @forelse($Data['qa']->attachments as $attachment)
+                        <button class="btn btn-outline-primary">{{$attachment->file_name}}
+                            <a href="{{route('delete-attachment', $attachment->id)}}" class="btn btn-danger">刪除附檔</a>
+                        </button>
+                    @empty
+                    @endforelse
                 </div>
                 <div class="mb-3">
                     <label for="state" class="form-label">狀態</label>

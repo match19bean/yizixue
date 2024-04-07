@@ -125,8 +125,13 @@ class QnAController extends Controller
 
     public function update(Request $req) 
     {
+        $req->validate([
+            'category' => 'array|max:3'
+        ],[
+            'category.max' => 'QA類別不得超過:max個'
+        ]);
+
         $QnA = QnA::where('uuid', $req->uuid)->first();
-            
         $QnA->nickname = $req->nickname;
         $QnA->title = $req->title;
         $QnA->uid = $req->author;
@@ -157,6 +162,18 @@ class QnAController extends Controller
 
         $QnA->save();
 
+        if($req->file('attachments')){
+            foreach($req->attachments as $attachment) {
+                $fileName = time().'-'.$attachment->getClientOriginalName();
+                $attachment->storeAs('qa_attachment', $fileName, 'admin');
+                QnaAttachment::create([
+                    'qa_id' => $QnA->id,
+                    'file_path' => '/qa_attachment/'.$fileName,
+                    'file_name' => $attachment->getClientOriginalName()
+                ]);
+            }
+        }
+
         return back();
     }
 
@@ -165,12 +182,18 @@ class QnAController extends Controller
         $QnA = QnA::where('uuid', $uuid)->first();
         QACategoryRelation::where('qa_id', $QnA->id)->delete();
         CollectQA::where('qa_id', $QnA->id)->delete();
+        $QnA->attachments->each(function($item){
+           if(file_exists(public_path('uploads'.$item->file_path))){
+               unlink(public_path('uploads'.$item->file_path));
+           }
+           $item->delete();
+        });
         $QnA->delete();
 
         return back();
     }
 
-    public function delectCollectQa($uuid)
+    public function deleteCollectQa($uuid)
     {
 
         $QnA = QnA::where('uuid', $uuid)->first();
@@ -228,5 +251,38 @@ class QnAController extends Controller
         $qna = QnA::where('uuid', $uuid)->first();
 
         return view('qa.view_collect_qa', compact(['qna']));
+    }
+
+    public function deleteAttachment($id)
+    {
+        $attachment = QnaAttachment::find($id);
+        if(is_null($attachment))
+        {
+            return back();
+        }
+        if($attachment->qa->uid != auth()->user()->id)
+        {
+            return back();
+        }
+        if(file_exists(public_path('uploads'.$attachment->file_path)))
+        {
+            unlink(public_path('uploads'.$attachment->file_path));
+        }
+        $attachment->delete();
+
+        return response()->redirectToRoute('edit-qa', $attachment->qa->uuid);
+    }
+
+    public function attachmentDownload($id)
+    {
+        $file = QnaAttachment::find($id);
+        if(is_null($file)){
+            return redirect()->back();
+        }
+        if(!file_exists(public_path('uploads'.$file->file_path))){
+            return redirect()->back();
+        }
+
+        return response()->download(public_path('uploads'.$file->file_path, $file->file_name));
     }
 }
