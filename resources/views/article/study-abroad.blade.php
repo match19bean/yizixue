@@ -6,7 +6,7 @@
         <div class="row">
             <h4 class="mt-3">
                 <a class="text-decoration-none text-black" href="{{url('/')}}">首頁</a> >
-                留學誌
+                <a class="text-decoration-none text-black" href="{{url('study-abroad')}}">留學誌</a>
             </h4>
         </div>
         <!-- search bar -->
@@ -28,7 +28,7 @@
         </div>
         <!-- title -->
         <div class="row">
-            <h2 style="font-size: 3rem;color: #4C2A70">留學誌</h2>
+            <a class="text-decoration-none" href="{{url('study-abroad')}}"><h2 style="font-size: 3rem;color: #4C2A70">留學誌</h2></a>
         </div>
         <!-- main content -->
         <div class="row mt-4">
@@ -36,7 +36,11 @@
                 <!-- categories -->
                 <div class="row">
                     <ul class="list-group">
-
+                        <li class="list-group-item" style="background-color: #4C2A70">
+                            <a style="text-decoration: none;" class="text-white text-center" href="{{route('study-abroad')}}">
+                                <div class="border-bottom-light">全部文章</div>
+                            </a>
+                        </li>
                         @forelse($Data['category'] as $category)
                             <li class="list-group-item" style="background-color: #4C2A70">
                                 <a style="text-decoration: none;" class="text-white text-center" href="{{route('study-abroad', ['category_id' => $category->id])}}">
