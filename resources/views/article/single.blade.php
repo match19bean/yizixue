@@ -11,7 +11,7 @@
     </div>
     <!-- search bar -->
     <div class="searchBar">
-        <form>
+        <form method="get" action="{{route('study-abroad')}}">
             <svg x="0px" y="0px" viewBox="0 0 335.8 335.8">
                 <g>
                     <circle fill="#FFFFFF" cx="224.7" cy="111.1" r="77.6"/>
@@ -21,7 +21,8 @@
                 </g>
             </svg>
             <div class="inputDiv">
-                <input type="search">
+                <input type="search" name="title">
+                <button type="submit" style="display: none;"></button>
             </div>
         </form>
     </div>

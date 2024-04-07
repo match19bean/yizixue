@@ -97,7 +97,7 @@
                         <div class="col-9">
                             <div class="postTitle" style="font-size:2rem;">
                                 <h5 class="text-break">
-                                    {{ $post->title }}
+                                    <a href="{{route('article', $post->id)}}" class="text-decoration-none" style="color:#4C2A70">{{ $post->title }}</a>
                                 </h5>
                                 <p class="text-break">
                                     @forelse($post->category as $cate)
