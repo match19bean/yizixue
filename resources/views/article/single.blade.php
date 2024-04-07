@@ -46,7 +46,7 @@
         <div class="col postCategory">
             @if(!is_null($Data['article']->category))
                 @foreach($Data['article']->category as $category)
-                    <span class="btn btn-outline" style="border-color: #4C2A70; color: #4C2A70">#{{$category->postCategory->name}} </span>
+                    <a href="{{route('study-abroad', ['category_id' => $category->postCategory->id])}}"><span class="btn btn-outline" style="border-color: #4C2A70; color: #4C2A70">#{{$category->postCategory->name}} </span></a>
                 @endforeach
             @endif
         </div>
