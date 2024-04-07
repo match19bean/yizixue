@@ -56,10 +56,8 @@ class PostController extends Controller
 
         $req->validate([
             'category' => 'array|max:3',
-            'image_path' => 'required|file'
         ],[
             'category.max' => '不得超過:max個主題',
-            'image_path.required' => '圖片為必填欄位'
         ]);
 
         $title = $req->title;
@@ -69,10 +67,15 @@ class PostController extends Controller
         $tag = $req->tag;
         $postbody = $req->postbody;
 
-        $file = $req->file('image_path');
-        $fileName = time().'-'.$file->getClientOriginalName();
-        //If you want to specify the disk, you can pass that as the third parameter.
-        $file->storeAs('images', $fileName, 'admin');
+        if($req->has('image_path')){
+            $file = $req->file('image_path');
+            $fileName = time().'-'.$file->getClientOriginalName();
+            //If you want to specify the disk, you can pass that as the third parameter.
+            $file->storeAs('images', $fileName, 'admin');
+        } else {
+            $fileName = 'default_avatar.png';
+        }
+
 
         $Post = new Post();
         $Post->uuid = 'post-'.uniqid();

@@ -58,7 +58,7 @@ class UserController extends Controller
             'references.max.file' => '檔案不得超過2M',
             'description.max' => '字數不得超過500字',
             'skills.max' => '專長不得超過12個',
-            'post_categories.max' => '主是不得超過3個'
+            'post_categories.max' => '主題不得超過3個'
         ]);
 
         if($req->filled('post_categories')){

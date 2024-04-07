@@ -100,7 +100,7 @@ class QnAController extends Controller
             }
         }
 
-        return back();
+        return response()->redirectToRoute('list-all-qa');
     }
 
     public function edit($uuid)
