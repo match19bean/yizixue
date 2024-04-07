@@ -12,7 +12,7 @@
                   <div class="col-11 text-lg p-3" style="border-left-style: solid; border-top-style: solid; border-bottom-style: solid; border-color: #6D757D;">
                       <h2 class="d-flex">
                           <i class="fa fa-circle px-3" style="color:gray"></i>
-                          <a href="{{route('qna.show', $qa->id)}}" class="text-decoration-none text-gray-600">{{$qa->title}}</a>
+                          <a href="{{route('qna.show', $qa->id)}}" class="text-decoration-none text-gray-600 w-100">{{$qa->title}}</a>
                           <span class="w-100 text-right">
                               @if($qa->categoryRelation)
                                   @foreach($qa->categoryRelation as $relation)
@@ -23,7 +23,7 @@
                               @endif
                           </span>
                       </h2>
-                      <div class="row text-center">
+                      <div class="row">
                         {!! $qa->body !!}
                       </div>
                   </div>
