@@ -76,7 +76,7 @@
                             <p class="text-break">
                                 @forelse($post->category as $count => $cate)
                                     @if($count < 3)
-                                        <a href="{{route('study-abroad', ['category_id' => $cate->postCattegory->id])}}" class="text-decoration-none text-black">#{{$cate->postCategory->name}}</a>
+                                        <a href="{{route('study-abroad', ['category_id' => $cate->postCategory->id])}}" class="text-decoration-none text-black">#{{$cate->postCategory->name}}</a>
                                     @endif
                                 @empty
                                 @endforelse
