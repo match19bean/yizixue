@@ -33,9 +33,11 @@
                     <div class="row w-100 row-cols-3 text-center mt-5">
                         @foreach($Data['user']->postCategory as $theme)
                             <div class="col">
-                                <span class="w-75 btn text-white p-2" style="background-color: #4C2A70">
-                                    {{$theme->postCategory->name}}
-                                </span>
+                                <a href="{{route('study-abroad', ['category_id' => $theme->postCategory->id])}}" class="text-decoration-none">
+                                    <span class="w-75 btn text-white p-2" style="background-color: #4C2A70">
+                                        {{$theme->postCategory->name}}
+                                    </span>
+                                </a>
                             </div>
                         @endforeach
                     </div>
