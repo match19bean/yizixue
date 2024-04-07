@@ -55,9 +55,11 @@ class PostController extends Controller
     {
 
         $req->validate([
-            'category' => 'array|max:3'
+            'category' => 'array|max:3',
+            'image_path' => 'required|file'
         ],[
-            'category.max' => '不得超過:max個主題'
+            'category.max' => '不得超過:max個主題',
+            'image_path.required' => '圖片為必填欄位'
         ]);
 
         $title = $req->title;
@@ -96,7 +98,7 @@ class PostController extends Controller
             }
         }
 
-        return back();
+        return url('list-posts');
     }
 
     public function edit($uuid)
