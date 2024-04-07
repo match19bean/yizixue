@@ -16,7 +16,7 @@ class IntroductionController extends Controller
         }
 
         $Data['user'] = $user;
-        $Data['vip'] = User::with('postCategory')->with('skills')->get();
+        $Data['vip'] = User::where('role', 'vip')->where('expired', '>=', now())->with('postCategory')->with('skills')->get();
 
         return view('introduciton.index', compact(['Data']));
     }

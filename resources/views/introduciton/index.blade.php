@@ -234,13 +234,11 @@
                                     <!-- student profile pic -->
                                     <div class="studentProfile">
                                         <div class="studentImg">
-                                            <a href="{{route('get-introduction', $user->id)}}" class="text-decoration-none">
-                                                @if(is_null($user->avatar))
-                                                    <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap">
-                                                @else
-                                                    <img src="{{ asset('uploads/'.$user->avatar) }}" alt="Card image cap">
-                                                @endif
-                                            </a>
+                                            @if(is_null($user->avatar))
+                                                <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap">
+                                            @else
+                                                <img src="{{ asset('uploads/'.$user->avatar) }}" alt="Card image cap">
+                                            @endif
                                         </div>
                                         <!-- video Btn -->
                                         <div class="videoBtn">
@@ -283,12 +281,12 @@
                                         </div>
                                     </div>
                                     <!-- name card -->
-                                    <a href="{{route('get-introduction', $user->id)}}" class="text-decoration-none">
+{{--                                    <a href="{{route('get-introduction', $user->id)}}" class="text-decoration-none">--}}
                                     <div class="name-card">
                                         <h4>{{ $user->name }}</h4>
                                         <h6>{{ !is_null($user->universityItem) ? $user->universityItem->english_name:'' }}</h6>
                                     </div>
-                                    </a>
+{{--                                    </a>--}}
                                     <!-- post tag -->
                                     <div class="postTags">
                                         @foreach($user->postCategory as $key => $postCategoryRelation)
