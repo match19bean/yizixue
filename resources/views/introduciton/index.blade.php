@@ -9,7 +9,7 @@
             <div class="nameCard row justify-content-center text-white" style="color: #4C2A70; background-color: #BD9EBE;">
                 <h2 class='text-center text-white w-100'>{{$Data['user']->name}}</h2>
                 <h6 class="text-center w-100">
-                    {{!is_null($Data['user']->universityItem) ?$Data['user']->universityItem->name:''}}
+                    {{!is_null($Data['user']->universityItem) ?$Data['user']->universityItem->english_name:''}}
                 </h6>
             </div>
             <!-- post categ -->
@@ -137,7 +137,7 @@
                     <h2>學歷經歷</h2>
                 </div>
                 <p class="col-12">
-                    {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->name : '' }}
+                    {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name : '' }}
                 </p>
             </div>
             <hr>
@@ -283,7 +283,7 @@
                                     <!-- name card -->
                                     <div class="name-card">
                                         <h4>{{ $user->name }}</h4>
-                                        <h4>{{ !is_null($user->universityItem) ? $user->universityItem->name:'' }}</h4>
+                                        <h4>{{ !is_null($user->universityItem) ? $user->universityItem->englist_name:'' }}</h4>
                                     </div>
                                     <!-- post tag -->
                                     <div class="postTags">

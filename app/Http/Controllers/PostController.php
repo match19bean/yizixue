@@ -185,7 +185,9 @@ class PostController extends Controller
         PostCategoryRelation::where('post_id', $Post->id)->delete();
         LikePost::where('post_id', $Post->id)->delete();
         CollectPost::where('post_Id', $Post->id)->delete();
-        unlink(public_path('uploads'.$Post->image_path));
+        if(file_exists(public_path('uploads'.$Post->image_path))){
+            unlink(public_path('uploads'.$Post->image_path));
+        }
         $Post->delete();
 
         return back();
