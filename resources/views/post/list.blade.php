@@ -57,7 +57,7 @@
                                                         </span>
                                                     @endforeach
                                                 </h4>
-                                                <p>{!! substr($post->body, 0, 300) !!}...</p>
+                                                <p>{!! substr(strip_tags($post->body), 0, 300) !!}...</p>
                                             </div>
                                         </div>
                                     </div>
