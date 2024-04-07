@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="text-break content">
-                            {!!  \Illuminate\Support\Str::limit($post->body) !!}
+                            {!!  \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                             <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                         </div>
                         <div class="socialIcons">

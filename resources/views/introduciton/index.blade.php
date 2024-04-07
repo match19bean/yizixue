@@ -169,7 +169,7 @@
                                         <div class="px-3">
                                             <h3><a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;">{{$post->title}}</a></h3>
                                             <p>
-                                                {!! \Illuminate\Support\Str::limit($post->body) !!}
+                                                {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                             </p>
                                             <p class="text-right mb-0">
                                                 發布日期：{{$post->created_at->format('Y/m/d')}}
