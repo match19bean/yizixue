@@ -13,7 +13,7 @@ class CarouselController extends Controller
 
         $carousel->transform(function($item){
             return [
-                'image_path' => url('uploads'.$item->image_path),
+                'image_path' => url('uploads/'.$item->image_path),
             ];
         });
 
