@@ -124,18 +124,13 @@ function newsSlide(){
     }
     if(posts[currentNews-1] !== undefined){
         // 根據 currentPic 切換標題
-        $("#newsTopic").text(posts[currentNews-1].title);
+        $("#newsTopic").text(posts[currentNews-1].topic);
         // 根據 currentPic 切換圖片
-        $(".newsCard img").attr("src", "uploads"+posts[currentNews-1].image_path);
-        let tags = '';
-        $.each(posts[currentNews-1].category, function(i, object){
-            tags += '#'+object.post_category.name;
-        });
-
-        $(".newsCard .info .tag").text(tags);
+        $(".newsCard img").attr("src", posts[currentNews-1].image_path);
+        $(".newsCard .info .tag").text(posts[currentNews-1].category);
         $(".newsCard .info .meta").text(posts[currentNews-1].title);
         $(".newsCard .info .brief").text(encodeHTML(posts[currentNews-1].body));
-        $(".newsCard .info a").attr('href', 'article/'+posts[currentNews-1].id);
+        $(".newsCard .info a").attr('href', posts[currentNews-1].url);
     }
 }
 

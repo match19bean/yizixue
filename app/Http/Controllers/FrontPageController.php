@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BulletinBoard;
 use App\Post;
 use App\QACategory;
 use App\QACategoryRelation;
@@ -37,17 +38,35 @@ class FrontPageController extends Controller
 
     public function random()
     {
-        $users = User::where('expired', ">=", now())->pluck('id');
+        $users = User::where('role', 'vip')->where('expired', ">=", now())->pluck('id');
         $posts = Post::whereIn('uid', $users)->with('category.postCategory')->inRandomOrder()->limit(3)->get();
         $posts->transform(function($item){
             return [
+                'topic' => '留學誌',
                 'id' => $item->id,
                 'body' => Str::limit(strip_tags($item->body)),
                 'title' => $item->title,
-                'image_path' => $item->image_path,
-                "category" => $item->category
+                'image_path' => url('uploads/'.$item->image_path),
+                "category" => $item->category->transform(function($item){ return '#'.$item->postCategory->name; })->implode(''),
+                'url' => url('article/'.$item->id)
             ];
         });
+        $bullet = BulletinBoard::inRandomOrder()->limit(1)->get();
+        if($bullet->isNotEmpty())
+        {
+            $bullet->transform(function($item){
+               return [
+                   'topic' => '易子學公告',
+                   'id' => $item->id,
+                   'body' => Str::limit(strip_tags($item->message)),
+                   'title' => '最新公告',
+                   'image_path' => url('uploads/images/color_ezl.png'),
+                   "category" => '',
+                   'url' => route('bulletinboard')
+               ];
+            });
+        }
+        $posts->push($bullet->first());
         return response()->json($posts);
     }
 }
