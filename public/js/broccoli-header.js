@@ -68,7 +68,7 @@ function headerSlide(){
 function changePic(index)
 {
     let image_path = backendImages[index-1] !== undefined ? backendImages[index-1] : images[index-1];
-    $('#topic').text(text[index]+"，");
+    $('#topic').text(text[index-1]+"，");
     $("#bannerImg").attr("src", image_path);
 }
 
