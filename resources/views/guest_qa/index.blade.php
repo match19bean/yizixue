@@ -40,7 +40,7 @@
                             <div class="col-5 mx-2 row mx-auto" style="border: 2px solid black; border-radius: 10px;">
                                 <div class="col-6">
 {{--                                    <img src="{{asset('uploads/'.$post->author->avatar)}}" alt="" width="300" height="300">--}}
-                                    <img src="{{asset('uploads/'.$post->image_path)}}" style="border-radius: 20px; width: 100%; grid-column: 1/6; grid-row:1/5;">
+                                    <img src="{{asset('uploads/'.$post->image_path)}}" style="border-radius: 20px; grid-column: 1/6; grid-row:1/5;" width="300" height="300">
                                 </div>
                                 <div class="col-6 text-break">
                                     <h2 class="w-100"><a href="{{route('article', $post->id)}}" class="text-decoration-none text-black">{{$post->title}} </a></h2>
