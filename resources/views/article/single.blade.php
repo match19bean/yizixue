@@ -101,7 +101,7 @@
                             <div style="background-color: #BD9EBE" class="text-white" >
                                 <h2 class="card-title text-center " >{{ $Data['article']->author->name }}</h2>
                                 <h6 class="card-title text-center " style="background-color: #BD9EBE" >
-                                    {{ !is_null($Data['article']->universityItem) ? $Data['article']->author->universityItem->name: '' }}
+                                    {{ !is_null($Data['article']->universityItem) ? $Data['article']->author->universityItem->english_name: '' }}
                                 </h6>
                             </div>
                         </div>

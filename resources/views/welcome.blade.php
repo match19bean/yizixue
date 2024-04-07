@@ -123,7 +123,7 @@
                                         <!-- name card -->
                                         <div class="name-card">
                                             <h4>{{ $user->name }}</h4>
-                                            <h4>{{ !is_null($user->universityItem) ? $user->universityItem->name : '' }}</h4>
+                                            <h6>{{ !is_null($user->universityItem) ? $user->universityItem->english_name : '' }}</h6>
                                         </div>
                                         <!-- post tag -->
                                         <div class="postTags">
