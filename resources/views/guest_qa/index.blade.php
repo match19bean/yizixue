@@ -39,11 +39,12 @@
                         @foreach($posts as $post)
                             <div class="col-5 mx-2 row mx-auto" style="border: 2px solid black; border-radius: 10px;">
                                 <div class="col-6">
-                                    <img src="{{asset('uploads/'.$post->author->avatar)}}" alt="" width="300" height="300">
+{{--                                    <img src="{{asset('uploads/'.$post->author->avatar)}}" alt="" width="300" height="300">--}}
+                                    <img src="{{asset('uploads/'.$post->image_path)}}" alt="" width="300" height="300">
                                 </div>
                                 <div class="col-6 text-break">
                                     <h2 class="w-100">{{$post->title}} </h2>
-                                    <p>{!! \Illuminate\Support\Str::limit($post->body) !!}</p>
+                                    <p>{!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}</p>
                                     <p class=" text-right w-100">發布日期：{{$post->created_at->format('Y/m/d')}}</p>
                                 </div>
                             </div>
