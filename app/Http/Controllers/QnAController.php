@@ -65,7 +65,7 @@ class QnAController extends Controller
         $QnA->line = $req->line;
         $QnA->place = $req->place;
         $QnA->uid = $req->author;
-        $QnA->state = $req->state;
+//        $QnA->state = $req->state;
         $QnA->body = $req->qabody;
         $QnA->contact_time = $req->contact_time;
         $QnA->contact_time_end = $req->contact_time_end;
@@ -135,7 +135,7 @@ class QnAController extends Controller
         $QnA->nickname = $req->nickname;
         $QnA->title = $req->title;
         $QnA->uid = $req->author;
-        $QnA->state = $req->state;
+//        $QnA->state = $req->state;
         $QnA->body = $req->qabody;
         $QnA->phone = $req->phone;
         $QnA->line = $req->line;
