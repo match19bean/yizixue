@@ -166,7 +166,7 @@
                                 <!-- info part -->
                                 <div class="infoPart">
                                     <div class="px-3">
-                                        <h3><a href="{{ route('article-list', $Data['user']->id) }}" style="color: #4C2A70; text-decoration: none;">{{$post->title}}</a></h3>
+                                        <h3><a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;">{{$post->title}}</a></h3>
                                         <p>
                                             {!! \Illuminate\Support\Str::limit($post->body) !!}
                                         </p>
