@@ -107,20 +107,24 @@
                         </div>
                         @if(!is_null($Data['article']->author->postCategory))
                             <div class="row row-cols-3 mt-3 tags" style="justify-content: center">
-                                @foreach($Data['article']->author->postCategory as $postCategory)
-                                    <span class="col-3 btn text-white m-1 tags" style="background-color: #4C2A70; font-size: 0.6rem;">{{$postCategory->postCategory->name}}</span>
+                                @foreach($Data['article']->author->postCategory as $count => $postCategory)
+                                    @if($count < 3)
+                                        <span class="col-3 btn text-white m-1 tags" style="background-color: #4C2A70; font-size: 0.6rem;">{{$postCategory->postCategory->name}}</span>
+                                    @endif
                                 @endforeach
                             </div>
                         @endif
                         @if(!is_null($Data['article']->author->skills))
                             <div class="row row-cols-3 mt-2" style="justify-content: center">
-                                @foreach($Data['article']->author->skills as $skill)
+                                @foreach($Data['article']->author->skills as $count => $skill)
+                                    @if($count < 6)
                                         <span class="col-3 btn btn-outline-secondary m-1" style="font-size: 0.6rem;">{{ $skill->skill->name }}</span>
+                                    @endif
                                 @endforeach
                             </div>
                         @endif
 
-                            <a href="{{route('article-list', $Data['article']->author->id)}}" class="btn btn-outline text-center w-100">查看更多</a>
+                            <a href="{{route('article-list', $Data['article']->author->id)}}" class="btn btn-outline text-center w-100">查看更多{{$Data['article']->author->name}}的文章</a>
                     </div>
                 </div>
                 <!-- more posts of the author -->
@@ -140,7 +144,7 @@
                                             </p>
                                             <p>
                                                 <a href="{{ route('article', $post->id) }}" style="color:black; text-decoration: none;" class="text-break w-75">
-                                                    {!! \Illuminate\Support\Str::limit($post->body) !!}
+                                                    {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                                 </a>
                                             </p>
                                             <p class="text-right" style="color:gray; margin-right: 10%;">
@@ -180,7 +184,7 @@
                                     </p>
                                     <p >
                                         <a href="{{ route('article', $post->id) }}" style="color: black; text-decoration: none;" class="text-break w-75">
-                                            {!! \Illuminate\Support\Str::limit($post->body) !!}
+                                            {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                         </a>
                                     </p>
                                     <p class="text-right" style="color:gray; margin-right: 10%;">
