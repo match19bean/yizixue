@@ -47,12 +47,14 @@ class QnAController extends Controller
             'attachment.*' => 'file|max:2000|nullable',
             "amount_up" => "integer|max:999999999|min:0",
             "amount_down" => "integer|max:999999999|min:0",
+            "category" => "array|max:3"
         ],[
             'attachment.*.max' => "上傳檔案不得超過2M",
             "amount_up.min" => "上限值不得低於:min",
             "amount_up.max" => "上限值不得高於:max",
             "amount_down.min" => "下限值不得低於:min",
             "amount_down.max" => "下限值不得高於:max",
+            "category.max" => "主題不得超過:max個"
         ]);
 
 
@@ -100,7 +102,7 @@ class QnAController extends Controller
             }
         }
 
-        return response()->redirectToRoute('list-all-qa');
+        return redirect()->route('list-all-qa');
     }
 
     public function edit($uuid)

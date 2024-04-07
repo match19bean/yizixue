@@ -127,16 +127,12 @@
                                         </div>
                                         <!-- post tag -->
                                         <div class="postTags">
-                                            <?php
-                                            $PostCategory = $Data['PostCategory']->all();
-                                            $count = 0;
-                                            ?>
-                                            @foreach ($PostCategory as $cate)
+                                            @forelse ($user->postCategory as $count => $cate)
                                                 @if ($count < 3)
-                                                    <span href="#">#{{ $cate->name }}</span>
+                                                    <span href="#">#{{ $cate->postCategory->name }}</span>
                                                 @endif
-                                                <?php $count++; ?>
-                                            @endforeach
+                                            @empty
+                                            @endforelse
                                         </div>
                                         <?php
                                         $UserSkillRelation = $Data['UserSkillRelation']->where('user_id', $user->id)->get();
