@@ -176,7 +176,7 @@ class QnAController extends Controller
             }
         }
 
-        return back();
+        return redirect()->route('list-all-qa');
     }
 
     public function delete($uuid) 

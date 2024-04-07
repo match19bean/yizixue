@@ -173,7 +173,7 @@ class PostController extends Controller
         $Post->body = $postbody;
         $Post->save();
 
-        return back();
+        return redirect()->route('list-all-posts');
     }
 
     public function delete($uuid) 
