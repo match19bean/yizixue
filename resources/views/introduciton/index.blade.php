@@ -147,8 +147,8 @@
                 </div>
                 <div class="col-12">
                     <p>LINE:{{$Data['user']->line}}</p>
-                    <p>FB:{{$Data['user']->fb}}</p>
-                    <p>IG:{{$Data['user']->ig}}</p>
+                    <p>FB: @if(!is_null($Data['user']->fb)) <a href="{{$Data['user']->fb}}" class="text-black text-decoration-none"> {{ parse_url($Data['user']->fb, PHP_URL_PATH)}} </a> @else @endif</p>
+                    <p>IG: @if(!is_null($Data['user']->ig)) <a href="{{$Data['user']->ig}}" class="text-black text-decoration-none"> {{ parse_url($Data['user']->ig, PHP_URL_PATH)}} </a> @else @endif</p>
                 </div>
             </div>
             <hr>

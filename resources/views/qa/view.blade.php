@@ -116,13 +116,13 @@
                     <label for="state" class="form-label">內容</label>
                     <textarea id="article-ckeditor" name="qabody" disabled>{{ $Data['qa']->body }}</textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="state" class="form-label">狀態</label>
-                    <select class="form-control" name="state" aria-label="Default select example" disabled>
-                        <option value="pending" {{ $Data['qa']->state == 'pending' ? 'selected' : '' }}>審核中</option>
-                        <option value="approve" {{ $Data['qa']->state == 'approve' ? 'selected' : '' }}>已審核</option>
-                    </select>
-                </div>
+{{--                <div class="mb-3">--}}
+{{--                    <label for="state" class="form-label">狀態</label>--}}
+{{--                    <select class="form-control" name="state" aria-label="Default select example" disabled>--}}
+{{--                        <option value="pending" {{ $Data['qa']->state == 'pending' ? 'selected' : '' }}>審核中</option>--}}
+{{--                        <option value="approve" {{ $Data['qa']->state == 'approve' ? 'selected' : '' }}>已審核</option>--}}
+{{--                    </select>--}}
+{{--                </div>--}}
 {{--                <div class="mb-3">--}}
 {{--                    <label for="contact_time" class="form-label">聯絡時間</label>--}}
 {{--                    <select class="form-control" name="contact_time" aria-label="Default select example">--}}

@@ -142,13 +142,13 @@
                                     <input type="file" id="imgInp" name="attachments[]" class="form-control">
                                     <input type="file" id="imgInp" name="attachments[]" class="form-control">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="state" class="form-label">狀態</label>
-                                    <select class="form-control" name="state" aria-label="Default select example">
-                                        <option value="pending">審核中</option>
-                                        <option value="approve">已審核</option>
-                                    </select>
-                                </div>
+{{--                                <div class="mb-3">--}}
+{{--                                    <label for="state" class="form-label">狀態</label>--}}
+{{--                                    <select class="form-control" name="state" aria-label="Default select example">--}}
+{{--                                        <option value="pending">審核中</option>--}}
+{{--                                        <option value="approve">已審核</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
                                 <button type="submit" class="btn btn-primary">送出</button>
                             </form>
                         </div>
