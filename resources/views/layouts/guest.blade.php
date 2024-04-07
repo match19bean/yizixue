@@ -51,18 +51,20 @@
                 @if(auth()->check())
                     <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('home')}}">易子學系統</a></li>
                     <li class="nav-item">
-                        <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
-                                    @if(!is_null(auth()->user()->avatar))
-                                        <image x="0" y="0" xlink:href="{{asset('uploads/'.auth()->user()->avatar)}}" width="80" height="80"></image>
-                                    @else
-                                        <image x="0" y="0" xlink:href="{{asset('uploads/images/default_avatar.png')}}" width="80" height="80"></image>
-                                    @endif
-                                </pattern>
-                            </defs>
-                            <circle cx="40" cy="40" r="30" fill="url(#image)"/>
-                        </svg>
+                        <a href="{{route('home')}}">
+                            <svg height="80" width="80" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
+                                        @if(!is_null(auth()->user()->avatar))
+                                            <image x="0" y="0" xlink:href="{{asset('uploads/'.auth()->user()->avatar)}}" width="80" height="80"></image>
+                                        @else
+                                            <image x="0" y="0" xlink:href="{{asset('uploads/images/default_avatar.png')}}" width="80" height="80"></image>
+                                        @endif
+                                    </pattern>
+                                </defs>
+                                <circle cx="40" cy="40" r="30" fill="url(#image)"/>
+                            </svg>
+                        </a>
                     </li>
                 @else
                     <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('login')}}">註冊  |登入</a></li>
