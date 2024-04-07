@@ -98,7 +98,7 @@ class PostController extends Controller
             }
         }
 
-        return url('list-posts');
+        return redirect()->url('list-posts');
     }
 
     public function edit($uuid)
