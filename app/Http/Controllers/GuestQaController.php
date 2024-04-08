@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\QACategory;
 use App\QACategoryRelation;
 use App\QnA;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class GuestQaController extends Controller
 
         $qas = $query->with('categoryRelation')->paginate();
         $posts = Post::latest('created_at')->limit(2)->get();
-        return view('guest_qa.index', compact(['qas', 'posts']));
+        $categories = QACategory::all();
+        return view('guest_qa.index', compact(['qas', 'posts', 'categories']));
     }
 
     public function show($id)
@@ -31,7 +33,7 @@ class GuestQaController extends Controller
             return redirect()->back();
         }
         $sameqna = QACategoryRelation::whereIn('category_id', $qna->categoryRelation->pluck('category_id'))->inRandomOrder()->paginate();
-
-        return view('guest_qa.show', compact(['qna', 'sameqna']));
+        $categories = QACategory::all();
+        return view('guest_qa.show', compact(['qna', 'sameqna', 'categories']));
     }
 }
