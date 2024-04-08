@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="{{ asset('css/broccoli-color.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcomeP.css')}}">
     <!-- End of Broccoli code -->
-
-    <!-- owl js -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
@@ -125,6 +123,7 @@
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- owl function -->
 <script>
     $(".owl-carousel").owlCarousel({
         loop: true, // 循環播放
@@ -146,6 +145,19 @@
         }
     });
 </script>
+
+<!-- cards click function -->
+<script>
+function cardClickable(id) {
+    console.log(id);
+    location.href = "introduction/" + id;
+}
+
+function uniCardClick(uni){
+    location.href = "/senior?university=" + encodeURIComponent(uni);
+}
+</script>
+<!-- end of cards click function -->
 <script src="{{ asset('js/broccoli-header.js')}}"></script>
 </body>
 

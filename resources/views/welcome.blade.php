@@ -27,11 +27,11 @@
                     <div class="owl-carousel owl-theme cards">
 
                         @foreach ($Data['University'] as $key => $university)
-                            <div class="item">
+                            <div class="item" onclick="uniCardClick('{{ $university->slug }}')">
                                 <div>
                                     <div class="card">
-                                        <div>
-                                            <img src="{{asset($university->image_path)}}" width="200" height="200" alt="Card image cap">
+                                        <div class=" d-flex justify-content-center">
+                                            <span style="background-image: url('{{asset($university->image_path)}}') ;" class="bgImg">&nbsp</span>
                                         </div>
                                     </div>
                                     <div>
@@ -66,7 +66,7 @@
                     <div class="owl-carousel owl-theme studentNav">
                         @foreach ($Data['Users'] as $key => $user)
                             <!-- student card -->
-                            <div class="item studentC">
+                            <div class="item studentC" onclick="cardClickable({{ $user->id }})">
                                 <div>
                                     <div class="cards">
                                         <!-- <a href="{{ url('introduction/'.$user->id) }}"> -->
@@ -74,26 +74,32 @@
                                         <div class="studentProfile">
                                             <div class="studentImg">
                                                 @if(is_null($user->avatar))
-                                                    <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap" width="200" height="200">
+                                                    <!-- <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap" width="200" height="200"> -->
+                                                    <div class=" d-flex justify-content-center">
+                                                        <span style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;" class="bgImg">&nbsp</span>
+                                                    </div>
                                                 @else
-                                                    <img src="/uploads/{{ $user->avatar }}" alt="Card image cap" width="200" height="200">
+                                                    <!-- <img src="/uploads/{{ $user->avatar }}" alt="Card image cap" width="200" height="200"> -->
+                                                    <div class=" d-flex justify-content-center">
+                                                        <span style="background-image: url('/uploads/{{ $user->avatar }}');" class="bgImg">&nbsp</span>
+                                                    </div>
                                                 @endif
 
                                             </div>
                                             <!-- video Btn -->
-                                            <div class="videoBtn">
+                                            <div class="videoBtn" onclick="event.stopPropagation(); event.preventDefault();">
                                                 @if(is_null($user->profile_video))
                                                     <a class="text" onClick="alert('學長姐尚未上傳影音');">
                                                         <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
                                                     </a>
                                                 @else
-                                                    <a href="{{ $user->profile_video }}" class="text" target="_blank">
+                                                    <a href="{{ $user->profile_video }}" class="text">
                                                         <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
                                                     </a>
                                                 @endif
                                             </div>
                                             <!-- react icons -->
-                                            <div class="react">
+                                            <div class="react d-flex flex-row justify-content-evenly align-items-center" onclick="event.stopPropagation(); event.preventDefault();">
                                                 @if(auth()->check())
                                                     <i class="fa fa-heart"
                                                        style="
@@ -126,10 +132,10 @@
                                             <h6>{{ !is_null($user->universityItem) ? $user->universityItem->english_name : '' }}</h6>
                                         </div>
                                         <!-- post tag -->
-                                        <div class="postTags">
+                                        <div class="postTags row row-cols-3 mt-2 justify-content-center">
                                             @forelse ($user->postCategory as $count => $cate)
                                                 @if ($count < 3)
-                                                    <span href="#">#{{ $cate->postCategory->name }}</span>
+                                                    <span href="#" class="col-3 btn btn-outline-secondary m-1" style="font-size: 0.6rem;">#{{ $cate->postCategory->name }}</span>
                                                 @endif
                                             @empty
                                             @endforelse
@@ -138,14 +144,13 @@
                                         $UserSkillRelation = $Data['UserSkillRelation']->where('user_id', $user->id)->get();
                                         ?>
                                         <!-- skill tag -->
-                                        <div class="skillTags">
+                                        <div class="skillTags row row-cols-3 mt-2 justify-content-center">
                                             @foreach ($UserSkillRelation as $key => $cateId)
                                                 <?php
                                                 $cate = $Data['Skills']->where('id', $cateId->skill_id)->first();
                                                 ?>
-
-                                                @if($key<6)
-                                                    <span href="#">#{{ $cate->name }}</span>
+                                                @if($key < 6)
+                                                    <span href="#" class="col-3 btn btn-outline-secondary m-1" style="font-size: 0.6rem;">#{{ $cate->name }}</span>
                                                     @if($key==2)
                                                         <br>
                                                     @endif
@@ -179,9 +184,9 @@
                 <div class="qaSection">
                     @foreach($Data['QaCategory']->take(4) as $category)
                         <div class="card">
-                            <svg width="70" height="70">
-                                <rect width="70" height="70" x="0" y="0" fill="gray"/>
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-airplane-engines" viewBox="0 0 16 16">
+                            <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.35 4.35 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0M7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1s.458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7z"/>
+                        </svg>
                             <div>
                                 <h5>
                                     <a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">
@@ -209,9 +214,9 @@
                 <div class="qaSection">
                     @foreach($Data['QaCategory']->take(-4) as $category)
                         <div class="card">
-                            <svg width="70" height="70">
-                                <rect width="70" height="70" x="0" y="0" fill="gray"/>
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-marker-tip" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5 6.064-1.281-4.696A.5.5 0 0 0 9.736 9H6.264a.5.5 0 0 0-.483.368l-1.28 4.696A6.97 6.97 0 0 0 8 15c1.275 0 2.47-.34 3.5-.936m.873-.598a7 7 0 1 0-8.746 0l1.19-4.36a1.5 1.5 0 0 1 1.31-1.1l1.155-3.851c.213-.713 1.223-.713 1.436 0l1.156 3.851a1.5 1.5 0 0 1 1.31 1.1z"/>
+                        </svg>
                             <div>
                                 <h5>
                                     <a href="{{route('qna', ['category_id'=> $category->id])}}" class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a>
@@ -238,7 +243,7 @@
         </section>
 
         <!-- join -->
-        <section class="joinSection">
+        <section class="joinSection" style="background-image: url('{{asset('uploads/images/join-banner.jpeg')}}');background-position: center; background-size: cover;">
             <div>
                 <p>親身經驗</p>
                 <a style="background:#45ecd9; border: none" class="btn btn-primary btn-lg px-5" href="{{route('login')}}">加入 ｜ 易子學</a>
@@ -255,7 +260,9 @@
             <div class="bg-light">
                 <div class="newsCard">
                     @if(!is_null($Data['Post']))
-                    <img src="{{asset('uploads/'.$Data['Post']->image_path)}}" alt="news-pic">
+                    <div class=" d-flex justify-content-center">
+                        <span style="background-image: url('{{asset('uploads'.$Data['Post']->image_path)}}') ;" class="bgImg">&nbsp</span>
+                    </div>
                     <div class="info">
                         <h5 id="newsTopic">{{$Data['Post']->title}}</h5>
                         <p class="tag">

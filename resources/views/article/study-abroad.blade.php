@@ -99,15 +99,15 @@
                         </div>
                         <!-- Post Contents -->
                         <div class="col-9">
-                            <div class="postTitle" style="font-size:2rem;">
-                                <h5 class="text-break w-100">
+                            <div class="postTitle row" style="font-size:2rem;">
+                                <h5 class="col-7">
                                     <a href="{{route('article', $post->id)}}" class="text-decoration-none" style="color:#4C2A70">{{ $post->title }}</a>
                                 </h5>
-                                <p class="text-break">
+                                <p class="text-break col-5">
                                     @forelse($post->category as $count => $cate)
                                         @if($count < 3)
-                                            <a href="{{route('study-abroad', ['category_id' => $cate->postCategory->id])}}" class="text-decoration-none" style="color: #4C2A70;">
-                                                <span class="mx-4" style="color: #4C2A70;">#{{$cate->postCategory->name}} </span>
+                                            <a href="{{route('study-abroad', ['category_id' => $cate->postCategory->id])}}" class="text-decoration-none m-1 p-1">
+                                                <span>{{$cate->postCategory->name}} </span>
                                             </a>
                                         @endif
                                     @empty

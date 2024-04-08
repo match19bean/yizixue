@@ -60,7 +60,7 @@
 
 <body>
 <!-- Responsive navbar-->
-<div class="container-fluid px-5">
+<div >
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
         <a class="navbar-brand" href="{{url('/')}}">
             <img src="{{asset('uploads/images/logo.png')}}" alt="logo" class="w-25" id="logo">
@@ -111,18 +111,18 @@
 </div>
 
 <!-- Footer-->
-<div class="container-fluid px-5 mt-3">
+<div class="mt-3">
     <footer class="py-5 bg-dark footer">
         <div class="row text-center text-white">
-        <div class="col-md-4">
+        <div class="col-md-4 d-flex flex-column justify-content-start align-items-center">
             <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
             <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
             <p>統一編號：83453577</p>
         </div>
-            <div class="col-md-8">
-                <div class="row">
+            <div class="col-md-8 d-flex flex-row align-items-start justify-content-evenly">
+                <div class="row w-100">
                     <div class="col-md-3">
-                        <p style="font-size: 1.5rem;">加入 | 易子學</p>
+                        <p>加入 | 易子學</p>
                         <a href="{{route('login')}}" style="text-decoration: none; color:white; pb-5">登入/註冊</a>
                         <br>
                         <a href="">聯絡我們</a>
@@ -182,7 +182,25 @@
         burger.toggleClass("burgerTurn");
         togglebar.toggleClass("noShow");
     }
+
+    // join yzl function
+    function joinYZL(togglebar){
+        target = $("#joinYZL");
+        target.toggleClass("d-flex flex-column align-items-center");
+    }
 </script>
+<!-- cards click function -->
+<script>
+function cardClickable(id) {
+    console.log(id);
+    location.href = "introduction/" + id;
+}
+
+function uniCardClick(uni){
+    location.href = "/senior?university=" + encodeURIComponent(uni);
+}
+</script>
+<!-- end of cards click function -->
 </body>
 
 </html>

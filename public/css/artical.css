@@ -137,19 +137,28 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  align-items: end;
+  align-items: center;
+  justify-content: start;
 }
 .postsSection .postTitle h5 {
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: #4C2A70;
 }
-.postsSection .postTitle h5,
 .postsSection .postTitle p {
-  margin: 0 10px 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.postsSection .postTitle p {
-  font-size: 1rem;
-  color: black;
+.postsSection .postTitle p a {
+  background-color: #4C2A70;
+  border-radius: 3px;
+}
+.postsSection .postTitle p a span {
+  font-size: 0.7rem;
+  color: white;
+  display: block;
+  height: -moz-min-content;
+  height: min-content;
 }
 .postsSection .content {
   color: #C1C1C1;
@@ -178,7 +187,6 @@
   margin: 5px;
 }
 .postsSection .socialIcons i::after {
-  content: "";
   font-size: 1rem;
   font-family: Rubik;
   text-decoration: none;
@@ -278,23 +286,27 @@
   width: 100%;
   flex-wrap: wrap;
 }
+.seniorPage a {
+  text-decoration: none;
+}
 .seniorPage .studentC {
-  height: 24.5rem !important;
-  margin: 10px;
+  height: 27rem !important;
   padding: 10px;
   display: grid;
-  grid-template-rows: auto 30px;
+  grid-template-rows: 90% 10%;
   max-width: 18.5rem;
   min-width: 17rem;
+  margin: 1%;
+  cursor: pointer;
 }
 .seniorPage .studentC .cards {
   grid-column: 1/2;
   display: grid;
-  grid-template-rows: repeat(12, auto);
+  grid-template-rows: 40% 25% 15% 20%;
   height: 100%;
 }
 .seniorPage .studentC .cards .studentProfile {
-  grid-row: 1/8;
+  grid-row: 1/2;
   grid-column: 1/2;
   display: grid;
   grid-template-columns: repeat(5, auto);
@@ -305,20 +317,25 @@
   grid-column: 1/4;
   grid-row: 1/13;
 }
-.seniorPage .studentC .cards .studentProfile .studentImg img {
-  padding: 2px;
-  border-radius: 15%;
+.seniorPage .studentC .cards .studentProfile .studentImg .bgImg {
+  display: block;
   width: 10rem;
-  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
 }
 .seniorPage .studentC .cards .studentProfile .videoBtn {
   grid-column: 4/5;
   grid-row: 3/6;
-  padding: 30px;
+  padding: 15px;
 }
 .seniorPage .studentC .cards .studentProfile .react {
   grid-column: 4/6;
   grid-row: 6/8;
+}
+.seniorPage .studentC .cards .studentProfile .react i {
+  font-size: 1.3rem !important;
 }
 .seniorPage .studentC .cards .studentProfile .react .fa-heart {
   font-size: 15px;
@@ -333,7 +350,7 @@
   font-family: "Rubik";
 }
 .seniorPage .studentC .cards .name-card {
-  grid-row: 7/10;
+  grid-row: 2/3;
   grid-column: 1/2;
   padding: 0 !important;
   justify-self: end;
@@ -342,7 +359,7 @@
   color: white;
 }
 .seniorPage .studentC .cards .postTags {
-  grid-row: 10/11;
+  grid-row: 3/4;
   grid-column: 1/2;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -354,9 +371,11 @@
   margin: 5px;
   background: #4C2A70;
   color: #FFFFFF;
+  height: -moz-min-content !important;
+  height: min-content !important;
 }
 .seniorPage .studentC .cards .skillTags {
-  grid-row: 11/13;
+  grid-row: 4/5;
   grid-column: 1/2;
   text-align: center;
   margin-bottom: 5px;
@@ -365,15 +384,13 @@
 }
 .seniorPage .studentC .cards .skillTags span {
   font-size: 12px;
-  padding: 5px;
+  padding: 1px;
   margin: 5px;
-  line-height: 35px;
   color: #4C2A70;
   border: 1px solid #4C2A70;
   border-radius: 5px;
-}
-.seniorPage .studentC .cards a {
-  text-decoration: none;
+  height: -moz-min-content !important;
+  height: min-content !important;
 }
 
 .introduction .introCard {
@@ -386,6 +403,13 @@
   grid-row: 1/12;
   margin: 2%;
   border-radius: 10%;
+}
+.introduction .introCard .portriat span {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-position: center;
+  background-size: cover;
 }
 .introduction .introCard .nameCard {
   grid-column: 3/6;
@@ -455,7 +479,8 @@
   margin: 1%;
   width: 40vw;
   padding: 0;
-  border-radius: 30px;
+  border-radius: 20px;
+  border: solid 1px #BD9EBE !important;
   display: grid;
   grid-template-columns: repeat(6, auto);
   box-shadow: -5px 5px 10px #C1C1C1;
@@ -463,8 +488,16 @@
 .introduction .detail .postCard .card .imgPart {
   grid-column: 1/3;
   grid-row: 1/2;
-  width: 100%;
+  width: 8rem;
+  padding: 10%;
   border-radius: 30px;
+}
+.introduction .detail .postCard .card .imgPart span {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
 }
 .introduction .detail .postCard .card .infoPart {
   grid-column: 3/7;
@@ -479,27 +512,26 @@
 .introduction .detail .postCard .card .infoPart div p {
   font-size: 1rem;
 }
+.introduction .detail .postCard .card .infoPart div a.readMore {
+  font-size: 0.8rem;
+  color: #BD9EBE;
+  width: 100%;
+  text-align: end;
+  text-decoration: none;
+}
 .introduction .attachment {
   padding: 1.5rem 0 1.5rem;
   justify-content: space-evenly;
 }
 .introduction .attachment .file {
-  background-color: #BD9EBE;
-  justify-content: center;
+  justify-content: start;
   align-items: end;
-  padding-bottom: 0.5rem;
   width: 8rem;
   height: 8rem;
   border-radius: 10%;
 }
-.introduction .attachment .file svg {
-  width: 80%;
-  height: 75%;
-  background-color: white;
-  border-radius: 10%;
-}
 .introduction .carouselSection .item {
-  width: 90%;
+  width: 100%;
   border-radius: 30px;
   border: solid 1px #4C2A70;
 }
@@ -508,8 +540,13 @@
   padding: 10px;
   z-index: -1;
 }
-.introduction .carouselSection .item div .card img {
-  padding: 20px;
+.introduction .carouselSection .item div .card .bgImg {
+  width: 80%;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
 }
 .introduction .carouselSection .item div .name-card {
   padding: 30px;
@@ -558,21 +595,22 @@
   transition: 0.1s !important;
 }
 .introduction .carouselSection .studentC {
-  height: 24.5rem !important;
+  height: 27rem !important;
   padding: 10px;
   display: grid;
-  grid-template-rows: auto 30px;
+  grid-template-rows: 90% 10%;
   max-width: 18.5rem;
   min-width: 17rem;
+  cursor: pointer;
 }
 .introduction .carouselSection .studentC .cards {
   grid-column: 1/2;
   display: grid;
-  grid-template-rows: repeat(12, auto);
+  grid-template-rows: 40% 25% 15% 20%;
   height: 100%;
 }
 .introduction .carouselSection .studentC .cards .studentProfile {
-  grid-row: 1/8;
+  grid-row: 1/2;
   grid-column: 1/2;
   display: grid;
   grid-template-columns: repeat(5, auto);
@@ -583,11 +621,13 @@
   grid-column: 1/4;
   grid-row: 1/13;
 }
-.introduction .carouselSection .studentC .cards .studentProfile .studentImg img {
-  padding: 2px;
-  border-radius: 15%;
+.introduction .carouselSection .studentC .cards .studentProfile .studentImg .bgImg {
+  display: block;
   width: 10rem;
-  height: 10rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
 }
 .introduction .carouselSection .studentC .cards .studentProfile .videoBtn {
   grid-column: 4/5;
@@ -597,6 +637,9 @@
 .introduction .carouselSection .studentC .cards .studentProfile .react {
   grid-column: 4/6;
   grid-row: 6/8;
+}
+.introduction .carouselSection .studentC .cards .studentProfile .react i {
+  font-size: 1.3rem !important;
 }
 .introduction .carouselSection .studentC .cards .studentProfile .react .fa-heart {
   font-size: 15px;
@@ -611,7 +654,7 @@
   font-family: "Rubik";
 }
 .introduction .carouselSection .studentC .cards .name-card {
-  grid-row: 8/10;
+  grid-row: 2/3;
   grid-column: 1/2;
   padding: 0 !important;
   justify-self: end;
@@ -620,7 +663,7 @@
   color: white;
 }
 .introduction .carouselSection .studentC .cards .postTags {
-  grid-row: 10/11;
+  grid-row: 3/4;
   grid-column: 1/2;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -632,9 +675,11 @@
   margin: 5px;
   background: #4C2A70;
   color: #FFFFFF;
+  height: -moz-min-content !important;
+  height: min-content !important;
 }
 .introduction .carouselSection .studentC .cards .skillTags {
-  grid-row: 11/13;
+  grid-row: 4/5;
   grid-column: 1/2;
   text-align: center;
   margin-bottom: 5px;
@@ -643,12 +688,13 @@
 }
 .introduction .carouselSection .studentC .cards .skillTags span {
   font-size: 12px;
-  padding: 5px;
+  padding: 1px;
   margin: 5px;
-  line-height: 35px;
   color: #4C2A70;
   border: 1px solid #4C2A70;
   border-radius: 5px;
+  height: -moz-min-content !important;
+  height: min-content !important;
 }
 
 .postsSection-artical-list {
@@ -741,7 +787,7 @@
   margin: 5px;
 }
 .postsSection-artical-list .socialIcons i::after {
-  content: "";
+  content: "8";
   font-size: 1rem;
   font-family: Rubik;
   text-decoration: none;
@@ -875,7 +921,7 @@
   margin: 5px;
 }
 .collectPost .postsSection .socialIcons i::after {
-  content: "";
+  content: "8";
   font-size: 1rem;
   font-family: Rubik;
   text-decoration: none;
@@ -970,28 +1016,40 @@
 .singleArticle .authorDetail .authorCard .avatar .tags {
   justify-content: center !important;
 }
-.singleArticle .authorDetail .moreArticles {
-  background-color: white;
-  border: 2px solid black;
-  border-radius: 30px;
-  box-shadow: 10px 10px 10px #5b5b5b;
-}
-.singleArticle .authorDetail .moreArticles img {
-  border-radius: 30px;
-}
 .singleArticle .moreArticles {
   background-color: white;
-  border: 2px solid black;
-  border-radius: 30px;
-  box-shadow: 10px 10px 10px #C1C1C1;
+  border: 2px solid #BD9EBE !important;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px #5b5b5b;
+  height: 15rem;
 }
-.singleArticle .moreArticles img {
+.singleArticle .moreArticles .bgImg {
   border-radius: 30px;
+  width: 100%;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
+.singleArticle .moreArticles a.readMore {
+  display: block;
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: end;
+  margin-bottom: 2%;
+  text-decoration: none;
+  color: #4C2A70;
+  border-bottom: solid 2px #C1C1C1;
 }
 
+footer .col-md-4 {
+  border-right: solid 2px white;
+}
 footer .col-md-4 img {
   width: 15rem;
-  margin: 3rem;
+  margin-bottom: 10%;
+  padding: 3px;
 }
 footer .col-md-4 .copyright {
   font-size: 0.6rem;
@@ -1003,8 +1061,11 @@ footer .row .col-md-3 {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  gap: 5px;
-  letter-spacing: 0.5rem;
+  gap: 2px;
+  letter-spacing: 0.2rem;
+}
+footer .row .col-md-3 p {
+  font-size: 1.1rem;
 }
 footer .row .col-md-3 h6 {
   font-size: 1.2rem;
@@ -1014,6 +1075,48 @@ footer .row .col-md-3 a {
   color: white;
 }
 
+.question-and-answer-page a.readMore {
+  display: block;
+  font-size: 0.8rem;
+  color: #BD9EBE;
+  width: 100%;
+  text-align: end;
+  text-decoration: none;
+  border-bottom: solid 2px #C1C1C1;
+}
+.question-and-answer-page .qaShowToggle #burger {
+  cursor: pointer;
+  transition: 0.1s;
+}
+.question-and-answer-page .qaShowToggle .burgerTurn {
+  transform: rotate(90deg);
+}
+.question-and-answer-page .qaShowToggle #toggleBar {
+  display: none;
+  transition: 0.1s;
+  transform-origin: 50% 0%;
+  flex-direction: row;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-top: solid 0.2rem #C1C1C1;
+  border-bottom: solid 0.2rem #C1C1C1;
+}
+.question-and-answer-page .qaShowToggle #toggleBar div h6 {
+  font-weight: 800;
+  background-color: #BD9EBE;
+  color: white;
+  padding: 0.1rem;
+  border-radius: 3rem 3rem;
+  padding-left: 0.5rem;
+}
+.question-and-answer-page .qaShowToggle #toggleBar div a {
+  color: #4C2A70;
+  padding-left: 0.5rem;
+}
+.question-and-answer-page .qaShowToggle .noShow {
+  display: flex !important;
+  animation: toggleIn 0.1s both;
+}
 .question-and-answer-page .qaSection .border-b-line {
   border-bottom: 0.1rem solid #858796 !important;
 }
@@ -1025,40 +1128,19 @@ footer .row .col-md-3 a {
   justify-content: space-evenly;
 }
 .question-and-answer-page .qaSection .attachment .file {
-  background-color: #BD9EBE;
-  justify-content: center;
+  justify-content: start;
   align-items: end;
-  padding-bottom: 0.5rem;
   width: 8rem;
   height: 8rem;
   border-radius: 10%;
 }
-.question-and-answer-page .qaSection .attachment .file svg {
-  width: 80%;
-  height: 75%;
-  background-color: white;
-  border-radius: 10%;
-}
 .question-and-answer-page .qaSection .avatarName {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}
-.question-and-answer-page .qaSection .avatarName .avatar {
-  grid-column: 3/5;
-  grid-row: 1/2;
-  z-index: 2;
-}
-.question-and-answer-page .qaSection .avatarName .avatar img {
-  border-radius: 50%;
-  border: solid #5b5b5b 2px;
 }
 .question-and-answer-page .qaSection .avatarName .nameCard {
-  grid-column: 4/13;
-  grid-row: 1/2;
   z-index: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
 }
 .question-and-answer-page .qaSection .contact p {
   margin: 0;
@@ -1074,33 +1156,82 @@ footer .row .col-md-3 a {
 }
 .question-and-answer-page .qaSection .card-footer {
   border-radius: 0 0 1rem 1rem !important;
+  cursor: pointer;
 }
-.question-and-answer-page .similarQ div.titleInfo {
-  display: grid;
-  grid-template-columns: repeat(12, auto);
-  grid-template-rows: 50% 50%;
+.question-and-answer-page .qaSection .card-footer #joinYZL {
+  background-color: #BD9EBE;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+  display: none;
 }
-.question-and-answer-page .similarQ div.titleInfo i {
-  grid-column: 1/2;
-  grid-row: 1/2;
+.question-and-answer-page .qaSection .card-footer #joinYZL a {
+  background-color: #4C2A70;
+  color: white;
+  font-weight: 800;
+  font-size: 2rem;
+  border-radius: 3rem;
+  padding: 8%;
+  text-decoration: none;
 }
-.question-and-answer-page .similarQ div.titleInfo a {
-  grid-column: 2/13;
-  grid-row: 1/2;
+.question-and-answer-page .similarQ .qCards {
+  height: 15rem;
 }
-.question-and-answer-page .similarQ div.titleInfo span {
-  grid-column: 1/13;
-  grid-row: 2/3;
-}
-.question-and-answer-page .similarQ div.titleInfo span span {
-  font-size: 0.6rem;
-}
-.question-and-answer-page .similarQ .qStyle {
+.question-and-answer-page .similarQ .qCards .qStyle {
   padding: 0;
 }
-.question-and-answer-page .similarQ .qStyle svg {
+.question-and-answer-page .similarQ .qCards .qStyle svg {
   height: 100%;
   width: auto;
+}
+
+.qa-index-page .qaIndexToggle #burger {
+  cursor: pointer;
+  transition: 0.1s;
+}
+.qa-index-page .qaIndexToggle .burgerTurn {
+  transform: rotate(90deg);
+}
+.qa-index-page .qaIndexToggle #toggleBar {
+  display: none;
+  transition: 0.1s;
+  transform-origin: 50% 0%;
+  flex-direction: row;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-top: solid 0.2rem #C1C1C1;
+  border-bottom: solid 0.2rem #C1C1C1;
+}
+.qa-index-page .qaIndexToggle #toggleBar div h6 {
+  font-weight: 800;
+  background-color: #BD9EBE;
+  color: white;
+  padding: 0.1rem;
+  border-radius: 3rem 3rem;
+  padding-left: 0.5rem;
+}
+.qa-index-page .qaIndexToggle #toggleBar div a {
+  color: #4C2A70;
+  padding-left: 0.5rem;
+}
+.qa-index-page .qaIndexToggle .noShow {
+  display: flex !important;
+  animation: toggleIn 0.1s both;
+}
+.qa-index-page a.readMore {
+  display: block;
+  font-size: 0.8rem;
+  color: #BD9EBE;
+  width: 100%;
+  text-align: end;
+  text-decoration: none;
+  border-bottom: solid 2px #C1C1C1;
+}
+.qa-index-page .nowPosts .bgImg {
+  width: 100%;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
 }
 
 @keyframes toggleIn {

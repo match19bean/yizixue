@@ -136,7 +136,11 @@
                                     <div class="row py-2 moreArticles">
                                         <div class="col-2">
                                             <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;">
-                                            <img src="{{ asset('uploads'.$post->image_path)  }}" alt="" class="w-100"></a>
+                                            <!-- <img src="{{ asset('uploads'.$post->image_path)  }}" alt="" class="w-100"></a> -->
+                                                <div class=" d-flex justify-content-center">
+                                                    <span style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;" class="bgImg">&nbsp</span>
+                                                </div>
+                                            </a>
                                         </div>
                                         <div class="col">
                                             <p>
@@ -147,6 +151,7 @@
                                                     {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                                 </a>
                                             </p>
+                                            <a class="readMore" href="{{ route('article', $post->id) }}">...閱讀更多</a>
                                             <p class="text-right" style="color:gray; margin-right: 10%;">
                                                 發布日期：{{$post->created_at->format('Y/m/d')}}
                                             </p>
@@ -173,12 +178,16 @@
                 @foreach($Data['interested'] as $post)
                     <div class="row">
                         <div class="m-2 px-4">
-                            <div class="row py-2 moreArticles" style="border: 2px solid black; border-radius: 30px;">
-                                <div class="col-2">
+                            <div class="row py-2 moreArticles" style="border: 2px solid black;">
+                                <div class="col-4">
                                     <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;">
-                                    <img src="{{ asset('uploads'.$post->image_path)  }}" alt="" class="w-100"></a>
+                                    <!-- <img src="{{ asset('uploads'.$post->image_path)  }}" alt="" class="w-100"></a> -->
+                                        <div class=" d-flex justify-content-center">
+                                            <span style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;" class="bgImg">&nbsp</span>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col">
+                                <div class="col d-flex flex-column justify-content-between">
                                     <p>
                                         <a href="{{ route('article', $post->id) }}" style="color: #4C2A70; text-decoration: none;"><h3 class="text-break"> {{$post->title}} </h3></a>
                                     </p>
@@ -187,6 +196,7 @@
                                             {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                         </a>
                                     </p>
+                                    <a class="readMore" href="{{ route('article', $post->id) }}">...閱讀更多</a>
                                     <p class="text-right" style="color:gray; margin-right: 10%;">
                                         發布日期：{{$post->created_at->format('Y/m/d')}}
                                     </p>

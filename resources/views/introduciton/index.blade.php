@@ -4,7 +4,10 @@
     <div class="container introduction">
         <div class="introCard">
             <!-- portriat -->
-            <img class="portriat img-response w-100" src="{{asset('uploads/'.$Data['user']->avatar)}}" alt="">
+            <!-- <img class="portriat img-response w-100" src="{{asset('uploads/'.$Data['user']->avatar)}}" alt=""> -->
+            <div class="portriat d-flex justify-content-center">
+                <span style="background-image: url('{{asset('uploads/'.$Data['user']->avatar)}}') ;" class="bgImg">&nbsp</span>
+            </div>
             <!-- name card -->
             <div class="nameCard row justify-content-center text-white" style="color: #4C2A70; background-color: #BD9EBE;">
                 <h2 class='text-center text-white w-100'>{{$Data['user']->name}}</h2>
@@ -161,9 +164,12 @@
                     @if(!is_null($Data['user']->post))
                         @foreach($Data['user']->post as $count => $post)
                             @if($count < 4)
-                                <div class="card border-dark">
+                                <div class="card border-dark p-1">
                                     <!-- img part -->
-                                    <img class="imgPart" src="{{ asset('uploads'.$post->image_path)  }}" alt="">
+                                    <!-- <img class="imgPart" src="{{ asset('uploads'.$post->image_path)  }}" alt=""> -->
+                                    <div class="imgPart d-flex justify-content-center">
+                                        <span style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;">&nbsp</span>
+                                    </div>
                                     <!-- info part -->
                                     <div class="infoPart">
                                         <div class="px-3">
@@ -171,6 +177,7 @@
                                             <p>
                                                 {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                             </p>
+                                            <a class="readMore" href="{{ route('article', $post->id) }}">...閱讀更多</a>
                                             <p class="text-right mb-0">
                                                 發布日期：{{$post->created_at->format('Y/m/d')}}
                                             </p>
@@ -198,18 +205,49 @@
                 <div>
                     <h2>參考文件</h2>
                     <!-- attachments -->
-                    <div class="attachment d-flex flex-row">
+                    <div class="attachment d-flex flex-row justify-content-start">
                         <!-- files -->
                         @forelse($Data['user']->references as $reference)
                             <a href="{{route('reference-download', $reference->id)}}" class="text-decoration-none text-black">
-                                <div class="file d-flex">
-                                    <svg>
-                                        <rect width="100%" height="80%" x="0" y="0" fill="white" />
-                                        <foreignObject width="120" height="100">
-                                            <body xmlns="http://www.w3.org/1999/xhtml">
-                                            <p style="font-size: 0.8rem;">{{pathinfo($reference->file_name)['basename']}}</p>
-                                            </body>
-                                        </foreignObject>
+                                <div class="file d-flex mr-1">
+                                    <svg viewBox="0 0 300 300">
+                                        <path fill="#C39FC0" d="M265.4,300H34.6C15.5,300,0,284.5,0,265.4V34.6C0,15.5,15.5,0,34.6,0h230.8C284.5,0,300,15.5,300,34.6v230.8
+                                            C300,284.5,284.5,300,265.4,300z"/>
+                                        <path fill="#FFFFFF" d="M262.1,284H37.9C25.2,284,15,273.8,15,261.1V82.9C15,70.2,25.2,60,37.9,60h224.3c12.6,0,22.9,10.2,22.9,22.9
+                                            v178.3C285,273.8,274.8,284,262.1,284z"/>
+                                        <g>
+                                            <path fill="#5E4A81" d="M127.9,249.5c-1.7,0-3.3,0-5,0c0-1.2-0.9-2.1-1.4-3c-9-16.8-20.7-32.2-27.1-50.4c0-1.2,0-2.5,0-3.7
+                                                c1.5-4.5,2.7-9.1,5.2-13.3c7.6-13,15-26,22.6-39.1c0.7-1.4,1.7-2.3,3.3-2.4c0.6,0.9,1.7,1.2,2.5,1.7c5.4,3,10.9,6,16.2,9.1
+                                                c4.5,2.7,4.4,3.2,1.7,7.8c-1.7,2.8-4.3,5.2-4.4,8.7c-2.9,4.2-5.7,8.3-7.5,13.1c-0.7,0.1-1.2,0.5-1,1.2c0.4,1.1,1.4,1.2,2.3,1.2
+                                                c7.2,0,14.5,0.6,21.6-0.4c4.7-0.6,9.1-0.6,13.7-0.8c2.8-0.1,3.9,1.2,3.9,3.9c-0.1,6.2,0,12.4,0,18.6c0,1.2-0.2,2.5,0.6,3.6
+                                                c-0.4,2.3-2.1,2.8-4.2,2.8c-6.1-0.1-12.2-0.1-18.3,0c-5.2,0.1-10.3,0.1-15.5,0.2c-2.5,0-3,1.3-2.1,3.4c0.4,1.1,1,2.1,1.6,3
+                                                c3.5,6.1,7,12.2,10.5,18.2c1.4,2.4,1.1,4.2-1.4,5.7c-4.7,2.5-9.2,5.5-14,7.9C130.3,247.3,128.6,247.8,127.9,249.5z"/>
+                                            <path fill="#FEFEFE" d="M127.9,249.5c0.7-1.7,2.4-2.2,3.8-2.9c4.8-2.4,9.3-5.3,14-7.9c2.5-1.4,2.8-3.3,1.4-5.7
+                                                c-3.5-6.1-7-12.2-10.5-18.2c-0.6-1-1.1-2-1.6-3c-0.9-2.1-0.4-3.4,2.1-3.4c5.2-0.1,10.3-0.2,15.5-0.2c6.1-0.1,12.2-0.1,18.3,0
+                                                c2.1,0,3.7-0.5,4.2-2.8c2.7-0.7,3.9-3,5.1-5.1c7-11.9,13.4-24.2,20.3-36.1c5-8.7,4.9-18-0.1-26.9c-3.9-6.9-8-13.7-12-20.6
+                                                c-4.4-7.3-8.2-15-13.3-21.9c9.3,0,18.6,0.1,28-0.1c1.6,0,1.9,0.4,1.9,1.9c-0.1,50.3-0.1,100.6,0.1,150.9c0,2.1-0.9,1.9-2.2,1.9
+                                                C177.8,249.5,152.8,249.5,127.9,249.5z"/>
+                                            <path fill="#C39FC0" d="M175,94.9c5.1,6.9,8.9,14.5,13.3,21.9c4,6.8,8.1,13.6,12,20.6c5,8.9,5.2,18.2,0.1,26.9
+                                                c-7,11.9-13.4,24.2-20.3,36.1c-1.2,2.1-2.4,4.4-5.1,5.1c-0.8-1.1-0.6-2.4-0.6-3.6c0-6.2-0.1-12.4,0-18.6c0-2.7-1.1-4-3.9-3.9
+                                                c-4.6,0.2-9.1,0.1-13.7,0.8c-7.1,1-14.4,0.4-21.6,0.4c-0.9,0-1.9-0.2-2.3-1.2c-0.2-0.7,0.2-1.1,1-1.2c0.9,0.6,1.9,0.9,2.9,0.9
+                                                c6.9-0.1,13.9-0.1,20.8-0.1c1.6,0,2.4-0.7,3-2.1c1.1-2.4,2.3-4.7,3.5-6.9c2.2-3.9,1.7-4.7-2.6-4.7c-6.7-0.1-13.4-0.1-20.1-0.2
+                                                c0.1-3.6,2.7-6,4.4-8.7c2.7-4.6,2.9-5-1.7-7.8c-5.3-3.2-10.8-6.1-16.2-9.1c-0.9-0.5-1.9-0.8-2.5-1.7c1.1-1.1,2.4-1,3.8-1
+                                                c10.3-0.1,20.7,0,31-0.1c4.5-0.1,4.8-0.9,2.7-4.9c-3.5-6.8-7.5-13.4-11.4-19.9c-1.2-2.1-0.9-3.7,1.2-4.9c2.5-1.4,5-2.9,7.5-4.4
+                                                c3.9-2.4,8.3-4.2,11.7-7.4C173,94.9,174.1,94.9,175,94.9z"/>
+                                            <path fill="#FEFEFE" d="M171.9,94.9c-3.4,3.2-7.8,5-11.7,7.4c-2.5,1.5-5,3-7.5,4.4c-2.1,1.2-2.5,2.9-1.2,4.9
+                                                c3.9,6.5,7.8,13.1,11.4,19.9c2.1,3.9,1.8,4.8-2.7,4.9c-10.3,0.1-20.7,0.1-31,0.1c-1.4,0-2.7-0.1-3.8,1c-1.6,0.1-2.5,1.1-3.3,2.4
+                                                c-7.5,13.1-14.9,26.1-22.6,39.1c-2.5,4.2-3.7,8.8-5.2,13.3c0-31.7,0-63.5-0.1-95.1c0-1.9,0.4-2.4,2.4-2.4
+                                                C121.8,94.9,146.9,94.9,171.9,94.9z"/>
+                                            <path fill="#FEFEFE" d="M94.4,196.1c6.5,18.2,18.1,33.6,27.1,50.4c0.5,1,1.4,1.8,1.4,3c-8.9,0-17.8-0.1-26.7,0.1
+                                                c-1.6,0-1.9-0.4-1.9-1.9C94.4,230.5,94.4,213.3,94.4,196.1z"/>
+                                            <path fill="#FEFEFE" d="M141.4,165c6.7,0.1,13.4,0.1,20.1,0.2c4.4,0.1,4.8,0.9,2.6,4.7c-1.2,2.2-2.5,4.5-3.5,6.9
+                                                c-0.6,1.4-1.4,2.1-3,2.1c-6.9,0-13.9,0.1-20.8,0.1c-1.1,0-2.1-0.2-2.9-0.9C135.7,173.3,138.6,169.1,141.4,165z"/>
+                                        </g>
+                                            <text transform="matrix(1 0 0 1 54.6553 41.3376)" fill="#FFFFFF" font-size="25px">{{pathinfo($reference->file_name)['basename']}}</text>
+                                        <rect x="21" y="21" fill="#FFFFFF" width="26" height="26"/>
+                                        <circle fill="#FFFFFF" cx="266" cy="15" r="6"/>
+                                        <circle fill="#FFFFFF" cx="266" cy="30.5" r="6"/>
+                                        <circle fill="#FFFFFF" cx="266" cy="46" r="6"/>
                                     </svg>
                                 </div>
                             </a>
@@ -228,20 +266,26 @@
                 <div class="owl-carousel owl-theme studentNav">
                     @foreach ($Data['vip'] as $key => $user)
                         <!-- student card -->
-                        <div class="item studentC">
+                        <div class="item studentC"  onclick="cardClickable({{ $user->id }})">
                             <div>
                                 <div class="cards">
                                     <!-- student profile pic -->
                                     <div class="studentProfile">
                                         <div class="studentImg">
                                             @if(is_null($user->avatar))
-                                                <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap">
-                                            @else
-                                                <img src="{{ asset('uploads/'.$user->avatar) }}" alt="Card image cap">
-                                            @endif
+                                                    <!-- <img src="{{asset('uploads/images/default_avatar.png')}}" alt="Card image cap" width="200" height="200"> -->
+                                                    <div class=" d-flex justify-content-center">
+                                                        <span style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;" class="bgImg">&nbsp</span>
+                                                    </div>
+                                                @else
+                                                    <!-- <img src="/uploads/{{ $user->avatar }}" alt="Card image cap" width="200" height="200"> -->
+                                                    <div class=" d-flex justify-content-center">
+                                                        <span style="background-image: url('/uploads/{{ $user->avatar }}');" class="bgImg">&nbsp</span>
+                                                    </div>
+                                                @endif
                                         </div>
                                         <!-- video Btn -->
-                                        <div class="videoBtn">
+                                        <div class="videoBtn" onclick="event.stopPropagation(); event.preventDefault();">
                                             @if(is_null($user->profile_video))
                                                 <a class="text" onClick="alert('學長姐尚未上傳影音');">
                                                     <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/02/01/12/33/play-1173551_640.png" alt="Card image cap">
@@ -253,7 +297,7 @@
                                             @endif
                                         </div>
                                         <!-- react icons -->
-                                        <div class="react">
+                                        <div class="react" onclick="event.stopPropagation(); event.preventDefault();">
                                             @if(auth()->check())
                                                 <i class="fa fa-heart"
                                                 style="
@@ -288,18 +332,18 @@
                                     </div>
 {{--                                    </a>--}}
                                     <!-- post tag -->
-                                    <div class="postTags">
+                                    <div class="postTags  row row-cols-3 mt-2 justify-content-center">
                                         @foreach($user->postCategory as $key => $postCategoryRelation)
-                                            @if($key<3)
-                                            <span href="#">{{$postCategoryRelation->postCategory->name}}</span>
+                                            @if($key< 3)
+                                            <span href="#" class="col-3 btn btn-outline-secondary m-1" style="font-size: 0.6rem;">{{$postCategoryRelation->postCategory->name}}</span>
                                             @endif
                                         @endforeach
                                     </div>
                                     <!-- skill tag -->
-                                    <div class="skillTags">
+                                    <div class="skillTags  row row-cols-3 mt-2 justify-content-center">
                                         @foreach($user->skills as $key => $skillRelation)
-                                            @if($key<6)
-                                            <span href="#">{{$skillRelation->skill->name}}</span>
+                                            @if($key< 6)
+                                            <span href="#" class="col-3 btn btn-outline-secondary m-1" style="font-size: 0.6rem;">{{$skillRelation->skill->name}}</span>
                                                 @if($key==2)
                                                     <br>
                                                 @endif

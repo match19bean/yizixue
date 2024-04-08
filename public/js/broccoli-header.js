@@ -161,7 +161,7 @@ function newsSlide(){
         // 根據 currentPic 切換標題
         $("#newsTopic").text(posts[currentNews-1].topic);
         // 根據 currentPic 切換圖片
-        $(".newsCard img").attr("src", posts[currentNews-1].image_path);
+        $(".newsCard .bgImg").css("background-image", "url(" + posts[currentNews - 1].image_path + ")");
         $(".newsCard .info .tag").text(posts[currentNews-1].category);
         $(".newsCard .info .meta").text(posts[currentNews-1].title);
         $(".newsCard .info .brief").text(encodeHTML(posts[currentNews-1].body));
