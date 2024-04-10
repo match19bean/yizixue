@@ -48,8 +48,14 @@
                             <form method="POST" action="{{ route('save-post') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="mb-3">
-                                    <input type="text" name="title" class="form-control" placeholder="輸入文章標題">
+                                    <input type="text" name="title" class="form-control" placeholder="輸入文章標題" value="{{old('title')}}">
                                 </div>
+                                @if($errors->has('title'))
+                                    <div class="alert alert-danger alert-dismissible text-center">
+                                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        {{$errors->first('title')}}
+                                    </div>
+                                @endif
                                 <div class="mb-3" style="display:none">
                                     <label for="author" class="form-label">作者</label>
                                     <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control"
@@ -59,7 +65,7 @@
                                     style="border: 2px solid #4C2A70; 
                                 padding: 10px; border-radius: 5px; width:100%;">
                                     <input type="file" id="imgInp" name="image_path" class="form-control"
-                                        style="display:none">
+                                        style="display:none" value="{{old('image_path')}}">
                                     <a type="button" id="OpenImgUpload"
                                         style="
                                         display: flex;
@@ -68,6 +74,12 @@
                                         flex-wrap: wrap;
                                         padding: 200px;">點擊添加圖片</a>
                                 </div>
+                                @if($errors->has('image_path'))
+                                    <div class="alert alert-danger alert-dismissible text-center">
+                                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        {{$errors->first('image_path')}}
+                                    </div>
+                                @endif
                                 <div class="mb-3">
                                     <label for="category" class="form-label" style="color:#4C2A70;">選擇主題</label>
                                     @if($errors->has('category'))
@@ -80,16 +92,22 @@
                                         style="border: 2px solid #4C2A70; padding: 10px; border-radius: 5px;">
                                         @foreach ($Data['categories'] as $category)
                                             <label>
-                                                <input type="checkbox" name="category[]" value="{{ $category->id }}" /><span
+                                                <input type="checkbox" name="category[]" value="{{ $category->id }}" {{is_array(old('category'))&&in_array($category->id, old('category')) ? 'checked' : '' }} /><span
                                                     class="round button">#{{ $category->name }}</span>
                                             </label>
                                         @endforeach
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="category" class="form-label" style="color:#4C2A70;">輸入內文</label>
-                                    <textarea id="article-ckeditor" name="postbody"></textarea>
+                                    <label for="article-ckeditor" class="form-label" style="color:#4C2A70;">輸入內文</label>
+                                    <textarea id="article-ckeditor" name="postbody">{{old('postbody')}}</textarea>
                                 </div>
+                                @if($errors->has('postbody'))
+                                    <div class="alert alert-danger alert-dismissible text-center">
+                                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        {{$errors->first('postbody')}}
+                                    </div>
+                                @endif
                                 <div class="mb-3" style="display:none">
                                     <label for="state" class="form-label">狀態</label>
                                     <select class="form-control" name="state" aria-label="Default select example">

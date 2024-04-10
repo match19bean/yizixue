@@ -55,9 +55,21 @@ class PostController extends Controller
     {
 
         $req->validate([
-            'category' => 'array|max:3',
+            'category' => 'required|array|max:3|min:1',
+            'title' => 'required|string|max:255',
+            'image_path' => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'postbody' => 'required|string|max:15000',
         ],[
             'category.max' => '不得超過:max個主題',
+            'category.min' => '不得低於:mix個主題',
+            'category.required' => '主題為必填欄位',
+            'title.required' => '文章標題為必填欄位',
+            'title.max' => '文章標題不得超過:max字',
+            'image_path.required' => '文章圖片為必填欄位',
+            'image_path.max' => '上傳檔案不得超過2MB',
+            'image_path.image' => '上傳檔案必須為圖片',
+            'postbody.required' => '內文為必填欄位',
+            'postbody.max' => '內文字數不得超過:max字'
         ]);
 
         $title = $req->title;
@@ -127,9 +139,21 @@ class PostController extends Controller
     public function update(Request $req) 
     {
         $req->validate([
-            'category' => 'array|max:3'
+            'category' => 'required|array|max:3|min:1',
+            'title' => 'required|string|max:255',
+            'image_path' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'postbody' => 'required|string|max:15000',
         ],[
-            'category.max' => '不得超過:max個主題'
+            'category.max' => '不得超過:max個主題',
+            'category.min' => '不得低於:mix個主題',
+            'category.required' => '主題為必填欄位',
+            'title.required' => '文章標題為必填欄位',
+            'title.max' => '文章標題不得超過:max字',
+            'image_path.required' => '文章圖片為必填欄位',
+            'image_path.max' => '上傳檔案不得超過2MB',
+            'image_path.image' => '上傳檔案必須為圖片',
+            'postbody.required' => '內文為必填欄位',
+            'postbody.max' => '內文字數不得超過:max字'
         ]);
 
         $title = $req->title;

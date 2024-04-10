@@ -50,6 +50,12 @@
                                 <input style="display:none" type="text" name="uuid" class="form-control" value="{{ $Data['post']->uuid }}">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">文章抬頭</label>
+                                    @if($errors->has('title'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('title')}}
+                                        </div>
+                                    @endif
                                     <input type="text" name="title" class="form-control"
                                         value="{{ $Data['post']->title }}">
                                 </div>
@@ -67,6 +73,12 @@
                                     padding: 10px; 
                                     border-radius: 5px; 
                                     width:100%;">
+                                    @if($errors->has('image_path'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('image_path')}}
+                                        </div>
+                                    @endif
                                     <input type="file" id="imgInp" name="image_path" class="form-control"
                                         style="display:none">
                                     <a type="button" id="OpenImgUpload"
@@ -103,6 +115,12 @@
                                 <div class="mb-3">
                                     <textarea id="article-ckeditor" name="postbody">{{ $Data['post']->body }}</textarea>
                                 </div>
+                                @if($errors->has('postbody'))
+                                    <div class="alert alert-danger alert-dismissible text-center">
+                                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        {{$errors->first('postbody')}}
+                                    </div>
+                                @endif
                                 <div class="mb-3" style="display:none">
                                     <label for="state" class="form-label">狀態</label>
                                     <select class="form-control" name="state" aria-label="Default select example">
