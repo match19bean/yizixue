@@ -192,8 +192,8 @@
 <!-- cards click function -->
 <script>
 function cardClickable(id) {
-    console.log(id);
-    location.href = "introduction/" + id;
+    // console.log(id);
+    location.href = document.location.origin + "/introduction/" + id;
 }
 
 function uniCardClick(uni){
