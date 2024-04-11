@@ -34,10 +34,9 @@
                                         @if(!is_null($orders))
                                             @foreach ($orders as $order)
                                                 <tr>
-                                                    <td>{{$order->user->name}}</td>
-                                                    <td>{{$order->product->name}}</td>
+                                                    <td>{{is_null($order->user)?"":$order->user->name}}</td>
+                                                    <td>{{is_null($order->product)?'此方案已被刪除':$order->product->name}}</td>
                                                     <td>{{$order->created_at->format('Y/m/d H:i:s')}}</td>
-{{--                                                    <td>{{$order->remark}}</td>--}}
                                                 </tr>
                                             @endforeach
                                             <tr>
