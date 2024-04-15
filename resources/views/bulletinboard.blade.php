@@ -22,6 +22,9 @@
 
         </div>
 
+        <div class="d-flex justify-content-around text-center mt-4">
+            {{$Data['bulletin_board']->links("pagination::bootstrap-4")}}
+        </div>
     </div>
     <!-- /.container-fluid -->
 @endsection

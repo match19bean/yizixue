@@ -9,7 +9,7 @@ class BulletinBoardController extends Controller
 {
     function index() 
     {
-        $BulletinBoard = BulletinBoard::all();
+        $BulletinBoard = BulletinBoard::orderByDesc('created_at')->paginate();
         $Data = [
             'bulletin_board' => $BulletinBoard
         ];
