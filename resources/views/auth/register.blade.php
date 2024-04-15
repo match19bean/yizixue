@@ -126,7 +126,7 @@
 
 
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" placeholder="會員帳號" autofocus>
+                                    <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" placeholder="會員帳號(email)" autofocus>
                                     @if ($errors->has('email'))
                                         <span class="help-block alert-danger">
                                                     <strong>{{ $errors->first('email') }}</strong>

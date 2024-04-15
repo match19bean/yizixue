@@ -20,50 +20,6 @@
 
 </header>
 <!-- Features section-->
-<!-- Ucard Section -->
-<section class="py-5 border-bottom" id="features">
-    <div class="uCardSection">
-        <div class="row gx-5">
-            <div style="text-align:center; margin-bottom:100px">
-                <a style="background:#45ecd9; border: none" class="btn btn-primary btn-lg px-5"
-                    href="{{route('university-list')}}">關注
-                    | 學校</a>
-            </div>
-            <div class="owl-carousel owl-theme cards">
-
-                @foreach ($Data['University'] as $key => $university)
-                <div class="item" onclick="uniCardClick('{{ $university->slug }}')">
-                    <div>
-                        <div class="card">
-                            <div class=" d-flex justify-content-center">
-                                <span style="background-image: url('{{asset($university->image_path)}}') ;"
-                                    class="bgImg">&nbsp</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="name-card">
-                                <h6 class="ellipsis text-white">
-                                    {{ \Illuminate\Support\Str::limit($university->chinese_name, 10) }}</h6>
-                                <small class="ellipsis"><a class="text-decoration-none text-white"
-                                        href="{{route('senior', ['university' => $university->slug])}}">{{ \Illuminate\Support\Str::limit($university->english_name, 20) }}</a></small>
-                            </div>
-                            <div class="info">
-                                <h5>目前有<a
-                                        href="{{route('senior', ['university' => $university->slug])}}">{{$university->vip->count()}}</a>位在校
-                                </h5>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Features section-->
 <!-- Student Card Section -->
 <section class="bg-light py-5 border-bottom" id="features">
     <div class="studentSection">
@@ -150,7 +106,11 @@
                             <div class="postTags row row-cols-3 mt-2 justify-content-center">
                                 @forelse ($user->postCategory as $count => $cate)
                                 @if ($count < 3) <span href="#" class="col-3 btn btn-outline-secondary m-1"
-                                    style="font-size: 0.6rem;">#{{ $cate->postCategory->name }}</span>
+                                    style="font-size: 0.6rem;">
+                                        <a href="{{route('senior', ['category' => $cate->postCategory->id])}}" class="text-decoration-none w-100 text-white">
+                                            #{{ $cate->postCategory->name }}
+                                        </a>
+                                    </span>
                                     @endif
                                     @empty
                                     @endforelse
@@ -165,7 +125,7 @@
                                                 $cate = $Data['Skills']->where('id', $cateId->skill_id)->first();
                                                 ?>
                                 @if($key < 6) <span href="#" class="col-4 btn btn-outline-secondary"
-                                    style="font-size: 0.6rem;">#{{ $cate->name }}</span>
+                                    style="font-size: 0.6rem;"><a href="{{route('senior',['skill' => $cateId->skill_id])}}" class="text-decoration-none w-100" style="color:#4C2A70;">#{{ $cate->name }}</a></span>
                                     @if($key==2)
                                     <br>
                                     @endif
@@ -178,6 +138,50 @@
                                 class="text-decoration-none text-black">點擊查看更多</a></p>
                     </div>
                 </div>
+                @endforeach
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Features section-->
+<!-- Ucard Section -->
+<section class="py-5 border-bottom" id="features">
+    <div class="uCardSection">
+        <div class="row gx-5">
+            <div style="text-align:center; margin-bottom:100px">
+                <a style="background:#45ecd9; border: none" class="btn btn-primary btn-lg px-5"
+                   href="{{route('university-list')}}">關注
+                    | 學校</a>
+            </div>
+            <div class="owl-carousel owl-theme cards">
+
+                @foreach ($Data['University'] as $key => $university)
+                    <div class="item" onclick="uniCardClick('{{ $university->slug }}')">
+                        <div>
+                            <div class="card">
+                                <div class=" d-flex justify-content-center">
+                                <span style="background-image: url('{{asset($university->image_path)}}') ;"
+                                      class="bgImg">&nbsp</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="name-card">
+                                    <h6 class="ellipsis text-white">
+                                        {{ \Illuminate\Support\Str::limit($university->chinese_name, 10) }}</h6>
+                                    <small class="ellipsis"><a class="text-decoration-none text-white"
+                                                               href="{{route('senior', ['university' => $university->slug])}}">{{ \Illuminate\Support\Str::limit($university->english_name, 20) }}</a></small>
+                                </div>
+                                <div class="info">
+                                    <h5>目前有<a
+                                                href="{{route('senior', ['university' => $university->slug])}}">{{$university->vip->count()}}</a>位在校
+                                    </h5>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
 

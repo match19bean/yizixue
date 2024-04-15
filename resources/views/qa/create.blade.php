@@ -7,7 +7,7 @@
             <div class="row justify-content-md-center">
                 <div style="margin-bottom: 10px;" class="col-xl-10 col-lg-7">
                     <div style="background: #4C2A70; padding:5px" class="card text-white shadow">
-                        <h2 style="margin: 0;" class="text-center">添加問題</h2>
+                        <h2 style="margin: 0;" class="text-center">新增問題</h2>
                     </div>
                 </div>
 
