@@ -154,7 +154,7 @@ function cardClickable(id) {
 }
 
 function uniCardClick(uni){
-    location.href = "/senior?university=" + encodeURIComponent(uni);
+    location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
 }
 </script>
 <!-- end of cards click function -->

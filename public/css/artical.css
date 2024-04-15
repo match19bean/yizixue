@@ -787,7 +787,6 @@
   margin: 5px;
 }
 .postsSection-artical-list .socialIcons i::after {
-  content: "8";
   font-size: 1rem;
   font-family: Rubik;
   text-decoration: none;
@@ -921,7 +920,6 @@
   margin: 5px;
 }
 .collectPost .postsSection .socialIcons i::after {
-  content: "8";
   font-size: 1rem;
   font-family: Rubik;
   text-decoration: none;

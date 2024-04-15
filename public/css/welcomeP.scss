@@ -50,6 +50,8 @@ body{
 header{
     background-color: black;
     width: 100vw;
+    aspect-ratio: 16/8.5;
+    overflow-y: hidden;
     .headerCard{
         display: grid;
         grid-template-rows: repeat(12, auto);
@@ -57,10 +59,18 @@ header{
         .banner{
             grid-row: 1/13;
             grid-column: 1/13;
-            img{
-                width: 100%;
-                opacity: 0.7;
+            div{
+                .bgImg{
+                    display: block;
+                    width: 100vw !important;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: top;
+                    aspect-ratio: 16/9; 
+                    filter: opacity(0.6);
+                }
             }
+
         }
         .slogan{
             text-align:left;
@@ -232,7 +242,12 @@ header{
                     margin:5px;
                     span{color: black; font-family: 'Rubik';}
                 }
-                .fa-bookmark{span{font-family: 'Rubik';}}
+                .fa-bookmark{
+                    font-size:15px; 
+                    color:red; 
+                    margin:5px;
+                    span{color: black; font-family: 'Rubik';}
+                }
             }
         }
         .name-card{
@@ -243,6 +258,8 @@ header{
             border: none;
             width: 80%;
             color: white;
+            h4{font-size: 1.2rem;}
+            h6{font-size: 0.9rem;}
         }
         .postTags{
             grid-row: 3/4;
@@ -263,11 +280,9 @@ header{
             grid-row: 4/5;
             grid-column: 1/2;
             margin: 5%;
-            text-align: center;
             span{
-                font-size:12px;
-                padding: 1px !important;
-                margin: 5px;
+                font-size:1rem;
+                transform: scale(0.9);
                 color: $primePurple;
                 border: 1px solid $primePurple;
                 border-radius:5px;
