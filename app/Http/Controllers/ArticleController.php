@@ -36,8 +36,7 @@ class ArticleController extends Controller
             return redirect()->back();
         }
         $Data['article'] = $article;
-        $Data['interested'] = PostCategoryRelation::whereIn('category_id', $article->category->pluck('category_id'))->inRandomOrder()->with('post')->limit(4)->get()->unique('post_id')->pluck('post');
-
+        $Data['interested'] = PostCategoryRelation::whereIn('category_id', $article->category->pluck('category_id'))->inRandomOrder()->has('post')->take(4)->get()->unique('post_id')->pluck('post');
         return view('article.single', compact(['Data']));
     }
 
