@@ -92,4 +92,9 @@ class User extends Authenticatable
     {
         return $this->role === 'vip' && $this->expired >= now();
     }
+
+    public function QA()
+    {
+        return $this->hasMany(QnA::class, 'uid');
+    }
 }
