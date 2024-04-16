@@ -4,7 +4,6 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\Integer;
 
 class QnA extends Model
 {
@@ -34,7 +33,7 @@ class QnA extends Model
 
     public function categoryRelation()
     {
-        return $this->hasMany(QACategoryRelation::class, 'qa_id');
+        return $this->hasMany(QaCategoryRelation::class, 'qa_id');
     }
 
     public function collectQa()

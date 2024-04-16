@@ -33,6 +33,8 @@ class FrontPageController extends Controller
             'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first()
         ];
 
+//        dd($Data['QaCategory']);
+
         return view('welcome')->with('Data', $Data);
     }
 

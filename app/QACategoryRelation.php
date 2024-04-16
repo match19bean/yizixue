@@ -10,7 +10,7 @@ class QACategoryRelation extends Model
 
     public function category()
     {
-        return $this->belongsTo(QACategory::class, 'category_id');
+        return $this->belongsTo(PostCategory::class, 'category_id');
     }
 
     public function qa()

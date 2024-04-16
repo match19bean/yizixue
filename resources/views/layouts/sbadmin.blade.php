@@ -93,7 +93,7 @@
                 <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('create-post')}}">添加文章</a>
+                        <a class="collapse-item" href="{{route('create-post')}}">新增文章</a>
                         <a class="collapse-item" href="{{route('list-all-posts')}}">我的文章</a>
                         <a class="collapse-item" href="{{route('collect-posts')}}">收藏文章</a>
                     </div>
@@ -109,7 +109,7 @@
                 <div id="qa-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/create-qa">添加問題</a>
+                        <a class="collapse-item" href="/create-qa">新增問題</a>
                         <a class="collapse-item" href="/list-qa">我的問題</a>
                         <a class="collapse-item" href="/collect-qa">收藏問與答</a>
                     </div>

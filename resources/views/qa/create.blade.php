@@ -196,6 +196,7 @@
                                     </style>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="avatar" class="form-label">說明</label>
                                     @if($errors->has('qabody'))
                                         <div class="alert alert-danger alert-dismissible text-center">
                                             <button class="close" data-dismiss="alert" aria-hidden="true">x</button>

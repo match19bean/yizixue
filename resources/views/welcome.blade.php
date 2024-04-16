@@ -218,20 +218,21 @@
                         </a>
                     </h5>
                 </div>
-                @for($int=0;$int<3; $int++) @if(!is_null($category->QACategoryRelation->get($int)))
+                @forelse($category->QACategoryRelation->take(3) as $relation)
                     <p>
-                        <a href="{{route('qna.show', $category->QACategoryRelation->get($int)->qa->id)}}"
+                        <a href="{{route('qna.show', $relation->qa->id)}}"
                             class="text-decoration-none text-primary"
-                            style="font-size: 0.8rem; letter-spacing: normal">{{$category->QACategoryRelation->get($int)->qa->title}}</a>
+                            style="font-size: 0.8rem; letter-spacing: normal">{{$relation->qa->title}}</a>
                     </p>
-                    @else
+                @empty
+                @endforelse
+                @for($count = $category->QACategoryRelation->take(3)->count(); $count<3; $count++)
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
-                    @endif
-                    @endfor
+                @endfor
             </div>
             @endforeach
         </div>
@@ -250,20 +251,21 @@
                             class="text-decoration-none text-white" style="font-size: 1rem;">{{$category->name}}</a>
                     </h5>
                 </div>
-                @for($int=0;$int<3; $int++) @if(!is_null($category->QACategoryRelation->get($int)))
+                @forelse($category->QACategoryRelation->take(3) as $relation)
                     <p>
-                        <a href="{{route('qna.show', $category->QACategoryRelation->get($int)->qa->id)}}"
+                        <a href="{{route('qna.show', $relation->qa->id)}}"
                             class="text-decoration-none text-primary"
-                            style="font-size: 0.8rem; letter-spacing: normal">{{$category->QACategoryRelation->get($int)->qa->title}}</a>
+                            style="font-size: 0.8rem; letter-spacing: normal">{{$relation->qa->title}}</a>
                     </p>
-                    @else
+                @empty
+                @endforelse
+                @for($count = $category->QACategoryRelation->take(3)->count(); $count<3; $count++)
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
-                    @endif
-                    @endfor
+                @endfor
             </div>
             @endforeach
         </div>
