@@ -14,7 +14,7 @@
                 <div class="col-xl-10 col-lg-7">
                     <div class="card shadow mb-4">
                         <!-- Card Body -->
-                        <div style="background: #BD9EBE; color:#FFFFFF" class="card-body">
+                        <div style="#background: #BD9EBE; #color:#FFFFFF" class="card-body">
 
                             <form method="POST" action="{{ route('update-qa') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
