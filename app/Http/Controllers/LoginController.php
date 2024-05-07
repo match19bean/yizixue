@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Services\LineService;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -21,7 +22,7 @@ class LoginController extends Controller
     public function pageLine()
     {
         $url = $this->lineService->getLoginBaseUrl();
-        return view('line')->with('url', $url);
+        return Redirect::to($url);
     }
 
     public function lineLoginCallBack(Request $request)
