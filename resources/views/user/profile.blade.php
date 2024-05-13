@@ -208,6 +208,12 @@
                         <div class="card mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">基本資料</h6>
+                                @if($errors->has('email'))
+                                    <div class="alert alert-danger alert-dismissible text-center">
+                                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        {{$errors->first('email')}}
+                                    </div>
+                                @endif
                                 <div class="dropdown no-arrow">
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

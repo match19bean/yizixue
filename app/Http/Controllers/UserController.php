@@ -53,12 +53,15 @@ class UserController extends Controller
             'references' => 'file|max:2048',
             'description' => 'max:500|nullable',
             'skills' => 'array|min:0|max:12',
-            'post_categories' => 'array|min:0|max:3'
+            'post_categories' => 'array|min:0|max:3',
+            'email' => 'required_with:email|email|unique:users,email,'.auth()->user()->id
         ], [
             'references.max.file' => '檔案不得超過2M',
             'description.max' => '字數不得超過500字',
             'skills.max' => '專長不得超過12個',
-            'post_categories.max' => '主題不得超過3個'
+            'post_categories.max' => '主題不得超過3個',
+            'email.email' => 'Email格式不正確',
+            'email.unique' => '已有相同Email註冊'
         ]);
 
         if($req->filled('post_categories')){
