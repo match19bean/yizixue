@@ -101,7 +101,6 @@ class PayProductController extends Controller
             'hashKey' => config('ecpay.hashKey'),
             'hashIv' => config('ecpay.hashIv'),
         ]);
-        logger(config('ecpay.hashKey'));
         $autoSubmitFormService = $factory->create('AutoSubmitFormWithCmvService');
         $sn = "SN".date('YmdHis').$order->id;
         $order->update([

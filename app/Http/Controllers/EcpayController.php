@@ -13,13 +13,11 @@ class EcpayController extends Controller
 {
     public function ecpayOrderResult(Request $request)
     {
-        logger($request->all());
         return redirect(route('pay-product-list'));
     }
 
     public function ecpayReturn(Request $request)
     {
-        logger($request->all());
         $factory = new Factory([
             'hashKey' => config('ecpay.hashKey'),
             'hashIv' => config('ecpay.hashIv'),
@@ -27,7 +25,6 @@ class EcpayController extends Controller
         $checkoutResponse = $factory->create(VerifiedArrayResponse::class);
 
         $result = $checkoutResponse->get($_POST);
-        logger($result);
         if($result['RtnCode'] === '1'){
             $order = PayOrder::where('transactionId', $result['MerchantTradeNo'])->get();
             if(is_null($order)){
