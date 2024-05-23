@@ -20,10 +20,14 @@
                                             <p>加值{{$product->pay_time}}個月</p>
                                             <p>加值金額：{{$product->price}}</p>
                                         </div>
-                                        <div class="card-footer text-center">
+                                        <div class="card-footer d-flex justify-content-around">
                                             <form action="{{ route('pay-product' , $product->id) }}" method="post">
                                                 {{csrf_field()}}
-                                                <button class="btn btn-primary">購買</button>
+                                                <button class="btn btn-primary">Line Pay</button>
+                                            </form>
+                                            <form action="{{ route('pay-product-ecpay' , $product->id) }}" method="post">
+                                                {{csrf_field()}}
+                                                <button class="btn btn-primary">綠界</button>
                                             </form>
                                         </div>
                                     </div>

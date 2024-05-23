@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\PayOrder;
 use App\PayProduct;
 use App\Services\LinePayService;
+use Ecpay\Sdk\Factories\Factory;
+use Ecpay\Sdk\Services\UrlService;
 use Illuminate\Http\Request;
 
 class PayProductController extends Controller
@@ -25,7 +27,7 @@ class PayProductController extends Controller
     {
         $product = PayProduct::find($id);
         if(is_null($product)) {
-            return back()->wiht(['message' => '產品錯誤請重新選擇']);
+            return back()->with(['message' => '產品錯誤請重新選擇']);
         }
 
         $order = PayOrder::create([
@@ -80,5 +82,52 @@ class PayProductController extends Controller
         ]);
 
         return redirect($response->getPaymentUrl());
+    }
+
+    public function ecpayStore($id)
+    {
+        $product = PayProduct::find($id);
+        if(is_null($product)) {
+            return back()->with(['message' => '產品錯誤請重新選擇']);
+        }
+
+        $order = PayOrder::create([
+            'user_id' => auth()->user()->id,
+            'pay_product_id' => $id,
+            'is_sandbox' => config('ecpay.isSandbox')
+        ]);
+
+        $factory = new Factory([
+            'hashKey' => config('ecpay.hashKey'),
+            'hashIv' => config('ecpay.hashIv'),
+        ]);
+        logger(config('ecpay.hashKey'));
+        $autoSubmitFormService = $factory->create('AutoSubmitFormWithCmvService');
+        $sn = "SN".date('YmdHis').$order->id;
+        $order->update([
+            'transactionId' => $sn
+        ]);
+
+        $input = [
+            'MerchantID' => config('ecpay.merchantID'),
+            'MerchantTradeNo' => $sn,
+            'MerchantTradeDate' => date('Y/m/d H:i:s'),
+            'PaymentType' => 'aio',
+            'TotalAmount' => $product->price,
+            'TradeDesc' => UrlService::ecpayUrlEncode($product->name),
+            'ItemName' => $product->name,
+            'ChoosePayment' => 'Credit',
+            'EncryptType' => 1,
+            'OrderResultURL' => route('ecpay-order-result'),
+            // 請參考 example/Payment/GetCheckoutResponse.php 範例開發
+            'ReturnURL' => route('ecpay-return-url'),
+        ];
+        if(config('ecpay.isSandbox')) {
+            $action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+        } else {
+            $action = 'https://payment.ecpay.com.tw/Cashier/AioCheckOut/V5';
+        }
+
+        return $autoSubmitFormService->generate($input, $action);
     }
 }

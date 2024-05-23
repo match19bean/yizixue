@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c92402dab2a9a6395306d9ab57265575",
+    "content-hash": "e62d16161fbfd648f80cfaccb4005b98",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -529,6 +529,44 @@
                 }
             ],
             "time": "2022-12-14T08:49:07+00:00"
+        },
+        {
+            "name": "ecpay/sdk",
+            "version": "1.3.20240508",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ECPay/SDK_PHP.git",
+                "reference": "6b40802a51fa33534426050bf8771023090916ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ECPay/SDK_PHP/zipball/6b40802a51fa33534426050bf8771023090916ca",
+                "reference": "6b40802a51fa33534426050bf8771023090916ca",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6.20 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "1.9.x-dev",
+                "phpunit/phpunit": "^5.0 || ^6.0 || ^7.0 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ecpay\\Sdk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ECPay SDK",
+            "support": {
+                "issues": "https://github.com/ECPay/SDK_PHP/issues",
+                "source": "https://github.com/ECPay/SDK_PHP/tree/1.3.20240508"
+            },
+            "time": "2024-05-08T05:17:22+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -6266,5 +6304,5 @@
         "php": ">=7.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

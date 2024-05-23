@@ -11,6 +11,71 @@
 |
 */
 
+use Ecpay\Sdk\Factories\Factory;
+use Ecpay\Sdk\Response\VerifiedArrayResponse;
+use Ecpay\Sdk\Services\UrlService;
+use Illuminate\Http\Request;
+
+Route::get('ecpaytest', function(){
+    $factory = new Factory([
+//        'hashKey' => '5294y06JbISpM5x9',
+        'hashKey' => 'pwFHCqoQZGmho4w6',
+//        'hashIv' => 'v77hoKGq4kWxNNIS',
+        'hashIv' => 'EkRm7iFT261dpevs',
+    ]);
+    $autoSubmitFormService = $factory->create('AutoSubmitFormWithCmvService');
+
+    $input = [
+//        'MerchantID' => '2000132',
+//        'MerchantID' => '3002607',
+        'MerchantTradeNo' => 'Test' . time(),
+        'MerchantTradeDate' => date('Y/m/d H:i:s'),
+        'PaymentType' => 'aio',
+        'TotalAmount' => 100,
+        'TradeDesc' => UrlService::ecpayUrlEncode('交易描述範例'),
+        'ItemName' => '範例商品一批 100 TWD x 1',
+        'ChoosePayment' => 'Credit',
+        'EncryptType' => 1,
+        'OrderResultURL' => 'http://localhost/check',
+        // 請參考 example/Payment/GetCheckoutResponse.php 範例開發
+        'ReturnURL' => 'http://localhost/check',
+    ];
+    $action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';
+
+    echo $autoSubmitFormService->generate($input, $action);
+});
+
+Route::any('ecpay-check', function(Request $request){
+    logger(auth()->user());
+    logger('check');
+    logger($request->all());
+    logger($_POST);
+    $factory = new Factory([
+        'hashKey' => '5294y06JbISpM5x9',
+        'hashIv' => 'v77hoKGq4kWxNNIS',
+    ]);
+    $checkoutResponse = $factory->create(VerifiedArrayResponse::class);
+
+// 模擬綠界付款結果回傳格式範例，非真實付款結果
+//    $_POST = [
+//        'MerchantID' => '2000132',
+//        'MerchantTradeNo' => 'WPLL4E341E122DB44D62',
+//        'PaymentDate' => '2019/05/09 00:01:21',
+//        'PaymentType' => 'Credit_CreditCard',
+//        'PaymentTypeChargeFee' => '1',
+//        'RtnCode' => '1',
+//        'RtnMsg' => '交易成功',
+//        'SimulatePaid' => '0',
+//        'TradeAmt' => '500',
+//        'TradeDate' => '2019/05/09 00:00:18',
+//        'TradeNo' => '1905090000188278',
+//        'CheckMacValue' => '59B085BAEC4269DC1182D48DEF106B431055D95622EB285DECD400337144C698',
+//    ];
+
+    logger($checkoutResponse->get($_POST));
+    var_dump($checkoutResponse->get($_POST));
+});
+
 Route::get('/', 'FrontPageController@index');
 Route::get('introduction/{id}', 'IntroductionController@getDetial')->name('get-introduction');
 Route::get('article-list/{user}', 'ArticleController@getAllArticle')->name('article-list');
@@ -90,3 +155,7 @@ Route::get('university-list', 'UniversityController@index')->name('university-li
 
 //
 Route::get('carousel-list', 'CarouselController@list')->name('carousel-list');
+
+Route::post('pay-product-ecpay/{id}', 'PayProductController@ecpayStore')->name('pay-product-ecpay');
+Route::any('ecpay-order-result', 'EcpayController@ecpayOrderResult')->name('ecpay-order-result');
+Route::any('ecpay-return-url', 'EcpayController@ecpayReturn')->name('ecpay-return-url');

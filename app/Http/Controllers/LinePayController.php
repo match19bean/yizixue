@@ -21,7 +21,7 @@ class LinePayController extends Controller
         $order = PayOrder::where('transactionId', $request->transactionId)->get();
 
         if(is_null($order)){
-            return route('pay-product-list')->with(['message' =>'未查詢到'.$transaction_id]);
+            return route('pay-product-list')->with(['message' =>'未查詢到'.$request->transactionId]);
         }
 
         $response = $linePay->confirm($order->first()->transactionId, [
