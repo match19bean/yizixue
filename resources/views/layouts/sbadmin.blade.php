@@ -304,6 +304,9 @@
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('sb-admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('sb-admin/js/sb-admin-2.min.js') }}"></script>
 

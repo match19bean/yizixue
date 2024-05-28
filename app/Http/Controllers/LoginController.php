@@ -62,7 +62,8 @@ class LoginController extends Controller
                         'name' => $user_profile['displayName'],
                         'nickname' => $user_profile['displayName'],
                         'uuid' => 'post-'.uniqid(),
-                        'email' => $user_profile['userId'].'@line.yizixue',
+//                        'email' => $user_profile['userId'].'@line.yizixue',
+                        'verified' => 1,
                         'password' => bcrypt('password'),
                         'line_auth' => $user_profile['userId']
                     ]);

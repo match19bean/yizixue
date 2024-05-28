@@ -256,6 +256,15 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
+                                        <p class="mb-0">在學中</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ Auth::user()->is_study ? '是' : '否' }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <p class="mb-0">Email</p>
                                     </div>
                                     <div class="col-sm-9">
@@ -465,6 +474,12 @@
                                 </select>
 {{--                                <input type="text" value="{{ Auth::user()->university }}" name="university"--}}
 {{--                                    class="form-control">--}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="is_study" class="form-label">在學中</label>
+                                <div class="form-control border-0">
+                                    <input id="is_study" type="checkbox" {{Auth::user()->is_study ? 'checked' : ''}} data-toggle="toggle" data-on="是" data-off="否" data-onstyle="success" data-offstyle="danger" name="is_study" value="1">
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
