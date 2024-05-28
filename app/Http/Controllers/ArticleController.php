@@ -13,7 +13,7 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['getAllArticle', 'studyAbroad']);
+        $this->middleware(['auth', 'isEmailVerified'])->except(['getAllArticle', 'studyAbroad']);
     }
 
     public function getAllArticle($user_id)

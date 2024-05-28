@@ -49,48 +49,60 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //PostController
-Route::get('/list-posts', 'PostController@list')->name('list-all-posts');
-Route::get('/collect-posts', 'PostController@collect')->name('collect-posts');
-Route::get('create-post', 'PostController@create')->name('create-post');
-Route::get('/edit-post/{uuid}', 'PostController@edit')->name('edit-post');
-Route::post('/save-post', 'PostController@save')->name('save-post');
-Route::post('/update-post', 'PostController@update')->name('update-post');
-Route::get('/delete-post/{uuid}', 'PostController@delete')->name('delete-post');
-Route::get('view-post/{uuid}', 'PostController@show')->name('view-post');
+Route::group(['middleware' => ['auth', 'isEmailVerified']],function() {
 
-//QnAController
-Route::get('/list-qa', 'QnAController@list')->name('list-all-qa');
-Route::get('/collect-qa', 'QnAController@collect')->name('collect-qa');
-Route::get('/create-qa', 'QnAController@create')->name('create-qa');
-Route::get('/view-qa/{uuid}', 'QnAController@show')->name('view-qa');
-Route::get('/view-collect-qa/{uuid}', 'QnAController@showCollectQa')->name('view-collect-qa');
-Route::get('/edit-qa/{uuid}', 'QnAController@edit')->name('edit-qa');
-Route::post('/save-qa', 'QnAController@save')->name('save-qa');
-Route::post('/update-qa', 'QnAController@update')->name('update-qa');
-Route::get('/delete-qa/{uuid}', 'QnAController@delete')->name('delete-qa');
-Route::get('/delete-collect-qa/{uuid}', 'QnAController@deleteCollectQa')->name('delete-collect-qa');
-Route::get('/delete-attachment/{id}', 'QnAController@deleteAttachment')->name('delete-attachment');
-Route::get('/download-attachment/{id}', 'QnAController@attachmentDownload')->name('download-attachment');
+    Route::get('/list-posts', 'PostController@list')->name('list-all-posts');
+    Route::get('/collect-posts', 'PostController@collect')->name('collect-posts');
+    Route::get('create-post', 'PostController@create')->name('create-post');
+    Route::get('/edit-post/{uuid}', 'PostController@edit')->name('edit-post');
+    Route::post('/save-post', 'PostController@save')->name('save-post');
+    Route::post('/update-post', 'PostController@update')->name('update-post');
+    Route::get('/delete-post/{uuid}', 'PostController@delete')->name('delete-post');
+    Route::get('view-post/{uuid}', 'PostController@show')->name('view-post');
 
-Route::get('/user/get', 'UserController@getAll');
-Route::get('/user/collect-user', 'UserController@collect')->name('collect-user');
-Route::get('/user/skill', 'UserController@getUserBySkill');
-Route::get('/user/profile', 'UserController@profile')->name('profile');
-Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
-Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
-Route::get('/user/invite-list', 'UserController@showInviteList');
-Route::post('/user/accept-invite/{id}', 'UserController@getInviteList')->name('accept-invite');
-Route::delete('/user/delete-collect/{id}', 'UserController@deleteCollect')->name('delete-collect');
+    //QnAController
+    Route::get('/list-qa', 'QnAController@list')->name('list-all-qa');
+    Route::get('/collect-qa', 'QnAController@collect')->name('collect-qa');
+    Route::get('/create-qa', 'QnAController@create')->name('create-qa');
+    Route::get('/view-qa/{uuid}', 'QnAController@show')->name('view-qa');
+    Route::get('/view-collect-qa/{uuid}', 'QnAController@showCollectQa')->name('view-collect-qa');
+    Route::get('/edit-qa/{uuid}', 'QnAController@edit')->name('edit-qa');
+    Route::post('/save-qa', 'QnAController@save')->name('save-qa');
+    Route::post('/update-qa', 'QnAController@update')->name('update-qa');
+    Route::get('/delete-qa/{uuid}', 'QnAController@delete')->name('delete-qa');
+    Route::get('/delete-collect-qa/{uuid}', 'QnAController@deleteCollectQa')->name('delete-collect-qa');
+    Route::get('/delete-attachment/{id}', 'QnAController@deleteAttachment')->name('delete-attachment');
+    Route::get('/download-attachment/{id}', 'QnAController@attachmentDownload')->name('download-attachment');
 
-Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
-Route::get('pay-product', 'PayProductController@index')->name('pay-product-list');
-Route::post('pay-product/{id}', 'PayProductController@store')->name('pay-product');
-Route::get('pay-order', 'PayOrderController@index')->name('pay-order-list');
-Route::get('university-list', 'UniversityController@index')->name('university-list');
+    Route::get('/user/get', 'UserController@getAll');
+    Route::get('/user/collect-user', 'UserController@collect')->name('collect-user');
+    Route::get('/user/skill', 'UserController@getUserBySkill');
+    Route::get('/user/profile', 'UserController@profile')->name('profile');
+    Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
+    Route::post('/user/profile/update', 'UserController@update')->name('update-profile');
+    Route::get('/user/invite-list', 'UserController@showInviteList');
+    Route::post('/user/accept-invite/{id}', 'UserController@getInviteList')->name('accept-invite');
+    Route::delete('/user/delete-collect/{id}', 'UserController@deleteCollect')->name('delete-collect');
 
-//
+    Route::get('/bulletinboard', 'BulletinBoardController@index')->name('bulletinboard');
+    Route::get('pay-product', 'PayProductController@index')->name('pay-product-list');
+    Route::post('pay-product/{id}', 'PayProductController@store')->name('pay-product');
+    Route::get('pay-order', 'PayOrderController@index')->name('pay-order-list');
+    Route::get('university-list', 'UniversityController@index')->name('university-list');
+
+    //ecpay
+    Route::post('pay-product-ecpay/{id}', 'PayProductController@ecpayStore')->name('pay-product-ecpay');
+    Route::any('ecpay-order-result', 'EcpayController@ecpayOrderResult')->name('ecpay-order-result');
+    Route::any('ecpay-return-url', 'EcpayController@ecpayReturn')->name('ecpay-return-url');
+});
+
+//carousel
 Route::get('carousel-list', 'CarouselController@list')->name('carousel-list');
 
-Route::post('pay-product-ecpay/{id}', 'PayProductController@ecpayStore')->name('pay-product-ecpay');
-Route::any('ecpay-order-result', 'EcpayController@ecpayOrderResult')->name('ecpay-order-result');
-Route::any('ecpay-return-url', 'EcpayController@ecpayReturn')->name('ecpay-return-url');
+
+
+
+//Verify
+Route::get('register/verify', 'Auth\RegisterController@verify')->name('verifyEmailLink');
+Route::get('register/verify/resend', 'Auth\RegisterController@showResendVerificationEmailForm')->name('showResendVerificationEmailForm');
+Route::post('register/verify/resend', 'Auth\RegisterController@resendVerificationEmail')->name('resendVerificationEmail');

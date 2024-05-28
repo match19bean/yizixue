@@ -167,7 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Lunaweb\EmailVerification\Providers\EmailVerificationServiceProvider::class,
         /*
          * Application Service Providers...
          */
