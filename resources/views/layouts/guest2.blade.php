@@ -106,71 +106,72 @@
     </nav>
 </div>
 
-<div class="container-fluid px-5">
+<div class="container-fluid px-5 adjOnSingleArticle adjOnIntroduction">
     @yield('content')
 </div>
 
 <!-- Footer-->
-<div class="mt-3">
     <footer class="py-5 bg-dark footer">
         <div class="row text-center text-white">
-        <div class="col-md-4 d-flex flex-column justify-content-start align-items-center">
-            <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
-            <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
-            <p>統一編號：83453577</p>
-        </div>
-            <div class="col-md-8 d-flex flex-row align-items-start justify-content-evenly">
-                <div class="row w-100">
+            <div class="col-md-4">
+                <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
+                <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
+                <p>統一編號：83453577</p>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
                     <div class="col-md-3">
-                        <p>加入 | 易子學</p>
-                        <a href="{{route('login')}}" style="text-decoration: none; color:white; pb-5">登入/註冊</a>
-                        <br>
-                        <a href="">聯絡我們</a>
+                        <h6>加入 | 易子學</h6>
+                        <div>
+                            <a href="{{route('login')}}">登入/註冊</a>
+                            <a href="">聯絡我們</a>
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <p>關於 | 會員</p>
-                        <a href="{{route('senior')}}">找學長姐</a>
-                        <br>
-                        <a href="{{route('university-list')}}">找學校</a>
-                        <br>
-                        <a href="{{route('qna')}}">問與答</a>
+                        <h6>關於 | 會員</h6>
+                        <div>
+                            <a href="{{route('senior')}}">找學長姐</a>
+                            <a href="{{route('university-list')}}">找學校</a>
+                            <a href="{{route('qna')}}">問與答</a>
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <p>關於 | 學長姐</p>
-                        <a href="{{route('pay-product-list')}}">成為學長姐</a>
-                        <br>
-                        <a href="">教戰手則</a>
+                        <h6>關於 | 學長姐</h6>
+                        <div>
+                            <a href="{{route('pay-product-list')}}">成為學長姐</a>
+                            <a href="">教戰手則</a>
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <p>關於 | 易子學</p>
-                        <a href="">關於我們</a>
-                        <br>
-                        <a href="">前輩網</a>
+                        <h6>關於 | 易子學</h6>
+                        <div>
+                            <a href="">關於我們</a>
+                            <a href="">前輩網</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-</div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(".owl-carousel").owlCarousel({
         loop: true, // 循環播放
         margin: 10, // 外距 10px
-        nav: true, // 顯示點點
+        nav: false, // 顯示點點
         responsive: {
             0: {
                 items: 1 // 螢幕大小為 0~600 顯示 1 個項目
             },
             600: {
-                items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+                items: 2 // 螢幕大小為 600~1000 顯示 3 個項目
             },
-            800: {
+            1000: {
                 items: 4 // 螢幕大小為 1000 以上 顯示 5 個項目
             },
-            1500: {
-                items: 4 // 螢幕大小為 1000 以上 顯示 5 個項目
+            1400: {
+                items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
             }
         }
     });
@@ -201,6 +202,7 @@ function uniCardClick(uni){
 }
 </script>
 <!-- end of cards click function -->
+<script src="{{ asset('js/broccoli-sideBar.js')}}"></script>
 </body>
 
 </html>

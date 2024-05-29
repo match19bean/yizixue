@@ -21,12 +21,16 @@
     <link rel="stylesheet" href="{{ asset('css/broccoli-color.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcomeP.css')}}">
     <!-- End of Broccoli code -->
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- slick slider cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- end of slick slider cdn -->
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -36,7 +40,7 @@
 <!-- Responsive navbar-->
 <nav id="mainNav" class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="{{url('/')}}">
-        <img id="logoImg" src="{{asset('uploads/images/logo.png')}}" alt="logo" class="w-25" id="logo">
+        <img id="logoImg" src="{{asset('uploads/images/logo.png')}}" alt="logo">
     </a>
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -93,29 +97,32 @@
             <div class="row">
                 <div class="col-md-3">
                     <h6>加入 | 易子學</h6>
-                    <a href="{{route('login')}}">登入/註冊</a>
-                    <br>
-                    <a href="">聯絡我們</a>
+                    <div>
+                        <a href="{{route('login')}}">登入/註冊</a>
+                        <a href="">聯絡我們</a>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <h6>關於 | 會員</h6>
-                    <a href="{{route('senior')}}">找學長姐</a>
-                    <br>
-                    <a href="{{route('university-list')}}">找學校</a>
-                    <br>
-                    <a href="{{route('qna')}}">問與答</a>
+                    <div>
+                        <a href="{{route('senior')}}">找學長姐</a>
+                        <a href="{{route('university-list')}}">找學校</a>
+                        <a href="{{route('qna')}}">問與答</a>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <h6>關於 | 學長姐</h6>
-                    <a href="{{route('pay-product-list')}}">成為學長姐</a>
-                    <br>
-                    <a href="">教戰手則</a>
+                    <div>
+                        <a href="{{route('pay-product-list')}}">成為學長姐</a>
+                        <a href="">教戰手則</a>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <h6>關於 | 易子學</h6>
-                    <a href="">關於我們</a>
-                    <br>
-                    <a href="">前輩網</a>
+                    <div>
+                        <a href="">關於我們</a>
+                        <a href="">前輩網</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,16 +135,16 @@
     $(".owl-carousel").owlCarousel({
         loop: true, // 循環播放
         margin: 10, // 外距 10px
-        nav: true, // 顯示點點
+        nav: false, // 顯示點點
         responsive: {
             0: {
-                items: 4 // 螢幕大小為 0~600 顯示 1 個項目
+                items: 1 // 螢幕大小為 0~600 顯示 1 個項目
             },
             600: {
-                items: 4 // 螢幕大小為 600~1000 顯示 3 個項目
+                items: 2 // 螢幕大小為 600~1000 顯示 3 個項目
             },
-            800: {
-                items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+            1000: {
+                items: 4 // 螢幕大小為 1000 以上 顯示 5 個項目
             },
             1500: {
                 items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
@@ -146,16 +153,29 @@
     });
 </script>
 
+<!-- slick slider function -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- slider slider custom-setting -->
+<script>
+    $('.sliderUni.center').slick({
+  centerMode: true,
+  centerPadding: '5rem',
+  slidesToShow: 5,
+  dots: true,
+  arrows: false
+});
+</script>
+
 <!-- cards click function -->
 <script>
-function cardClickable(id) {
-    // console.log(id);
-    location.href = document.location.origin + "/introduction/" + id;
-}
+    function cardClickable(id) {
+        // console.log(id);
+        location.href = document.location.origin + "/introduction/" + id;
+    }
 
-function uniCardClick(uni){
-    location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
-}
+    function uniCardClick(uni){
+        location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
+    }
 </script>
 <!-- end of cards click function -->
 <script src="{{ asset('js/broccoli-header.js')}}"></script>

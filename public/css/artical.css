@@ -65,11 +65,17 @@
   border: none;
 }
 
+.list-group {
+  border-radius: 30px;
+}
 .list-group a {
   font-size: 1.3rem;
 }
-.list-group .border-bottom-light {
-  border-bottom: solid 1px white !important;
+.list-group .borderSetting {
+  border-bottom: solid 1px white;
+}
+.list-group li:nth-last-child(1) .borderSetting {
+  border-bottom: none;
 }
 
 .callToAction .part1,
@@ -102,480 +108,846 @@
   box-shadow: 0px 5px 5px #C1C1C1;
   border-radius: 20px;
   padding: 1%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
-.postsSection .postImg {
+.postsSection .cardborder .postImg {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   width: 12rem;
   height: 100%;
+  align-self: center;
 }
-.postsSection .postImg .postPhoto {
-  border-radius: 20px;
+.postsSection .cardborder .postImg .postPhoto {
   width: 100%;
   grid-column: 1/6;
-  grid-row: 1/5;
+  grid-row: 1/6;
 }
-.postsSection .postImg .userimg {
-  border-radius: 100%;
-  width: 4rem;
-  grid-column: 1/4;
-  grid-row: 3/6;
+.postsSection .cardborder .postImg .postPhoto span {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
 }
-.postsSection .postImg p {
-  width: 6rem;
-  font-size: 1.2rem;
-  grid-column: 5/6;
-  grid-row: 4/6;
-  text-align: end;
-  padding: 5px 10px 5px 10px;
-  margin: 0.2rem;
+.postsSection .cardborder .postImg .userimg {
+  grid-column: 1/2;
+  grid-row: 5/6;
+  width: 100%;
+  background-color: white;
+}
+.postsSection .cardborder .postImg .userimg span {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.postsSection .cardborder .postImg p {
+  width: 100%;
+  font-size: 0.8rem;
+  grid-column: 2/6;
+  grid-row: 5/6;
+  text-align: center;
+  padding: 0.3rem;
+  margin: 0;
   background-color: #BD9EBE;
   text-wrap: nowrap;
 }
-.postsSection .postTitle {
+.postsSection .cardborder .postContents {
+  width: 70%;
+  padding: 0.5rem;
+}
+.postsSection .cardborder .postContents .postTitle {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
   justify-content: start;
 }
-.postsSection .postTitle h5 {
-  font-size: 1.3rem;
+.postsSection .cardborder .postContents .postTitle h5 {
+  font-size: 2rem;
   color: #4C2A70;
+  font-weight: 400;
+  margin: 0;
 }
-.postsSection .postTitle p {
+.postsSection .cardborder .postContents .postTitle p {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: 0;
 }
-.postsSection .postTitle p a {
+.postsSection .cardborder .postContents .postTitle p a {
   background-color: #4C2A70;
-  border-radius: 3px;
+  border-radius: 0.5rem;
 }
-.postsSection .postTitle p a span {
-  font-size: 0.7rem;
+.postsSection .cardborder .postContents .postTitle p a span {
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
   color: white;
   display: block;
   height: -moz-min-content;
   height: min-content;
 }
-.postsSection .content {
+.postsSection .cardborder .postContents .content {
   color: #C1C1C1;
   border-bottom: solid 2px #C1C1C1;
-  margin-top: 3%;
+  margin-top: 0.5rem;
 }
-.postsSection .content .readMore {
+.postsSection .cardborder .postContents .content .readMore {
   width: 100%;
   font-size: 0.8rem;
   text-align: end;
   margin: 0;
   color: #4C2A70;
 }
-.postsSection .socialIcons {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: end;
-  margin-top: 3%;
+.postsSection .cardborder .postContents .socialIcons {
+  margin-left: 0.1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0;
 }
-.postsSection .socialIcons i {
+.postsSection .cardborder .postContents .socialIcons i {
   display: flex;
   align-items: center;
-  gap: 2px;
-  margin: 5px;
+  padding: 0.5rem;
 }
-.postsSection .socialIcons i::after {
-  font-size: 1rem;
-  font-family: Rubik;
-  text-decoration: none;
-  font-style: normal;
-  align-items: self-end;
+.postsSection .cardborder .postContents .socialIcons i span {
+  padding-left: 0.2rem;
 }
-.postsSection .socialIcons svg {
-  width: 2.2rem;
-}
-.postsSection .socialIcons svg path {
-  fill: black;
-}
-.postsSection .socialIcons svg circle {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 9;
-  stroke-miterlimit: 10;
-}
-.postsSection .socialIcons p {
+.postsSection .cardborder .postContents .socialIcons p {
   margin: 0;
+  padding: 0;
   text-align: end;
   color: #4C2A70;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
 }
 
-.pageNav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
 .pageNav p {
-  margin: 0 30px 0 30px;
+  margin: 1rem;
 }
 
-.seniorListPage #burger {
-  cursor: pointer;
-  transition: 0.1s;
+.seniorPage-breadcrumbs div,
+.uniListPage-breadcrumbs div,
+.singleArticle-breadcrumbs div,
+.introduction-breadcrumbs div {
+  gap: 2rem;
 }
-.seniorListPage .burgerTurn {
-  transform: rotate(90deg);
+.seniorPage-breadcrumbs h4,
+.seniorPage-breadcrumbs a,
+.uniListPage-breadcrumbs h4,
+.uniListPage-breadcrumbs a,
+.singleArticle-breadcrumbs h4,
+.singleArticle-breadcrumbs a,
+.introduction-breadcrumbs h4,
+.introduction-breadcrumbs a {
+  font-size: 2rem;
+  font-weight: 300;
 }
-.seniorListPage #toggleBar {
-  display: none;
-  transition: 0.1s;
-  transform-origin: 50% 0%;
-  flex-direction: row;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-top: solid 0.2rem #C1C1C1;
-  border-bottom: solid 0.2rem #C1C1C1;
-}
-.seniorListPage #toggleBar div h6 {
-  font-weight: 800;
-  background-color: #BD9EBE;
-  color: white;
-  padding: 0.1rem;
-  border-radius: 3rem 3rem;
-  padding-left: 0.5rem;
-}
-.seniorListPage #toggleBar div a {
+.seniorPage-breadcrumbs h3,
+.uniListPage-breadcrumbs h3,
+.singleArticle-breadcrumbs h3,
+.introduction-breadcrumbs h3 {
+  font-size: 3rem;
+  font-weight: 300;
   color: #4C2A70;
-  padding-left: 0.5rem;
-}
-.seniorListPage .noShow {
-  display: flex !important;
-  animation: toggleIn 0.1s both;
-}
-
-.item {
-  width: 100%;
-  border-radius: 30px;
-  border: solid 1px #4C2A70;
-}
-.item div .card {
-  border: none;
-  padding: 10px;
-  z-index: -1;
-}
-.item div .card img {
-  padding: 20px;
-}
-.item div .name-card {
-  padding: 30px;
-  background: #BD9EBE;
-  text-align: center;
-  border-left: solid 30px white;
-}
-.item div .name-card h5 {
-  color: white;
 }
 
 .seniorPage {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  width: 100%;
+}
+.seniorPage a {
+  all: unset;
+  cursor: pointer;
+}
+.seniorPage .sideNav {
+  grid-column: 1/12;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+}
+.seniorPage .sideNav .selections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+}
+.seniorPage .sideNav .selections .locations,
+.seniorPage .sideNav .selections .topics {
+  background-color: #4C2A70;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 1rem;
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 1rem;
+}
+.seniorPage .sideNav .selections .locations span,
+.seniorPage .sideNav .selections .topics span {
+  background-color: white;
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.seniorPage .sideNav .selections .locations button,
+.seniorPage .sideNav .selections .topics button {
+  all: unset;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 0.3rem;
+  color: white;
+  transition: 0.3s;
+}
+.seniorPage .sideNav .selections .locations button:hover,
+.seniorPage .sideNav .selections .topics button:hover {
+  transform: scale(1.1);
+}
+.seniorPage .sideNav .subLocas {
+  display: grid;
+  grid-template-rows: repeat(40, 1fr);
+}
+.seniorPage .sideNav .subLocas text {
+  transition: 0.3s;
+  transform-origin: 50% 50% !important;
+  cursor: pointer;
+}
+.seniorPage .sideNav .subLocas text:hover {
+  font-size: 22px !important;
+  font-weight: 800;
+  text-shadow: 2px 2px 2px rgba(128, 128, 128, 0.5);
+}
+.seniorPage .sideNav .subLocas .subLoca1 {
+  grid-column: 1/2;
+  grid-row: 1/41;
+  display: none;
+}
+.seniorPage .sideNav .subLocas .subLoca2 {
+  grid-column: 1/2;
+  grid-row: 4/41;
+  display: none;
+}
+.seniorPage .sideNav .subLocas .subLoca3 {
+  grid-column: 1/2;
+  grid-row: 7/41;
+  display: none;
+}
+.seniorPage .cards {
+  grid-column: 7/31;
+  grid-row: 1/2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  gap: 3rem;
   flex-wrap: wrap;
 }
-.seniorPage a {
-  text-decoration: none;
-}
-.seniorPage .studentC {
-  height: 27rem !important;
-  padding: 10px;
+.seniorPage .cards .studentC {
   display: grid;
-  grid-template-rows: 90% 10%;
-  max-width: 18.5rem;
-  min-width: 17rem;
-  margin: 1%;
-  cursor: pointer;
+  grid-template-rows: repeat(20, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  width: 15rem;
 }
-.seniorPage .studentC .cards {
-  grid-column: 1/2;
-  display: grid;
-  grid-template-rows: 40% 25% 15% 20%;
-  height: 100%;
+.seniorPage .cards .studentC svg {
+  grid-row: 1/21;
+  grid-column: 1/13;
+  width: 100%;
 }
-.seniorPage .studentC .cards .studentProfile {
-  grid-row: 1/2;
-  grid-column: 1/2;
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-template-rows: repeat(12, auto);
+.seniorPage .cards .studentC svg path {
+  fill: #4C2A70;
+  stroke-width: 0px;
 }
-.seniorPage .studentC .cards .studentProfile .studentImg {
-  padding: 0;
-  grid-column: 1/4;
-  grid-row: 1/13;
+.seniorPage .cards .studentC svg polygon {
+  fill: #BD9EBE;
+  stroke-width: 0px;
 }
-.seniorPage .studentC .cards .studentProfile .studentImg .bgImg {
+.seniorPage .cards .studentC .studentImg {
+  grid-row: 3/15;
+  grid-column: 1/13;
+  padding: 0 0.5rem 0 0.5rem;
+}
+.seniorPage .cards .studentC .studentImg span {
   display: block;
-  width: 10rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 0.3rem solid #BD9EBE;
+}
+.seniorPage .cards .studentC .schoolImg {
+  grid-row: 11/16;
+  grid-column: 2/6;
+}
+.seniorPage .cards .studentC .schoolImg span {
+  display: block;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   aspect-ratio: 1/1;
 }
-.seniorPage .studentC .cards .studentProfile .videoBtn {
-  grid-column: 4/5;
-  grid-row: 3/6;
-  padding: 15px;
-}
-.seniorPage .studentC .cards .studentProfile .react {
-  grid-column: 4/6;
-  grid-row: 6/8;
-}
-.seniorPage .studentC .cards .studentProfile .react i {
-  font-size: 1.3rem !important;
-}
-.seniorPage .studentC .cards .studentProfile .react .fa-heart {
-  font-size: 15px;
-  color: red;
-  margin: 5px;
-}
-.seniorPage .studentC .cards .studentProfile .react .fa-heart span {
-  color: black;
-  font-family: "Rubik";
-}
-.seniorPage .studentC .cards .studentProfile .react .fa-bookmark span {
-  font-family: "Rubik";
-}
-.seniorPage .studentC .cards .name-card {
-  grid-row: 2/3;
-  grid-column: 1/2;
-  padding: 0 !important;
-  justify-self: end;
-  border: none;
-  width: 80%;
-  color: white;
-}
-.seniorPage .studentC .cards .postTags {
-  grid-row: 3/4;
-  grid-column: 1/2;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.seniorPage .studentC .cards .postTags span {
-  font-size: 12px;
-  padding: 5px;
-  margin: 5px;
-  background: #4C2A70;
-  color: #FFFFFF;
-  height: -moz-min-content !important;
-  height: min-content !important;
-}
-.seniorPage .studentC .cards .skillTags {
-  grid-row: 4/5;
-  grid-column: 1/2;
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  text-align: center;
-}
-.seniorPage .studentC .cards .skillTags span {
-  font-size: 12px;
-  padding: 1px;
-  margin: 5px;
+.seniorPage .cards .studentC h4 {
+  grid-row: 1/3;
+  grid-column: 2/8;
+  font-size: 1.3rem;
   color: #4C2A70;
-  border: 1px solid #4C2A70;
+  align-self: flex-end;
+  justify-self: start;
+}
+.seniorPage .cards .studentC h5 {
+  grid-row: 14/20;
+  grid-column: 5/12;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: white;
+  text-align: end;
+  align-self: center;
+  justify-self: end;
+}
+.seniorPage .cards .studentC h6 {
+  grid-row: 1/3;
+  grid-column: 8/12;
+  font-size: 0.8rem;
+  align-self: flex-end;
+  justify-self: end;
+}
+.seniorPage .cards .studentC .react {
+  grid-row: 17/19;
+  grid-column: 2/6;
+  font-size: 1.2rem;
+}
+.seniorPage .cards .studentC .postTags {
+  grid-row: 9/16;
+  grid-column: 10/13;
+}
+.seniorPage .cards .studentC .postTags a {
+  all: unset;
+  display: block;
+  background-color: #4C2A70;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.5rem;
+  letter-spacing: 0.1rem;
+  padding: 0.3rem;
+  margin: 0.2rem 0 0.2rem 0;
   border-radius: 5px;
-  height: -moz-min-content !important;
-  height: min-content !important;
+}
+
+.uniListPage {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  width: 100%;
+}
+.uniListPage .sideNav {
+  grid-column: 1/12;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+}
+.uniListPage .sideNav .selections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+}
+.uniListPage .sideNav .selections .locations,
+.uniListPage .sideNav .selections .topics {
+  background-color: #4C2A70;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 1rem;
+  margin: 0.5rem 0 0.5rem 0;
+  padding: 1rem;
+}
+.uniListPage .sideNav .selections .locations span,
+.uniListPage .sideNav .selections .topics span {
+  background-color: white;
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.uniListPage .sideNav .selections .locations button,
+.uniListPage .sideNav .selections .topics button {
+  all: unset;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 0.3rem;
+  color: white;
+  transition: 0.3s;
+}
+.uniListPage .sideNav .selections .locations button:hover,
+.uniListPage .sideNav .selections .topics button:hover {
+  transform: scale(1.1);
+}
+.uniListPage .sideNav .subLocas {
+  display: grid;
+  grid-template-rows: repeat(40, 1fr);
+}
+.uniListPage .sideNav .subLocas text {
+  transition: 0.3s;
+  transform-origin: 50% 50% !important;
+  cursor: pointer;
+}
+.uniListPage .sideNav .subLocas text:hover {
+  font-size: 22px !important;
+  font-weight: 800;
+  text-shadow: 2px 2px 2px rgba(128, 128, 128, 0.5);
+}
+.uniListPage .sideNav .subLocas .subLoca1 {
+  grid-column: 1/2;
+  grid-row: 1/41;
+  display: none;
+  z-index: 3;
+}
+.uniListPage .sideNav .subLocas .subLoca2 {
+  grid-column: 1/2;
+  grid-row: 4/41;
+  display: none;
+  z-index: 3;
+}
+.uniListPage .sideNav .subLocas .subLoca3 {
+  grid-column: 1/2;
+  grid-row: 7/41;
+  display: none;
+  z-index: 3;
+}
+.uniListPage .uCardSection {
+  grid-column: 7/31;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.uniListPage .uCardSection .uniCard {
+  margin: 0.3rem;
+  background-color: white;
+  aspect-ratio: 3/3.5;
+  border: 2px solid #4C2A70;
+  border-radius: 2rem;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.uniListPage .uCardSection .uniCard .uniLogo span {
+  display: block;
+  width: 8rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
+.uniListPage .uCardSection .uniCard h6 {
+  font-size: 0.8rem;
+}
+.uniListPage .uCardSection .uniCard h4 {
+  font-size: 0.8rem;
+  width: 90%;
+  text-align: center;
+  padding: 2rem;
+  background-color: #BD9EBE;
+  color: white;
 }
 
 .introduction .introCard {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, auto);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  padding-left: 3rem;
+  gap: 8rem;
+  padding-bottom: 8rem;
 }
-.introduction .introCard .portriat {
-  grid-column: 1/5;
-  grid-row: 1/12;
-  margin: 2%;
-  border-radius: 10%;
-}
-.introduction .introCard .portriat span {
-  display: block;
-  width: 100%;
+.introduction .introCard div.portriat {
+  width: 30%;
   aspect-ratio: 1/1;
   background-position: center;
   background-size: cover;
 }
-.introduction .introCard .nameCard {
-  grid-column: 3/6;
-  grid-row: 11/13;
+.introduction .introCard .infoSection {
+  width: 55%;
 }
-.introduction .introCard .postCateg {
-  grid-column: 6/13;
+.introduction .introCard .infoSection .userName {
+  background-color: #BD9EBE;
+  color: white;
+  padding: 1rem 1rem 1rem 3rem;
+  font-size: 3rem;
+  border-radius: 1rem 0 0 1rem;
+}
+.introduction .introCard .infoSection .details {
+  padding: 1rem;
+  border: solid 1px black;
+  border-radius: 1rem 0 0 1rem;
+  display: grid;
+  grid-template-columns: 60% auto;
+  grid-template-rows: auto auto;
+}
+.introduction .introCard .infoSection .details .schoolInfo {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  border: solid 1px black;
+  gap: 0.5rem;
+  background-color: #BD9EBE;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.introduction .introCard .infoSection .details .schoolInfo .schoolImg {
+  width: 5rem;
+  display: block;
+  aspect-ratio: 1/1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.introduction .introCard .infoSection .details .schoolInfo div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.introduction .introCard .infoSection .details .schoolInfo div .schoolNameE, .introduction .introCard .infoSection .details .schoolInfo div .schoolNameC {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+.introduction .introCard .infoSection .details .schoolInfo h3 {
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  background-color: white;
+  border: solid 1px black;
+  color: #4C2A70;
+  border-radius: 10px;
+  margin: 0;
+}
+.introduction .introCard .infoSection .details .postCateg {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 0 0 0;
+}
+.introduction .introCard .infoSection .details .postCateg h4 {
+  width: 30%;
+  padding: 0.5rem;
+  background-color: #4C2A70;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+.introduction .introCard .infoSection .details .skillCateg {
+  grid-column: 2/3;
   grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  height: 12rem;
+  padding-left: 1rem;
 }
-.introduction .introCard .skill {
-  grid-column: 6/13;
-  grid-row: 3/10;
+.introduction .introCard .infoSection .details .skillCateg h6 {
+  display: block;
+  padding: 0.5rem;
+  width: 30%;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: solid 1px #4C2A70;
+  background-color: white;
+  color: #4C2A70;
+  border-radius: 10px;
+  text-align: center;
 }
-.introduction .introCard .react {
-  grid-column: 10/13;
-  grid-row: 10/11;
+.introduction .introCard .infoSection .interaction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.introduction .introCard .infoSection .interaction .react {
   display: flex;
   align-items: center;
-  gap: 2px;
-  margin: 5px;
+  gap: 2rem;
+  width: 30%;
 }
-.introduction .introCard .react i {
+.introduction .introCard .infoSection .interaction .react i {
   font-size: 2.5rem;
 }
-.introduction .introCard .react svg {
-  width: 2.2rem;
-}
-.introduction .introCard .react svg path {
-  fill: black;
-}
-.introduction .introCard .react svg circle {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 9;
-  stroke-miterlimit: 10;
-}
-.introduction .introCard .state {
-  grid-column: 10/11;
-  grid-row: 12/13;
-  font-size: 1.5rem;
-  color: gray;
-}
-.introduction .introCard .socialBtn {
-  grid-column: 11/13;
-  grid-row: 12/13;
+.introduction .introCard .infoSection .interaction .socialBtn {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 1rem;
-  background-color: #4C2A70;
+  justify-content: start;
+  width: 70%;
+  gap: 3rem;
   padding: 1rem;
 }
-.introduction .introCard .socialBtn a img {
-  width: 3rem;
-}
-.introduction .introCard .socialBtn i {
-  font-size: 2.5rem;
+.introduction .introCard .infoSection .interaction .socialBtn a {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+  border-radius: 10rem;
+  background-color: #4C2A70;
+  height: 3rem;
+  width: 12rem;
+  font-size: 2rem;
   color: white;
-}
-.introduction .introCard .socialBtn svg {
-  width: 2.5rem;
 }
 .introduction .detail p {
   color: gray;
   font-size: 1.5rem;
 }
+.introduction .detail .selfIntro {
+  background-color: #d9d9d9;
+}
+.introduction .detail .selfIntro h2 {
+  background-color: #BD9EBE;
+  color: white;
+  width: 40%;
+  text-align: end;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1rem 5rem 1rem 1rem;
+  transform: translateY(-2.5rem);
+}
+.introduction .detail .selfIntro .selfContent > p {
+  color: black;
+  font-size: 1.2rem;
+}
+.introduction .detail .selfIntro .selfContent, .introduction .detail .selfIntro .edu, .introduction .detail .selfIntro .social, .introduction .detail .selfIntro .contact {
+  background-color: white;
+  margin: 1rem 10rem 1rem 10rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  border: solid 1px black;
+}
+.introduction .detail .selfIntro .selfContent h3, .introduction .detail .selfIntro .edu h3, .introduction .detail .selfIntro .social h3, .introduction .detail .selfIntro .contact h3 {
+  color: #4C2A70;
+}
+.introduction .detail .selfIntro .selfContent div, .introduction .detail .selfIntro .edu div, .introduction .detail .selfIntro .social div, .introduction .detail .selfIntro .contact div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.introduction .detail .selfIntro .selfContent div svg, .introduction .detail .selfIntro .edu div svg, .introduction .detail .selfIntro .social div svg, .introduction .detail .selfIntro .contact div svg {
+  width: 4rem;
+  aspect-ratio: 1/1;
+}
+.introduction .detail .selfIntro .selfContent div svg path, .introduction .detail .selfIntro .edu div svg path, .introduction .detail .selfIntro .social div svg path, .introduction .detail .selfIntro .contact div svg path {
+  fill: #5b5b5b;
+}
+.introduction .detail .selfIntro .selfContent div p, .introduction .detail .selfIntro .edu div p, .introduction .detail .selfIntro .social div p, .introduction .detail .selfIntro .contact div p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.introduction .detail .selfIntro .selfContent div p i, .introduction .detail .selfIntro .edu div p i, .introduction .detail .selfIntro .social div p i, .introduction .detail .selfIntro .contact div p i {
+  font-size: 4rem;
+}
+.introduction .detail h2.myArtical {
+  background-color: #BD9EBE;
+  color: white;
+  width: 40%;
+  text-align: end;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1rem 5rem 1rem 1rem;
+  margin-top: 5rem;
+  transform: translateY(6rem);
+}
+.introduction .detail .postCard {
+  background-color: #d9d9d9;
+  margin: 5rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .introduction .detail .postCard .card {
   margin: 1%;
-  width: 40vw;
+  width: 30rem;
+  height: 10rem;
   padding: 0;
   border-radius: 20px;
   border: solid 1px #BD9EBE !important;
   display: grid;
   grid-template-columns: repeat(6, auto);
   box-shadow: -5px 5px 10px #C1C1C1;
+  overflow: hidden;
 }
 .introduction .detail .postCard .card .imgPart {
-  grid-column: 1/3;
+  grid-column: 1/2;
   grid-row: 1/2;
-  width: 8rem;
-  padding: 10%;
-  border-radius: 30px;
-}
-.introduction .detail .postCard .card .imgPart span {
-  display: block;
+  height: 10rem;
+  border-radius: 20px;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   aspect-ratio: 1/1;
 }
 .introduction .detail .postCard .card .infoPart {
-  grid-column: 3/7;
+  all: unset;
+  display: block;
+  grid-column: 2/7;
   grid-row: 1/2;
+  padding: 0.5rem;
 }
-.introduction .detail .postCard .card .infoPart div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.introduction .detail .postCard .card .infoPart h3 {
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: #4C2A70;
 }
-.introduction .detail .postCard .card .infoPart div p {
+.introduction .detail .postCard .card .infoPart p {
   font-size: 1rem;
+  color: #C1C1C1;
 }
-.introduction .detail .postCard .card .infoPart div a.readMore {
-  font-size: 0.8rem;
-  color: #BD9EBE;
-  width: 100%;
+.introduction .detail .postCard .card .infoPart p.content {
+  color: #5b5b5b;
+}
+.introduction .detail .postCard .card .infoPart .react {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.introduction .detail .postCard .card .infoPart .react p.date {
   text-align: end;
-  text-decoration: none;
+  margin: 0;
 }
 .introduction .attachment {
-  padding: 1.5rem 0 1.5rem;
-  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: start;
+  gap: 2rem;
+  margin: 5rem;
 }
 .introduction .attachment .file {
-  justify-content: start;
-  align-items: end;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 10%;
+  all: unset;
+  display: block;
 }
-.introduction .carouselSection .item {
+.introduction .attachment .file svg {
+  width: 10rem;
+  height: 10rem;
+}
+.introduction .attachment .file svg text {
+  overflow-x: hidden;
+}
+.introduction .carouselSection .studentC {
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: repeat(20, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+}
+.introduction .carouselSection .studentC svg {
+  grid-row: 1/21;
+  grid-column: 1/13;
   width: 100%;
-  border-radius: 30px;
-  border: solid 1px #4C2A70;
 }
-.introduction .carouselSection .item div .card {
-  border: none;
-  padding: 10px;
-  z-index: -1;
+.introduction .carouselSection .studentC svg path {
+  fill: #4C2A70;
+  stroke-width: 0px;
 }
-.introduction .carouselSection .item div .card .bgImg {
-  width: 80%;
+.introduction .carouselSection .studentC svg polygon {
+  fill: #BD9EBE;
+  stroke-width: 0px;
+}
+.introduction .carouselSection .studentC .studentImg {
+  grid-row: 3/15;
+  grid-column: 1/13;
+  padding: 0 0.5rem 0 0.5rem;
+}
+.introduction .carouselSection .studentC .studentImg span {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 0.3rem solid #BD9EBE;
+}
+.introduction .carouselSection .studentC .schoolImg {
+  grid-row: 10/15;
+  grid-column: 2/6;
+}
+.introduction .carouselSection .studentC .schoolImg span {
   display: block;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   aspect-ratio: 1/1;
 }
-.introduction .carouselSection .item div .name-card {
-  padding: 30px;
-  background: #BD9EBE;
-  text-align: center;
-  border-left: solid 30px white;
+.introduction .carouselSection .studentC h4 {
+  grid-row: 1/3;
+  grid-column: 2/8;
+  font-size: 1.3rem;
+  color: #4C2A70;
+  align-self: flex-end;
+  justify-self: start;
 }
-.introduction .carouselSection .item div .name-card h5 {
-  color: white;
-}
-.introduction .carouselSection .item div .info {
-  margin: 20px;
-}
-.introduction .carouselSection .item div .info h5 {
-  text-align: end;
-  font-size: 0.9rem;
-}
-.introduction .carouselSection .item div .info h5 a {
-  text-decoration: none;
-  color: #4676ED;
+.introduction .carouselSection .studentC h5 {
+  grid-row: 13/19;
+  grid-column: 5/12;
   font-size: 1.2rem;
-  margin: 0.5rem;
+  font-weight: 400;
+  color: white;
+  text-align: end;
+  align-self: center;
+  justify-self: end;
 }
-.introduction .carouselSection .studentNav .owl-stage {
-  width: -moz-max-content !important;
-  width: max-content !important;
+.introduction .carouselSection .studentC h6 {
+  grid-row: 1/3;
+  grid-column: 8/12;
+  font-size: 0.8rem;
+  align-self: flex-end;
+  justify-self: end;
 }
-.introduction .carouselSection .studentNav .owl-item {
-  width: auto !important;
+.introduction .carouselSection .studentC .react {
+  grid-row: 17/19;
+  grid-column: 2/6;
+  font-size: 1.2rem;
+}
+.introduction .carouselSection .studentC .postTags {
+  grid-row: 8/15;
+  grid-column: 9/13;
+}
+.introduction .carouselSection .studentC .postTags p {
+  all: unset;
+  display: block;
+  background-color: #4C2A70;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  padding: 0.3rem;
+  margin: 0.2rem 0 0.2rem 0;
+  border-radius: 5px;
 }
 .introduction .carouselSection .studentNav .owl-nav {
   display: flex;
@@ -594,107 +966,14 @@
   width: 20px !important;
   transition: 0.1s !important;
 }
-.introduction .carouselSection .studentC {
-  height: 27rem !important;
-  padding: 10px;
-  display: grid;
-  grid-template-rows: 90% 10%;
-  max-width: 18.5rem;
-  min-width: 17rem;
+.introduction a.moreTag {
+  all: unset;
+  display: inline-block;
   cursor: pointer;
-}
-.introduction .carouselSection .studentC .cards {
-  grid-column: 1/2;
-  display: grid;
-  grid-template-rows: 40% 25% 15% 20%;
-  height: 100%;
-}
-.introduction .carouselSection .studentC .cards .studentProfile {
-  grid-row: 1/2;
-  grid-column: 1/2;
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-template-rows: repeat(12, auto);
-}
-.introduction .carouselSection .studentC .cards .studentProfile .studentImg {
-  padding: 0;
-  grid-column: 1/4;
-  grid-row: 1/13;
-}
-.introduction .carouselSection .studentC .cards .studentProfile .studentImg .bgImg {
-  display: block;
-  width: 10rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  aspect-ratio: 1/1;
-}
-.introduction .carouselSection .studentC .cards .studentProfile .videoBtn {
-  grid-column: 4/5;
-  grid-row: 3/6;
-  padding: 30px;
-}
-.introduction .carouselSection .studentC .cards .studentProfile .react {
-  grid-column: 4/6;
-  grid-row: 6/8;
-}
-.introduction .carouselSection .studentC .cards .studentProfile .react i {
-  font-size: 1.3rem !important;
-}
-.introduction .carouselSection .studentC .cards .studentProfile .react .fa-heart {
-  font-size: 15px;
-  color: red;
-  margin: 5px;
-}
-.introduction .carouselSection .studentC .cards .studentProfile .react .fa-heart span {
-  color: black;
-  font-family: "Rubik";
-}
-.introduction .carouselSection .studentC .cards .studentProfile .react .fa-bookmark span {
-  font-family: "Rubik";
-}
-.introduction .carouselSection .studentC .cards .name-card {
-  grid-row: 2/3;
-  grid-column: 1/2;
-  padding: 0 !important;
-  justify-self: end;
-  border: none;
-  width: 80%;
-  color: white;
-}
-.introduction .carouselSection .studentC .cards .postTags {
-  grid-row: 3/4;
-  grid-column: 1/2;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.introduction .carouselSection .studentC .cards .postTags span {
-  font-size: 12px;
-  padding: 5px;
-  margin: 5px;
-  background: #4C2A70;
-  color: #FFFFFF;
-  height: -moz-min-content !important;
-  height: min-content !important;
-}
-.introduction .carouselSection .studentC .cards .skillTags {
-  grid-row: 4/5;
-  grid-column: 1/2;
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  text-align: center;
-}
-.introduction .carouselSection .studentC .cards .skillTags span {
-  font-size: 12px;
-  padding: 1px;
-  margin: 5px;
   color: #4C2A70;
-  border: 1px solid #4C2A70;
-  border-radius: 5px;
-  height: -moz-min-content !important;
-  height: min-content !important;
+  font-size: 1.5rem;
+  text-align: end;
+  width: 90%;
 }
 
 .postsSection-artical-list {
@@ -960,94 +1239,316 @@
   color: white;
 }
 
-.singleArticle h2 {
-  font-size: 5rem;
-}
-.singleArticle .postCategory span {
-  border: none;
-}
-.singleArticle .socialIcons svg {
-  width: 2.2rem;
-}
-.singleArticle .socialIcons svg path {
-  fill: black;
-}
-.singleArticle .socialIcons svg circle {
-  fill: none;
-  stroke: #000000;
-  stroke-width: 9;
-  stroke-miterlimit: 10;
-}
-.singleArticle .authorDetail {
-  background-color: #C1C1C1;
-  border: #000000 1rem solid;
-  border-radius: 50px;
-}
-.singleArticle .authorDetail .authorCard {
-  border-radius: 30px;
-  width: 20rem;
-  background-color: white;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 1rem;
-  box-shadow: 10px 10px 10px #5b5b5b;
-}
-.singleArticle .authorDetail .authorCard .avatar {
+.singleArticle {
+  background-color: #d9d9d9;
+  padding: 2rem 10rem 5rem 10rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 10% 90%;
-  grid-template-rows: 80% 20%;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(3, auto);
 }
-.singleArticle .authorDetail .authorCard .avatar img {
-  width: 100%;
-  grid-column: 1/3;
-  grid-row: 1/3;
-  border-radius: 30px;
-}
-.singleArticle .authorDetail .authorCard .avatar div {
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
-.singleArticle .authorDetail .authorCard .avatar div h2 {
-  font-size: 2rem;
-}
-.singleArticle .authorDetail .authorCard .avatar .tags {
-  justify-content: center !important;
-}
-.singleArticle .moreArticles {
+.singleArticle .titleDiv {
+  grid-column: 1/21;
+  grid-row: 1/2;
   background-color: white;
-  border: 2px solid #BD9EBE !important;
-  border-radius: 20px;
-  box-shadow: 10px 10px 10px #5b5b5b;
-  height: 15rem;
+  padding: 2rem;
 }
-.singleArticle .moreArticles .bgImg {
-  border-radius: 30px;
+.singleArticle .innerDiv {
+  grid-column: 1/14;
+  grid-row: 2/3;
+  background-color: white;
+  padding: 2rem;
+}
+.singleArticle .innerDiv img {
   width: 100%;
+}
+.singleArticle .innerDiv .content {
+  margin-bottom: 3rem;
+}
+.singleArticle .innerDiv .tagSocial {
+  padding-bottom: 1rem;
+  border-bottom: solid 2px #5b5b5b;
+}
+.singleArticle .innerDiv .tagSocial .postCategory a {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: 0 1rem 0 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background-color: #4C2A70;
+  color: white;
+}
+.singleArticle .rightDiv {
+  grid-column: 14/21;
+  grid-row: 2/3;
+  background-color: white;
+  padding: 2rem;
+}
+.singleArticle .rightDiv h2 {
+  font-weight: 400;
+  color: #4C2A70;
+}
+.singleArticle .rightDiv h5 {
+  margin: 0.5rem 0 0 0;
+  font-weight: 200;
+  color: #4C2A70;
+}
+.singleArticle .rightDiv .studentC {
+  display: grid;
+  grid-template-rows: repeat(20, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  width: 15rem;
+  border-bottom: solid #d9d9d9 1px;
+}
+.singleArticle .rightDiv .studentC svg {
+  grid-row: 1/21;
+  grid-column: 1/13;
+  width: 100%;
+}
+.singleArticle .rightDiv .studentC svg path {
+  fill: #4C2A70;
+  stroke-width: 0px;
+}
+.singleArticle .rightDiv .studentC svg polygon {
+  fill: #BD9EBE;
+  stroke-width: 0px;
+}
+.singleArticle .rightDiv .studentC .studentImg {
+  grid-row: 3/15;
+  grid-column: 1/13;
+  padding: 0 0.5rem 0 0.5rem;
+}
+.singleArticle .rightDiv .studentC .studentImg span {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 0.3rem solid #BD9EBE;
+}
+.singleArticle .rightDiv .studentC .schoolImg {
+  grid-row: 11/16;
+  grid-column: 2/6;
+}
+.singleArticle .rightDiv .studentC .schoolImg span {
   display: block;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   aspect-ratio: 1/1;
 }
-.singleArticle .moreArticles a.readMore {
-  display: block;
-  width: 100%;
-  font-size: 0.8rem;
-  text-align: end;
-  margin-bottom: 2%;
-  text-decoration: none;
+.singleArticle .rightDiv .studentC h4 {
+  grid-row: 1/3;
+  grid-column: 2/8;
+  font-size: 1.3rem;
   color: #4C2A70;
-  border-bottom: solid 2px #C1C1C1;
+  align-self: flex-end;
+  justify-self: start;
+}
+.singleArticle .rightDiv .studentC h5 {
+  grid-row: 14/20;
+  grid-column: 5/12;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: white;
+  text-align: end;
+  align-self: center;
+  justify-self: end;
+}
+.singleArticle .rightDiv .studentC h6 {
+  grid-row: 1/3;
+  grid-column: 8/12;
+  font-size: 0.8rem;
+  align-self: flex-end;
+  justify-self: end;
+}
+.singleArticle .rightDiv .studentC .react {
+  grid-row: 17/19;
+  grid-column: 2/6;
+  font-size: 1.2rem;
+}
+.singleArticle .rightDiv .studentC .postTags {
+  grid-row: 9/16;
+  grid-column: 10/13;
+}
+.singleArticle .rightDiv .studentC .postTags a {
+  all: unset;
+  display: block;
+  background-color: #4C2A70;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.5rem;
+  letter-spacing: 0.1rem;
+  padding: 0.3rem;
+  margin: 0.2rem 0 0.2rem 0;
+  border-radius: 5px;
+}
+.singleArticle .rightDiv .moreArticles {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 90%;
+  margin: 1.5rem 0 1.5rem 0;
+  border-bottom: solid 1px #d9d9d9;
+}
+.singleArticle .rightDiv .moreArticles .bgImg {
+  border-radius: 0.5rem;
+  width: 40%;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
+.singleArticle .rightDiv .moreArticles .meta h3 {
+  font-size: 1rem;
+  font-weight: 200;
+  color: #4C2A70;
+  width: 8rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.singleArticle .rightDiv .moreArticles .meta p {
+  font-size: 0.7rem;
+  margin: 0;
+}
+.singleArticle .relateArticle {
+  grid-column: 1/21;
+  grid-row: 3/4;
+  background-color: white;
+}
+.singleArticle .relateArticle h2 {
+  padding-left: 2rem;
+}
+.singleArticle .relateArticle .cards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 4rem;
+  padding: 2rem;
+}
+.singleArticle .relateArticle .cards .moreArticles {
+  background-color: white;
+  border: 2px solid #BD9EBE !important;
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px #d9d9d9;
+}
+.singleArticle .relateArticle .cards .moreArticles a {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  width: 24rem;
+  gap: 1rem;
+}
+.singleArticle .relateArticle .cards .moreArticles a .imgs .bgImg {
+  border-radius: 5px 5px 0 0;
+  width: 5rem;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
+.singleArticle .relateArticle .cards .moreArticles a .imgs div.info {
+  display: flex;
+  flex-direction: row;
+  height: 1rem;
+}
+.singleArticle .relateArticle .cards .moreArticles a .imgs div.info .authorImg {
+  width: 1.5rem;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
+.singleArticle .relateArticle .cards .moreArticles a .imgs div.info h6 {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+  background-color: #BD9EBE;
+  color: white;
+  font-size: 0.8rem;
+  margin: 0;
+}
+.singleArticle .relateArticle .cards .moreArticles a h3 {
+  font-size: 1.2rem;
+  font-weight: 200;
+  color: #4C2A70;
+}
+.singleArticle .relateArticle .cards .moreArticles a .postCategory {
+  display: flex;
+  flex-direction: row;
+  height: -moz-min-content;
+  height: min-content;
+}
+.singleArticle .relateArticle .cards .moreArticles a .postCategory p {
+  background-color: #4C2A70;
+  color: white;
+  font-weight: 100;
+  margin: 0 0.2rem 0 0.2rem;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.5rem;
+  border-radius: 0.2rem;
+}
+.singleArticle .relateArticle .cards .moreArticles a p.body {
+  margin: 0;
+  font-size: 0.6rem;
+  font-weight: 200;
+}
+.singleArticle .relateArticle .cards .moreArticles a p.readMore {
+  text-align: end;
+  margin: 0;
+  color: #4C2A70;
+  font-size: 0.6rem;
+  font-weight: 200;
+}
+.singleArticle .relateArticle .cards .moreArticles a div.react {
+  border-top: 1px solid #d9d9d9;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.singleArticle .relateArticle .cards .moreArticles a div.react i {
+  width: 10%;
+  font-size: 0.6rem;
+}
+.singleArticle .relateArticle .cards .moreArticles a div.react i span {
+  margin: 0 0.2rem 0 0.1rem;
+}
+.singleArticle .relateArticle .cards .moreArticles a div.react p.date {
+  width: 80%;
+  text-align: end;
+  margin: 0;
+  color: #4C2A70;
+  font-size: 0.6rem;
+  font-weight: 200;
+}
+.singleArticle .relateArticle a.toStudyAbroad {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  width: 85%;
+  text-align: end;
+  color: #4C2A70;
+  font-size: 1.5rem;
 }
 
-footer .col-md-4 {
-  border-right: solid 2px white;
-}
 footer .col-md-4 img {
   width: 15rem;
-  margin-bottom: 10%;
-  padding: 3px;
+  margin: 3rem;
 }
 footer .col-md-4 .copyright {
   font-size: 0.6rem;
@@ -1059,18 +1560,22 @@ footer .row .col-md-3 {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  gap: 2px;
-  letter-spacing: 0.2rem;
-}
-footer .row .col-md-3 p {
-  font-size: 1.1rem;
+  letter-spacing: 0.5rem;
 }
 footer .row .col-md-3 h6 {
   font-size: 1.2rem;
+  text-align: start;
+  margin-bottom: 1rem;
 }
-footer .row .col-md-3 a {
+footer .row .col-md-3 div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+footer .row .col-md-3 div a {
   text-decoration: none;
   color: white;
+  margin-bottom: 1rem;
 }
 
 .question-and-answer-page a.readMore {
@@ -1240,36 +1745,22 @@ footer .row .col-md-3 a {
     transform: scaleY(1);
   }
 }
-.uniListPage #burger {
-  cursor: pointer;
-  transition: 0.1s;
-}
-.uniListPage .burgerTurn {
-  transform: rotate(90deg);
-}
-.uniListPage #toggleBar {
-  display: none;
-  transition: 0.1s;
-  transform-origin: 50% 0%;
-  flex-direction: row;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-top: solid 0.2rem #C1C1C1;
-  border-bottom: solid 0.2rem #C1C1C1;
-}
-.uniListPage #toggleBar div h6 {
-  font-weight: 800;
-  background-color: #BD9EBE;
-  color: white;
-  padding: 0.1rem;
-  border-radius: 3rem 3rem;
-  padding-left: 0.5rem;
-}
-.uniListPage #toggleBar div a {
-  color: #4C2A70;
-  padding-left: 0.5rem;
-}
-.uniListPage .noShow {
-  display: flex !important;
-  animation: toggleIn 0.1s both;
+@media only screen and (max-width: 1400px) {
+  .studentC h5 {
+    font-size: 1rem !important;
+  }
+  .studentC h6 {
+    grid-column: 3/12 !important;
+  }
+  .studentC .postTags {
+    grid-column: 8/14 !important;
+  }
+  .studentC .postTags p {
+    font-size: 0.5rem !important;
+  }
+  .introduction .introCard .infoSection .details .status {
+    text-align: center;
+    width: 8rem;
+    font-size: 1rem;
+  }
 }/*# sourceMappingURL=artical.css.map */

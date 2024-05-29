@@ -38,13 +38,13 @@
                     <ul class="list-group">
                         <li class="list-group-item" style="background-color: #4C2A70">
                             <a style="text-decoration: none;" class="text-white text-center" href="{{route('study-abroad')}}">
-                                <div class="border-bottom-light">全部文章</div>
+                                <div class="borderSetting">全部文章</div>
                             </a>
                         </li>
                         @forelse($Data['category'] as $category)
                             <li class="list-group-item" style="background-color: #4C2A70">
                                 <a style="text-decoration: none;" class="text-white text-center" href="{{route('study-abroad', ['category_id' => $category->id])}}">
-                                    <div class="border-bottom-light">{{$category->name}}</div>
+                                    <div class="borderSetting">{{$category->name}}</div>
                                 </a>
                             </li>
                         @empty
@@ -87,47 +87,59 @@
             <!-- posts -->
             <div class="col-9 postsSection">
                 @forelse($Data['posts'] as $post)
-
-                    <div class="row m-2 cardborder">
+                    <div class="mb-5 ml-5 cardborder">
                         <!-- Post images -->
                         <div class="postImg">
-                            <!-- img -->
-                            <img class="postPhoto" src="{{ asset('uploads/'.$post->image_path) }}" alt="">
-                            <img class="userimg" src="{{ isset($post->author->avatar)? asset('uploads/'.$post->author->avatar) : asset('uploads/images/default_avatar.png') }}" alt="">
+                            <!-- post img -->
+                            <div class="postPhoto">
+                                @if(is_null($post->image_path))
+                                <span style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp</span>
+                                @else
+                                <span style="background-image: url('/uploads/{{$post->image_path}}');">&nbsp</span>
+                                @endif
+                            </div>
+                            <!-- user img -->
+                            <div class="userimg">
+                                @if(is_null($post->image_path))
+                                <span style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp</span>
+                                @else
+                                <span style="background-image: url('/uploads/{{$post->author->avatar}}');">&nbsp</span>
+                                @endif
+                            </div>
                             <!-- namecard -->
                             <p class="text-white namecard"><a href="{{route('get-introduction', $post->author->id)}}" class="text-decoration-none text-white">{{ $post->author->name  }}</a></p>
                         </div>
                         <!-- Post Contents -->
-                        <div class="col-9">
+                        <div class="postContents">
                             <div class="postTitle row" style="font-size:2rem;">
-                                <h5 class="col-7">
-                                    <a href="{{route('article', $post->id)}}" class="text-decoration-none" style="color:#4C2A70">{{ $post->title }}</a>
-                                </h5>
-                                <p class="text-break col-5">
+                                <p class="text-break col-12">
                                     @forelse($post->category as $count => $cate)
                                         @if($count < 3)
                                             <a href="{{route('study-abroad', ['category_id' => $cate->postCategory->id])}}" class="text-decoration-none m-1 p-1">
-                                                <span>{{$cate->postCategory->name}} </span>
+                                                <span>{{$cate->postCategory->name}}</span>
                                             </a>
                                         @endif
                                     @empty
                                     @endforelse
                                 </p>
+                                <h5 class="col-12">
+                                    <a href="{{route('article', $post->id)}}" class="text-decoration-none" style="color:#4C2A70">{{ $post->title }}</a>
+                                </h5>
                             </div>
                             <div class="text-break content">
                                 {!! \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}
                                 <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none readMore">...閱讀更多</a></p>
                             </div>
-                            <div class="socialIcons">
+                            <div class="socialIcons container-fluid row">
                                 @if(auth()->check())
-                                    <i class="fa fa-heart" style="font-size:30px;
+                                    <i class="fa fa-heart col-2" style="font-size:30px;
                                     color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                         <span style="color:black; font-size: 1rem;">
                                             {{$post->likePost->count()}}
                                         </span>
                                     </i>
-                                    <i class="fa fa-bookmark" style="font-size:30px;
+                                    <i class="fa fa-bookmark col-2" style="font-size:30px;
                                     color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                         <span style="color:black; font-size: 1rem;">
@@ -135,28 +147,19 @@
                                         </span>
                                     </i>
                                 @else
-                                    <i class="fa fa-heart" style="font-size:30px; color: black;" data-id="{{$post->id}}">
+                                    <i class="fa fa-heart col-2" style="font-size:30px; color: black;" data-id="{{$post->id}}">
                                         <span style="color:black; font-size: 1rem;">
                                             {{$post->likePost->count()}}
                                         </span>
                                     </i>
-                                    <i class="fa fa-bookmark" style="font-size:30px; color: black;" data-id="{{$post->id}}">
+                                    <i class="fa fa-bookmark col-2" style="font-size:30px; color: black;" data-id="{{$post->id}}">
                                         <span style="color:black; font-size: 1rem;">
                                             {{$post->collectPost->count()}}
                                         </span>
                                     </i>
                                 @endif
-                                <i>
-                                    <svg viewBox="0 0 512 512" >
-                                        <path d="M295.4,235.2c32.9,0,59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5s-59.5,26.7-59.5,59.5c0,2.5,0.1,5,0.4,7.4l-58.4,29.1
-                                            c-10.7-10.4-25.2-16.7-41.3-16.7c-32.9,0-59.5,26.7-59.5,59.5s26.7,59.5,59.5,59.5c16.1,0,30.6-6.3,41.3-16.7l58.4,29.1
-                                            c-0.3,2.4-0.4,4.8-0.4,7.4c0,32.9,26.7,59.5,59.5,59.5s59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5c-16.1,0-30.6,6.3-41.3,16.7
-                                            l-58.4-29.1c0.3-2.4,0.4-4.8,0.4-7.4c0-2.5-0.1-5-0.4-7.4l58.4-29.1C264.7,228.8,279.3,235.2,295.4,235.2z"/>
-                                        <circle class="st0" cx="224" cy="256" r="216.3"/>
-                                    </svg>
-                                </i>
 
-                                <p>發表日期：{{ $post->created_at->format('Y/m/d') }}</p>
+                                <p class="col-8">發表日期：{{ $post->created_at->format('Y/m/d') }}</p>
                             </div>
                         </div>
                     </div>

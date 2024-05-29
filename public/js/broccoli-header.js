@@ -45,24 +45,6 @@ function headerSlide(){
 
     // 根據 currentPic 切換圖片
     changePic(currentPic);
-
-    // if (currentPic === 1) {
-    //     pic1();
-    // } else if (currentPic === 2) {
-    //     pic2();
-    // } else if (currentPic === 3) {
-    //     pic3();
-    // } else if (currentPic === 4) {
-    //     pic4();
-    // } else if (currentPic === 5) {
-    //     pic5();
-    // } else if (currentPic === 6) {
-    //     pic6();
-    // } else if (currentPic === 7) {
-    //     pic7();
-    // } else if (currentPic === 8) {
-    //     pic8();
-    // }
 }
 
 function changePic(index)
@@ -162,7 +144,7 @@ function newsSlide(){
         $("#newsTopic").text(posts[currentNews-1].topic);
         // 根據 currentPic 切換圖片
         $(".newsCard .bgImg").css("background-image", "url(" + posts[currentNews - 1].image_path + ")");
-        $(".newsCard .info .tag").text(posts[currentNews-1].category);
+        $(".newsCard .info .tags").html("<p>" + posts[currentNews-1].category + "</p>");
         $(".newsCard .info .meta").text(posts[currentNews-1].title);
         $(".newsCard .info .brief").text(encodeHTML(posts[currentNews-1].body));
         $(".newsCard .info a").attr('href', posts[currentNews-1].url);
