@@ -92,15 +92,14 @@ Route::group(['middleware' => ['auth', 'isEmailVerified']],function() {
 
     //ecpay
     Route::post('pay-product-ecpay/{id}', 'PayProductController@ecpayStore')->name('pay-product-ecpay');
-    Route::any('ecpay-order-result', 'EcpayController@ecpayOrderResult')->name('ecpay-order-result');
-    Route::any('ecpay-return-url', 'EcpayController@ecpayReturn')->name('ecpay-return-url');
 });
 
 //carousel
 Route::get('carousel-list', 'CarouselController@list')->name('carousel-list');
 
-
-
+// ecpay return
+Route::any('ecpay-order-result', 'EcpayController@ecpayOrderResult')->name('ecpay-order-result');
+Route::any('ecpay-return-url', 'EcpayController@ecpayReturn')->name('ecpay-return-url');
 
 //Verify
 Route::get('register/verify', 'Auth\RegisterController@verify')->name('verifyEmailLink');

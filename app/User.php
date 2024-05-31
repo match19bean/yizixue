@@ -23,6 +23,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
 
     protected $guarded = [];
 
+//    protected $casts = [
+//        'verified' => 'boolean'
+//    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *

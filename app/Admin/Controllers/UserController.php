@@ -35,7 +35,8 @@ class UserController extends AdminController
         $grid->column('student_proof', __('Student proof'));
         $grid->column('avatar', __('Avatar'));
         $grid->column('birth_day', __('Birth day'));
-        $grid->column('university', __('University'));
+        $grid->column('universityItem.name', __('University'));
+        $grid->column('is_study', __('Is Study'))->bool();
         $grid->column('email', __('Email'));
         $grid->column('phone', __('Phone'));
         $grid->column('line', __('Line'));
@@ -49,6 +50,7 @@ class UserController extends AdminController
         $grid->column('expired', __('Expired'));
         $grid->column('state', __('State'));
         $grid->column('remember_token', __('Remember token'));
+        $grid->column('verified', __('verified'))->bool();
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -117,6 +119,7 @@ class UserController extends AdminController
         $form->image('avatar', __('Avatar'));
         $form->datetime('birth_day', __('Birth day'))->default(date('Y-m-d'));
         $form->select('university', __('University'))->options(University::pluck('chinese_name', 'id'));
+        $form->switch('is_study', __('Is study'))->states(['在學中'=>true, '已畢業'=>false]);
         $form->email('email', __('Email'));
         $form->mobile('phone', __('Phone'));
         $form->text('line', __('Line'));
@@ -128,6 +131,10 @@ class UserController extends AdminController
         $form->number('rate', __('Rate'))->default(3);
         $form->switch('ispaied', __('Ispaied'));
         $form->datetime('expired', __('Expired'))->default(date('Y-m-d'));
+        $form->switch('verified', __('verified'))->states([
+            '是' => true,
+            '否' => false
+        ]);
         $form->select('state', __('State'))->options([
             'approve'=>'已開通',
             'banned'=>'未開通',
