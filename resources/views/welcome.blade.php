@@ -370,9 +370,11 @@
                 if (res.operator === 'no') {
                     alert(res.message);
                 } else if (res.operator === 'add') {
-                    that.removeClass('text-gray').addClass('text-danger');
+                    that.css('color', 'red');
+                    that.children('span').text(res.total);
                 } else if (res.operator === 'reduce') {
-                    that.removeClass('text-danger').addClass('text-black');
+                    that.css('color', 'black');
+                    that.children('span').text(res.total);
                 }
             },
             error: function (error) {
