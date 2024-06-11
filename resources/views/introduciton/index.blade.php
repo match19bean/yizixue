@@ -125,7 +125,7 @@
                 </p>
                 <hr>
                 <p>
-                    {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name : '' }}
+                    {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->chinese_name : '' }}
                 </p>
                 <hr>
             </div>
@@ -153,7 +153,9 @@
                                 d="M87.7,89.8c0,3.9,0,7.7,0,11.6,0,2.6-.8,3.3-3.1,3.3-2.3,0-3.1-.8-3.1-3.3,0-7.8,0-15.7,0-23.5,0-2.1.9-3.2,3-3.2,2.4,0,3.2.7,3.2,3.2,0,4,0,7.9,0,11.9Z"
                                 style="stroke-width: 0px;" />
                         </svg>
-                        LINE:{{$Data['user']->line}}
+                        LINE:@if(!is_null($Data['user']->line)) <a href="{{'https://line.me/ti/p/~'.$Data['user']->line}}"
+                                                                 class="text-black text-decoration-none" target="_blank">
+                            {{ parse_url($Data['user']->line, PHP_URL_PATH)}} </a> @else @endif</p>
                     </p>
                     <p>
                         <i class="bi bi-facebook"></i>
@@ -187,6 +189,7 @@
         <!-- posts cards -->
         <h2 class="myArtical">我的文章</h2>
         <div class="postCard">
+            <section>
             @if(!is_null($Data['user']->post))
             @foreach($Data['user']->post as $count => $post)
             @if($count < 4) <div class="card">
@@ -215,6 +218,7 @@
         @endforeach
         @endif
         <a class="moreTag" href="{{route('article-list', $Data['user']->id)}}">查看更多文章</a>
+            </section>
     </div>
     <h2>參考文件</h2>
     <!-- attachments -->
@@ -273,11 +277,11 @@
     </div>
     <hr>
     <!-- real carsuel -->
-    <div class="carouselSection mb-5">
-        <!-- from welcome -->
+    <div class="carouselSection">
+        <div class="innerCarousel">
         <div class="owl-carousel owl-theme studentNav">
             @foreach ($Data['vip'] as $key => $user)
-            <div class="item studentC" onclick="cardClickable({{ $user->id }})">
+            <div class="studentC" onclick="cardClickable({{ $user->id }})">
                 <!-- img div -->
                 <div class="studentImg">
                     @if(is_null($user->avatar))
@@ -340,6 +344,7 @@
             @endforeach
         </div>
         <a class="moreTag" href="{{route('article-list', $Data['user']->id)}}">點擊查看更多</a>
+        </div>
     </div>
 </div>
 

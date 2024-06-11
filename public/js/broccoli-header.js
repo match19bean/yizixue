@@ -96,7 +96,7 @@ function pic8(){
 
 $(window).scroll(function(){
     let screenRoll = $(window).scrollTop();
-    const bannerHeight = $("header").height();
+    const bannerHeight = $(".innerheader").height();
     if (screenRoll >= bannerHeight){
         $(".scrollFunction").css("color", "#000000");
         $("#logoImg").attr("src","uploads/images/color_ezl.png");

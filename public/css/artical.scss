@@ -77,18 +77,23 @@
     width: 100%;
     background-color: rgba(255, 255, 255, 0);
     z-index: 2;
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
 
     .navbar-brand {
         padding: 10px;
         grid-column: 1/2;
+        #logoImg{width: 15vw;}
     }
 
     .container {
-        grid-column: 2/3;
+        display: flex;
+        flex-direction: row;
         justify-content: end;
-
+        margin: 0;
         .collapse {
             justify-content: end;
 
@@ -100,6 +105,10 @@
 
                     a {
                         color: white;
+                        font-size: 1.5vw;
+                    }
+                    svg{
+                        width: 7vw;
                     }
                 }
             }
@@ -116,12 +125,12 @@
     form {
         display: grid;
         grid-template-columns: repeat(20, 1fr);
-        width: 25rem;
+        width: 30vw;
 
         svg {
-            width: 2.5rem;
+            width: 5vw;
             background-color: $primePurple;
-            border-radius: 20px;
+            border-radius: 5vw;
             grid-column: 1/3;
             grid-row: 1/2;
             z-index: 2;
@@ -133,94 +142,46 @@
         }
 
         .inputDiv {
-            border: solid 3px $primePurple;
-            border-radius: 0 50px 50px 0;
+            border: solid 0.3vw $primePurple;
+            border-radius: 0 5vw 5vw 0;
             grid-column: 2/21;
             grid-row: 1/2;
             display: flex;
             justify-content: center;
 
             input {
-                width: 90%;
+                width: 20vw;
                 border: none;
             }
         }
     }
 }
 
-.list-group {
-    a {
-        font-size: 1.3rem;
-    }
-
-    .borderSetting{
-        border-bottom: solid 1px white;
-    }
-
-    border-radius: 30px;
-
-    li:nth-last-child(1){
-        .borderSetting{
-            border-bottom: none;
-        }
-    }
-}
-
-.callToAction {
-
-    .part1,
-    .part2 {
-        margin: 0;
-        border: solid 2px $primePurple;
-        letter-spacing: 0.5rem;
-    }
-
-    .part1 {
-        border-radius: 10px 10px 0 0;
-    }
-
-    .part2 {
-        border-radius: 0 0 10px 10px;
-        padding: 10px;
-        box-shadow: 0 3px 3px $primeGray;
-
-        p {
-            font-size: 0.9rem;
-            color: gray;
-        }
-    }
-
-    button {
-        border-radius: 10px;
-        border: solid 1px white;
-        box-shadow: 0 3px 3px $primeGray;
-        margin: 3%;
-    }
-}
-
 .postsSection {
     .cardborder {
         border: solid 1px $primePurpleLight;
-        box-shadow: 0px 5px 5px $primeGray;
-        border-radius: 20px;
-        padding: 1%;
+        box-shadow: 0px 0.5vw 0.5vw 0px $primeGray;
+        border-radius: 2vw;
+        padding: 2%;
+        margin: 0 0 5% 10%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+
         .postImg {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-template-rows: repeat(5, 1fr);
-            width: 12rem;
+            width: 15vw;
             height: 100%;
             align-self: center;
-    
+
             .postPhoto {
                 width: 100%;
                 grid-column: 1/6;
                 grid-row: 1/6;
-    
+
                 span {
                     display: block;
                     background-repeat: no-repeat;
@@ -231,13 +192,13 @@
                     border-radius: 1rem;
                 }
             }
-    
+
             .userimg {
                 grid-column: 1/2;
                 grid-row: 5/6;
                 width: 100%;
                 background-color: white;
-    
+
                 span {
                     display: block;
                     background-repeat: no-repeat;
@@ -247,10 +208,10 @@
                     aspect-ratio: 1/1;
                 }
             }
-    
+
             p {
                 width: 100%;
-                font-size: 0.8rem;
+                font-size: 2vw;
                 grid-column: 2/6;
                 grid-row: 5/6;
                 text-align: center;
@@ -260,37 +221,39 @@
                 text-wrap: nowrap;
             }
         }
-    
+
         .postContents {
             width: 70%;
             padding: 0.5rem;
-    
+
             .postTitle {
                 display: flex;
                 flex-direction: row;
                 width: 100%;
                 align-items: center;
                 justify-content: start;
-    
+
                 h5 {
-                    font-size: 2rem;
+                    font-size: 2.5vw;
                     color: $primePurple;
                     font-weight: 400;
                     margin: 0;
                 }
-    
+
                 p {
                     display: flex;
+                    font-size: 2vw;
                     flex-direction: row;
                     align-items: center;
                     margin: 0;
-    
+
                     a {
                         background-color: $primePurple;
                         border-radius: 0.5rem;
-    
+                        font-size: 1vw;
+
                         span {
-                            font-size: 1rem;
+                            font-size: 1vw;
                             letter-spacing: 0.1rem;
                             font-weight: 300;
                             color: white;
@@ -299,45 +262,48 @@
                         }
                     }
                 }
-    
+
             }
-    
+
             .content {
-                color: $primeGray;
+                color: $darkGray;
                 border-bottom: solid 2px $primeGray;
                 margin-top: 0.5rem;
-    
+                font-size: 1.3vw;
+
                 .readMore {
                     width: 100%;
-                    font-size: 0.8rem;
+                    font-size: 1.3vw;
                     text-align: end;
                     margin: 0;
                     color: $primePurple;
                 }
             }
-    
+
             .socialIcons {
                 margin-left: 0.1rem;
                 align-items: center;
                 margin-top: 0.5rem;
                 padding: 0;
-    
+
                 i {
                     display: flex;
                     align-items: center;
                     padding: 0.5rem;
-    
+                    font-size: 2vw;
+
                     span {
                         padding-left: 0.2rem;
+                        font-size: 1.5vw;
                     }
                 }
-    
+
                 p {
                     margin: 0;
                     padding: 0;
                     text-align: end;
                     color: $primePurple;
-                    font-size: 1.1rem
+                    font-size: 1.3vw;
                 }
             }
         }
@@ -355,19 +321,21 @@
 .seniorPage-breadcrumbs,
 .uniListPage-breadcrumbs,
 .singleArticle-breadcrumbs,
-.introduction-breadcrumbs {
+.introduction-breadcrumbs,
+.studyAbroad-breadcrumbs,
+.articleList-breadcrumbs {
     div {
         gap: 2rem;
     }
 
     h4,
     a {
-        font-size: 2rem;
+        font-size: 2vw;
         font-weight: 300;
     }
 
     h3 {
-        font-size: 3rem;
+        font-size: 4vw;
         font-weight: 300;
         color: $primePurple;
     }
@@ -384,6 +352,7 @@
     }
 
     .sideNav {
+        width: 40vw;
         grid-column: 1/12;
         grid-row: 1/2;
         // side bar grid
@@ -414,11 +383,12 @@
 
                 button {
                     all: unset;
-                    width: 100%;
                     cursor: pointer;
+                    display: block;
+                    width: 16vw;
                     text-align: center;
-                    font-size: 1.7rem;
-                    padding: 0.3rem;
+                    font-size: 2.5vw;
+                    padding: 1vw;
                     color: white;
                     transition: 0.3s;
 
@@ -475,7 +445,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        width: 100%;
+        width: 70vw;
         gap: 3rem;
         flex-wrap: wrap;
 
@@ -483,7 +453,9 @@
             display: grid;
             grid-template-rows: repeat(20, 1fr);
             grid-template-columns: repeat(12, 1fr);
-            width: 15rem;
+            width: 20vw;
+            height: 30vw;
+
 
             svg {
                 grid-row: 1/21;
@@ -537,12 +509,14 @@
                 color: $primePurple;
                 align-self: flex-end;
                 justify-self: start;
+                font-size: 2vw;
+                margin: 0;
             }
 
             h5 {
                 grid-row: 14/20;
                 grid-column: 5/12;
-                font-size: 1.1rem;
+                font-size: 1.5vw;
                 font-weight: 400;
                 color: white;
                 text-align: end;
@@ -553,7 +527,7 @@
             h6 {
                 grid-row: 1/3;
                 grid-column: 8/12;
-                font-size: 0.8rem;
+                font-size: 1vw;
                 align-self: flex-end;
                 justify-self: end;
             }
@@ -561,7 +535,7 @@
             .react {
                 grid-row: 17/19;
                 grid-column: 2/6;
-                font-size: 1.2rem;
+                font-size: 1vw;
             }
 
             .postTags {
@@ -573,7 +547,7 @@
                     display: block;
                     background-color: $primePurple;
                     width: fit-content;
-                    font-size: 0.5rem;
+                    font-size: 0.8vw;
                     letter-spacing: 0.1rem;
                     padding: 0.3rem;
                     margin: 0.2rem 0 0.2rem 0;
@@ -591,6 +565,7 @@
     width: 100%;
 
     .sideNav {
+        width: 40vw;
         grid-column: 1/12;
         grid-row: 1/2;
         // side bar grid
@@ -728,32 +703,31 @@
         flex-direction: row;
         align-items: center;
         justify-content: end;
-        padding-left: 3rem;
-        gap: 8rem;
-        padding-bottom: 8rem;
+        padding: 0 0 5vw 0;
+        gap: 2vw;
 
         div.portriat {
-            width: 30%;
+            width: 30vw;
             aspect-ratio: 1/1;
             background-position: center;
             background-size: cover;
         }
 
         .infoSection {
-            width: 55%;
+            width: 55vw;
 
             .userName {
                 background-color: $primePurpleLight;
                 color: white;
-                padding: 1rem 1rem 1rem 3rem;
-                font-size: 3rem;
-                border-radius: 1rem 0 0 1rem;
+                padding: 1vw 1vw 1vw 3vw;
+                font-size: 3vw;
+                border-radius: 1vw 0 0 1vw;
             }
 
             .details {
-                padding: 1rem;
-                border: solid 1px black;
-                border-radius: 1rem 0 0 1rem;
+                padding: 1vw;
+                border: solid 0.1vw black;
+                border-radius: 1vw 0 0 1vw;
                 display: grid;
                 grid-template-columns: 60% auto;
                 grid-template-rows: auto auto;
@@ -765,15 +739,15 @@
                     flex-direction: row;
                     align-items: center;
                     justify-content: start;
-                    border: solid 1px black;
-                    gap: 0.5rem;
+                    border: solid 0.05vw black;
+                    gap: 1vw;
                     background-color: $primePurpleLight;
-                    border-radius: 1rem;
-                    padding: 0.5rem;
-                    
+                    border-radius: 1vw;
+                    padding: 1vw;
+
 
                     .schoolImg {
-                        width: 5rem;
+                        width: 10%;
                         display: block;
                         aspect-ratio: 1/1;
                         background-repeat: no-repeat;
@@ -784,19 +758,22 @@
                     div {
                         display: flex;
                         flex-direction: column;
-                        width: 50%;
-                        .schoolNameE, .schoolNameC{
+                        width: 60%;
+
+                        .schoolNameE,
+                        .schoolNameC {
                             color: white;
-                            font-size: 1.5rem;
+                            font-size: 1.3vw;
                             margin: 0;
                         }
                     }
-                    h3{
-                        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+
+                    h3 {
+                        padding: 0.5vw 1.5vw 0.5vw 1.5vw;
                         background-color: white;
-                        border: solid 1px black;
+                        border: solid 0.05vw black;
                         color: $primePurple;
-                        border-radius: 10px;
+                        border-radius: 0.5vw;
                         margin: 0;
                     }
                 }
@@ -808,13 +785,15 @@
                     flex-direction: row;
                     align-items: center;
                     justify-content: space-between;
-                    gap: 1rem;
+                    gap: 1vw;
                     width: 100%;
                     padding: 1rem 0 0 0;
 
-                    h4{
-                        width: 30%;
-                        padding: 0.5rem;
+                    h4 {
+                        font-size: 1.3vw;
+                        width: 25%;
+                        margin: 0;
+                        padding: 0.5vw;
                         background-color: $primePurple;
                         color: white;
                         border-radius: 10px;
@@ -830,15 +809,17 @@
                     align-items: start;
                     justify-content: space-between;
                     flex-wrap: wrap;
-                    gap: 1rem;
-                    width: 100%;
-                    height: 12rem;
-                    padding-left: 1rem;
+                    font-size: 1.5vw;
+                    gap: 1vw;
+                    width: 50%;
+                    aspect-ratio: 4/3;
+                    padding-left: 1vw;
 
                     h6 {
                         display: block;
                         padding: 0.5rem;
-                        width: 30%;
+                        width: 40%;
+                        min-width: fit-content;
                         height: fit-content;
                         border: solid 1px $primePurple;
                         background-color: white;
@@ -854,11 +835,13 @@
                 flex-direction: row;
                 align-items: center;
                 width: 100%;
+
                 .react {
                     display: flex;
                     align-items: center;
                     gap: 2rem;
                     width: 30%;
+
                     i {
                         font-size: 2.5rem;
                     }
@@ -871,9 +854,10 @@
                     justify-content: start;
                     width: 70%;
                     gap: 3rem;
-                    
+
                     padding: 1rem;
-                    a{
+
+                    a {
                         all: unset;
                         cursor: pointer;
                         display: block;
@@ -886,7 +870,7 @@
                         font-size: 2rem;
                         color: white;
                     }
-                    
+
                 }
             }
 
@@ -897,15 +881,17 @@
     }
 
     .detail {
-        
+
         p {
             color: gray;
             font-size: 1.5rem;
         }
 
-        .selfIntro{
+        .selfIntro {
             background-color: $lightGray;
-            h2{
+            padding-bottom: 2vw;
+
+            h2 {
                 background-color: $primePurpleLight;
                 color: white;
                 width: 40%;
@@ -915,48 +901,70 @@
                 transform: translateY(-2.5rem);
             }
 
-            .selfContent > p{
-                    color: black;
-                    font-size: 1.2rem;
+            .selfContent>p {
+                color: black;
+                font-size: 1.2rem;
             }
-            .selfContent, .edu, .social, .contact{
+
+            .selfContent,
+            .edu,
+            .social,
+            .contact {
                 background-color: white;
-                margin: 1rem 10rem 1rem 10rem;
-                padding: 2rem;
-                border-radius: 2rem;
-                border: solid 1px black;
-                h3{
+                margin: 1vw 10vw 1vw 10vw;
+                padding: 2vw;
+                border-radius: 2vw;
+                border: solid 0.1vw black;
+
+                h3 {
                     color: $primePurple;
                 }
-                div{
+
+                div {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-around;
-                    svg{
-                        width: 4rem;
+
+                    svg {
+                        width: 5vw;
                         aspect-ratio: 1/1;
-                        path{
+
+                        path {
                             fill: $darkGray;
                         }
                     }
-                    p{
+
+                    p {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
                         justify-content: center;
                         gap: 1rem;
-                        i{
-                            font-size: 4rem;
+                        font-size: 1.5vw;
+
+                        i {
+                            font-size: 5vw;
                         }
                     }
 
                 }
             }
 
+            .contact {
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+
+                    p i {
+                        font-size: 1.5vw;
+                    }
+                }
+            }
 
         }
 
-        h2.myArtical{
+        h2.myArtical {
             background-color: $primePurpleLight;
             color: white;
             width: 40%;
@@ -968,70 +976,92 @@
         }
 
         .postCard {
-            
-            background-color: $lightGray;
-            margin: 5rem;
-            padding: 2rem;
-            border-radius: 2rem;
+            width: 100%;
             display: flex;
-            flex-direction: row;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
+
+            section {
+                all: unset;
+                background-color: $lightGray;
+                width: 70%;
+                margin: 3vw 5vw 3vw 5vw;
+                padding: 2vw;
+                border-radius: 2vw;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                justify-self: center;
+                flex-wrap: wrap;
+
                 .card {
                     margin: 1%;
-                    width: 30rem;
-                    height: 10rem;
+                    width: 25vw;
+                    height: 8vw;
                     padding: 0;
-                    border-radius: 20px;
-                    border: solid 1px $primePurpleLight !important;
+                    border-radius: 1.5vw;
+                    border: solid 0.1vw $primePurpleLight !important;
                     display: grid;
                     grid-template-columns: repeat(6, auto);
-                    box-shadow: -5px 5px 10px $primeGray;
+                    box-shadow: -0.2vw 0.2vw 0.2vw $primeGray;
                     overflow: hidden;
-    
+
                     .imgPart {
                         grid-column: 1/2;
                         grid-row: 1/2;
-                        height: 10rem;
-                        border-radius: 20px;
+                        height: 100%;
+                        border-radius: 1vw;
                         background-repeat: no-repeat;
                         background-size: cover;
                         background-position: center;
                         aspect-ratio: 1/1;
                     }
-    
+
                     .infoPart {
                         all: unset;
                         display: block;
                         grid-column: 2/7;
                         grid-row: 1/2;
-                        padding: 0.5rem;
-                        h3{
-                            font-size: 1.5rem;
+                        padding: 1vw;
+
+                        h3 {
+                            font-size: 1vw;
                             font-weight: 200;
                             color: $primePurple;
                         }
-                        p{
-                            font-size: 1rem;
+
+                        p {
+                            font-size: 0.8vw;
                             color: $primeGray;
+                            margin-bottom: 0.5vw;
                         }
-                        p.content{
+
+                        hr {
+                            margin: 1vw;
+                        }
+
+                        p.content {
                             color: $darkGray;
                         }
-                        .react{
+
+                        .react {
                             display: flex;
                             flex-direction: row;
                             align-items: center;
                             justify-content: space-between;
-                            p.date{
+                            font-size: 0.8vw;
+
+                            p.date {
                                 text-align: end;
                                 margin: 0;
                             }
                         }
-                        
+
                     }
                 }
+            }
+
         }
     }
 
@@ -1042,13 +1072,16 @@
         justify-self: start;
         gap: 2rem;
         margin: 5rem;
-        .file{
+
+        .file {
             all: unset;
             display: block;
-            svg{
+
+            svg {
                 width: 10rem;
                 height: 10rem;
-                text{
+
+                text {
                     overflow-x: hidden;
                 }
             }
@@ -1056,120 +1089,164 @@
     }
 
     .carouselSection {
-        .studentC{
-            padding: 1rem;
-            display: grid;
-            grid-template-rows: repeat(20, 1fr);
-            grid-template-columns: repeat(12, 1fr);
-            svg{
-                grid-row: 1/21;
-                grid-column: 1/13;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .innerCarousel {
+            max-width: 60vw;
+
+            .owl-carousel {
+                .studentC {
+                    margin: 1vw;
+                    display: grid;
+                    grid-template-rows: repeat(20, 1fr);
+                    grid-template-columns: repeat(12, 1fr);
+                    aspect-ratio: 3/4;
+
+                    svg {
+                        grid-row: 1/21;
+                        grid-column: 1/13;
+                        width: 100%;
+
+                        path {
+                            fill: $primePurple;
+                            stroke-width: 0px;
+                        }
+
+                        polygon {
+                            fill: $primePurpleLight;
+                            stroke-width: 0px;
+                        }
+
+                        aspect-ratio: 3/4;
+                    }
+
+                    .studentImg {
+                        grid-row: 3/15;
+                        grid-column: 1/13;
+                        padding: 0 1vw 0 1vw;
+
+                        span {
+                            display: block;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-position: center;
+                            width: 100%;
+                            aspect-ratio: 1/1;
+                            border: 0.1vw solid $primePurpleLight;
+                        }
+                    }
+
+                    .schoolImg {
+                        grid-row: 12/15;
+                        grid-column: 2/6;
+
+                        span {
+                            display: block;
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            background-position: center;
+                            aspect-ratio: 1/1;
+                        }
+                    }
+
+                    h4 {
+                        grid-row: 1/3;
+                        grid-column: 2/8;
+                        font-size: 1vw;
+                        color: $primePurple;
+                        align-self: flex-end;
+                        justify-self: start;
+                    }
+
+                    h5 {
+                        grid-row: 17/20;
+                        grid-column: 5/12;
+                        font-size: 1vw;
+                        font-weight: 400;
+                        color: white;
+                        text-align: end;
+                        align-self: center;
+                        justify-self: end;
+                    }
+
+                    h6 {
+                        grid-row: 1/3;
+                        grid-column: 8/12;
+                        font-size: 0.5vw;
+                        align-self: flex-end;
+                        justify-self: end;
+                    }
+
+                    .react {
+                        grid-row: 20/21;
+                        grid-column: 2/6;
+                        font-size: 0.8vw;
+                        padding: 0.1vw;
+                    }
+
+                    .postTags {
+                        grid-row: 11/15;
+                        grid-column: 10/13;
+
+                        p {
+                            all: unset;
+                            display: block;
+                            background-color: $primePurple;
+                            width: fit-content;
+                            font-size: 0.35vw;
+                            letter-spacing: 0.05vw;
+                            padding: 0.2vw;
+                            margin: 0.1vw 0 0.1vw 0;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+
+                .studentNav {
+
+                    // nav btn and dots
+                    .owl-nav {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-evenly;
+
+                        button {
+                            span {
+                                font-family: "Rubik", sans-serif;
+                                font-weight: 900;
+                                font-size: 3rem;
+                            }
+                        }
+                    }
+
+                    .owl-dots {
+                        margin-top: -40px;
+
+                        .active {
+                            span {
+                                width: 20px !important;
+                                transition: 0.1s !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            a.moreTag {
+                all: unset;
+                cursor: pointer;
+                display: block;
                 width: 100%;
-                path{fill: $primePurple; stroke-width: 0px;}
-                polygon{fill: $primePurpleLight; stroke-width: 0px;}
-            }
-            .studentImg{
-                grid-row: 3/15;
-                grid-column: 1/13;
-                padding: 0 0.5rem 0 0.5rem;
-                span{
-                    display: block;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center;
-                    width: 100%;
-                    aspect-ratio: 1/1;
-                    border: 0.3rem solid $primePurpleLight;
-                }
-            }
-            .schoolImg{
-                grid-row: 10/15;
-                grid-column: 2/6;
-                span{
-                    display: block;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    background-position: center;
-                    aspect-ratio: 1/1;
-                }
-            }
-            h4{
-                grid-row: 1/3;
-                grid-column: 2/8;
-                font-size: 1.3rem;
-                color: $primePurple;
-                align-self: flex-end;
-                justify-self: start;
-            }
-            h5{
-                grid-row: 13/19;
-                grid-column: 5/12;
-                font-size: 1.2rem;
-                font-weight: 400;
-                color: white;
                 text-align: end;
-                align-self: center;
-                justify-self: end;
-            }
-            h6{
-                grid-row: 1/3;
-                grid-column: 8/12;
-                font-size: 0.8rem;
-                align-self: flex-end;
-                justify-self: end;
-            }
-            .react{
-                grid-row: 17/19;
-                grid-column: 2/6;
-                font-size: 1.2rem;
-            }
-            .postTags{
-                grid-row: 8/15;
-                grid-column: 9/13;
-                p{
-                    all: unset;
-                    display: block;
-                    background-color: $primePurple;
-                    width: fit-content;
-                    font-size: 0.7rem;
-                    letter-spacing: 0.1rem;
-                    padding: 0.3rem;
-                    margin: 0.2rem 0 0.2rem 0;
-                    border-radius: 5px;
-                }
-            }
-        }
-
-        .studentNav {
-            // nav btn and dots
-            .owl-nav {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-
-                button {
-                    span {
-                        font-family: "Rubik", sans-serif;
-                        font-weight: 900;
-                        font-size: 3rem;
-                    }
-                }
-            }
-
-            .owl-dots {
-                margin-top: -40px;
-
-                .active {
-                    span {
-                        width: 20px !important;
-                        transition: 0.1s !important;
-                    }
-                }
+                font-size: 1vw;
+                transform: translateY(-2rem);
             }
         }
     }
 
-    a.moreTag{
+    a.moreTag {
         all: unset;
         display: inline-block;
         cursor: pointer;
@@ -1180,137 +1257,96 @@
     }
 }
 
-// article-list
-.postsSection-artical-list {
-    width: 95vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    .cardborder {
-        border: solid 1px $primePurpleLight;
-        box-shadow: 0px 5px 5px $primeGray;
-        border-radius: 20px;
-        padding: 1%;
+// study-abroad
+.studyAbroad {
+    .breadAndSearch {
         display: flex;
         flex-direction: row;
-        width: 45%;
-    }
-
-    .postImg {
-        display: grid;
-        grid-template-columns: repeat(5, auto);
-        grid-template-rows: repeat(5, auto);
-        width: 12rem;
-        height: 100%;
-
-        .postPhoto {
-            border-radius: 20px;
-            width: 100%;
-            grid-column: 1/6;
-            grid-row: 1/5;
-        }
-
-        .userimg {
-            border-radius: 100%;
-            width: 100%;
-            grid-column: 1/4;
-            grid-row: 3/6;
-        }
-
-        p {
-            font-size: 1.5rem;
-            grid-column: 5/6;
-            grid-row: 4/6;
-            padding-left: 10px;
-            text-align: end;
-            padding: 5px 10px 5px 10px;
-            margin: 0;
-            background-color: $primePurpleLight;
-        }
-    }
-
-    .postTitle {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
         align-items: end;
-
-        h5 {
-            font-size: 2rem;
-            color: $primePurple;
-        }
-
-        h5,
-        p {
-            margin: 0 10px 0 0;
-        }
-
-        p {
-            font-size: 1rem;
-            color: black;
-        }
-    }
-
-    .content {
-        color: $primeGray;
-        border-bottom: solid 2px $primeGray;
-        margin-top: 3%;
-
-        .readMore {
-            width: 100%;
-            font-size: 0.8rem;
-            text-align: end;
-            margin: 0;
-            color: $primePurple;
-        }
-    }
-
-    .socialIcons {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
         justify-content: space-between;
-        align-items: end;
-        margin-top: 3%;
+        margin-bottom: 3vw;
 
-        i {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            margin: 5px;
+        .studyAbroad-breadcrumbs {
+            width: 20%;
+        }
 
-            &::after {
-                font-size: 1rem;
-                font-family: Rubik;
-                text-decoration: none;
-                font-style: normal;
-                align-items: self-end;
+        .searchBar {
+            width: 80%;
+        }
+    }
+
+    .sideBar {
+        width: 20vw;
+
+        .list-group {
+            border-radius: 30px;
+
+            a {
+                all: unset;
+                cursor: pointer;
+                display: block;
+                font-size: 2vw;
+                padding: 0.8vw;
+                border-bottom: solid 1px white;
+            }
+
+            li:nth-last-child(1) {
+                a {
+                    all: unset;
+                    cursor: pointer;
+                    display: block;
+                    font-size: 2vw;
+                    padding: 0.8vw;
+                    border-bottom: none;
+                }
             }
         }
 
-        svg {
-            width: 2.2rem;
-
-            path {
-                fill: black;
+        .types {
+            a {
+                all: unset;
+                cursor: pointer;
+                color: $primePurple;
+                display: block;
+                text-align: center;
+                font-size: 2vw;
             }
-
-            circle {
-                fill: none;
-                stroke: #000000;
-                stroke-width: 9;
-                stroke-miterlimit: 10;
-            }
-
         }
 
-        p {
-            margin: 0;
-            text-align: end;
-            color: $primePurple;
-            font-size: 0.8rem;
+        .callToAction {
+
+            .part1,
+            .part2 {
+                margin: 0;
+                border: solid 2px $primePurple;
+                letter-spacing: 0.5rem;
+                font-size: 2vw;
+                text-align: center;
+            }
+
+            .part1 {
+                border-radius: 1vw 1vw 0 0;
+            }
+
+            .part2 {
+                border-radius: 0 0 1vw 1vw;
+                padding: 0.5vw;
+                box-shadow: 0 0.3vw 0.3vw $primeGray;
+
+                p {
+                    font-size: 1.3vw;
+                    letter-spacing: 0.1vw;
+                    padding: 1vw;
+                    color: gray;
+                }
+            }
+
+            button {
+                border-radius: 1vw;
+                border: solid 0.1vw white;
+                box-shadow: 0 0.1vw 0.1vw $primeGray;
+                margin: 3%;
+            }
         }
     }
 }
@@ -1493,7 +1529,7 @@
 // single Article
 .singleArticle {
     background-color: $lightGray;
-    padding: 2rem 10rem 5rem 10rem;
+    padding: 1vw 5vw 3vw 5vw;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(20, 1fr);
@@ -1503,37 +1539,55 @@
         grid-column: 1/21;
         grid-row: 1/2;
         background-color: white;
-        padding: 2rem;
+        padding: 1vw;
     }
 
     .innerDiv {
         grid-column: 1/14;
         grid-row: 2/3;
         background-color: white;
-        padding: 2rem;
+        padding: 1vw;
+
+        p {
+            font-size: 1.5vw;
+        }
 
         img {
             width: 100%;
+            padding: 3vw;
         }
 
         .content {
-            margin-bottom: 3rem;
+            font-size: 1.5vw;
+            margin-bottom: 2vw;
+            word-wrap: break-word;
         }
 
         .tagSocial {
-            padding-bottom: 1rem;
-            border-bottom: solid 2px $darkGray;
+            padding-bottom: 1vw;
+            border-bottom: solid 0.1vw $darkGray;
 
             .postCategory {
                 a {
                     all: unset;
                     cursor: pointer;
-                    padding: 0.5rem;
-                    margin: 0 1rem 0 1rem;
-                    font-size: 1rem;
-                    border-radius: 0.5rem;
+                    padding: 0.2vw;
+                    margin: 0 1vw 0 1vw;
+                    font-size: 2vw;
+                    border-radius: 0.2vw;
                     background-color: $primePurple;
                     color: white;
+                }
+            }
+
+            .socialIcons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                i {
+                    display: block;
+                    font-size: 2vw;
                 }
             }
         }
@@ -1544,9 +1598,10 @@
         grid-column: 14/21;
         grid-row: 2/3;
         background-color: white;
-        padding: 2rem;
+        padding: 1vw;
 
         h2 {
+            font-size: 3.5vw;
             font-weight: 400;
             color: $primePurple;
         }
@@ -1555,6 +1610,7 @@
             margin: 0.5rem 0 0 0;
             font-weight: 200;
             color: $primePurple;
+            font-size: 2.5vw;
         }
 
 
@@ -1562,9 +1618,9 @@
             display: grid;
             grid-template-rows: repeat(20, 1fr);
             grid-template-columns: repeat(12, 1fr);
-            width: 15rem;
-
-            border-bottom: solid $lightGray 1px;
+            width: 20vw;
+            border-bottom: solid $lightGray 0.1vw;
+            aspect-ratio: 3/4.3;
 
             svg {
                 grid-row: 1/21;
@@ -1585,7 +1641,7 @@
             .studentImg {
                 grid-row: 3/15;
                 grid-column: 1/13;
-                padding: 0 0.5rem 0 0.5rem;
+                padding: 0 0.5vw 0 0.5vw;
 
                 span {
                     display: block;
@@ -1594,12 +1650,12 @@
                     background-position: center;
                     width: 100%;
                     aspect-ratio: 1/1;
-                    border: 0.3rem solid $primePurpleLight;
+                    border: 0.1vw solid $primePurpleLight;
                 }
             }
 
             .schoolImg {
-                grid-row: 11/16;
+                grid-row: 13/15;
                 grid-column: 2/6;
 
                 span {
@@ -1614,16 +1670,17 @@
             h4 {
                 grid-row: 1/3;
                 grid-column: 2/8;
-                font-size: 1.3rem;
+                font-size: 2vw;
                 color: $primePurple;
                 align-self: flex-end;
                 justify-self: start;
+                text-overflow: clip;
             }
 
             h5 {
-                grid-row: 14/20;
+                grid-row: 17/20;
                 grid-column: 5/12;
-                font-size: 1.1rem;
+                font-size: 1.5vw;
                 font-weight: 400;
                 color: white;
                 text-align: end;
@@ -1634,31 +1691,34 @@
             h6 {
                 grid-row: 1/3;
                 grid-column: 8/12;
-                font-size: 0.8rem;
+                font-size: 1vw;
+                text-overflow: clip;
                 align-self: flex-end;
                 justify-self: end;
             }
 
             .react {
-                grid-row: 17/19;
-                grid-column: 2/6;
-                font-size: 1.2rem;
+                grid-row: 20/21;
+                grid-column: 1/6;
+                font-size: 1.5vw;
+                padding: 0.1vw;
             }
 
             .postTags {
-                grid-row: 9/16;
+                grid-row: 11/15;
                 grid-column: 10/13;
 
                 a {
                     all: unset;
                     display: block;
                     background-color: $primePurple;
+                    color: white;
                     width: fit-content;
-                    font-size: 0.5rem;
-                    letter-spacing: 0.1rem;
-                    padding: 0.3rem;
-                    margin: 0.2rem 0 0.2rem 0;
-                    border-radius: 5px;
+                    font-size: 0.8vw;
+                    letter-spacing: 0.1vw;
+                    padding: 0.2vw;
+                    margin: 0.2vw 0 0.2vw 0;
+                    border-radius: 0.5vw;
                 }
             }
         }
@@ -1669,34 +1729,38 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 90%;
-            margin: 1.5rem 0 1.5rem 0;
-            border-bottom: solid 1px $lightGray;
-
-            .bgImg {
-                border-radius: 0.5rem;
-                width: 40%;
-                @include bg_img();
-            }
-
-            .meta {
-                h3 {
-                    font-size: 1rem;
-                    font-weight: 200;
-                    color: $primePurple;
-                    width: 8rem;
+            justify-content: start;
+            gap: 1vw;
+            width: 22vw;
+            padding: 1vw;
+            border-bottom: solid 1px $darkGray;
+                .bgImg {
+                    border-radius: 0.5vw;
+                    width: 5vw;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    aspect-ratio: 1/1;
+                }
+    
+                .meta {
+                    width: 15vw;
                     overflow: hidden;
                     white-space: nowrap;
+    
+                    h3 {
+                        font-size: 1.5vw;
+                        font-weight: 200;
+                        color: $primePurple;
+                        width: 100%;
+                    }
+    
+                    p {
+                        width: 100%;
+                        font-size: 1vw;
+                        margin: 0;
+                    }
                 }
-
-                p {
-                    font-size: 0.7rem;
-                    margin: 0;
-                }
-            }
-
         }
     }
 
@@ -1706,7 +1770,8 @@
         background-color: white;
 
         h2 {
-            padding-left: 2rem;
+            padding-left: 2vw;
+            font-size: 4vw;
         }
 
         .cards {
@@ -1715,15 +1780,19 @@
             align-items: center;
             justify-content: start;
             flex-wrap: wrap;
-            gap: 4rem;
-            padding: 2rem;
+            gap: 3vw;
+            padding: 3vw;
 
 
             .moreArticles {
                 background-color: white;
-                border: 2px solid $primePurpleLight !important;
-                border-radius: 15px;
-                box-shadow: 3px 3px 3px $lightGray;
+                border: 0.1vw solid $primePurpleLight !important;
+                border-radius: 1vw;
+                box-shadow: 0.1vw 0.1vw 0.1vw $lightGray;
+                display: flex;
+                flex-direction: row;
+                width: 45%;
+                overflow: hidden;
 
                 a {
                     all: unset;
@@ -1731,108 +1800,136 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    padding: 1rem;
-                    width: 24rem;
-                    gap: 1rem;
+                    font-size: 2vw;
+                    width: 100%;
+                    padding-right: 0.5vw;
+                    gap: 0.5vw;
 
-                    .imgs {
-                        .bgImg {
-                            border-radius: 5px 5px 0 0;
-                            width: 5rem;
+                    .postImg {
+                        display: grid;
+                        grid-template-columns: repeat(5, 1fr);
+                        grid-template-rows: repeat(5, 1fr);
+                        width: 15vw;
+                        aspect-ratio: 1/1;
+                        height: 100%;
+                        align-self: center;
+
+                        .postPhoto {
+                            width: 100%;
+                            grid-column: 1/6;
+                            grid-row: 1/6;
                             display: block;
                             background-repeat: no-repeat;
                             background-size: cover;
                             background-position: center;
                             aspect-ratio: 1/1;
+                            border-radius: 1rem;
                         }
 
-                        div.info {
-                            display: flex;
-                            flex-direction: row;
-                            height: 1rem;
+                        .userimg {
+                            grid-column: 1/2;
+                            grid-row: 5/6;
+                            width: 100%;
+                            background-color: white;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-position: center;
 
-                            .authorImg {
-                                width: 1.5rem;
-                                @include bg_img();
-                            }
-
-                            h6 {
+                            span {
+                                display: block;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                background-position: center;
                                 width: 100%;
-                                text-align: center;
-                                align-self: center;
-                                background-color: $primePurpleLight;
-                                color: white;
-                                font-size: 0.8rem;
-                                margin: 0;
+                                aspect-ratio: 1/1;
                             }
+                        }
+
+                        h6 {
+                            width: 100%;
+                            font-size: 1.5vw;
+                            grid-column: 2/6;
+                            grid-row: 5/6;
+                            text-align: center;
+                            padding: 0.3rem;
+                            margin: 0;
+                            background-color: $primePurpleLight;
+                            text-wrap: nowrap;
                         }
                     }
 
 
                     h3 {
-                        font-size: 1.2rem;
-                        font-weight: 200;
+                        font-size: 1.5vw;
+                        font-weight: 300;
                         color: $primePurple;
                     }
 
-                    .postCategory {
+                    div.content {
                         display: flex;
-                        flex-direction: row;
-                        height: min-content;
+                        width: 100%;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: start;
 
-                        p {
-                            background-color: $primePurple;
-                            color: white;
-                            font-weight: 100;
-                            margin: 0 0.2rem 0 0.2rem;
-                            padding: 0.1rem 0.2rem;
-                            font-size: 0.5rem;
-                            border-radius: 0.2rem;
-                        }
-                    }
+                        .postCategory {
+                            display: flex;
+                            flex-direction: row;
+                            height: min-content;
 
-                    p.body {
-                        margin: 0;
-                        font-size: 0.6rem;
-                        font-weight: 200;
-                    }
-
-                    p.readMore {
-                        text-align: end;
-                        margin: 0;
-                        color: $primePurple;
-                        font-size: 0.6rem;
-                        font-weight: 200;
-                    }
-
-                    div.react {
-                        border-top: 1px solid $lightGray;
-                        padding-top: 1rem;
-                        display: flex;
-                        flex-direction: row;
-                        gap: 1rem;
-
-                        i {
-                            width: 10%;
-                            font-size: 0.6rem;
-
-                            span {
-                                margin: 0 0.2rem 0 0.1rem;
+                            p {
+                                background-color: $primePurple;
+                                color: white;
+                                font-weight: 100;
+                                margin: 0 0.1vw 0 0.1vw;
+                                padding: 0.2vw 0.5vw 0.2vw 0.5vw;
+                                font-size: 0.6vw;
+                                border-radius: 0.2vw;
                             }
                         }
 
-                        p.date {
-                            width: 80%;
+                        p.body {
+                            margin: 0;
+                            font-size: 1vw;
+                            font-weight: 200;
+                        }
+
+                        p.readMore {
                             text-align: end;
                             margin: 0;
                             color: $primePurple;
-                            font-size: 0.6rem;
-                            font-weight: 200;
+                            font-size: 0.8vw;
+                            font-weight: 400;
+                        }
+
+                        div.react {
+                            border-top: 0.1vw solid $lightGray;
+                            padding-top: 1vw;
+                            display: flex;
+                            flex-direction: row;
+                            gap: 1vw;
+
+                            i {
+                                width: 20%;
+                                font-size: 1vw;
+
+                                span {
+                                    margin: 0 0.1vw 0 0.1vw;
+                                }
+                            }
+
+                            p.date {
+                                width: 80%;
+                                text-align: end;
+                                margin: 0;
+                                color: $primePurple;
+                                font-size: 1vw;
+                                font-weight: 200;
+                            }
                         }
                     }
 
                 }
-
 
             }
         }
@@ -1841,57 +1938,276 @@
             all: unset;
             cursor: pointer;
             display: block;
-            width: 85%;
+            width: 95%;
             text-align: end;
             color: $primePurple;
-            font-size: 1.5rem;
+            font-size: 1.5vw;
         }
     }
 }
 
-// footer
-footer {
-    .col-md-4 {
-        img {
-            width: 15rem;
-            margin: 3rem;
+.articleList {
+    .authorInfo {
+        // background-color: #CCAACE;
+        border: solid 0.4vw $primePurpleLight;
+        overflow: hidden;
+        margin: 3vw;
+        border-radius: 2.5vw;
+        display: flex;
+        flex-direction: row;
+
+        div.leftSide {
+            width: 70%;
+            background-color: $primePurpleLight;
+            transform: scale(1.01);
+            border-radius: 0 2vw 2vw 0;
+            padding: 0.5vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 1vw;
+
+            .authorImg {
+                padding: 1vw;
+
+                span {
+                    all: unset;
+                    display: block;
+                    height: 100%;
+                    @include bg_img();
+                }
+            }
+
+            h2 {
+                font-size: 4vw;
+                margin: 0.5vw;
+            }
+
+            h5 {
+                text-align: start;
+                font-size: 1.5vw;
+            }
+
+            div.schoolInfo {
+                gap: 1vw;
+
+                span {
+                    grid-column: 1/2;
+                    grid-row: 1/3;
+                    all: unset;
+                    display: block;
+                    width: 5vw;
+                    @include bg_img();
+                }
+            }
+
+            div.tags {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                a {
+                    width: 20%;
+                    all: unset;
+                    display: block;
+                    padding: 0.5vw;
+                    font-size: 1.5vw;
+                    letter-spacing: 0.2vw;
+                    border-radius: 1vw;
+                    background-color: $primePurple;
+                    color: white;
+                }
+            }
         }
 
-        .copyright {
-            font-size: 0.6rem;
+        div.skillTag {
+            width: 30%;
+            padding: 1vw;
+            background-color: white;
+            border-radius: 3vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1vw;
+
+            p.tags {
+                all: unset;
+                width: 30%;
+                font-size: 1.5vw;
+                border: solid 0.1vw $primePurple;
+                border-radius: 1vw;
+                text-align: center;
+                padding: 0.5vw;
+            }
         }
     }
 
-    .row {
-        height: 100%;
+    div.title {
+        h2 {
+            font-size: 3vw;
+            font-weight: 400;
+        }
+    }
 
-        .col-md-3 {
+    .article-list-moreArticle{
+        width: 100%;
+        padding: 2vw;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        flex-wrap: wrap;
+        gap: 2vw;
+        .moreArticles {
+            background-color: white;
+            border: 0.1vw solid $primePurpleLight !important;
+            border-radius: 2vw;
+            box-shadow: 0.1vw 0.1vw 0.1vw $lightGray;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            overflow: hidden;
+            width: 45%;
+    
+            a {
+                all: unset;
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                font-size: 2vw;
+                width: 100%;
+                gap: 0.5vw;
+                .postPhoto {
+                    width: 15vw;
+                    display: block;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    aspect-ratio: 1/1;
+                    border-radius: 2vw;
+                }
+    
+                div.content {
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: start;
+                    padding: 1vw;
+    
+                    h3 {
+                        font-size: 1.5vw;
+                        font-weight: 300;
+                        color: $primePurple;
+                    }
+    
+                    p.body {
+                        margin: 0;
+                        font-size: 1vw;
+                        font-weight: 200;
+                    }
+    
+                    p.readMore {
+                        text-align: end;
+                        margin: 0;
+                        color: $primePurple;
+                        font-size: 0.8vw;
+                        font-weight: 400;
+                    }
+    
+                    div.react {
+                        border-top: 0.1vw solid $lightGray;
+                        padding-top: 1vw;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 1vw;
+    
+                        i {
+                            width: 20%;
+                            font-size: 1vw;
+    
+                            span {
+                                margin: 0 0.1vw 0 0.1vw;
+                            }
+                        }
+    
+                        p.date {
+                            width: 80%;
+                            text-align: end;
+                            margin: 0;
+                            color: $primePurple;
+                            font-size: 1vw;
+                            font-weight: 200;
+                        }
+                    }
+                }
+    
+            }
+    
+        }
+    }
+
+}
+
+// footer
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    div.left{
+        width: 30%;
+        border-right: solid 0.1vw white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 20vw;
+            margin: 1.5vw;
+        }
+        .copyright{
+            color: white;
+            font-size: 0.7vw;
+        }
+    }
+    div.right{
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .topic{
             display: flex;
             flex-direction: column;
             justify-content: start;
-            letter-spacing: 0.5rem;
-
-            h6 {
-                font-size: 1.2rem;
+            letter-spacing: 0.1vw;
+            margin: 1.5vw;
+            h6{
+                color: white;
+                font-size: 1.5vw; 
                 text-align: start;
-                margin-bottom: 1rem;
+                margin-bottom: 1vw;
             }
-
-            div {
+            div{
                 display: flex;
                 flex-direction: column;
                 align-items: start;
-
-                a {
+                a{
+                    all: unset;
+                    cursor: pointer;
+                    font-size: 1vw;
                     text-decoration: none;
                     color: white;
-                    margin-bottom: 1rem;
+                    margin-bottom: 1vw;
                 }
             }
 
         }
     }
-
+    
 }
 
 // QA show section
@@ -2022,25 +2338,30 @@ footer {
 }
 
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1200px) {
+
     // student card rwd
-    .studentC{
-        h5{
+    .studentC {
+        width: 21vw !important;
+        gap: 0.5vw;
+
+        h5 {
             font-size: 1rem !important;
         }
-        h6{
-            grid-column: 3/12 !important;
+
+        .schoolImg {
+            width: 5vw !important;
         }
-        .postTags{
-            grid-column: 8/14 !important;
-            p{
-                font-size: 0.5rem !important;
+
+        .postTags {
+            a {
+                font-size: 0.5vw !important;
             }
         }
     }
 
-    .introduction .introCard .infoSection .details{
-        .status{
+    .introduction .introCard .infoSection .details {
+        .status {
             text-align: center;
             width: 8rem;
             font-size: 1rem;

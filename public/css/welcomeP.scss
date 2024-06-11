@@ -20,23 +20,30 @@ body{
     top: 0;
     background-color: rgba(255, 255, 255, 0);
     z-index: 2;
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     padding: 0px;
     .navbar-brand{
         padding: 10px;
-        grid-column: 1/2;
-        #logoImg{width: 16rem;}
+        #logoImg{width: 20vw;}
     }
     .container{
-        grid-column: 2/3;
+        margin: 1vw;
         .collapse{
             justify-content: end;
             .navbar-nav{
-                margin-right: 20px;
                 li{
                     align-self: center;
-                    a{color: white;}
+                    a{
+                        font-size: 1.5vw;
+                        color: white;
+                        margin-right: 1vw;
+                    }
+                    svg{
+                        width: 7vw;
+                    }
                 }
             }
         }
@@ -48,7 +55,7 @@ body{
     from{opacity: 0; transform: translateX(30px);}
     to{opacity: 1; transform: translateX(0px);}
 }
-header{
+.innerheader{
     background-color: black;
     width: 100vw;
     aspect-ratio: 16/8.5;
@@ -78,7 +85,7 @@ header{
             grid-row: 7/9;
             grid-column: 2/6;
             z-index: 2;
-            h1{font-size: 4rem;}
+            h1{font-size: 5vw;}
             #topic{
                 animation: change 1s forwards;
             }
@@ -94,7 +101,16 @@ header{
     }
 }
 
-// setcion titles
+
+.innerbody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+section{
+    width: 1400px;
+    margin: 10rem 0 10rem 0;
+}
 .studentSection, .uCardSection, .qaSection, .newsSection{
     .title{
         all: unset;
@@ -103,11 +119,14 @@ header{
         color: white;
         background: $primePurple; 
         width: 20vw;
-        padding: 1rem;
-        border-radius: 0 1rem 1rem 0; 
-        font-size: 2rem; 
+        padding: 1vw;
+        border-radius: 0 1vw 1vw 0; 
+        font-size: 2vw; 
         text-align:end;
-        margin-bottom: 1rem;
+        margin-bottom: 1vw;
+        position: absolute;
+        left: 0;
+        transform: translateY(-10rem);
     }
     // navigation styles
     .owl-nav{
@@ -118,27 +137,30 @@ header{
             span{
                 font-family: "Rubik", sans-serif; 
                 font-weight: 900;
-                font-size: 3rem;
+                font-size: 3vw;
             }
         }
     }
     .owl-dots{
-        margin-top: -40px;
+        margin-top: -0.5vw;
         .active{
-            span{width: 20px !important; transition: 0.1s !important;}
+            span{width: 1vw !important; transition: 0.1s !important;}
         }
     }
 }
 
 // Student Cards Styles
 .studentSection{
-    margin: 10rem 0 10rem 0;
+    margin: 1vw 0 1vw 0;
+    .owl-carousel{
+        transform: scale(1.1);
         // item styles
         .studentC{
-            padding: 1rem;
+            margin: 0.5vw;
             display: grid;
             grid-template-rows: repeat(20, 1fr);
             grid-template-columns: repeat(12, 1fr);
+            aspect-ratio: 3/4;
             svg{
                 grid-row: 1/21;
                 grid-column: 1/13;
@@ -149,7 +171,7 @@ header{
             .studentImg{
                 grid-row: 3/15;
                 grid-column: 1/13;
-                padding: 0 0.5rem 0 0.5rem;
+                padding: 0 0.5vw 0 0.5vw;
                 span{
                     display: block;
                     background-repeat: no-repeat;
@@ -161,7 +183,7 @@ header{
                 }
             }
             .schoolImg{
-                grid-row: 10/15;
+                grid-row: 13/15;
                 grid-column: 2/6;
                 span{
                     display: block;
@@ -174,15 +196,16 @@ header{
             h4{
                 grid-row: 1/3;
                 grid-column: 2/8;
-                font-size: 1.3rem;
+                font-size: 1vw;
                 color: $primePurple;
                 align-self: flex-end;
                 justify-self: start;
+                text-overflow:clip;
             }
             h5{
-                grid-row: 13/19;
+                grid-row: 18/20;
                 grid-column: 5/12;
-                font-size: 1.2rem;
+                font-size: 1vw;
                 font-weight: 400;
                 color: white;
                 text-align: end;
@@ -192,36 +215,48 @@ header{
             h6{
                 grid-row: 1/3;
                 grid-column: 8/12;
-                font-size: 0.8rem;
+                font-size: 0.5vw;
+                text-overflow: clip;
                 align-self: flex-end;
                 justify-self: end;
             }
             .react{
-                grid-row: 17/19;
-                grid-column: 2/6;
-                font-size: 1.2rem;
+                grid-row: 20/21;
+                grid-column: 1/5;
+                font-size: 0.7vw;
+                padding: 0.1vw;
             }
             .postTags{
-                grid-row: 8/15;
+                grid-row: 11/15;
                 grid-column: 10/13;
                 a{
                     all: unset;
                     display: block;
                     background-color: $primePurple;
                     width: fit-content;
-                    font-size: 0.7rem;
-                    letter-spacing: 0.1rem;
-                    padding: 0.3rem;
-                    margin: 0.2rem 0 0.2rem 0;
-                    border-radius: 5px;
+                    font-size: 0.35vw;
+                    letter-spacing: 0.05vw;
+                    padding: 0.2vw;
+                    margin: 0.1vw 0 0.1vw 0;
+                    border-radius: 0.1vw;
                 }
             }
         }
+    }
+    .readmore{
+        all: unset;
+        cursor: pointer;
+        display: block;
+        text-align: end;
+        color: $primePurple;
+        font-size: 1vw;
+        padding: 0 2vw 0 2vw;
+    }
 }
 
 .uCardSection{
     .sliderUni{
-        margin: 5rem;
+        margin: 0;
         padding: 1rem 0 0 0;
         background-color: $primePurpleLighter;
         border-radius: 30px;
@@ -252,6 +287,7 @@ header{
             }
             h4{
                 font-size: 1rem;
+                width: 90%;
                 height: 40%;
                 text-align: center;
                 align-content: center;
@@ -291,11 +327,22 @@ header{
             }
         }
     }
+    .readmore{
+        all: unset;
+        cursor: pointer;
+        display: block;
+        text-align: end;
+        color: $primePurple;
+        font-size: 1vw;
+        padding: 0 2vw 0 2vw;
+        transform: translateY(-4rem);
+    }
 }
 
 // QA section
 .qaSection{
-    margin-bottom: 12rem;
+    max-width: 1800px;
+    margin: 0rem 10rem 12rem 10rem;
     .qaCard{
         border: $primePurpleLight 0.2rem solid;
         margin: 1rem;
@@ -315,6 +362,15 @@ header{
             .categName{font-size: 2rem;}
         }
     }
+    .readmore{
+        all: unset;
+        cursor: pointer;
+        display: block;
+        text-align: end;
+        color: $primePurple;
+        font-size: 1vw;
+        padding: 0 2vw 0 2vw;
+    }
 }
 
 // join section
@@ -324,14 +380,15 @@ header{
     align-items: center;
     background-position: center; 
     background-size: cover;
+    width: 100vw;
     div{
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        padding: 10px;
+        padding: 2vw;
         width: 95%;
-        height: 25rem;
+        height: 30rem;
         padding-left: 15%;
         padding-right: 15%;
         padding-top: 10%;
@@ -339,10 +396,10 @@ header{
             all: unset;
             background-color: $primePurple;
             color: white;
-            border-radius: 0.8rem;
+            border-radius: 0.2vw;
             cursor: pointer; 
-            font-size: 2rem;
-            padding: 1rem;
+            font-size: 1.5vw;
+            padding: 0.2vw;
             box-shadow: 0px 5px 5px black;
         }
         p{color: white; font-size: 5rem; font-weight: 800; text-shadow: 0px 2px 2px black; margin: 0;}
@@ -352,16 +409,17 @@ header{
 // news section
 .newsSection{
     margin-top: 100px;
+    width: 100vw;
     .newsbg{
-        padding: 100px 30px 80px 30px;
+        padding: 3vw;
         overflow-x: hidden;
         background-color: $primePurpleLighter;
         .newsCard{
-            padding: 50px;
+            padding: 5vw;
             display: grid;
             grid-template-columns: 40% 60%;
             background-color: white;
-            border-radius: 10px;
+            border-radius: 1vw;
             .bgImg{
                 display: block;
                 width: 100%;
@@ -380,11 +438,11 @@ header{
                 padding: 10px;
                 margin: 0;
                 overflow-x: hidden;
-                h5, p{margin: 0;}
+                h5, p{margin: 0; font-size: 1.5vw;}
                 h5{
-                    border-left: solid 5px red; 
-                    letter-spacing: 0.2em;
-                    padding-left: 5px;
+                    border-left: solid 0.5vw red; 
+                    letter-spacing: 0.1vw;
+                    padding-left: 0.1vw;
                 }
                 .tags{
                     display: flex;
@@ -395,18 +453,26 @@ header{
                     p{
                         background-color: $primePurple;
                         color: white;
-                        padding: 2px 5px 2px 5px;
-                        margin-right: 10px;
-                        border-radius: 5px;
+                        padding: 0.1vw;
+                        margin-right: 0.2vw;
+                        border-radius: 0.2vw;
                     }
                 }
                 .meta{
-                    border-bottom: solid 1px gray; 
+                    border-bottom: solid 0.1vw gray; 
                     width: 100%;
                     font-weight: 800;
                 }
                 .brief{color: gray; text-overflow: clip;}
-                a{width: 100%; text-align: end;}
+                .fullArticle{
+                    all: unset;
+                    cursor: pointer;
+                    display: block;
+                    width: 100%;
+                    color: $primePurple;
+                    text-align: end;
+                    font-size: 1.5vw;
+                }
             }
         }
     }
@@ -414,45 +480,72 @@ header{
 
 // local Older
 .localOlder{
+    width: 100vw;
     margin: 3rem 1rem 1rem 1rem;
     padding: 0 3rem 0 3rem;
-    h6{ font-size: 1.5rem; padding-left: 10px; border-left: solid red 5px; margin-bottom: 2rem;}
+    h6{ font-size: 2vw; padding-left: 0.1vw; border-left: solid red 0.5vw; margin-bottom: 0.1vw;}
     div{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         font-weight: 600;
+        p,a{
+            font-size: 1.5vw;
+        }
     }
+}
 }
 
 // footer
 
-footer{
-    .col-md-4{
+.footer{
+    display: flex;
+    flex-direction: row;
+    div.left{
+        width: 30%;
+        border-right: solid 0.1vw white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         img{
-            width: 15rem;
-            margin: 3rem;
+            width: 20vw;
+            margin: 1.5vw;
         }
         .copyright{
-            font-size: 0.6rem;
+            color: white;
+            font-size: 0.7vw;
         }
     }
-    .row{
+    div.right{
+        width: 70%;
         height: 100%;
-        .col-md-3{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .topic{
             display: flex;
             flex-direction: column;
             justify-content: start;
-            letter-spacing: 0.5rem;
-            h6{font-size: 1.2rem; text-align: start;margin-bottom: 1rem;}
+            letter-spacing: 0.1vw;
+            margin: 1.5vw;
+            h6{
+                color: white;
+                font-size: 1.5vw; 
+                text-align: start;
+                margin-bottom: 1vw;
+            }
             div{
                 display: flex;
                 flex-direction: column;
                 align-items: start;
                 a{
+                    all: unset;
+                    cursor: pointer;
+                    font-size: 1vw;
                     text-decoration: none;
                     color: white;
-                    margin-bottom: 1rem;
+                    margin-bottom: 1vw;
                 }
             }
 
@@ -461,18 +554,26 @@ footer{
     
 }
 
-@media only screen and (max-width: 1400px) {
-    .studentC{
-        h5{
-            font-size: 1rem !important;
-        }
-        h6{
-            grid-column: 3/12 !important;
-        }
-        .postTags{
-            grid-column: 9/14 !important;
-            p{
-                font-size: 0.2rem !important;
+@media only screen and (max-width: 1500px) {
+    .title{
+        transform: translateY(-6rem) !important;
+    }
+    .studentSection{
+        .owl-carousel{
+            transform: scale(0.7);
+            .studentC{
+                h5{
+                    font-size: 1rem !important;
+                }
+                h6{
+                    grid-column: 3/12 !important;
+                }
+                .postTags{
+                    grid-column: 9/14 !important;
+                    p{
+                        font-size: 0.2rem !important;
+                    }
+                }
             }
         }
     }
@@ -484,3 +585,4 @@ footer{
     }
 
 }
+

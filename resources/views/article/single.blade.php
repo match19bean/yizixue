@@ -8,14 +8,12 @@
                 <h4 class="mt-3 text-black">
                     <a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a>
                     >
-                    <a
-                        class="text-decoration-none text-black"
+                    <a class="text-decoration-none text-black"
                         href="{{route('study-abroad', ['category_id' => $Data['article']->category->first()->postCategory->id])}}">
                         {{$Data['article']->category->first()->postCategory->name}}
                     </a>
                     >
-                    <a
-                        class="text-decoration-none text-black"
+                    <a class="text-decoration-none text-black"
                         href="{{route('study-abroad', ['category_id' => $Data['article']->category->first()->postCategory->id])}}">
                         {{$Data['article']->title}}
                     </a>
@@ -30,7 +28,7 @@
         <!-- main pic -->
         <img src="{{asset('uploads/'.$Data['article']->image_path)}}" alt="">
         <!-- content -->
-        <div class="row text-center content" style="word-wrap:break-word; font-size: 1rem;">
+        <div class="row text-center content">
             {!! $Data['article']->body !!}
         </div>
         <div class="row tagSocial">
@@ -45,30 +43,26 @@
             </div>
             <!-- social icons -->
             <div class="col-4 socialIcons">
-                <div style="text-align: right" ;>
-                    @if(auth()->check())
-                    <i class="fa fa-heart" style="font-size:20px;
+                @if(auth()->check())
+                <i class="fa fa-heart" style="
                     color:@if(auth()->user()->likePost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;
                     margin:5px" data-id="{{$Data['article']->id}}">
-                        <span style="color:black">{{$Data['article']->likePost->count()}}</span>
-                    </i>
-                    <i class="fa fa-bookmark" style="font-size:20px;
+                    <span style="color:black">{{$Data['article']->likePost->count()}}</span>
+                </i>
+                <i class="fa fa-bookmark" style="
                      color: @if(auth()->user()->collectPost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;
                      margin:5px" data-id="{{$Data['article']->id}}">
-                        <span style="color:black">{{$Data['article']->collectPost->count()}}</span>
-                    </i>
-                    @else
-                    <i class="fa fa-heart" style="font-size:20px; color:black; margin:5px"
-                        data-id="{{$Data['article']->id}}">
-                        <span style="color:black">{{$Data['article']->likePost->count()}}</span>
-                    </i>
-                    <i class="fa fa-bookmark" style="font-size:20px; color:black; margin:5px"
-                        data-id="{{$Data['article']->id}}">
-                        <span style="color:black">{{$Data['article']->collectPost->count()}}</span>
-                    </i>
-                    @endif
-                    <i class="fa fa-share" style="font-size:20px; color:black; margin:5px"></i>
-                </div>
+                    <span style="color:black">{{$Data['article']->collectPost->count()}}</span>
+                </i>
+                @else
+                <i class="fa fa-heart" style=" color:black; margin:5px" data-id="{{$Data['article']->id}}">
+                    <span style="color:black">{{$Data['article']->likePost->count()}}</span>
+                </i>
+                <i class="fa fa-bookmark" style=" color:black; margin:5px" data-id="{{$Data['article']->id}}">
+                    <span style="color:black">{{$Data['article']->collectPost->count()}}</span>
+                </i>
+                @endif
+                <i class="fa fa-share" style=" color:black; margin:5px"></i>
             </div>
         </div>
     </div>
@@ -120,6 +114,7 @@
                     @endif
             </div>
         </div>
+        <hr style="width:25vw; border: solid 0.05vw black; margin:2vw 0 2vw 0;">
         <h5>作者的熱門文章</h5>
         <!-- author article -->
         <div>
@@ -149,22 +144,21 @@
             @if(!is_null($Data['interested']))
             @foreach($Data['interested'] as $post)
 
-            <div class="row moreArticles">
+            <div class="moreArticles">
                 <a href="{{ route('article', $post->id) }}">
                     <!-- img -->
-                    <div class="imgs">
-                        <div class="bgImg" style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;">
+                    <div class="postImg">
+                        <div class="postPhoto"
+                            style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;">
                             &nbsp;
                         </div>
-                        <div class="info">
-                            <div class="authorImg"
-                                style="background-image: url('{{ is_null($post->author->avatar) ? asset('uploads/images/default_avatar.png') : asset('uploads/'.$post->author->avatar) }}') ;">
-                            </div>
-                            <h6>{{ !is_null($post->author) ? $post->author->name : ""}}</h6>
+                        <div class="userimg"
+                            style="background-image: url('{{ is_null($post->author->avatar) ? asset('uploads/images/default_avatar.png') : asset('uploads/'.$post->author->avatar) }}') ;">
                         </div>
+                        <h6 class="namecard">{{ !is_null($post->author) ? $post->author->name : ""}}</h6>
                     </div>
 
-                    <div class="w-100">
+                    <div class="content">
                         <!-- categs -->
                         <div class="postCategory">
                             @if(!is_null($Data['article']->category))
@@ -174,14 +168,14 @@
                             @endif
                         </div>
                         <!-- title -->
-                        <h3> {{$post->title}} </h3>
-                        <p class="body">
+                        <h3 class="w-100"> {{$post->title}} </h3>
+                        <p class="body w-100">
                             {!! \Illuminate\Support\Str::limit(strip_tags($post->body), 30) !!}
                         </p>
 
-                        <p class="readMore">...閱讀更多</p>
+                        <p class="readMore w-100">...閱讀更多</p>
                         <!-- react icons -->
-                        <div class="react" onclick="event.stopPropagation(); return false; ">
+                        <div class="react w-100" onclick="event.stopPropagation(); return false; ">
                             <i class="fa fa-heart">
                                 <span class="text-black">T</span>
                             </i>
