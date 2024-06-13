@@ -104,4 +104,9 @@ class User extends Authenticatable implements CanVerifyEmailContract
     {
         return $this->hasMany(QnA::class, 'uid');
     }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class);
+    }
 }

@@ -36,7 +36,7 @@
                             {{!is_null($Data['user']->universityItem) ?$Data['user']->universityItem->english_name:''}}
                         </h6>
                     </div>
-                    <h3 class="status">在學</h3>
+                    <h3 class="status">{{$Data['user']->is_study == 1 ? '在學' : '畢業'}}</h3>
                 </div>
                 <!-- post categ -->
                 <div class="postCateg">
@@ -120,13 +120,11 @@
             </div>
             <div class="edu">
                 <h3>學歷經歷</h3>
-                <p>
-                    {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name : '' }}
-                </p>
-                <hr>
-                <p>
-                    {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->chinese_name : '' }}
-                </p>
+                @if($Data['user']->experiences)
+                    @foreach($Data['user']->experiences as $experience)
+                        <p>{{$experience->learning_experience}}</p>
+                    @endforeach
+                @endif
                 <hr>
             </div>
             <div class="social">

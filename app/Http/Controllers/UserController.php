@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Experience;
 use App\University;
 use App\UserPostCategoryRelation;
 use App\UserReference;
@@ -54,14 +55,15 @@ class UserController extends Controller
             'description' => 'max:500|nullable',
             'skills' => 'array|min:0|max:12',
             'post_categories' => 'array|min:0|max:3',
-            'email' => 'required_with:email|email|unique:users,email,'.auth()->user()->id
+            'email' => 'required_with:email|email|unique:users,email,'.auth()->user()->id,
+            'learning_experience' => 'array|min:0|max:5',
         ], [
             'references.max.file' => '檔案不得超過2M',
             'description.max' => '字數不得超過500字',
             'skills.max' => '專長不得超過12個',
             'post_categories.max' => '主題不得超過3個',
             'email.email' => 'Email格式不正確',
-            'email.unique' => '已有相同Email註冊'
+            'email.unique' => '已有相同Email註冊',
         ]);
 
         if($req->filled('post_categories')){
@@ -119,6 +121,22 @@ class UserController extends Controller
                     );
                 }
             }
+        }
+
+        if($req->filled('learning_experience'))
+        {
+            $experiences = [];
+            foreach($req->learning_experience as $experience)
+            {
+                if(!empty($experience)){
+                    $insert = new Experience();
+                    $insert->learning_experience = $experience;
+                    $experiences[] = $insert;
+                }
+            }
+
+            $User->experiences()->delete();
+            $User->experiences()->saveMany($experiences);
         }
 
         $User->avatar = $User->avatar;

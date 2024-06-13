@@ -153,6 +153,44 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card mb-4">
+                            <div class="card-body p-0">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">您的學經歷</h6>
+                                    @if($errors->has('learn_experience'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('learn_experience')}}
+                                        </div>
+                                    @endif
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                             aria-labelledby="dropdownMenuLink" style="">
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#edit-learning-experience"
+                                               href="#">編輯</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @if($Data['user']->experiences)
+                                        @foreach ($Data['user']->experiences as $key => $experience)
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    經歷{{$key+1}}
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="mb-0">{{$experience->learning_experience}}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                         <div class="card mb-4 mb-lg-0">
                             <div class="card-body p-0">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -728,6 +766,64 @@
             </div>
         </div>
         <!-- Modal 參考文件-->
+
+        <!-- Modal 學經歷-->
+        <div class="modal fade" id="edit-learning-experience" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <form method="POST" action="{{ route('update-profile') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-header">
+                            <h5 class="modal-title">編輯您的學經歷</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3" style="display:none">
+                                <input type="text" value="{{ Auth::user()->id }}" name="uid"
+                                       class="form-control" readonly>
+                            </div>
+
+
+                            @if($Data['user']->experiences)
+                                @foreach($Data['user']->experiences as $experience)
+                                <div class="mb-3">
+                                    <label for="uname" class="form-label">學經歷</label>
+                                    <input type="text" value="{{ $experience->learning_experience }}" name="learning_experience[]"
+                                           class="form-control">
+                                </div>
+                                @endforeach
+                                @php
+                                    $count = 5 - $Data['user']->experiences->count();
+                                @endphp
+                                @for($i=0; $i < $count; $i++)
+                                    <div class="mb-3">
+                                        <label for="uname" class="form-label">學經歷</label>
+                                        <input type="text" value="" name="learning_experience[]"
+                                               class="form-control">
+                                    </div>
+                                @endfor
+                            @else
+                                @for($i=0; $i < 5; $i++)
+                                <div class="mb-3">
+                                    <label for="uname" class="form-label">學經歷</label>
+                                    <input type="text" value="" name="learning_experience[]"
+                                           class="form-control">
+                                </div>
+                                @endfor
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="submit" class="btn btn-primary">更新</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 學經歷-->
 
     </div>
     <!-- /.container-fluid -->
