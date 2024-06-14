@@ -252,7 +252,7 @@
                 <img class="col-4" src="{{ asset('uploads/images/yzl-coop.png') }}" alt="icons">
             </div>
         </div>
-        <a class="readmore" href="#">查看更多 &gt;</a>
+        <a class="readmore" href="{{route('qna')}}">查看更多 &gt;</a>
     </section>
 
     <!-- join -->
