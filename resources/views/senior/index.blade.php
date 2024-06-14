@@ -108,7 +108,7 @@
             </svg>
             <!-- school img -->
             <div class="schoolImg">
-                <span style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp</span>
+                <span style="background-image: url('{{!is_null($user->universityItem)?asset($user->universityItem->image_path):''}}') ;">&nbsp</span>
             </div>
             <!-- name card -->
             <h4>{{ $user->name }}</h4>
