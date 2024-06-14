@@ -33,7 +33,7 @@ class QnA extends Model
 
     public function categoryRelation()
     {
-        return $this->hasMany(QaCategoryRelation::class, 'qa_id');
+        return $this->hasMany(QACategoryRelation::class, 'qa_id');
     }
 
     public function collectQa()
