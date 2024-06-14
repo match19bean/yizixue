@@ -493,7 +493,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="uname" class="form-label">姓名</label>
-                                <input type="text" value="{{ Auth::user()->name }}" name="uname"
+                                <input type="text" value="{{ Auth::user()->name }}" name="name"
                                     class="form-control">
                             </div>
                             <div class="mb-3">
