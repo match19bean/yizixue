@@ -25,7 +25,7 @@
                 <div class="schoolInfo">
                     <!-- school img -->
                     <span class="schoolImg"
-                        style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;
+                        style="background-image: url('{{ !empty($Data['user']->universityItem) ? asset($Data['user']->universityItem->image_path): ''}}') ;">&nbsp;
                     </span>
                     <!-- school name -->
                     <div>
@@ -297,7 +297,7 @@
                 </svg>
                 <!-- school img -->
                 <div class="schoolImg">
-                    <span style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp</span>
+                    <span style="background-image: url('{{ !empty($user->universityItem) ? asset($user->universityItem->image_path) : ''}}') ;">&nbsp</span>
                 </div>
                 <!-- name card -->
                 <h4>{{ $user->name }}</h4>

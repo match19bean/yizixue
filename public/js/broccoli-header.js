@@ -144,7 +144,8 @@ function newsSlide(){
         $("#newsTopic").text(posts[currentNews-1].topic);
         // 根據 currentPic 切換圖片
         $(".newsCard .bgImg").css("background-image", "url(" + posts[currentNews - 1].image_path + ")");
-        $(".newsCard .info .tags").html("<p>" + posts[currentNews-1].category + "</p>");
+        let string = posts[currentNews-1].category.map(function(item){return `<p>`+item+`</p>`});
+        $(".newsCard .info .tags").html(string);
         $(".newsCard .info .meta").text(posts[currentNews-1].title);
         $(".newsCard .info .brief").text(encodeHTML(posts[currentNews-1].body));
         $(".newsCard .info a").attr('href', posts[currentNews-1].url);
