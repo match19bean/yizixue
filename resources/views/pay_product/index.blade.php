@@ -7,6 +7,11 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">所有加值服務</h6>
                 </div>
+                @if(session('message'))
+                    <div class="alert alert-danger text-center">
+                        {!! session('message') !!}
+                    </div>
+                @endif
                 <div class="card-body">
                     <div class="text-center w-75 mx-auto">
                             @if(!is_null($products))

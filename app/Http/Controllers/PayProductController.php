@@ -91,6 +91,15 @@ class PayProductController extends Controller
             return back()->with(['message' => '產品錯誤請重新選擇']);
         }
 
+        logger(auth()->user()->phone);
+        logger(preg_match("/^[0][1-9]{1,3}[-][0-9]{6,8}$/", auth()->user()->phone));
+        logger(strlen(auth()->user()->phone) < 10);
+        logger(strlen(auth()->user()->phone) > 11);
+        if(!preg_match("/^[0][1-9]{1,3}[0-9]{6,8}$/", auth()->user()->phone) ||
+            strlen(auth()->user()->phone) < 10 || strlen(auth()->user()->phone) > 11) {
+            return back()->with(['message' => '電話號碼格式有誤，請更新電話後再進行操作']);
+        }
+
         $order = PayOrder::create([
             'user_id' => auth()->user()->id,
             'pay_product_id' => $id,
@@ -118,6 +127,21 @@ class PayProductController extends Controller
             'ChoosePayment' => 'Credit',
             'EncryptType' => 1,
             'OrderResultURL' => route('ecpay-order-result'),
+
+            // 合併開立電子發票專案參數
+            'InvoiceMark' => 'Y',
+            'RelateNumber' => $sn,
+            'CustomerPhone' => auth()->user()->phone,
+            'TaxType' => 1,
+            'CarruerType' => 1,
+            'Print' => 0,
+            'InvoiceItemName' => UrlService::ecpayUrlEncode($product->name),
+            'InvoiceItemCount' => '1',
+            'InvoiceItemWord' => UrlService::ecpayUrlEncode('份'),
+            'InvoiceItemPrice' => $product->price,
+            'DelayDay' => 0,
+            'InvType' => '07',
+
             // 請參考 example/Payment/GetCheckoutResponse.php 範例開發
             'ReturnURL' => route('ecpay-return-url'),
         ];
