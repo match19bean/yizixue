@@ -69,6 +69,13 @@ return [
             'visibility' => 'public',
             'url' => env('APP_URL').'/uploads',
         ],
+
+        'university' => [
+            'driver' => 'local',
+            'root' => public_path('/'),
+            'visibility' => 'public',
+            'url' => env('APP_URL').'/',
+        ]
     ],
 
 ];

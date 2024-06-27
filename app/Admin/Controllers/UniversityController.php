@@ -7,6 +7,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UniversityController extends AdminController
 {
@@ -28,11 +30,19 @@ class UniversityController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('slug', __('Slug'));
+        $grid->column('image_path', __('Image Path'))->display(function($image_path){
+            return url($image_path);
+        })->image();
         $grid->column('name', __('Name'));
+        $grid->column('english_name', __('English Name'));
+        $grid->column('country', __('Country'));
+        $grid->column('area', __('Area'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
-        $grid->disableActions();
+        $grid->actions(function($action){
+            $action->disableDelete();
+        });
 
         return $grid;
     }
@@ -65,9 +75,48 @@ class UniversityController extends AdminController
     {
         $form = new Form(new University());
 
-        $form->text('slug', __('Slug'));
-        $form->text('name', __('Name'));
-        $form->image('image_path', __('Image'));
+        $form->text('slug', __('Slug'))->creationRules(['required', 'unique:university,slug'])
+            ->updateRules(['required', 'unique:university,slug,{{id}}'])->placeholder('英文小寫中間用-號連接');
+        $form->text('name', __('Name'))->creationRules(['required', 'unique:university,name'])
+            ->updateRules(['required', 'unique:university,name,{{id}}'])->placeholder('學校中文名稱');
+        $form->text('english_name', __('English Name'))->creationRules(['required', 'unique:university,english_name'])
+            ->updateRules(['required', 'unique:university,english_name,{{id}}'])->placeholder('學校英文名稱');
+
+        $form->select('country', __('Country'))->options(
+            [
+                'USA' => 'USA',
+                'CANADA' => 'CANADA',
+                'UK' => 'UK',
+                'AUSTRALIA' => 'AUSTRALIA',
+                'NEW ZEALAND' => 'NEW ZEALAND',
+                'GERMANY' => 'GERMANY',
+                'FRANCE' => 'FRANCE',
+                'JAPAN' => 'JAPAN',
+                'KOREA' => 'KOREA',
+                'SINGAPORE' => 'SINGAPORE',
+                'HONG KONG' => 'HONG KONG',
+                'MACAU' => 'MACAU',
+                'TAIWAN' => 'TAIWAN'
+            ]
+        )->when('=', 'USA', function (Form $form) {
+            $form->select('area', __('Area'))->options([
+                'NORTHEAST' => 'NORTHEAST',
+                'WEST' => 'WEST',
+                'SOUTH' => 'SOUTH',
+                'MIDWEST' => 'MIDWEST',
+            ]);
+        })->when('=', 'TAIWAN', function (Form $form) {
+            $form->select('area', __('Area'))->options([
+                'INTERNATIONAL' => 'INTERNATIONAL',
+                'HIGHSCHOOL' => 'HIGHSCHOOL',
+                'COLLEGE' => 'COLLEGE'
+            ]);
+        });
+
+        $form->image('image_path', __('Image'))->disk('university')->move('university/'.request()->input('country'))->uniqueName();
+        $form->saving(function (Form $form) {
+            $form->chinese_name = request()->input('name');
+        });
 
         return $form;
     }

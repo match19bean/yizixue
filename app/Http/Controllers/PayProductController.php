@@ -91,10 +91,6 @@ class PayProductController extends Controller
             return back()->with(['message' => '產品錯誤請重新選擇']);
         }
 
-        logger(auth()->user()->phone);
-        logger(preg_match("/^[0][1-9]{1,3}[-][0-9]{6,8}$/", auth()->user()->phone));
-        logger(strlen(auth()->user()->phone) < 10);
-        logger(strlen(auth()->user()->phone) > 11);
         if(!preg_match("/^[0][1-9]{1,3}[0-9]{6,8}$/", auth()->user()->phone) ||
             strlen(auth()->user()->phone) < 10 || strlen(auth()->user()->phone) > 11) {
             return back()->with(['message' => '電話號碼格式有誤，請更新電話後再進行操作']);
