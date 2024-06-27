@@ -74,9 +74,7 @@ class UniversityController extends AdminController
     protected function form()
     {
         $form = new Form(new University());
-
-        $form->text('slug', __('Slug'))->creationRules(['required', 'unique:university,slug'])
-            ->updateRules(['required', 'unique:university,slug,{{id}}'])->placeholder('英文小寫中間用-號連接');
+        $form->hidden('slug');
         $form->text('name', __('Name'))->creationRules(['required', 'unique:university,name'])
             ->updateRules(['required', 'unique:university,name,{{id}}'])->placeholder('學校中文名稱');
         $form->text('english_name', __('English Name'))->creationRules(['required', 'unique:university,english_name'])
@@ -114,7 +112,14 @@ class UniversityController extends AdminController
         });
 
         $form->image('image_path', __('Image'))->disk('university')->move('university/'.request()->input('country'))->uniqueName();
+        $form->hidden('chinese_name');
         $form->saving(function (Form $form) {
+            if(request()->isMethod('POST')){
+                if($form->slug === null) {
+                    $form->slug = Str::slug(Str::lower(request()->input('english_name')));
+                }
+
+            }
             $form->chinese_name = request()->input('name');
         });
 

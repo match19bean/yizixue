@@ -29,4 +29,26 @@ class UniversityController extends Controller
         $universities = $query->with('users')->paginate();
         return view('university.index', compact(['universities']));
     }
+
+    public function search(Request $request)
+    {
+        $query = (new University)->query();
+
+        if($request->filled('university')){
+            $query->where('chinese_name', 'like', '%'.$request->university.'%')->orWhere('english_name', 'like', '%'.$request->university.'%');
+        }
+
+        $result = $query->get();
+
+        $result->transform(function($item){
+            return [
+                'id' => $item->id,
+                'text' => $item->english_name.$item->chinese_name
+            ];
+        });
+
+        return response()->json([
+            'data' => $result
+        ]);
+    }
 }

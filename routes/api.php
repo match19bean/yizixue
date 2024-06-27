@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/post-random', 'FrontPageController@random');
+
+Route::get('search-university', 'UniversityController@search');
