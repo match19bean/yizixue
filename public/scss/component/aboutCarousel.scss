@@ -1,0 +1,6 @@
+.c-bannerCarousel{
+    &__slide{
+        @include imgBackground;
+        aspect-ratio: 3.5/1;
+    }
+}

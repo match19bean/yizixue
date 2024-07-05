@@ -1,0 +1,103 @@
+@use 'sass:math';
+@import "broccoli_mixins";
+$spacing-map: (160: 24vw, 120: 20vw, 100: 18vw, 88: 17vw, 80: 16vw, 72: 15vw, 64: 14vw, 56: 12vw, 48: 10vw, 40: 8vw, 32: 6vw, 24: 4vw, 16: 3vw, 12: 2vw, 8: null, 4: null, 2: null, 0: null, auto: null);
+
+:root {
+  // Spacing
+  @each $spacing, $vw in $spacing-map {
+    @if ($spacing == auto) {
+      --spacing-#{$spacing}: auto;
+    } @else {
+      --spacing-#{$spacing}: #{calc($spacing / 10)}rem;
+    }
+  }
+  
+  @include media(xs) {
+    @each $spacing, $vw in $spacing-map {
+      @if $vw {
+        --spacing-#{$spacing}: #{$vw};
+        --spacing-160: 30vw;
+      }
+    }
+  }
+
+  // Layouts
+  --section-spacing-x: 4vw;
+  --section-spacing-y: var(--spacing-120);
+  @include media(sm) {
+    --section-spacing-x: 2vw;
+  }
+
+  --container-width: 152rem;
+  --container-width-sm: 136rem;
+  --container-width-xs: 125.6rem;
+
+  // Fonts
+  --font-primary: 'Noto Sans TC', sans-serif;
+  --font-en: 'Patua One', serif;
+
+  --text-4xl: 4rem;
+  --text-3xl: 3.2rem;
+  --text-2xl: 2.8rem;
+  --text-xl: 2.4rem;
+  --text-lg: 2rem;
+  --text-md: 1.8rem;
+  --text-body: 1.6rem;
+  --text-sm: 1.4rem;
+  --text-xs: 1rem;
+  --text-xxs: 0.8rem;
+  --text-xxxs: 0.5rem;
+  
+  @include media(sm) {
+    --text-4xl: 3.6rem;
+  }
+  
+  @include media(xs) {
+    --text-4xl: 3.2rem;
+    --text-3xl: 2.8rem;
+    --text-2xl: 2.2rem;
+    --text-xl: 2rem;
+    --text-lg: 1.8rem;
+    --text-md: 1.7rem;
+  }
+
+  --color-secondary: #FF986A;
+  --color-bg: white;
+
+  --color-success: var(--color-primary);
+  --color-danger: #E2907C;
+  --color-danger-rgb: 226, 144, 124;
+  --color-danger-20: rgba(var(--color-danger-rgb), 0.2);
+
+  --color-cocoa: #C7AF9E;
+  --color-cocoa-dark: #C0AC94;
+
+  --color-brown: #8E744D;
+  --color-brown-rgb: 142, 116, 77;
+  --color-brown-40: rgba(var(--color-brown-rgb), 0.4);
+  --color-brown-light: #E3D6C4;
+  --color-brown-light-rgb: 227, 214, 196;
+  --color-brown-light-60: rgba(var(--color-brown-light-rgb), 0.6);
+
+  --color-black: #000;
+  --color-black-rgb: 43, 43, 43;
+  --color-black-90: rgba(var(--color-black-rgb), 0.9);
+  --color-black-80: rgba(var(--color-black-rgb), 0.8);
+  --color-black-60: rgba(var(--color-black-rgb), 0.6);
+  --color-black-40: rgba(var(--color-black-rgb), 0.4);
+  --color-black-20: rgba(var(--color-black-rgb), 0.2);
+  --color-black-10: rgba(var(--color-black-rgb), 0.1);
+
+  --color-gray: #343434;
+  --color-gray-light: #F9F8F7;
+  --color-gray-light-rgb: 249, 248, 247;
+  --color-gray-light-40: rgba(var(--color-gray-light-rgb), 0.4);
+
+  --color-white: #fff;
+  --color-white-rgb: 255, 255, 255;
+  --color-white-80: rgba(var(--color-white-rgb), 0.8);
+  --color-white-60: rgba(var(--color-white-rgb), 0.6);
+  --color-white-40: rgba(var(--color-white-rgb), 0.4);
+
+  --color-transparent: transparent;
+}

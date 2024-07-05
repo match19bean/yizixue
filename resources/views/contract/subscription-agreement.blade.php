@@ -1,7 +1,11 @@
 @extends('layouts.guest2')
 
 @section('content')
-    <div class="container">
+    <div class="l-contract">
+    <div class="l-contract__content container">
+    <h2 class="l-contract__title">註冊條款（我不確定這個條款具體該放在哪裡，具體使用方式請再確認，現階段先以前端顯示時的版面修正為主）</h2>
+    <div class="row">
+        <div class="col-md-12">
         <section class="my-3">
             <dl>
                 <dt>
@@ -110,5 +114,19 @@
                 </dl>
             </section>
         </section>
+        </div>
     </div>
+    </div>
+</div>
+<div class="l-contract">
+    <div class="l-contract__content container">
+    <h2 class="l-contract__title"></h2>
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+    </div>
+</div>
+
 @endsection

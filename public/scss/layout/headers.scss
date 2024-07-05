@@ -1,0 +1,45 @@
+@mixin header_template($position, $color){
+    position: $position;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-12);
+    background-color: $color;
+    &_navBar{
+        margin: 0;
+    }
+    &_navItems{
+        justify-content: end;
+        align-items: center;
+    }
+    &_li{
+        padding: 0 var(--spacing-12);
+        align-self: center;
+        font-size: var(--text-xl);
+        font-weight: 600;
+        a{
+            all: unset;
+            cursor: pointer;
+            color: var(--color-white);
+        }
+        &:last-child{
+            padding: 0;
+        }
+    }
+    &_thumbNail{
+        width: var(--spacing-80);
+    }
+}
+
+// for welcome(main page) header
+.l-header{
+    z-index: 2;
+    width: 100%;
+    @include header_template(fixed, $transprent);
+}
+
+// for other pages
+.l-header-2{
+    @include header_template(inherit, var(--color-black));
+}

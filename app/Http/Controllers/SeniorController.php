@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PostCategory;
 use App\University;
 use App\User;
 use App\UserPostCategoryRelation;
@@ -53,7 +54,7 @@ class SeniorController extends Controller
         }
 
         $users = $query->paginate();
-
-        return view('senior.index', compact('users'));
+        $post_categories = PostCategory::all();
+        return view('senior.index', compact(['users', 'post_categories']));
     }
 }

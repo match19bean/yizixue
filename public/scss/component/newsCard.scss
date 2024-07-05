@@ -1,0 +1,40 @@
+.c-newsCard{
+    background-color: var(--color-white);
+    padding: var(--spacing-32);
+    &__bgImg{
+       @include imgBackground;
+       aspect-ratio: 16/9; 
+
+    }
+    &__info{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+    }
+    h5{
+        font-size: var(--text-xl);
+        font-weight: 800;
+        border-left: solid red var(--spacing-12);
+    }
+    &__tags{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+    &__meta{
+        width: 100%;
+        font-size: var(--text-xl);
+        border-bottom: solid 2px gray;
+    }
+    &__brief{
+        width: 100%;
+        font-size: var(--text-lg);
+        color: gray;
+    }
+    &__readMore{
+        font-size: var(--text-sm);
+    }
+}

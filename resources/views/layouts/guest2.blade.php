@@ -15,194 +15,182 @@
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/sbf-style.css') }}" rel="stylesheet" />
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- swiper cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <style>
-        .middle {
-            width: 50px;
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .name-card {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-left: 50px;
-            padding-right: 50px;
-            background: #BD9EBE;
-            text-align: center;
-        }
-        footer a {
-            text-decoration: none;
-            color: white;
-        }
-        footer .col-md-3 p {
-            font-size: 1.5rem;
-        }
-    </style>
     <!-- broccoli style -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/broccoli-color.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/artical.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('scss_convert/broccoli_style.css') }}">
 </head>
 
 <body>
-<!-- Responsive navbar-->
-<div >
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <a class="navbar-brand" href="{{url('/')}}">
+    <!-- Responsive navbar-->
+    <nav class="l-header-2 navbar navbar-expand-lg navbar-dark">
+        <a class="col-2" href="{{url('/')}}">
             <img src="{{asset('uploads/images/logo.png')}}" alt="logo" id="logoImg">
         </a>
-        <div class="container">
+        <div class="l-header-2_navBar container col-10">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-
-                    <li class="nav-item"><a class="nav-link text-white" href="{{route('senior')}}">學長姐｜快找</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="{{route('study-abroad')}}">留學誌｜推薦</a></li>
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="l-header-2_navItems collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="l-header-2_ul navbar-nav">
+                    <li class="l-header-2_li nav-item"><a class="nav-link text-white"
+                            href="{{route('senior')}}">學長姐｜快找</a></li>
+                    <li class="l-header-2_li nav-item"><a class="nav-link text-white"
+                            href="{{route('study-abroad')}}">留學誌｜推薦</a></li>
                     @if(auth()->check())
-                        <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('home')}}">易子學系統</a></li>
-                        <li class="nav-item">
-                            <a href="{{route('home')}}">
-                                <svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
-                                            @if(!is_null(auth()->user()->avatar))
-                                                <image x="0" y="0" xlink:href="{{asset('uploads/'.auth()->user()->avatar)}}" width="80" height="80"></image>
-                                            @else
-                                                <image x="0" y="0" xlink:href="{{asset('uploads/images/default_avatar.png')}}" width="80" height="80"></image>
-                                            @endif
-                                        </pattern>
-                                    </defs>
-                                    <circle cx="40" cy="40" r="30" fill="url(#image)"/>
-                                </svg>
-                            </a>
-                        </li>
-                    @else
-                        <li class="nav-item"><a class="nav-link scrollFunction" href="{{route('login')}}">註冊｜登入</a></li>
-                        <li class="nav-item">
-                            <svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                                <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
+                    <li class="l-header-2_li nav-item"><a class="nav-link scrollFunction"
+                            href="{{route('home')}}">易子學系統</a></li>
+                    <li class="l-header-2_li nav-item">
+                        <a href="{{route('home')}}">
+                            <svg class="l-header-2_thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
+                                        @if(!is_null(auth()->user()->avatar))
+                                        <image x="0" y="0" xlink:href="{{asset('uploads/'.auth()->user()->avatar)}}"
+                                            width="80" height="80"></image>
+                                        @else
+                                        <image x="0" y="0" xlink:href="{{asset('uploads/images/default_avatar.png')}}"
+                                            width="80" height="80"></image>
+                                        @endif
+                                    </pattern>
+                                </defs>
+                                <circle cx="40" cy="40" r="30" fill="url(#image)" />
                             </svg>
-                        </li>
+                        </a>
+                    </li>
+                    @else
+                    <li class="l-header-2_li nav-item"><a class="nav-link scrollFunction"
+                            href="{{route('login')}}">註冊｜登入</a></li>
+                    <li class="l-header-2_li nav-item">
+                        <svg class="l-header-2_thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
+                        </svg>
+                    </li>
                     @endif
                 </ul>
             </div>
         </div>
     </nav>
-</div>
 
-<div class="container-fluid px-5 adjOnSingleArticle adjOnIntroduction">
-    @yield('content')
-</div>
+    <div class="container-fluid p-0">
+        @yield('content')
+    </div>
 
-<!-- Footer-->
-<footer class="py-5 bg-dark footer">
-    <!-- <div class="row text-center text-white"> -->
-        <div class="left">
-            <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
-            <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
-            <p>統一編號：83453577</p>
+    <!-- Footer-->
+    <footer>
+        <div class="l-footer">
+            <div class="row p-5">
+                <div class="l-footer_brand col-4">
+                    <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
+                    <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
+                    <p>統一編號：83453577</p>
+                </div>
+                <div class="l-footer_siteMap col-8">
+                    <div class="l-footer_siteMap_topic">
+                        <h6>加入｜易子學</h6>
+                        <div>
+                            <a href="{{route('login')}}">登入｜註冊</a>
+                            <a href="">聯絡我們</a>
+                        </div>
+                    </div>
+                    <div class="l-footer_siteMap_topic">
+                        <h6>關於｜會員</h6>
+                        <div>
+                            <a href="{{route('senior')}}">找學長姐</a>
+                            <a href="{{route('university-list')}}">找學校</a>
+                            <a href="{{route('qna')}}">問與答</a>
+                            <a href="{{route('study-abroad')}}">留學誌</a>
+                        </div>
+                    </div>
+                    <div class="l-footer_siteMap_topic">
+                        <h6>關於｜學長姐</h6>
+                        <div>
+                            <a href="{{route('pay-product-list')}}">成為學長姐</a>
+                            <!-- please replace with the real back-end code -->
+                            <a href="/yizixue-faq">教戰手則</a>
+                            <a>學長姐服務條款</a>
+                            <!-- unsure page, please clearify -->
+                            <a href="/subscription-agreement">註冊條款？</a>
+                        </div>
+                    </div>
+                    <div class="l-footer_siteMap_topic">
+                        <h6>關於｜易子學</h6>
+                        <div>
+                            <!-- please replace with the real back-end code -->
+                            <a href="/about-us">關於我們</a>
+                            <a href="">前輩網</a>
+                            <!-- please replace with the real back-end code -->
+                            <a href="/service-agreement">服務條款</a>
+                            <!-- 為何figma隱私權聲明頁面是連到會員規約？？ -->
+                            <a href="/membership-agreement">隱私權聲明</a>
+                            <!-- please replace with the real back-end code -->
+                            <a href="/disclaimer">免責聲明</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="right">
-            <!-- <div class="row"> -->
-                <div class="topic">
-                    <h6>加入 | 易子學</h6>
-                    <div>
-                        <a href="{{route('login')}}">登入｜註冊</a>
-                        <a href="">聯絡我們</a>
-                    </div>
-                </div>
-                <div class="topic">
-                    <h6>關於 | 會員</h6>
-                    <div>
-                        <a href="{{route('senior')}}">找學長姐</a>
-                        <a href="{{route('university-list')}}">找學校</a>
-                        <a href="{{route('qna')}}">問與答</a>
-                    </div>
-                </div>
-                <div class="topic">
-                    <h6>關於 | 學長姐</h6>
-                    <div>
-                        <a href="{{route('pay-product-list')}}">成為學長姐</a>
-                        <a href="">教戰手則</a>
-                    </div>
-                </div>
-                <div class="topic">
-                    <h6>關於 | 易子學</h6>
-                    <div>
-                        <a href="">關於我們</a>
-                        <a href="">前輩網</a>
-                    </div>
-                </div>
-            <!-- </div> -->
-        </div>
-    <!-- </div> -->
-</footer>
+    </footer>
+</body>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    $(".owl-carousel").owlCarousel({
-        loop: true, // 循環播放
-        margin: 0, // 外距 10px
-        nav: false, // 顯示點點
-        responsive: {
-            0: {
-                items: 1 // 螢幕大小為 0~600 顯示 1 個項目
-            },
-            600: {
-                items: 2 // 螢幕大小為 600~1000 顯示 3 個項目
-            },
-            1000: {
-                items: 4 // 螢幕大小為 1000 以上 顯示 5 個項目
-            },
-            1500: {
-                items: 4 // 螢幕大小為 1000 以上 顯示 5 個項目
-            }
-        }
-    });
-
-    //broccoli toggle bar function
-    function toggle() {
-        var burger = $("#burger");
-        var togglebar = $("#toggleBar");
-        burger.toggleClass("burgerTurn");
-        togglebar.toggleClass("noShow");
-    }
-
-    // join yzl function
-    function joinYZL(togglebar){
-        target = $("#joinYZL");
-        target.toggleClass("d-flex flex-column align-items-center");
-    }
-</script>
 <!-- cards click function -->
 <script>
-function cardClickable(id) {
-    // console.log(id);
-    location.href = document.location.origin + "/introduction/" + id;
-}
+    function cardClickable(id) {
+        // console.log(id);
+        location.href = document.location.origin + "/introduction/" + id;
+    }
 
-function uniCardClick(uni){
-    location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
-}
+    function uniCardClick(uni) {
+        location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
+    }
+</script>
+<!-- swiper custom -->
+<script>
+    var swiper = new Swiper(".studentSwiper", {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 2000,
+        },
+        pagination: {
+            el: ".studentPagi",
+            clickable: true,
+        },
+    });
+
+    var swiper = new Swiper(".aboutUsSwiper", {
+        loop: true,
+        autoplay: {
+            delay: 2000,
+        },
+        pagination: {
+            el: ".aboutUsPagi",
+            clickable: true,
+        },
+    });
+
+    var swiper = new Swiper(".teamSwiper", {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 2000,
+        },
+        pagination: {
+            el: ".teamPagi",
+            clickable: true,
+        },
+    });
 </script>
 <!-- end of cards click function -->
 <script src="{{ asset('js/broccoli-sideBar.js')}}"></script>
-</body>
+<script src="{{ asset('js/react-icon.js')}}"></script>
 
 </html>

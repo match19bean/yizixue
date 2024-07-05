@@ -1,0 +1,17 @@
+.o-subTitle{
+        min-width: 25rem;
+        text-align: end;
+        background-color: $prime_purple;
+        padding: var(--spacing-12);
+        border-radius: 0 var(--spacing-24) var(--spacing-24) 0;
+        font-size: var(--text-3xl);
+        color: var(--color-white);
+}
+
+.o-loginTitle{
+        background-color: $prime_purple;
+        font-size: var(--text-3xl);
+        color: var(--color-white);
+        border-radius: var(--spacing-12);
+        padding: var(--spacing-4);
+}

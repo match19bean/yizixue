@@ -1,15 +1,13 @@
 @extends('layouts.guest')
 @section('content')
-<!-- Header-->
-<div class="innerheader">
-    <div class="headerCard">
-        <div class="banner">
-            <div>
-                <span id="bannerImg" style="background-image: url('{{ asset('uploads/images/banner_p1.jpg') }}') ;"
-                    class="bgImg">&nbsp</span>
-            </div>
+<!-- Header from: public/scss/layout/welcomePage_layout.scss-->
+<div class="l-innerHeader">
+    <div class="l-innerHeader__headerCard">
+        <div class="l-innerHeader__headerCard__banner">
+            <span id="bannerImg"
+                style="background-image: url('{{ asset('uploads/images/banner_p1.jpg') }}') ;">&nbsp;</span>
         </div>
-        <div class="slogan">
+        <div class="l-innerHeader__headerCard__slogan">
             <h1 id="topic" class="fw-bolder text-white mb-2">海外留學，</h1>
             <h1 class="fw-bolder text-white mb-5">先找學長姐罩</h1>
         </div>
@@ -22,279 +20,296 @@
 
 <div class="innerbody">
     <!-- Student Card Section -->
-    <section id="features">
-        <div class="studentSection">
-            <!-- title -->
-            <a class="title" href="{{route('senior')}}">學長姐 | 快找</a>
-            <!-- items -->
-            <div class="owl-carousel owl-theme">
-                @foreach ($Data['Users'] as $key => $user)
-                <div class="item studentC" onclick="cardClickable({{ $user->id }})">
-                    <!-- img div -->
-                    <div class="studentImg">
-                        @if(is_null($user->avatar))
-                        <span
-                            style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp</span>
-                        @else
-                        <span style="background-image: url('/uploads/{{ $user->avatar }}');">&nbsp</span>
-                        @endif
-                    </div>
-                    <!-- background -->
-                    <svg viewBox="0 0 330 480">
-                        <path
-                            d="M301.9,2c14.5,0,26.4,11.8,26.4,26.4v306.7c0,14.5-11.8,26.4-26.4,26.4H28.1c-14.5,0-26.4-11.8-26.4-26.4V28.4C1.8,13.8,13.6,2,28.1,2h273.7M301.9,0H28.1C12.5,0-.2,12.7-.2,28.4v306.7c0,15.7,12.7,28.4,28.4,28.4h273.7c15.7,0,28.4-12.7,28.4-28.4V28.4c0-15.7-12.7-28.4-28.4-28.4h0Z" />
-                        <polygon points="330 480 0 480 0 305 330 337.1 330 480" />
-                    </svg>
-                    <!-- school img -->
-                    <div class="schoolImg">
-                        <span style="background-image: url('{{ asset($user->universityItem->image_path)}}') ;">&nbsp</span>
-                    </div>
-                    <!-- name card -->
-                    <h4>{{ $user->name }}</h4>
-                    <!-- school english -->
-                    <h5>{{ !is_null($user->universityItem) ? $user->universityItem->english_name : '' }}</h5>
-                    <!-- school chinese -->
-                    <h6>{{ !is_null($user->universityItem) ? $user->universityItem->chinese_name : '' }}</h6>
-                    <!-- react icons -->
-                    <div class="react d-flex flex-row justify-content-evenly align-items-center"
-                        onclick="event.stopPropagation(); return false; ">
-                        @if(auth()->check())
-                        <i class="fa fa-heart" style="
-                                color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
-                                " data-id="{{$user->id}}">
-                            <span class="text-black">{{$user->likedUser->count()}}</span>
-                        </i>
-                        <i class="fa fa-bookmark" data-id="{{$user->id}}" style="
-                                color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
-                                ">
-                            <span class="text-black">{{$user->collectedUser->count()}}</span>
-                        </i>
-                        @else
-                        <i class="fa fa-heart" style="color: black;" data-id="{{$user->id}}">
-                            <span class="text-black">{{$user->likedUser->count()}}</span>
-                        </i>
-                        <i class="fa fa-bookmark" data-id="{{$user->id}}">
-                            <span class="text-black">{{$user->collectedUser->count()}}</span>
-                        </i>
-                        @endif
-                    </div>
-                    <!-- post tag -->
-                    <div class="postTags">
-                        @forelse ($user->postCategory as $count => $cate)
-                        @if ($count < 3) <a href="{{route('senior', ['category' => $cate->postCategory->id])}}"
-                            class="text-white">
-                            {{ $cate->postCategory->name }}
-                            </a>
+    <section class="l-innerbody__student">
+        <!-- title -->
+        <h3 class="l-innerbody__title">
+            <a href="{{route('senior')}}">學長姐 | 快找</a>
+        </h3>
+        <!-- items -->
+        <div class="l-innerbody__content s-swiperCustom">
+            <div class="swiper studentSwiper">
+                <div class="swiper-wrapper">
+                    @foreach ($Data['Users'] as $key => $user)
+                    <div class="swiper-slide">
+                        <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})">
+                            <!-- img div -->
+                            @if(is_null($user->avatar))
+                            <span class="c-studentCardSwiper_studentImg"
+                                style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                            @else
+                            <span class="c-studentCardSwiper_studentImg"
+                                style="background-image: url('/uploads/{{ $user->avatar }}');">&nbsp;</span>
                             @endif
-                            @empty
-                            @endforelse
+                            <!-- background -->
+                            <svg class="c-studentCardSwiper_bg" viewBox="0 0 330 170">
+                                <polygon class="cls-1" points="329.5 170 0 170 0 0 330 45.1 329.5 170" />
+                            </svg>
+                            <!-- school img -->
+                            <span class="c-studentCardSwiper_schoolImg"
+                                style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
+                            <!-- name card -->
+                            <h4 class="c-studentCardSwiper_userName">
+                                {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
+                            </h4>
+                            <!-- school english -->
+                            <h5 class="c-studentCardSwiper_schoolEnglish">
+                                {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->english_name, 15) : '' }}
+                            </h5>
+                            <!-- school chinese -->
+                            <h6 class="c-studentCardSwiper_schoolChinese">
+                                {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->chinese_name, 10) : '' }}
+                            </h6>
+                            <!-- react icons -->
+                            <div class="c-studentCardSwiper_react" onclick="event.stopPropagation(); return false; ">
+                                @if(auth()->check())
+                                <i class="bi bi-heart" style="
+                                    color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                    " data-id="{{$user->id}}">
+                                    <span class="text-black">{{$user->likedUser->count()}}</span>
+                                </i>
+                                <i class="bi bi-bookmark" data-id="{{$user->id}}" style="
+                                    color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                    ">
+                                    <span class="text-black">{{$user->collectedUser->count()}}</span>
+                                </i>
+                                @else
+                                <i class="bi bi-heart" style="color: black;" data-id="{{$user->id}}">
+                                    <span class="text-black">{{$user->likedUser->count()}}</span>
+                                </i>
+                                <i class="bi bi-bookmark" data-id="{{$user->id}}">
+                                    <span class="text-black">{{$user->collectedUser->count()}}</span>
+                                </i>
+                                @endif
+                            </div>
+                            <!-- post tag -->
+                            <div class="c-studentCardSwiper_postTag">
+                                @forelse ($user->postCategory as $count => $cate)
+                                @if ($count < 3) <a href="{{route('senior', ['category' => $cate->postCategory->id])}}"
+                                    class="text-white">
+                                    {{ $cate->postCategory->name }}
+                                    </a>
+                                    @endif
+                                    @empty
+                                    @endforelse
+                            </div>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
+                <div class="studentPagi paginationCustom"></div>
             </div>
-            <a class="readmore" href="{{route('senior')}}">查看更多 &gt;</a>
+            <a class="o-readMore" href="/senior">查看更多 &gt;</a>
         </div>
     </section>
 
     <!-- University section-->
-    <section id="features">
-        <div class="uCardSection">
-            <!-- title -->
-            <a class="title" href="{{route('university-list')}}">關注 | 學校</a>
-            <!-- information -->
-            <div class="sliderUni center">
-                @php
-                $count = 0;
-                @endphp
+    <section class="l-innerbody__university">
+        <!-- title -->
+        <h3 class="l-innerbody__title">
+            <a href="{{route('university-list')}}">關注 | 學校</a>
+        </h3>
+        <!-- information -->
+        <div class="l-innerbody__content s-swiperCustom">
+            <div class="swiper schoolSwiper">
+                <div class="swiper-wrapper">
+                    @php
+                    $count = 0;
+                    @endphp
 
-                @foreach ($Data['University'] as $key => $university)
-                @if ($count >= 6)
-                @break
-                @endif
-                <div class="uniCard d-flex flex-column justify-space-between align-items-center"
-                    onclick="uniCardClick('{{ $university->slug }}')">
-                    <div class="uniLogo d-flex justify-content-center">
-                        <span style="background-image: url('{{asset($university->image_path)}}') ;">&nbsp</span>
+                    @foreach ($Data['University'] as $key => $university)
+                    @if ($count >= 6)
+                    @break
+                    @endif
+                    <div class="swiper-slide">
+                        <div class="c-uniCard" onclick="uniCardClick('{{ $university->slug }}')">
+                        <span class="c-uniCard_img"
+                            style="background-image: url('{{asset($university->image_path)}}') ;">&nbsp;</span>
+                        <h6>{{ \Illuminate\Support\Str::limit($university->chinese_name, 15) }}</h6>
+                        <h4>{{ \Illuminate\Support\Str::limit($university->english_name, 25) }}</h4>
+                        <h5>目前有<a
+                                href="{{route('senior', ['university' => $university->slug])}}">{{$university->vip->count()}}</a>位學長姊
+                        </h5>
+                        </div>
                     </div>
-                    <h6>{{ \Illuminate\Support\Str::limit($university->chinese_name, 15) }}</h6>
-                    <h4>{{ \Illuminate\Support\Str::limit($university->english_name, 25) }}</h4>
-                    <h5>目前有<a
-                            href="{{route('senior', ['university' => $university->slug])}}">{{$university->vip->count()}}</a>位在校
-                    </h5>
+                    @php
+                    $count++;
+                    @endphp
+                    @endforeach
                 </div>
-                @php
-                $count++;
-                @endphp
-                @endforeach
+                <div class="schoolPagi paginationCustom"></div>
+                <a class="o-readMore" href="/university-list">查看更多 &gt;</a>
             </div>
-            <a class="readmore" href="{{route('senior')}}">查看更多 &gt;</a>
+
         </div>
     </section>
 
-
     <!-- QA section -->
-    <section class="qaSection">
-        <a class="title" href="{{route('qna')}}">問與答｜諮詢</a>
+    <section class="l-innerbody__qa">
+        <h3 class="l-innerbody__title">
+            <a href="{{route('qna')}}">問與答｜諮詢</a>
+        </h3>
         <!-- QA section -->
-        <div class="row justify-content-around">
-            <!-- studyabroad -->
-            <div class="col-3 qaCard row justify-content-between align-items-center">
-                @php
-                $category = $Data['QaCategory']->get(0);
-                @endphp
-                <div class="col-8 d-flex flex-column h-100">
-                    <a class="categName" href="{{route('qna', ['category_id'=> $category->id])}}">
-                        {{$category->name}}
-                    </a>
-                    @forelse($category->QACategoryRelation->take(3) as $relation)
-                    <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
-                        {{$relation->qa->title}}
-                    </a>
-                    @empty
-                    <p class="text-white">Hey, there is nothing yet.</p>
-                    @endforelse
+        <div class="l-innerbody__qaSection">
+            <div class="container row">
+                <!-- studyabroad -->
+                <div class="c-qaCard col-3">
+                    @php
+                    $category = $Data['QaCategory']->get(0);
+                    @endphp
+                    <div class="c-qaCard__content col-8">
+                        <a class="c-qaCard__categName" href="{{route('qna', ['category_id'=> $category->id])}}">
+                            {{$category->name}}
+                        </a>
+                        @forelse($category->QACategoryRelation->take(2) as $relation)
+                        <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
+                            {{ ($relation->qa->title) ? \Illuminate\Support\Str::limit($relation->qa->title, 20): "" }}
+                        </a>
+                        @empty
+                        <p class="text-white">Hey, there is nothing yet.</p>
+                        @endforelse
+                    </div>
+                    <img class="c-qaCard__icon col-4" src="{{ asset('uploads/images/yzl-studyabroad.png') }}"
+                        alt="icons">
                 </div>
-                <img class="col-4" src="{{ asset('uploads/images/yzl-studyabroad.png') }}" alt="icons">
-            </div>
-            <!-- test -->
-            <div class="col-3 qaCard row justify-content-between align-items-center">
-                @php
-                $category = $Data['QaCategory']->get(1);
-                @endphp
-                <div class="col-8 d-flex flex-column h-100">
-                    <a class="categName" href="{{route('qna', ['category_id'=> $category->id])}}">
-                        {{$category->name}}
-                    </a>
-                    @forelse($category->QACategoryRelation->take(3) as $relation)
-                    <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
-                        {{$relation->qa->title}}
-                    </a>
-                    @empty
-                    <p class="text-white">Hey, there is nothing yet.</p>
-                    @endforelse
+                <!-- test -->
+                <div class="c-qaCard col-3">
+                    @php
+                    $category = $Data['QaCategory']->get(1);
+                    @endphp
+                    <div class="c-qaCard__content col-8">
+                        <a class="c-qaCard__categName" href="{{route('qna', ['category_id'=> $category->id])}}">
+                            {{$category->name}}
+                        </a>
+                        @forelse($category->QACategoryRelation->take(2) as $relation)
+                        <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
+                            {{ ($relation->qa->title) ? \Illuminate\Support\Str::limit($relation->qa->title, 20): "" }}
+                        </a>
+                        @empty
+                        <p class="text-white">Hey, there is nothing yet.</p>
+                        @endforelse
+                    </div>
+                    <img class="c-qaCard__icon col-4" src="{{ asset('uploads/images/yzl-test.png') }}" alt="icons">
                 </div>
-                <img class="col-4" src="{{ asset('uploads/images/yzl-test.png') }}" alt="icons">
-            </div>
-            <!-- schools -->
-            <div class="col-3 qaCard row justify-content-between align-items-center">
-                @php
-                $category = $Data['QaCategory']->get(2);
-                @endphp
-                <div class="col-8 d-flex flex-column h-100">
-                    <a class="categName" href="{{route('qna', ['category_id'=> $category->id])}}">
-                        {{$category->name}}
-                    </a>
-                    @forelse($category->QACategoryRelation->take(3) as $relation)
-                    <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
-                        {{$relation->qa->title}}
-                    </a>
-                    @empty
-                    <p class="text-white">Hey, there is nothing yet.</p>
-                    @endforelse
+                <!-- schools -->
+                <div class="c-qaCard col-3">
+                    @php
+                    $category = $Data['QaCategory']->get(2);
+                    @endphp
+                    <div class="c-qaCard__content col-8">
+                        <a class="c-qaCard__categName" href="{{route('qna', ['category_id'=> $category->id])}}">
+                            {{$category->name}}
+                        </a>
+                        @forelse($category->QACategoryRelation->take(2) as $relation)
+                        <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
+                            {{ ($relation->qa->title) ? \Illuminate\Support\Str::limit($relation->qa->title, 20): "" }}
+                        </a>
+                        @empty
+                        <p class="text-white">Hey, there is nothing yet.</p>
+                        @endforelse
+                    </div>
+                    <img class="c-qaCard__icon col-4" src="{{ asset('uploads/images/yzl-school.png') }}" alt="icons">
                 </div>
-                <img class="col-4" src="{{ asset('uploads/images/yzl-school.png') }}" alt="icons">
-            </div>
-            <!-- campus -->
-            <div class="col-3 qaCard row justify-content-between align-items-center">
-                @php
-                $category = $Data['QaCategory']->get(4);
-                @endphp
-                <div class="col-8 d-flex flex-column h-100">
-                    <a class="categName" href="{{route('qna', ['category_id'=> $category->id])}}">
-                        {{$category->name}}
-                    </a>
-                    @forelse($category->QACategoryRelation->take(3) as $relation)
-                    <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
-                        {{$relation->qa->title}}
-                    </a>
-                    @empty
-                    <p class="text-white">Hey, there is nothing yet.</p>
-                    @endforelse
+                <!-- campus -->
+                <div class="c-qaCard col-3">
+                    @php
+                    $category = $Data['QaCategory']->get(4);
+                    @endphp
+                    <div class="c-qaCard__content col-8">
+                        <a class="c-qaCard__categName" href="{{route('qna', ['category_id'=> $category->id])}}">
+                            {{$category->name}}
+                        </a>
+                        @forelse($category->QACategoryRelation->take(2) as $relation)
+                        <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
+                            {{ ($relation->qa->title) ? \Illuminate\Support\Str::limit($relation->qa->title, 20): "" }}
+                        </a>
+                        @empty
+                        <p class="text-white">Hey, there is nothing yet.</p>
+                        @endforelse
+                    </div>
+                    <img class="c-qaCard__icon col-4" src="{{ asset('uploads/images/yzl-campus.png') }}" alt="icons">
                 </div>
-                <img class="col-4" src="{{ asset('uploads/images/yzl-campus.png') }}" alt="icons">
-            </div>
-            <!-- clubs -->
-            <div class="col-3 qaCard row justify-content-between align-items-center">
-                @php
-                $category = $Data['QaCategory']->get(5);
-                @endphp
-                <div class="col-8 d-flex flex-column h-100">
-                    <a class="categName" href="{{route('qna', ['category_id'=> $category->id])}}">
-                        {{$category->name}}
-                    </a>
-                    @forelse($category->QACategoryRelation->take(3) as $relation)
-                    <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
-                        {{$relation->qa->title}}
-                    </a>
-                    @empty
-                    <p class="text-white">Hey, there is nothing yet.</p>
-                    @endforelse
+                <!-- clubs -->
+                <div class="c-qaCard col-3">
+                    @php
+                    $category = $Data['QaCategory']->get(5);
+                    @endphp
+                    <div class="c-qaCard__content col-8">
+                        <a class="c-qaCard__categName" href="{{route('qna', ['category_id'=> $category->id])}}">
+                            {{$category->name}}
+                        </a>
+                        @forelse($category->QACategoryRelation->take(2) as $relation)
+                        <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
+                            {{ ($relation->qa->title) ? \Illuminate\Support\Str::limit($relation->qa->title, 20): "" }}
+                        </a>
+                        @empty
+                        <p class="text-white">Hey, there is nothing yet.</p>
+                        @endforelse
+                    </div>
+                    <img class="c-qaCard__icon col-4" src="{{ asset('uploads/images/yzl-club.png') }}" alt="icons">
                 </div>
-                <img class="col-4" src="{{ asset('uploads/images/yzl-club.png') }}" alt="icons">
-            </div>
-            <!-- coop -->
-            <div class="col-3 qaCard row justify-content-between align-items-center">
-                @php
-                $category = $Data['QaCategory']->get(6);
-                @endphp
-                <div class="col-8 d-flex flex-column h-100">
-                    <a class="categName" href="{{route('qna', ['category_id'=> $category->id])}}">
-                        {{$category->name}}
-                    </a>
-                    @forelse($category->QACategoryRelation->take(3) as $relation)
-                    <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
-                        {{$relation->qa->title}}
-                    </a>
-                    @empty
-                    <p class="text-white">Hey, there is nothing yet.</p>
-                    @endforelse
+                <!-- coop -->
+                <div class="c-qaCard col-3">
+                    @php
+                    $category = $Data['QaCategory']->get(6);
+                    @endphp
+                    <div class="c-qaCard__content col-8">
+                        <a class="c-qaCard__categName" href="{{route('qna', ['category_id'=> $category->id])}}">
+                            {{$category->name}}
+                        </a>
+                        @forelse($category->QACategoryRelation->take(2) as $relation)
+                        <a class="categQA" href="{{route('qna.show', $relation->qa->id)}}">
+                            {{ ($relation->qa->title) ? \Illuminate\Support\Str::limit($relation->qa->title, 20): "" }}
+                        </a>
+                        @empty
+                        <p class="text-white">Hey, there is nothing yet.</p>
+                        @endforelse
+                    </div>
+                    <img class="c-qaCard__icon col-4" src="{{ asset('uploads/images/yzl-coop.png') }}" alt="icons">
                 </div>
-                <img class="col-4" src="{{ asset('uploads/images/yzl-coop.png') }}" alt="icons">
             </div>
         </div>
-        <a class="readmore" href="{{route('qna')}}">查看更多 &gt;</a>
+        <a class="o-readMore" href="#">查看更多 &gt;</a>
     </section>
 
     <!-- join -->
-    <section class="joinSection" style="background-image: url('{{asset('uploads/images/join-banner-cut.jpg')}}');">
-        <div>
-            <a href="{{route('login')}}">加入 ｜ 易子學</a>
+    <section class="l-innerbody__join"
+        style="background-image: url('{{asset('uploads/images/join-banner-cut.jpg')}}');">
+        <div class="l-innerbody__joinSection">
+            <a class="o-btn" href="{{route('login')}}">加入 ｜ 易子學</a>
             <p>讓專業，持續變現</p>
         </div>
     </section>
 
-
     <!-- news -->
-    <section class="newsSection">
-        <div class="newsbg">
-            <div class="newsCard">
-                @if(!is_null($Data['Post']))
-                <div class=" d-flex justify-content-center">
-                    <span style="background-image: url('{{asset('uploads'.$Data['Post']->image_path)}}') ;"
-                        class="bgImg">&nbsp
-                    </span>
-                </div>
-                <div class="info">
-                    <h5 id="newsTopic">{{$Data['Post']->title}}</h5>
-                    <div class="tags">
-                        @foreach($Data['Post']->category as $relation)
-                        @if($relation->postCategory && $relation->postCategory->name)
-                        <p>{{ $relation->postCategory->name }}</p>
-                        @else
-                        <p>Category name not found</p>
-                        @endif
-                        @endforeach
-                    </div>
-                    <p class="meta">{{$Data['Post']->title}}</p>
-                    <p class="brief">{!! \Illuminate\Support\Str::limit(strip_tags($Data['Post']->body)) !!}</p>
-                    <a class="fullArticle" href="{{route('article', $Data['Post']->id)}}">閱讀完整文章</a>
-                </div>
-                @endif
+    <section class="l-innerbody__news">
+        <div class="c-newsCard row">
+            @if(!is_null($Data['Post']))
+            <div style="background-image: url('{{asset('uploads'.$Data['Post']->image_path)}}') ;"
+                class="c-newsCard__bgImg col-5">&nbsp;
             </div>
+            <div class="c-newsCard__info col-7">
+                <h5 id="newsTopic">{{$Data['Post']->title}}</h5>
+                <div class="c-newsCard__tags">
+                    @foreach($Data['Post']->category as $relation)
+                    @if($relation->postCategory && $relation->postCategory->name)
+                    <p class="o-tag">{{ $relation->postCategory->name }}</p>
+                    @else
+                    <p class="o-tag">Category name not found</p>
+                    @endif
+                    @endforeach
+                </div>
+                <p class="c-newsCard__meta">{{$Data['Post']->title}}</p>
+                <p class="c-newsCard__brief">
+                    {{ (strip_tags($Data['Post']->body)) ? \Illuminate\Support\Str::limit(strip_tags($Data['Post']->body), 80): "" }}
+                </p>
+                <a class="o-readMore c-newsCard__readMore" href="{{route('article', $Data['Post']->id)}}">閱讀完整文章</a>
+            </div>
+            @endif
         </div>
     </section>
 
-    <section class="localOlder">
+    <!-- local -->
+    <section class="l-innerbody__local">
         <h6>地區找學長姐</h6>
         <div>
             <p>

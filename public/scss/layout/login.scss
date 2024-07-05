@@ -1,0 +1,17 @@
+.l-login{
+    background-color: $prime_gray;
+    padding: var(--spacing-120);
+    &__box{
+        background-color: var(--color-white);
+        border-radius: var(--spacing-64);
+        padding: var(--spacing-64);
+    }
+    &__info{
+        font-size: var(--text-lg);
+    }
+    .o-btn{
+        font-size: var(--text-md);
+        width: 100%;
+        text-align: center;
+    }
+}

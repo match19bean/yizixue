@@ -26,95 +26,73 @@
 
 
 @section('content')
-    <div class="container">
+<div class="l-login">
+    <div class="container w-50">
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div class="l-login__box">
+            <!-- <div class="card-body"> -->
+            <h1 class="o-loginTitle">會員登入</h1>
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <form class="p-3" method="POST" action="{{ route('login') }}">
+                <div class="l-login__info">
+                    {{ csrf_field() }}
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input id="email" type="email" class="form-control form-control-user" name="email"
+                            value="{{ old('email') }}" placeholder="會員帳號" autofocus>
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
+                    </div>
 
-                            <div class="col-lg-12">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-bg mb-4" style="color: #4C2A70">會員登入</h1>
-                                    </div>
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input id="password" type="password" class="form-control form-control-user" name="password"
+                            placeholder="輸入密碼" required>
+                        @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
+                    </div>
 
-                                    <form class="user" method="POST" action="{{ route('login') }}">
-                                        {{ csrf_field() }}
-
-                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                            <input id="email" type="email" class="form-control form-control-user" name="email" value="{{ old('email') }}" placeholder="會員帳號" autofocus>
-                                            @if ($errors->has('email'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-
-                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <input id="password" type="password" class="form-control form-control-user" name="password" placeholder="輸入密碼" required>
-                                            @if ($errors->has('password'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('password') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-4">
-                                                <div class="checkbox">
-                                                    <label  style="color: #4C2A70;">
-                                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 記住帳號
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <button type="submit" class=" text-white btn btn-user btn-block" style="background-color: #4C2A70">
-                                                登入
-                                            </button>
-
-{{--                                            <a class="btn btn-link" href="{{ route('password.request') }}">--}}
-{{--                                                忘記密碼?--}}
-{{--                                            </a>--}}
-                                        </div>
-                                        <a href="{{url('line')}}" class="btn btn-success bg-success btn-user btn-block">
-                                            Login with Line
-                                        </a>
-                                    </form>
-
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="form-group">
-                                            <a class="btn text-white btn-block btn-user" style="background-color: #4C2A70" href="{{route('register')}}">註冊</a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <div class="checkbox">
+                                <label style="color: #4C2A70;">
+                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 記住帳號
+                                </label>
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <button class="o-btn" type="submit">
+                            登入
+                        </button>
+                    </div>
+                    <a href="{{url('line')}}" class="btn btn-user btn-block line">
+                        Login with Line
+                    </a>
                 </div>
+            </form>
 
-            </div>
-
+            <hr>
+            <a class="notmember" href="{{route('register')}}">還不是會員？點我註冊</a>
+            <!-- </div> -->
         </div>
-
     </div>
+</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('sb-admin/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{asset('sb-admin/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('sb-admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{asset('sb-admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('sb-admin/js/sb-admin-2.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{asset('sb-admin/js/sb-admin-2.min.js')}}"></script>
 
 @endsection

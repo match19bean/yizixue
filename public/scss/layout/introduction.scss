@@ -1,0 +1,113 @@
+.l-introduction{
+    &__portriat, &__schoolImg{
+        @include imgBackground;
+    }
+
+    &__briefInfo{
+        padding-left: var(--spacing-80);
+    }
+
+    &__infoCard{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        padding-top: var(--spacing-80);
+    }
+    &__userName{
+        font-size: var(--text-3xl);
+        color: var(--color-white);
+        background-color: $prime_purple_light;
+        width: 100%;
+        margin-right: calc(-1*var(--spacing-64));
+        border-radius: var(--spacing-12) 0 0 var(--spacing-12);
+        padding: var(--spacing-8);
+    }
+    &__tags{
+        border: solid 1px black;
+        width: 100%;
+        border-radius: var(--spacing-12) 0 0 var(--spacing-12);
+        padding: var(--spacing-24);
+    }
+    &__schoolRelate{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    &__schoolStatus{
+        background-color: $prime_purple_light;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--spacing-12);
+        .o-whiteBtn{
+            border-radius: var(--spacing-12);
+            padding: var(--spacing-4) var(--spacing-12) var(--spacing-4) var(--spacing-12);
+        }
+    }
+    &__postTag{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .o-tag{
+            font-size: var(--text-3xl);
+        }
+    }
+
+    &__socialBtn{
+        width: 100%;
+        .o-react, .o-tag, i{
+            font-size: var(--text-3xl);
+            padding: var(--spacing-4) var(--spacing-24) var(--spacing-4) var(--spacing-24);
+        }
+    }
+
+    // detail section
+
+    &__detailSection{
+        background-color: $light_gray;
+        padding: var(--spacing-80) var(--spacing-160) var(--spacing-80) var(--spacing-160);
+    }
+
+    &__detailContent{
+        background-color: var(--color-white);
+        border-radius: var(--spacing-32);
+        border: solid 1px var(--color-black);
+        padding: var(--spacing-32);
+    }
+
+    &__title{
+        width: 40%;
+        font-size: var(--text-3xl);
+        color: var(--color-white);
+        background-color: $prime_purple_light;
+        text-align: end;
+        padding: var(--spacing-12);
+        border-radius: 0 var(--spacing-12) var(--spacing-12) 0;
+        margin-bottom: calc(-1*var(--spacing-32));
+        z-index: 2;
+    }
+
+    &__myArticle{
+        background-color: $light_gray;
+        border-radius: var(--spacing-24);
+        margin: var(--spacing-32) var(--spacing-80) var(--spacing-32) var(--spacing-80) ;
+    }
+
+    &__moreArticle{
+        transform: scale(0.8);
+        .container{
+            min-height: 25rem;
+            background-color: var(--color-white);
+        }
+        .c-articleCard__content{
+            font-size: var(--text-sm);
+        }
+    }
+    &__reference{
+        margin-top: var(--spacing-32);
+        padding: var(--spacing-12);
+    }
+}

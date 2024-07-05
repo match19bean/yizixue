@@ -1,0 +1,34 @@
+.c-qaCard{
+    min-height: 15rem;
+    font-size: var(--text-md);
+    color: var(--color-white);
+    margin: var(--spacing-12);
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid var(--spacing-4) $prime_purple_light;
+    border-radius: var(--spacing-32);
+    overflow: hidden;
+    &__content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
+        min-height: 15rem;
+        min-width: 15rem;
+        background-color: $prime_purple_light;
+        border-radius: var(--spacing-24);
+        p{
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__categName{
+        font-size: var(--text-2xl);
+    }
+    &__icon{
+        padding: var(--spacing-12);
+    }
+}

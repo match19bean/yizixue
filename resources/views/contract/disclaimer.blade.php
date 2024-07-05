@@ -1,12 +1,12 @@
 @extends('layouts.guest2')
 
 @section('content')
-    <div class="container">
-        <section class="my-3">
-            <dl>
-                <dt>
-                    [ 免責聲明 ]
-                </dt>
+    <div class="l-contract">
+    <div class="l-contract__content container">
+    <h2 class="l-contract__title">免責聲明</h2>
+    <div class="row">
+        <div class="col-md-12">
+        <dl>
                 <dd>
                     <ol>
                         <li>
@@ -54,6 +54,19 @@
                     </ol>
                 </dd>
             </dl>
-        </section>
+        </div>
     </div>
+    </div>
+</div>
+<div class="l-contract">
+    <div class="l-contract__content container">
+    <h2 class="l-contract__title"></h2>
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+    </div>
+</div>
+
 @endsection

@@ -1,0 +1,132 @@
+// layout setting for senior, university, studyabroad page
+
+@mixin sideBar_pages{
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    &_sideNav{
+        grid-column: 1/9;
+        grid-row: 1/2;
+    }
+    &_content{
+        grid-column: 6/21;
+        grid-row: 1/2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: var(--spacing-24);
+    }
+}
+
+// background img setting for studentCard, universityCard etc.
+
+@mixin imgBackground{
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 1/1;
+}
+
+// student card setting
+
+@mixin studentCardSetting( $cardBorder, $studentImgBorder, $userNameFont, $SchoolEFont, $schoolCFont, $reactFont, $postFont){
+    border: $cardBorder;
+    border-radius: var(--spacing-24) var(--spacing-24) 0 0;
+    padding: 0;
+    aspect-ratio: 1 / 1.5;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+    // transform: scale(0.9);
+    &_studentImg{
+        grid-column: 1/13;
+        grid-row: 3/10;
+        @include imgBackground;
+        margin: var(--spacing-8);
+        border: $studentImgBorder;
+    }
+    &_bg{
+        grid-column: 1/13;
+        grid-row: 4/21;
+        align-self: flex-end;
+        polygon{
+            fill: $prime_purple_light;
+        }
+    }
+    &_schoolImg{
+        grid-column: 2/5;
+        grid-row: 13/16;
+        @include imgBackground;
+    }
+    &_userName{
+        grid-column: 1/9;
+        grid-row: 1/5;
+        color: $prime_purple;
+        font-weight: 800;
+        font-size: $userNameFont;
+        padding: var(--spacing-8);
+    }
+    &_schoolEnglish{
+        grid-column: 7/14;
+        grid-row: 16/21;
+        padding: var(--spacing-4);
+        color: var(--color-white);
+        font-size: $SchoolEFont;
+        align-self: center;
+    }
+    &_schoolChinese{
+        grid-column: 5/13;
+        grid-row: 1/3;
+        text-align: end;
+        align-self: end;
+        font-size: $schoolCFont;
+        padding: var(--spacing-8);
+    }
+    &_react{
+        grid-column: 1/5;
+        grid-row: 20/21;
+        font-size: $reactFont;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        i{
+            display: flex;
+            flex-direction: row;
+            span{
+                all: unset;
+                font-size: var(--text-sm);
+                text-decoration: none;
+                text-transform: none;
+            }
+        }
+    }
+    &_postTag{
+        grid-column: 9/13;
+        grid-row: 10/13;
+        display: flex;
+        flex-direction: column;
+        color: var(--color-white);
+        a{
+            text-align: center;
+            display: block;
+            background-color: $prime_purple;
+            border-radius: var(--spacing-4);
+            color: var(--color-white);
+            font-size: $postFont;
+            padding: var(--spacing-2);
+            margin: var(--spacing-2) var(--spacing-8) var(--spacing-2) var(--spacing-8);
+            
+        }
+    }
+}
+
+// tag
+@mixin tag{
+    margin: var(--spacing-4);
+    padding: var(--spacing-4);
+    background-color: $prime_purple;
+    font-size: var(--text-sm);
+    border-radius: var(--spacing-8);
+    color: var(--color-white);
+    width: fit-content;
+}

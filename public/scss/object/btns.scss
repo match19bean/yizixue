@@ -1,0 +1,155 @@
+.o-btn{
+    all: unset;
+    font-size: var(--text-4xl);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: var(--spacing-12);
+    border-radius: var(--spacing-12);
+    background-color: $prime_purple;
+    font-weight: 900;
+    &:hover{
+        color: var(--color-white);
+    }
+}
+
+.o-lightBtn{
+    all: unset;
+    font-size: var(--text-md);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: var(--spacing-12);
+    border-radius: var(--spacing-12);
+    border: solid var(--spacing-2) var(--color-white);
+    background-color: $prime_purple_light;
+    font-weight: 900;
+    box-shadow: var(--spacing-4) var(--spacing-4) var(--spacing-4) gray;
+    &:hover{
+        color: var(--color-white);
+    }
+}
+
+.o-whiteBtn{
+    all: unset;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    padding: var(--spacing-8);
+    margin: var(--spacing-24);
+    font-size: var(--text-lg);
+    border: var(--spacing-2) solid $prime_purple; 
+    border-radius: var(--spacing-32);
+    background-color: var(--color-white);
+}
+
+.o-skillBtn{
+    all: unset;
+    display: block;
+    cursor: pointer;
+    font-size: var(--text-sm);
+    text-align: center;
+    color: $prime_purple;
+    border-radius: var(--spacing-4);
+    border: solid var(--spacing-2) $prime_purple;
+}
+
+.o-tag{
+    @include tag;
+}
+
+.o-readMore{
+    width: 100%;
+    padding: var(--spacing-12);
+    text-align: end;
+    font-size: var(--text-lg);
+    color: $prime_purple;
+}
+
+.o-react{
+    font-size: var(--text-md);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    i{
+        display: flex;
+        flex-direction: row;
+        padding: 0 var(--spacing-8) 0 var(--spacing-8);
+        span{
+            all: unset;
+            font-size: var(--text-sm);
+            text-decoration: none;
+            text-transform: none;
+        }
+    }
+}
+
+.o-socialIcon{
+    font-size: var(--text-2xl);
+    width: var(--text-2xl);
+    aspect-ratio: 1/1;
+}
+
+.o-reference{
+    all: unset;
+    cursor: pointer;
+    display: block;
+    width: var(--spacing-80);
+    aspect-ratio: 1/1;
+}
+
+.o-subTitle{
+    font-size: var(--text-2xl);
+    color: $prime_purple;
+    font-weight: 800;
+}
+
+.o-faqTopic{
+    all: unset;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    padding: var(--spacing-4);
+    border: solid var(--color-black) 1px;
+    border-radius: var(--spacing-8);
+    text-align: center;
+    font-size: var(--text-lg);
+    font-weight: 800;
+    &:hover{
+        background-color: $prime_purple;
+        color: var(--color-white);
+    }
+    &:active{
+        background-color: var(--color-white);
+        color: $prime_purple_light;
+    }
+    &__selected{
+        background-color: $prime_gray;
+        color: var(--color-black);
+    }
+}
+
+.o-faqBtn{
+    all: unset;
+    display: block;
+    width: 100%;
+    span{
+        background-color: $prime_purple_light;
+        border-radius: var(--spacing-4);
+        border: solid var(--color-black) 1px;
+        svg{
+            display: inline;
+            width: var(--text-4xl);
+            circle{
+                fill: $prime_purple;
+            }
+            path{
+                fill: $prime_purple_light;
+            }
+        }
+        p{
+            font-size: var(--text-lg);
+            color: var(--color-white);
+            text-align: center;
+            font-weight: 800;
+        }
+    }
+}

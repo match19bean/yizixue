@@ -1,204 +1,272 @@
 @extends('layouts.guest2')
 
 @section('content')
-<div class="singleArticle">
-    <div class="titleDiv">
-        <div class="singleArticle-breadcrumbs">
-            <div class="d-flex flex-column align-tiems-start">
-                <h4 class="mt-3 text-black">
-                    <a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a>
+<div class="m-0 l-singleArticle">
+    <div class="container l-singleArticle__main p-5">
+        <div class="row">
+            <!-- breadcrumb -->
+            <div class="c-breadcrumbs">
+                <h4>
+                    <a class="c-breadcrumbs_prePage" href="{{url('/')}}">首頁</a>
                     >
-                    <a class="text-decoration-none text-black"
+                    <a class="c-breadcrumbs_prePage"
                         href="{{route('study-abroad', ['category_id' => $Data['article']->category->first()->postCategory->id])}}">
                         {{$Data['article']->category->first()->postCategory->name}}
                     </a>
                     >
-                    <a class="text-decoration-none text-black"
+                    <a class="c-breadcrumbs_prePage"
                         href="{{route('study-abroad', ['category_id' => $Data['article']->category->first()->postCategory->id])}}">
                         {{$Data['article']->title}}
                     </a>
                 </h4>
-                <h3>{{$Data['article']->title}}</h3>
+                <h3 class="c-breadcrumbs_currentPage">{{$Data['article']->title}}</h3>
+            </div>
+            <!-- post content -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="l-singleArticle__contentDiv">
+                            <!-- p date -->
+                            <p class="text-right">發布日期{{$Data['article']->created_at->format('Y/m/d')}}</p>
+                            <!-- main pic -->
+                            <div class="l-singleArticle__postPic"
+                                style="background-image: url('{{asset('uploads/'.$Data['article']->image_path)}}');">
+                            </div>
+                            <!-- content -->
+                            <p>
+                                {!! $Data['article']->body !!}
+                            </p>
+                            <div class="row">
+                                <!-- categorys -->
+                                <div class="col-md-9">
+                                    @if(!is_null($Data['article']->category))
+                                    @foreach($Data['article']->category as $category)
+                                    <a class="o-tag"
+                                        href="{{route('study-abroad', ['category_id' => $category->postCategory->id])}}">
+                                        {{$category->postCategory->name}}
+                                    </a>
+                                    @endforeach
+                                    @endif
+                                </div>
+                                <!-- social icons -->
+                                <div class="col-md-3">
+                                    <div class="o-react">
+                                        @if(auth()->check())
+                                        <i class="bi bi-heart"
+                                            style="color:@if(auth()->user()->likePost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;margin:5px"
+                                            data-id="{{$Data['article']->id}}">
+                                            <span>{{$Data['article']->likePost->count()}}</span>
+                                        </i>
+                                        <i class="bi bi-bookmark"
+                                            style="color: @if(auth()->user()->collectPost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;margin:5px"
+                                            data-id="{{$Data['article']->id}}">
+                                            <span>{{$Data['article']->collectPost->count()}}</span>
+                                        </i>
+                                        @else
+                                        <i class="bi bi-heart" style=" color:black; margin:5px"
+                                            data-id="{{$Data['article']->id}}">
+                                            <span>{{$Data['article']->likePost->count()}}</span>
+                                        </i>
+                                        <i class="bi bi-bookmark" style=" color:black; margin:5px"
+                                            data-id="{{$Data['article']->id}}">
+                                            <span>{{$Data['article']->collectPost->count()}}</span>
+                                        </i>
+                                        @endif
+                                        <i class="bi bi-share" style=" color:black; margin:5px"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right section about aurthor -->
+                    <div class="col-md-3">
+                        <div class="l-singleArticle__rightDiv">
+                            <h2>文章作者</h2>
+                            <!-- new student card -->
+                            <div class="c-studentCard">
+                                <!-- img div -->
+                                <span class="c-studentCard_studentImg"
+                                    style="background-image: url('{{asset('uploads/'.$Data['article']->author->avatar)}}');">&nbsp;</span>
+                                <!-- background -->
+                                <svg class="c-studentCard_bg" viewBox="0 0 330 170">
+                                    <polygon class="cls-1" points="329.5 170 0 170 0 0 330 45.1 329.5 170" />
+                                </svg>
+                                <!-- school img -->
+                                <span class="c-studentCard_schoolImg"
+                                    style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
+                                <!-- name card -->
+                                <h4 class="c-studentCard_userName">
+                                    {{ $Data['article']->author->name }}
+                                </h4>
+                                <!-- school english -->
+                                <h5 class="c-studentCard_schoolEnglish">
+                                    {{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->english_name: '' }}
+                                </h5>
+                                <!-- school chinese -->
+                                <h6 class="c-studentCard_schoolChinese">
+                                    {{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->chinese_name: '' }}
+                                </h6>
+                                <!-- react icons -->
+                                <div class="c-studentCard_react" onclick="event.stopPropagation(); return false; ">
+                                    <i class="bi bi-heart">
+                                        <span>T</span>
+                                    </i>
+                                    <i class="bi bi-bookmark">
+                                        <span>T</span>
+                                    </i>
+                                </div>
+                                <!-- post tag -->
+                                <div class="c-studentCard_postTag">
+                                    @if(!is_null($Data['article']->author->postCategory))
+                                    @foreach($Data['article']->author->postCategory as $count => $postCategory)
+                                    @if($count < 3) <a>
+                                        {{$postCategory->postCategory->name}}
+                                        </a>
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                </div>
+                            </div>
+                            <hr>
+                            <h2>作者的熱門文章</h2>
+                            <!-- author article -->
+                            <div>
+                                @if(!is_null($Data['article']->author->post))
+                                @foreach($Data['article']->author->post as $post)
+                                <a class="l-singleArticle__authorMore" href="{{ route('article', $post->id) }}">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="l-singleArticle__morePic"
+                                                style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;">
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="l-singleArticle__moreMeta">
+                                                <h3>
+                                                    {{ \Illuminate\Support\Str::limit($post->title, 15, '...') }}
+                                                </h3>
+                                                <p>
+                                                    {{ \Illuminate\Support\Str::limit(strip_tags($post->body), 40) }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <hr>
+                                @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="innerDiv">
-        <!-- p date -->
-        <p class="text-right">發布日期{{$Data['article']->created_at->format('Y/m/d')}}</p>
-        <!-- main pic -->
-        <img src="{{asset('uploads/'.$Data['article']->image_path)}}" alt="">
-        <!-- content -->
-        <div class="row text-center content">
-            {!! $Data['article']->body !!}
-        </div>
-        <div class="row tagSocial">
-            <!-- categorys -->
-            <div class="col-8 postCategory">
-                @if(!is_null($Data['article']->category))
-                @foreach($Data['article']->category as $category)
-                <a
-                    href="{{route('study-abroad', ['category_id' => $category->postCategory->id])}}">{{$category->postCategory->name}}</a>
-                @endforeach
-                @endif
-            </div>
-            <!-- social icons -->
-            <div class="col-4 socialIcons">
-                @if(auth()->check())
-                <i class="fa fa-heart" style="
-                    color:@if(auth()->user()->likePost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;
-                    margin:5px" data-id="{{$Data['article']->id}}">
-                    <span style="color:black">{{$Data['article']->likePost->count()}}</span>
-                </i>
-                <i class="fa fa-bookmark" style="
-                     color: @if(auth()->user()->collectPost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;
-                     margin:5px" data-id="{{$Data['article']->id}}">
-                    <span style="color:black">{{$Data['article']->collectPost->count()}}</span>
-                </i>
-                @else
-                <i class="fa fa-heart" style=" color:black; margin:5px" data-id="{{$Data['article']->id}}">
-                    <span style="color:black">{{$Data['article']->likePost->count()}}</span>
-                </i>
-                <i class="fa fa-bookmark" style=" color:black; margin:5px" data-id="{{$Data['article']->id}}">
-                    <span style="color:black">{{$Data['article']->collectPost->count()}}</span>
-                </i>
-                @endif
-                <i class="fa fa-share" style=" color:black; margin:5px"></i>
-            </div>
-        </div>
-    </div>
-    <div class="rightDiv">
-        <h2>文章作者</h2>
-        <div class="studentC">
-            <!-- img div -->
-            <div class="studentImg">
-                <span
-                    style="background-image: url('{{asset('uploads/'.$Data['article']->author->avatar)}}');">&nbsp</span>
-            </div>
-            <!-- background -->
-            <svg viewBox="0 0 330 475">
-                <path
-                    d="M301.9,2c14.5,0,26.4,11.8,26.4,26.4v306.7c0,14.5-11.8,26.4-26.4,26.4H28.1c-14.5,0-26.4-11.8-26.4-26.4V28.4C1.8,13.8,13.6,2,28.1,2h273.7M301.9,0H28.1C12.5,0-.2,12.7-.2,28.4v306.7c0,15.7,12.7,28.4,28.4,28.4h273.7c15.7,0,28.4-12.7,28.4-28.4V28.4c0-15.7-12.7-28.4-28.4-28.4h0Z" />
-                <polygon points="330 475 0 475 0 305 330 337.1 330 475" />
-            </svg>
-            <!-- school img -->
-            <div class="schoolImg">
-                <span style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp</span>
-            </div>
-            <!-- name card -->
-            <h4>{{ $Data['article']->author->name }}</h4>
-            <!-- school english -->
-            <h5>{{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->english_name: '' }}
-            </h5>
-            <!-- school chinese -->
-            <h6>{{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->chinese_name: '' }}
-            </h6>
-            <!-- react icons -->
-            <div class="react d-flex flex-row justify-content-evenly align-items-center"
-                onclick="event.stopPropagation(); return false; ">
-                <i class="fa fa-heart">
-                    <span class="text-black">T</span>
-                </i>
-                <i class="fa fa-bookmark">
-                    <span class="text-black">T</span>
-                </i>
-            </div>
-            <!-- post tag -->
-            <div class="postTags">
-                @if(!is_null($Data['article']->author->postCategory))
-                @foreach($Data['article']->author->postCategory as $count => $postCategory)
-                @if($count < 3) <a>
-                    {{$postCategory->postCategory->name}}
-                    </a>
-                    @endif
+        <div class="row">
+            <h2 class="l-singleArticle__title">您可能感興趣的文章</h2>
+            <div class="container">
+                <div class="row">
+                    @if(!is_null($Data['article']->author->post))
+                    @foreach($Data['article']->author->post as $post)
+                    <div class="col-md-6">
+                        <div class="c-articleCard">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4">
+                                        <!-- Post images -->
+                                        <div class="c-articleCard__postThumbnail">
+                                            <!-- post img -->
+                                            @if(is_null($post->image_path))
+                                            <span class="c-articleCard__postThumbnail__postPhoto"
+                                                style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                            @else
+                                            <span class="c-articleCard__postThumbnail__postPhoto"
+                                                style="background-image: url('/uploads/{{$post->image_path}}');">&nbsp;</span>
+                                            @endif
+                                            <div class="c-articleCard__postThumbnail__userInfo">
+                                                <!-- user img -->
+                                                @if(is_null($post->image_path))
+                                                <span
+                                                    style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                                @else
+                                                <span
+                                                    style="background-image: url('/uploads/{{$post->author->avatar}}');">&nbsp;</span>
+                                                @endif
+                                                <!-- namecard -->
+                                                <a href="{{route('get-introduction', $post->author->id)}}">
+                                                    {{ $post->author->name  }}
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <!-- Post Contents -->
+                                        <div class="c-articleCard__postInfo">
+                                            <!-- tags -->
+                                            <div>
+                                                @forelse($post->category as $count => $cate)
+                                                @if($count < 3) <a
+                                                    href="{{route('study-abroad', ['category_id' => $cate->postCategory->id])}}"
+                                                    class="o-tag">
+                                                    {{$cate->postCategory->name}}
+                                                    </a>
+                                                    @endif
+                                                    @empty
+                                                    @endforelse
+                                            </div>
+                                            <!-- title -->
+                                            <a class="c-articleCard__title"
+                                                href="{{route('article', $post->id)}}">{{ $post->title }}</a>
+                                            <!-- content -->
+                                            <p class="c-articleCard__content">{!!
+                                                \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}</p>
+                                            <a class="o-readMore" href="{{route('article', $post->id)}}">...閱讀更多</a>
+                                            <hr>
+                                            <!-- reacts -->
+                                            <div class="o-react w-100 p-3">
+                                                @if(auth()->check())
+                                                <i class="bi bi-heart" style="
+                                    color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                                    <span>
+                                                        {{$post->likePost->count()}}
+                                                    </span>
+                                                </i>
+                                                <i class="bi bi-bookmark" style="
+                                    color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                                    <span>
+                                                        {{$post->collectPost->count()}}
+                                                    </span>
+                                                </i>
+                                                @else
+                                                <i class="bi bi-heart" style="color: black;" data-id="{{$post->id}}">
+                                                    <span>
+                                                        {{$post->likePost->count()}}
+                                                    </span>
+                                                </i>
+                                                <i class="bi bi-bookmark" style="color: black;" data-id="{{$post->id}}">
+                                                    <span>
+                                                        {{$post->collectPost->count()}}
+                                                    </span>
+                                                </i>
+                                                @endif
+                                                <!-- date -->
+                                                <p class="c-articleCard__date">
+                                                    發表日期：{{ $post->created_at->format('Y/m/d') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                     @endif
+                </div>
             </div>
         </div>
-        <hr style="width:25vw; border: solid 0.05vw black; margin:2vw 0 2vw 0;">
-        <h5>作者的熱門文章</h5>
-        <!-- author article -->
-        <div>
-            @if(!is_null($Data['article']->author->post))
-            @foreach($Data['article']->author->post as $post)
-
-            <a class="moreArticles" href="{{ route('article', $post->id) }}">
-                <div style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;" class="bgImg">
-                    &nbsp;
-                </div>
-                <div class="meta">
-                    <h3 class="text-break"> {{ \Illuminate\Support\Str::limit($post->title, 15, '...') }} </h3>
-                    <p>
-                        {{ \Illuminate\Support\Str::limit(strip_tags($post->body), 40) }}
-                    </p>
-                </div>
-            </a>
-
-            @endforeach
-            @endif
-        </div>
-    </div>
-    <div class="relateArticle">
-
-        <h2>您可能感興趣的文章</h2>
-        <div class="cards">
-            @if(!is_null($Data['interested']))
-            @foreach($Data['interested'] as $post)
-
-            <div class="moreArticles">
-                <a href="{{ route('article', $post->id) }}">
-                    <!-- img -->
-                    <div class="postImg">
-                        <div class="postPhoto"
-                            style="background-image: url('{{ asset('uploads'.$post->image_path)  }}') ;">
-                            &nbsp;
-                        </div>
-                        <div class="userimg"
-                            style="background-image: url('{{ is_null($post->author->avatar) ? asset('uploads/images/default_avatar.png') : asset('uploads/'.$post->author->avatar) }}') ;">
-                        </div>
-                        <h6 class="namecard">{{ !is_null($post->author) ? $post->author->name : ""}}</h6>
-                    </div>
-
-                    <div class="content">
-                        <!-- categs -->
-                        <div class="postCategory">
-                            @if(!is_null($Data['article']->category))
-                            @foreach($Data['article']->category as $category)
-                            <p>{{$category->postCategory->name}}</p>
-                            @endforeach
-                            @endif
-                        </div>
-                        <!-- title -->
-                        <h3 class="w-100"> {{$post->title}} </h3>
-                        <p class="body w-100">
-                            {!! \Illuminate\Support\Str::limit(strip_tags($post->body), 30) !!}
-                        </p>
-
-                        <p class="readMore w-100">...閱讀更多</p>
-                        <!-- react icons -->
-                        <div class="react w-100" onclick="event.stopPropagation(); return false; ">
-                            <i class="fa fa-heart">
-                                <span class="text-black">T</span>
-                            </i>
-                            <i class="fa fa-bookmark">
-                                <span class="text-black">T</span>
-                            </i>
-                            <p class="date">
-                                發布日期：{{$post->created_at->format('Y/m/d')}}
-                            </p>
-                        </div>
-
-                    </div>
-                </a>
-            </div>
-
-            @endforeach
-            @endif
-            <a class="toStudyAbroad">查看更多文章</a>
-
-        </div>
-
-
-
     </div>
 
     <script>

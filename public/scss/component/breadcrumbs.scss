@@ -1,0 +1,14 @@
+.c-breadcrumbs{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    &_prePage{
+        margin: var(--spacing-12);
+        color: var(--color-black);
+        font-size: var(--text-2xl);
+    }
+    &_currentPage{
+        color: $prime_purple;
+        font-size: var(--text-3xl);
+    }
+}

@@ -1,0 +1,37 @@
+// basic setting
+@import 'utility/broccoli_base.scss';
+@import 'utility/broccoli_color';
+@import 'utility/broccoli_mixins';
+@import 'utility/broccoli_utility';
+@import 'utility/broccoli_variables';
+@import 'utility/broccoli_custom_mixin';
+// header & footer
+@import 'layout/headers.scss';
+@import 'layout/footer.scss';
+// layouts
+@import 'layout/seniorPage_layout.scss';
+@import 'layout/welcomePage_layout.scss';
+@import 'layout/university_layout.scss';
+@import 'layout/singleArticle.scss';
+@import 'layout/introduction.scss';
+@import 'layout/aboutUs.scss';
+@import 'layout/yizixueFAQ.scss';
+@import 'layout/contract.scss';
+@import 'layout/login.scss';
+// components
+@import 'component/breadcrumbs.scss';
+@import 'component/sideNav.scss';
+@import 'component/studentCard.scss';
+@import 'component/uniCard.scss';
+@import 'component/qaCard.scss';
+@import 'component/newsCard.scss';
+@import 'component/articleCard.scss';
+@import 'component/callAction';
+@import 'component/pagination.scss';
+@import 'component/aboutCarousel.scss';
+// objects
+@import 'object/btns.scss';
+@import 'object/searchBar.scss';
+@import 'object/titles.scss';
+// states
+@import 'state/swiperCustom.scss';

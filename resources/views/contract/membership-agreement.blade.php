@@ -1,8 +1,12 @@
 @extends('layouts.guest2')
 
 @section('content')
-<div class="container">
-    <section class="my-3">
+<div class="l-contract">
+    <div class="l-contract__content container">
+    <h2 class="l-contract__title">會員規約</h2>
+    <div class="row">
+        <div class="col-md-12">
+        <section class="my-3">
         <dl>
             <dt>
                 親愛的朋友您好，歡迎您加入『易子學 www.yizixue.com.tw』平台成為會員，為了確保您的權益，
@@ -220,5 +224,19 @@
             </dt>
         </dl>
     </section>
+        </div>
+    </div>
+    </div>
 </div>
+<div class="l-contract">
+    <div class="l-contract__content container">
+    <h2 class="l-contract__title"></h2>
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+    </div>
+</div>
+
 @endsection

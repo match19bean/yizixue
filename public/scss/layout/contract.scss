@@ -1,0 +1,11 @@
+.l-contract{
+    background-color: $light_gray;
+    padding: var(--spacing-24) var(--spacing-88);
+    &__content{
+        background-color: var(--color-white);
+    }
+    &__title{
+        font-size: var(--text-4xl);
+        color: $prime_purple;
+    }
+}

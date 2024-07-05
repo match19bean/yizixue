@@ -1,0 +1,19 @@
+.l-aboutUs{
+    &__aboutSwiper{
+        background-color: $prime_purple_light;
+    }
+    &__sponsor{
+        background-color: var(--color-white);
+    }
+    &__centerBorder{
+        border-right: solid 2px var(--color-black);
+        border-left: solid 2px var(--color-black);
+    }
+    &__team{
+        background-color: var(--color-white);
+    }
+    &__teamSwiper{
+        background-color: var(--color-white);
+        margin: var(--spacing-24) var(--spacing-160);
+    }
+}
