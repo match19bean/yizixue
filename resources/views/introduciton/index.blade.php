@@ -36,7 +36,7 @@
                                         <!-- school img -->
                                         <div class="col-md-2">
                                             <span class="l-introduction__schoolImg"
-                                                style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
+                                                style="background-image: url('{{asset($Data['user']->universityItem->image_path)}}') ;">&nbsp;</span>
                                         </div>
                                         <!-- school name -->
                                         <div class="col-md-6">
@@ -84,22 +84,22 @@
                             <div class="col-md-6">
                                 <div class="o-react">
                                     @if(auth()->check())
-                                    <i class="bi bi-heart"
+                                    <i class="bi bi-heart like-user"
                                         style="color:  @if($Data['user']->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif"
                                         data-id="{{$Data['user']->id}}">
                                         <span>{{$Data['user']->likedUser->count()}}</span>
                                     </i>
-                                    <i class="bi bi-bookmark"
+                                    <i class="bi bi-bookmark collect-user"
                                         style="color:  @if($Data['user']->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif"
                                         data-id="{{$Data['user']->id}}">
                                         <span>{{$Data['user']->collectedUser->count()}}</span>
                                     </i>
 
                                     @else
-                                    <i class="bi bi-heart text-black" style="margin:5px">
+                                    <i class="bi bi-heart text-black like-user" style="margin:5px">
                                         <span>{{$Data['user']->likedUser->count()}}</span>
                                     </i>
-                                    <i class="bi bi-bookmark" style="margin:5px">
+                                    <i class="bi bi-bookmark collect-user" style="margin:5px">
                                         <span>{{$Data['user']->collectedUser->count()}}</span>
                                     </i>
                                     @endif
@@ -148,13 +148,11 @@
                 </div>
                 <div class="l-introduction__detailContent col-md-12">
                     <h3 class="o-subTitle">學歷經歷</h3>
-                    <p>
-                        {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name : '' }}
-                    </p>
-                    <hr>
-                    <p>
-                        {{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name : '' }}
-                    </p>
+                    @forelse($Data['user']->experiences as $experience)
+                        <p>{{$experience->learning_experience}}</p>
+                    @empty
+                        <p></p>
+                    @endforelse
                     <hr>
                 </div>
                 <div class="l-introduction__detailContent col-md-12">
@@ -266,14 +264,14 @@
                                         <!-- reacts -->
                                         <div class="o-react w-100 p-3">
                                             @if(auth()->check())
-                                            <i class="bi bi-heart" style="
+                                            <i class="bi bi-heart like-post" style="
                                         color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                         " data-id="{{$post->id}}">
                                                 <span>
                                                     {{$post->likePost->count()}}
                                                 </span>
                                             </i>
-                                            <i class="bi bi-bookmark" style="
+                                            <i class="bi bi-bookmark collect-post" style="
                                         color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                         " data-id="{{$post->id}}">
                                                 <span>
@@ -281,12 +279,12 @@
                                                 </span>
                                             </i>
                                             @else
-                                            <i class="bi bi-heart" style="color: black;" data-id="{{$post->id}}">
+                                            <i class="bi bi-heart like-post" style="color: black;" data-id="{{$post->id}}">
                                                 <span>
                                                     {{$post->likePost->count()}}
                                                 </span>
                                             </i>
-                                            <i class="bi bi-bookmark" style="color: black;" data-id="{{$post->id}}">
+                                            <i class="bi bi-bookmark collect-post" style="color: black;" data-id="{{$post->id}}">
                                                 <span>
                                                     {{$post->collectPost->count()}}
                                                 </span>
@@ -389,7 +387,7 @@
                         </svg>
                         <!-- school img -->
                         <span class="c-studentCardSwiper_schoolImg"
-                            style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
+                            style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
                         <!-- name card -->
                         <h4 class="c-studentCardSwiper_userName">
                             {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
@@ -405,21 +403,21 @@
                         <!-- react icons -->
                         <div class="c-studentCardSwiper_react" onclick="event.stopPropagation(); return false; ">
                             @if(auth()->check())
-                            <i class="bi bi-heart" style="
+                            <i class="bi bi-heart like-user" style="
                                     color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
                                     " data-id="{{$user->id}}">
                                 <span class="text-black">{{$user->likedUser->count()}}</span>
                             </i>
-                            <i class="bi bi-bookmark" data-id="{{$user->id}}" style="
+                            <i class="bi bi-bookmark collect-user" data-id="{{$user->id}}" style="
                                     color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
                                     ">
                                 <span class="text-black">{{$user->collectedUser->count()}}</span>
                             </i>
                             @else
-                            <i class="bi bi-heart" style="color: black;" data-id="{{$user->id}}">
+                            <i class="bi bi-heart like-user" style="color: black;" data-id="{{$user->id}}">
                                 <span class="text-black">{{$user->likedUser->count()}}</span>
                             </i>
-                            <i class="bi bi-bookmark" data-id="{{$user->id}}">
+                            <i class="bi bi-bookmark collect-user" data-id="{{$user->id}}">
                                 <span class="text-black">{{$user->collectedUser->count()}}</span>
                             </i>
                             @endif
@@ -439,63 +437,108 @@
                     @endforeach
                 </div>
                 <div class="studentPagi paginationCustom"></div>
-                <a class="o-readMore" href="/senior">查看更多 &gt;</a>
+                <a class="o-readMore" href="{{route('senior')}}">查看更多 &gt;</a>
             </div>
         </div>
     </div>
 </div>
 
+@endsection
 
+@section('page_js')
+        <script>
+            $(document).ready(function () {
+                $(".adjOnIntroduction").removeClass("px-5");
+                $(".adjOnIntroduction").css("padding", "0");
+            });
+            $('.like-user').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('like-user')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            })
 
+            $('.collect-user').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('collect-user')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
 
-<script>
-    $(document).ready(function () {
-        $(".adjOnIntroduction").removeClass("px-5");
-        $(".adjOnIntroduction").css("padding", "0");
-    });
-    $('.fa-heart').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: "{{url('like-user')}}" + "/" + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red');
-                    that.children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black');
-                    that.children('span').text(res.total);
-                }
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
-    })
+            })
 
-    $('.fa-bookmark').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: "{{url('collect-user')}}" + "/" + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red');
-                    that.children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black');
-                    that.children('span').text(res.total);
-                }
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
+            $('.like-post').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('like-post')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            })
 
-    })
-</script>
+            $('.collect-post').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+            })
+        </script>
 @endsection
