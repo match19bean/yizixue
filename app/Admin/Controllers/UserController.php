@@ -48,6 +48,7 @@ class UserController extends AdminController
         $grid->column('rate', __('Rate'));
         $grid->column('ispaied', __('Ispaied'));
         $grid->column('expired', __('Expired'));
+        $grid->column('is_manager', __('Is Manager'));
         $grid->column('state', __('State'));
         $grid->column('remember_token', __('Remember token'));
         $grid->column('verified', __('verified'))->bool();
@@ -131,6 +132,10 @@ class UserController extends AdminController
         $form->number('rate', __('Rate'))->default(3);
         $form->switch('ispaied', __('Ispaied'));
         $form->datetime('expired', __('Expired'))->default(date('Y-m-d'));
+        $form->switch('is_manager', __('is_manager'))->states([
+            '是' => true,
+            '否' => false
+        ]);
         $form->switch('verified', __('verified'))->states([
             '是' => true,
             '否' => false
