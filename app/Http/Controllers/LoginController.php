@@ -30,7 +30,8 @@ class LoginController extends Controller
         try {
             $error = $request->input('error', false);
             if ($error) {
-                throw new Exception($request->all());
+//                throw new Exception($request->all());
+                return redirect('/login');
             }
             $code = $request->input('code', '');
             $response = $this->lineService->getLineToken($code);
