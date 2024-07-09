@@ -164,7 +164,7 @@
             },
         });
     </script>
-
+    @yield('page_js')
     <!-- cards click function -->
     <script>
         function cardClickable(id) {

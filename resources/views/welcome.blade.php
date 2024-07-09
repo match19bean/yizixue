@@ -98,7 +98,7 @@
                 </div>
                 <div class="studentPagi paginationCustom"></div>
             </div>
-            <a class="o-readMore" href="/senior">查看更多 &gt;</a>
+            <a class="o-readMore" href="{{route('senior')}}">查看更多 &gt;</a>
         </div>
     </section>
 
@@ -137,7 +137,7 @@
                     @endforeach
                 </div>
                 <div class="schoolPagi paginationCustom"></div>
-                <a class="o-readMore" href="/university-list">查看更多 &gt;</a>
+                <a class="o-readMore" href="{{route('university-list')}}">查看更多 &gt;</a>
             </div>
 
         </div>
@@ -268,7 +268,7 @@
                 </div>
             </div>
         </div>
-        <a class="o-readMore" href="#">查看更多 &gt;</a>
+        <a class="o-readMore" href="{{route('qna')}}">查看更多 &gt;</a>
     </section>
 
     <!-- join -->
@@ -351,53 +351,53 @@
         </div>
     </section>
 </div>
+@endsection
 
-
-<script>
-    $('.fa-heart').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: 'like-user/' + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red');
-                    that.children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black');
-                    that.children('span').text(res.total);
+@section('page_js')
+    <script>
+        $('.bi-heart').click(function () {
+            let that = $(this);
+            $.ajax({
+                url: 'like-user/' + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if (res.operator === 'no') {
+                        alert(res.message);
+                    } else if (res.operator === 'add') {
+                        that.css('color', 'red');
+                        that.children('span').text(res.total);
+                    } else if (res.operator === 'reduce') {
+                        that.css('color', 'black');
+                        that.children('span').text(res.total);
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
                 }
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
-    })
+            });
+        })
 
-    $('.fa-bookmark').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: 'collect-user/' + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red');
-                    that.children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black');
-                    that.children('span').text(res.total);
+        $('.bi-bookmark').click(function () {
+            let that = $(this);
+            $.ajax({
+                url: 'collect-user/' + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if (res.operator === 'no') {
+                        alert(res.message);
+                    } else if (res.operator === 'add') {
+                        that.css('color', 'red');
+                        that.children('span').text(res.total);
+                    } else if (res.operator === 'reduce') {
+                        that.css('color', 'black');
+                        that.children('span').text(res.total);
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
                 }
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
+            });
 
-    })
-</script>
-
+        })
+    </script>
 @endsection
