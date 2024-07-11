@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\AboutUsCarousel;
+use App\AboutUsContent;
+use App\User;
 use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
@@ -13,6 +15,8 @@ class AboutUsController extends Controller
 
         $managers = User::where('is_manager', true)->get();
 
-        $content = AboutUsContent::find(1);
+        $content = AboutUsContent::first();
+
+        return view('about_us',compact(['carousels','managers','content']));
     }
 }

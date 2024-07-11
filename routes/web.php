@@ -13,7 +13,7 @@
 
 /* The following are the new pages made by broccoli, please merage the back-end deta into it, thanks */
 // about us page
-Route::get('about-us', function(){return view('about_us');});
+Route::get('about-us', 'AboutUsController@index');
 Route::get('yizixue-faq', function(){return view('yizixueFAQ');});
 /* End of new pages */
 
