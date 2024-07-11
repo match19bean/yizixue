@@ -218,7 +218,7 @@
         <h2 class="l-introduction__title">我的文章</h2>
         <div class="container">
             <div class="l-introduction__myArticle row">
-                @if(!is_null($Data['user']->post))
+                @if($Data['user']->post->count()!=0)
                 @foreach($Data['user']->post as $count => $post)
                 @if($count < 4)
                 <div class="col-md-6">
