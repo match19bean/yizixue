@@ -302,8 +302,8 @@
             </div>
             @endif
             @endforeach
-            @endif
             <a class="o-readMore" href="{{route('article-list', $Data['user']->id)}}">查看更多文章</a>
+            @endif
         </div>
     </div>
     <h2 class="l-introduction__title">參考文件</h2>
