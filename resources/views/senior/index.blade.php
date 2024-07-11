@@ -26,9 +26,9 @@
                 <div class="c-sideNav_selections_topics">
                     @forelse($post_categories as $category)
                         @if($loop->last)
-                            <boutton><a href="{{route('study-abroad', ['category_id' => $category->id])}}">{{$category->name}}</a></boutton>
+                            <boutton><a href="{{route('senior', ['category' => $category->id])}}">{{$category->name}}</a></boutton>
                         @else
-                            <boutton><a href="{{route('study-abroad', ['category_id' => $category->id])}}">{{$category->name}}</a></boutton>
+                            <boutton><a href="{{route('senior', ['category' => $category->id])}}">{{$category->name}}</a></boutton>
                             <hr>
                         @endif
                     @empty
