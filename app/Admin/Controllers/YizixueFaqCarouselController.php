@@ -57,7 +57,7 @@ class YizixueFaqCarouselController extends AdminController
     protected function form()
     {
         $form = new Form(new YizixueFaqCarousel());
-
+        $form->image('image_path', __('Image'));
 
 
         return $form;
