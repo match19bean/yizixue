@@ -25,7 +25,7 @@ class YizixueFaqCarouselController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new YizixueFaqCarousel());
-        $grid->column('image_paht', __('Image'))->image();
+        $grid->column('image_path', __('Image'))->image();
 
         $grid->actions(function ($actions) {
             $actions->disableDelete();
