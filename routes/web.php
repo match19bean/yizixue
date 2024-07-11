@@ -14,7 +14,7 @@
 /* The following are the new pages made by broccoli, please merage the back-end deta into it, thanks */
 // about us page
 Route::get('about-us', 'AboutUsController@index');
-Route::get('yizixue-faq', function(){return view('yizixueFAQ');});
+Route::get('yizixue-faq', 'YizixueFaqController@index');
 /* End of new pages */
 
 Route::get('/', 'FrontPageController@index');
