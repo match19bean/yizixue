@@ -68,7 +68,7 @@ class YizixueFaqController extends AdminController
 
         $form->select('yizixue_faq_category_id', __('Yizixue faq category id'))->options(YizixueFaqCategory::all()->pluck('name', 'id'));
         $form->text('title', __('Title'));
-        $form->textarea('content', __('Content'));
+        $form->ckeditor('content', __('Content'))->options(['lang' => 'zh-TW']);
 
         return $form;
     }

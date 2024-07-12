@@ -42,7 +42,7 @@
                                 <div class="card card-body">
                                     <!-- change A content here -->
                                     <p>
-                                        {{$content->content}}
+                                        {!! $content->content !!}
                                     </p>
                                 </div>
                             </div>

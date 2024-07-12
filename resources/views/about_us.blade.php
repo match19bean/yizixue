@@ -65,7 +65,7 @@
                     <p></p>
                 @else
                     <p>
-                        {{$content->content}}
+                        {!! $content->content !!}
                     </p>
                 @endif
             </div>
