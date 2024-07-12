@@ -11,7 +11,7 @@
                     <div class="swiper-slide">
                         <!-- put the picture resource here -->
                         <span class="c-bannerCarousel__slide"
-                              style="background-image: url('{{asset($carousel->image_path)}}') ;">&nbsp;</span>
+                              style="background-image: url('{{asset('uploads/'.$carousel->image_path)}}') ;">&nbsp;</span>
                     </div>
                 @empty
                 <div class="swiper-slide">
