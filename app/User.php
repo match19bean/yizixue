@@ -92,7 +92,13 @@ class User extends Authenticatable implements CanVerifyEmailContract
 
     public function universityItem()
     {
-        return $this->belongsTo(University::class, 'university');
+
+        return $this->belongsTo(University::class, 'university')->withDefault([
+            'name' => '',
+            'english_name' => '',
+            'chinese_name' => '',
+            'image_path' => null,
+        ]);
     }
 
     public function isVip()

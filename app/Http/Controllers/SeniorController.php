@@ -30,9 +30,7 @@ class SeniorController extends Controller
         if($request->filled('area'))
         {
             $university = University::where('area', Str::upper($request->area))->get();
-            if($university->isNotEmpty()){
-                $query->whereIn('university', $university->pluck('id'));
-            }
+            $query->whereIn('university', $university->pluck('id'));
         }
 
         if($request->filled('skill'))

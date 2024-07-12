@@ -47,7 +47,7 @@
                                                 {{!is_null($Data['user']->universityItem) ?$Data['user']->universityItem->english_name:''}}
                                             </h6>
                                         </div>
-                                        <h3 class="col-md-4 o-whiteBtn">在學</h3>
+                                        <h3 class="col-md-4 o-whiteBtn">{{$Data['user']->is_study == 1 ? '在學' : '非在學'}}</h3>
                                     </div>
                                     <!-- post categ -->
                                     <div class="postCateg">
