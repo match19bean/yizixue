@@ -2821,7 +2821,7 @@ section {
   z-index: 2;
   grid-column: 10/21;
   grid-row: 1/2;
-  display: block;
+  display: none;
 }
 .c-sideNav__english {
   display: none;

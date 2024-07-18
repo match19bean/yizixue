@@ -11,9 +11,9 @@
                     <h4 class="c-breadcrumbs__prePage"><a href="{{url('/')}}"
                             class="text-decoration-none text-black">首頁</a>
                         >
-                        留學誌
+                        留學誌推薦
                     </h4>
-                    <h3 class="c-breadcrumbs__currentPage">留學誌</h3>
+                    <h3 class="c-breadcrumbs__currentPage">留學誌推薦</h3>
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
 <div class="container">
     <div class="row">
         <!-- side bar -->
-        <div class="col-md-3">
+        <div class="col-md-3 pr-5">
             <!-- sideBar -->
-            <div>
+            <div class="pr-3">
                 <!-- categories -->
                 <div class="c-sideNav__topics">
                     <button><a class="text-white text-center"

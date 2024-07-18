@@ -138,7 +138,7 @@
                         <div class="row">
                             <div class="col-md-12 p-0">
                                 <h3 class="l-innerbody__title">
-                                    <a href="{{route('university-list')}}">關注 | 學校</a>
+                                    <a href="{{route('university-list')}}">好學校｜關注</a>
                                 </h3>
                             </div>
                         </div>
@@ -439,19 +439,13 @@
             </div>
             <!-- join -->
             <div class="col-md-12 p-0">
-                <div class="container-fluid p-0 m-0">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <section class="l-innerbody__join"
-                                style="background-image: url('{{asset('uploads/images/join-banner-cut.jpg')}}');">
-                                <div class="l-innerbody__joinSection">
-                                    <a class="o-btn" href="{{route('login')}}">加入 ｜ 易子學</a>
-                                    <p>讓專業，持續變現</p>
-                                </div>
-                            </section>
-                        </div>
+                <section class="l-innerbody__join"
+                    style="background-image: url('{{asset('uploads/images/join-banner-cut.jpg')}}');">
+                    <div class="l-innerbody__joinSection">
+                        <a class="o-btn" href="{{route('login')}}">加入 ｜ 易子學</a>
+                        <p>讓專業，持續變現</p>
                     </div>
-                </div>
+                </section>
             </div>
             <!-- news -->
             <div class="col-md-12 p-0">
