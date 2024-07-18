@@ -98,12 +98,12 @@ $(window).scroll(function(){
     let screenRoll = $(window).scrollTop();
     const bannerHeight = $(".l-innerHeader").height();
     if (screenRoll >= bannerHeight){
-        $(".l-header_li > a").css("color", "#000000");
+        $(".l-header__li a").css("color", "#000000");
         $("#logoImg").attr("src","uploads/images/color_ezl.png");
         $("nav#mainNav").css("background-color", "white");
     }
     else{
-        $(".l-header_li > a").css("color", "#FFFFFF");
+        $(".l-header__li a").css("color", "#FFFFFF");
         $("#logoImg").attr("src","uploads/images/logo.png");
         $("nav#mainNav").css("background-color", "rgba(255, 255, 255, 0)");
     }

@@ -8,6 +8,26 @@
         color: var(--color-white);
 }
 
+.o-normalTitle{
+        font-size: var(--text-3xl);
+        color: $prime_purple;
+}
+
+.o-whiteTitle{
+        font-size: var(--text-3xl);
+        color: var(--color-white);
+}
+
+.o-smallWhiteTitle{
+        font-size: var(--text-xl);
+        color: var(--color-white);
+}
+
+.o-articleTitle{
+        font-size: var(--text-2xl);
+        color: $prime_purple;
+}
+
 .o-loginTitle{
         background-color: $prime_purple;
         font-size: var(--text-3xl);

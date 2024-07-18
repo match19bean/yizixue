@@ -1,4 +1,4 @@
-@mixin header_template($position, $color){
+@mixin header_template($position, $color) {
     position: $position;
     display: flex;
     flex-direction: row;
@@ -6,40 +6,117 @@
     justify-content: space-between;
     padding: var(--spacing-12);
     background-color: $color;
-    &_navBar{
-        margin: 0;
+    z-index: 10;
+    
+
+    &__hidePhone {
+        display: none;
     }
-    &_navItems{
+
+    &__logo {
+        width: 20%;
+    }
+
+    &__navBar {
+        margin: 0;
+        width: 80%;
+    }
+
+    &__navItems {
         justify-content: end;
         align-items: center;
     }
-    &_li{
+
+    &__li {
         padding: 0 var(--spacing-12);
         align-self: center;
         font-size: var(--text-xl);
         font-weight: 600;
-        a{
+
+        a {
             all: unset;
             cursor: pointer;
             color: var(--color-white);
+
+            &:hover {
+                font-weight: 900;
+                color: $prime_purple_light !important;
+            }
         }
-        &:last-child{
+
+        &:last-child {
             padding: 0;
         }
     }
-    &_thumbNail{
+
+    &__thumbNail {
+        width: var(--spacing-80);
+    }
+}
+
+@mixin header_mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-12);
+    background-color: var(--color-white);
+
+    &__hideDesk {
+        display: none;
+    }
+
+    &__logo {
+        width: 40%;
+    }
+
+    &__hamburger {
+        font-size: var(--text-4xl);
+        text-align: end;
+        align-content: center;
+    }
+
+    &__navItems{
+        background-color: $prime_purple;
+        display: flex;
+        flex-direction: row;
+        padding: var(--spacing-24);
+        border-radius: 0 0 var(--spacing-24) var(--spacing-24);
+    }
+
+    &__links{
+        width: 33%;
+        a {
+            all: unset;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            color: var(--color-white);
+            font-size: var(--text-sm);
+        }
+    }
+
+    &__thumbNail {
         width: var(--spacing-80);
     }
 }
 
 // for welcome(main page) header
-.l-header{
+.l-header {
     z-index: 2;
     width: 100%;
     @include header_template(fixed, $transprent);
 }
 
 // for other pages
-.l-header-2{
+.l-header-2 {
     @include header_template(inherit, var(--color-black));
+}
+
+
+// media query for phone
+@media only screen and (max-width: 767.98px) {
+    .l-header-2 {
+        @include header_mobile();
+    }
 }

@@ -2,169 +2,254 @@
 
 @section('content')
 
-<div class="articleList-breadcrumbs">
-    <h4 class="mt-3 text-black">
-        <a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a>
-        >
-        <a class="text-decoration-none text-black" href="{{route('get-introduction', $Data['user']->id)}}">
-            {{$Data['user']->name}}的文章
-        </a>
-    </h4>
+<!-- breadcrumb -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="c-breadcrumbs">
+                <h4>
+                    <a class="c-breadcrumbs__prePage" href="{{url('/')}}">首頁</a>
+                    >
+                    <a class="c-breadcrumbs__prePage" href="{{route('get-introduction', $Data['user']->id)}}">
+                        {{$Data['user']->name}}
+                    </a>
+                    >
+                    <a class="c-breadcrumbs__prePage" href="{{route('get-introduction', $Data['user']->id)}}">
+                        {{$Data['user']->name}}的文章
+                    </a>
+                </h4>
+                <h3 class="c-breadcrumbs__currentPage">{{$Data['user']->name}}的文章</h3>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="articleList">
-    <!-- user info section -->
-    <div class="authorInfo">
-        <div class="text-center text-white leftSide">
-            <div class="authorImg">
-                @if(is_null($Data['user']->avatar))
-                <span style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
-                @else
-                <span style="background-image: url('{{asset('uploads/'.$Data['user']->avatar)}}') ;">&nbsp;</span>
-                @endif
-            </div>
-            <div class="d-flex flex-column justify-content-between h-100">
-                <h2 class="text-start">{{$Data['user']->name}}</h2>
-                <div class="schoolInfo d-flex flex-row">
-                    <span style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
-                    <div class="d-flex flex-column align-items-start justify-content-center">
-                        <h5>{{!is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name:''}}
-                        </h5>
-                        <h5>{{!is_null($Data['user']->universityItem) ? $Data['user']->universityItem->chinese_name:''}}
-                        </h5>
+<!-- user info section -->
+<div class="container p-5">
+    <div class="l-articleList__authorCard">
+        <div class="row">
+            <!-- author info -->
+            <div class="col-md-8">
+                <div class="l-articleList__authorInfo">
+                    <div class="row">
+                        <!-- author img -->
+                        <div class="col-md-3 p-5">
+                            @if(is_null($Data['user']->avatar))
+                            <span class="l-articleList__authorImg"
+                                style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                            @else
+                            <span class="l-articleList__authorImg"
+                                style="background-image: url('{{asset('uploads/'.$Data['user']->avatar)}}') ;">&nbsp;</span>
+                            @endif
+                        </div>
+                        <!-- white space -->
+                        <div class="col-md-3">
+                            &nbsp;
+                        </div>
+                        <!-- author details -->
+                        <div class="col-md-6 align-content-center">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- author name -->
+                                    <div class="col-md-12">
+                                        <h2 class="o-whiteTitle">{{$Data['user']->name}}</h2>
+                                    </div>
+                                    <!-- school img -->
+                                    <div class="col-md-2 p-2">
+                                        <span class="l-articleList__schoolImg"
+                                            style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
+                                    </div>
+                                    <!-- school name -->
+                                    <div class="col-md-10">
+                                        <div class="l-articleList__schoolNames">
+                                            <h5 class="o-smallWhiteTitle">
+                                                {{!is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name:''}}
+                                            </h5>
+                                            <h5 class="o-smallWhiteTitle">
+                                                {{!is_null($Data['user']->universityItem) ? $Data['user']->universityItem->chinese_name:''}}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tags -->
+                                <div class="row">
+                                    @if(!is_null($Data['user']->postCategory))
+                                    @foreach($Data['user']->postCategory as $theme)
+                                    <div class="col-md-4">
+                                        <a class="o-tag"
+                                            href="{{route('study-abroad', ['category_id' => $theme->postCategory->id])}}">
+                                            {{$theme->postCategory->name}}
+                                        </a>
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- tags -->
-                @if(!is_null($Data['user']->postCategory))
-                <div class="tags">
-                    @foreach($Data['user']->postCategory as $theme)
-                    <a href="{{route('study-abroad', ['category_id' => $theme->postCategory->id])}}">
-                        {{$theme->postCategory->name}}
-                    </a>
-                    @endforeach
+            </div>
+            <!-- author skill -->
+            <div class="col-md-4">
+                <!-- skill tags -->
+                <div class="container h-100 w-75">
+                    <div class="row h-100 align-items-center">
+                        @if(!is_null($Data['user']->skills))
+                        @foreach($Data['user']->skills->slice(0, 6) as $skill)
+                        <div class="col-md-6">
+                            <span class="o-whiteBtn">
+                                {{$skill->skill->name}}
+                            </span>
+                        </div>
+                        @endforeach
+                        @endif
+                    </div>
                 </div>
-                @endif
             </div>
         </div>
-        <div class="skillTag">
-            @if(!is_null($Data['user']->skills))
-            @foreach($Data['user']->skills as $skill)
-            <p class="tags" style="color: #4C2A70; background-color: #ffffff">
-                {{$skill->skill->name}}
-            </p>
-            @endforeach
-            @endif
+    </div>
+</div>
+<!-- posts section -->
+
+<!-- post cards -->
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="o-normalTitle">
+                <h2 class="o-normalTitle">{{$Data['user']->name}}的文章</h2>
+            </div>
         </div>
-    </div>
-    <!-- posts section -->
-    <div class="title">
-        <h2>{{$Data['user']->name}}的文章</h2>
-    </div>
-    <!-- post cards -->
-    <!-- from study-abroad -->
-    <div class="article-list-moreArticle">
         @if($Data['posts']->total())
         @foreach($Data['posts'] as $post)
-        <div class="moreArticles">
-            <a href="{{route('article', $post->id)}}">
-                <!-- img -->
-                <div class="postPhoto" style="background-image: url('{{asset('uploads/'.$post->image_path)}}') ;">
-                    &nbsp;
-                </div>
-
-                <div class="content">
-                    <!-- title -->
-                    <h3 class="w-100"> {{$post->title}} </h3>
-                    <p class="body w-100">
-                        {!! \Illuminate\Support\Str::limit(strip_tags($post->body), 30) !!}
-                    </p>
-
-                    <p class="readMore w-100">...閱讀更多</p>
-                    <!-- react icons -->
-                    <div class="react w-100" onclick="event.stopPropagation(); return false; ">
-                        @if(auth()->check())
-                        <i class="fa fa-heart" style="
-                    color: @if(auth()->user()->likePost->where('post_id', $post->id)->count() == 1) red @else black @endif
-                    " data-id="{{$post->id}}">
-                            <span style="color:black">
-                                {{$post->likePost->count()}}
-                            </span>
-                        </i>
-                        <i class="fa fa-bookmark" style="
-                    color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count() == 1) red @else black @endif ;
-                    " data-id="{{$post->id}}">
-                            <span style="color:black">
-                                {{$post->collectPost->count()}}
-                            </span>
-                        </i>
-                        @else
-                        <i class="fa fa-heart" style="color:black;" data-id="{{$post->id}}">
-                            <span style="color:black">{{$post->likePost->count()}}</span>
-                        </i>
-                        <i class="fa fa-bookmark" style="color:black;" data-id="{{$post->id}}">
-                            <span style="color:black">{{$post->collectPost->count()}}</span>
-                        </i>
-                        @endif
-                        <p class="date">發表日期：{{  $post->created_at->format('Y/m/d')  }}</p>
+        <div class="col-md-6 p-0">
+            <div class="c-articleCard l-articleList">
+                <div class="container l-articleList__card">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 p-0">
+                            <!-- Post images -->
+                            <div class="c-articleCard__postThumbnail">
+                                <!-- post img -->
+                                @if(is_null($post->image_path))
+                                <span class="c-articleCard__postThumbnail__postPhoto"
+                                    style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                @else
+                                <span class="c-articleCard__postThumbnail__postPhoto"
+                                    style="background-image: url('/uploads/{{$post->image_path}}');">&nbsp;</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <!-- Post Contents -->
+                            <div class="c-articleCard__postInfo">
+                                <!-- title -->
+                                <a class="c-articleCard__title"
+                                    href="{{route('article', $post->id)}}">{{ $post->title }}</a>
+                                <!-- content -->
+                                <p class="c-articleCard__content">
+                                    {{!is_null(strip_tags($post->body)) ? \Illuminate\Support\Str::limit(strip_tags($post->body), 35): ''}}
+                                </p>
+                                <a class="o-readMore" href="{{route('article', $post->id)}}">...閱讀更多</a>
+                                <hr>
+                                <!-- reacts -->
+                                <div class="o-react w-100 pb-2 pr-2">
+                                    @if(auth()->check())
+                                    <i class="bi bi-heart-fill like-post" style="
+                                    color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->likePost->count()}}
+                                        </span>
+                                    </i>
+                                    <i class="bi bi-bookmark-fill collect-post" style="
+                                    color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->collectPost->count()}}
+                                        </span>
+                                    </i>
+                                    @else
+                                    <i class="bi bi-heart-fill like-post" style="color: black;" data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->likePost->count()}}
+                                        </span>
+                                    </i>
+                                    <i class="bi bi-bookmark-fill collect-post" style="color: black;" data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->collectPost->count()}}
+                                        </span>
+                                    </i>
+                                    @endif
+                                    <!-- date -->
+                                    <p class="c-articleCard__date">發表日期：{{ $post->created_at->format('Y/m/d') }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-            </a>
+            </div>
         </div>
         @endforeach
         @else
-        <div class="m-2 row text-center">
+        <div class="col-md-12">
             <p>
                 目前尚未發表文章
             </p>
         </div>
         @endif
     </div>
-    <div class="pageNav">
-        <div class="d-flex" style="flex-direction: row; justify-content: space-evenly; ">
-            {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
+</div>
+<!-- pagination -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
+            </div>
         </div>
     </div>
 </div>
-<script>
-    $('.socialIcons .fa-heart').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: "{{url('like-post')}}" + "/" + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red').children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black').children('span').text(res.total);
-                }
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
-    });
+@endsection
 
-    $('.socialIcons .fa-bookmark').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red').children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black').children('span').text(res.total);
+@section('page_js')
+    <script>
+        $('.like-post').click(function () {
+            let that = $(this);
+            $.ajax({
+                url: "{{url('like-post')}}" + "/" + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if (res.operator === 'no') {
+                        alert(res.message);
+                    } else if (res.operator === 'add') {
+                        that.css('color', 'red').children('span').text(res.total);
+                    } else if (res.operator === 'reduce') {
+                        that.css('color', 'black').children('span').text(res.total);
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
                 }
-            },
-            error: function (error) {
-                console.log(error)
-            }
+            });
         });
-    });
-</script>
+
+        $('.collect-post').click(function () {
+            let that = $(this);
+            $.ajax({
+                url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if (res.operator === 'no') {
+                        alert(res.message);
+                    } else if (res.operator === 'add') {
+                        that.css('color', 'red').children('span').text(res.total);
+                    } else if (res.operator === 'reduce') {
+                        that.css('color', 'black').children('span').text(res.total);
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+        });
+    </script>
 @endsection

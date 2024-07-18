@@ -2,13 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    &_prePage{
+    padding: 0 var(--spacing-24);
+    &__prePage{
         margin: var(--spacing-12);
         color: var(--color-black);
         font-size: var(--text-2xl);
     }
-    &_currentPage{
+    &__currentPage{
         color: $prime_purple;
-        font-size: var(--text-3xl);
+        font-size: var(--text-4xl);
+        letter-spacing: var(--spacing-4);
+        font-weight: 600;
     }
 }

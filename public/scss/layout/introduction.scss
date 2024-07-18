@@ -29,6 +29,9 @@
         width: 100%;
         border-radius: var(--spacing-12) 0 0 var(--spacing-12);
         padding: var(--spacing-24);
+        .o-skillBtn{
+            font-size: var(--text-md);
+        }
     }
     &__schoolRelate{
         display: flex;
@@ -68,7 +71,7 @@
 
     &__detailSection{
         background-color: $light_gray;
-        padding: var(--spacing-80) var(--spacing-160) var(--spacing-80) var(--spacing-160);
+        // padding: var(--spacing-80) var(--spacing-160) var(--spacing-80) var(--spacing-160);
     }
 
     &__detailContent{
@@ -86,28 +89,22 @@
         text-align: end;
         padding: var(--spacing-12);
         border-radius: 0 var(--spacing-12) var(--spacing-12) 0;
-        margin-bottom: calc(-1*var(--spacing-32));
+        margin-top: calc(-1*var(--spacing-24));
+        margin-bottom: var(--spacing-24);
         z-index: 2;
     }
 
     &__myArticle{
         background-color: $light_gray;
         border-radius: var(--spacing-24);
-        margin: var(--spacing-32) var(--spacing-80) var(--spacing-32) var(--spacing-80) ;
+        margin-top: calc(-1*var(--spacing-64));
     }
 
-    &__moreArticle{
-        transform: scale(0.8);
-        .container{
-            min-height: 25rem;
-            background-color: var(--color-white);
-        }
-        .c-articleCard__content{
-            font-size: var(--text-sm);
-        }
+    &__articleCard{
+        background-color: var(--color-white);
     }
+
     &__reference{
         margin-top: var(--spacing-32);
-        padding: var(--spacing-12);
     }
 }

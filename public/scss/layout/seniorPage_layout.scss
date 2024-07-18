@@ -1,3 +1,40 @@
+
+@mixin PhoneVer{
+    &__hidePhoneVer{
+        display: none;
+    }
+    &__hideDeskVer{
+        display: block;
+    }
+}
+
+@mixin DeskVer{
+    &__hideDeskVer{
+        display: none;
+    }
+    &__hidePhoneVer{
+        display: block;
+    }
+}
+
 .l-seniorPage{
-    @include sideBar_pages;
+    @include sideBar_flex_ver;
+    .c-studentCard_schoolEnglish{
+        font-size: var(--text-md);
+    }
+    hr{
+        height: var(--spacing-2);
+    }
+    @include PhoneVer();
+}
+
+// media query for phone
+@media only screen and (max-width: 767.98px) {
+    .l-seniorPage{
+        @include DeskVer();
+        &__content{
+            margin: 0;
+            padding: var(--spacing-8);
+        }
+    }
 }

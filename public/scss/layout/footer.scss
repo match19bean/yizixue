@@ -4,7 +4,7 @@
     &_brand{
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         border-right: solid var(--spacing-2) var(--color-white);
         img{

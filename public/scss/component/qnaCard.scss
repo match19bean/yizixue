@@ -1,0 +1,21 @@
+.c-qnaCard{
+    border: solid var(--spacing-2) $prime_purple;
+    transform-origin: 0 0;
+    transform: scale(0.9);
+    &__info{
+        display: flex;
+        flex-direction: row;
+    }
+    &__thumbNail{
+        width: var(--spacing-48);
+        margin-right: var(--spacing-8);
+        circle{
+            fill: $prime_gray;
+        }
+    }
+    &__content{
+        color: $dark_gray;
+        text-wrap: wrap;
+        font-size: var(--text-lg);
+    }
+}

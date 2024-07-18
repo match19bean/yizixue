@@ -85,6 +85,10 @@ class User extends Authenticatable implements CanVerifyEmailContract
         return $this->hasMany(CollectPost::class, 'uid');
     }
 
+    public function collectQa()
+    {
+        return $this->hasMany(CollectQa::class, 'uid');
+    }
     public function references()
     {
         return $this->hasMany(UserReference::class);

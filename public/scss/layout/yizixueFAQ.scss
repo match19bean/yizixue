@@ -1,7 +1,19 @@
-.l-yizixueFAQ{
+.l-yizixueFAQ {
     background-color: $prime_gray;
     padding-bottom: var(--spacing-80);
-    &__content{
+
+    &__content {
         background-color: var(--color-white);
+        padding-bottom: var(--spacing-80);
+        .nav-link {
+            display: block;
+            border: solid var(--color-black) 1px;
+            border-radius: var(--spacing-8);
+        }
+
+        .nav-link.active {
+            background-color: $prime_gray;
+            color: var(--color-black);
+        }
     }
 }

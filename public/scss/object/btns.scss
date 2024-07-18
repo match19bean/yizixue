@@ -11,6 +11,34 @@
         color: var(--color-white);
     }
 }
+.o-smallBtn{
+    all: unset;
+    font-size: var(--text-sm);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: var(--spacing-4);
+    border-radius: var(--spacing-4);
+    background-color: $prime_purple;
+    font-weight: 900;
+    align-content: center;
+    &:hover{
+        color: var(--color-white);
+    }
+}
+
+.o-qnaBtn{
+    all: unset;
+    font-size: var(--text-md);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: var(--spacing-12);
+    border-radius: var(--spacing-12);
+    background-color: $prime_purple;
+    font-weight: 900;
+    &:hover{
+        color: var(--color-white);
+    }
+}
 
 .o-lightBtn{
     all: unset;
@@ -62,6 +90,7 @@
     text-align: end;
     font-size: var(--text-lg);
     color: $prime_purple;
+    z-index: 5;
 }
 
 .o-react{
@@ -92,7 +121,7 @@
     all: unset;
     cursor: pointer;
     display: block;
-    width: var(--spacing-80);
+    width: var(--spacing-120);
     aspect-ratio: 1/1;
 }
 

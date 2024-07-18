@@ -7,19 +7,19 @@
             <!-- breadcrumb -->
             <div class="c-breadcrumbs">
                 <h4>
-                    <a class="c-breadcrumbs_prePage" href="{{url('/')}}">首頁</a>
+                    <a class="c-breadcrumbs__prePage" href="{{url('/')}}">首頁</a>
                     >
-                    <a class="c-breadcrumbs_prePage"
+                    <a class="c-breadcrumbs__prePage"
                         href="{{route('study-abroad', ['category_id' => $Data['article']->category->first()->postCategory->id])}}">
                         {{$Data['article']->category->first()->postCategory->name}}
                     </a>
                     >
-                    <a class="c-breadcrumbs_prePage"
+                    <a class="c-breadcrumbs__prePage"
                         href="{{route('study-abroad', ['category_id' => $Data['article']->category->first()->postCategory->id])}}">
                         {{$Data['article']->title}}
                     </a>
                 </h4>
-                <h3 class="c-breadcrumbs_currentPage">{{$Data['article']->title}}</h3>
+                <h3 class="c-breadcrumbs__currentPage">{{$Data['article']->title}}</h3>
             </div>
             <!-- post content -->
             <div class="container">
@@ -52,22 +52,22 @@
                                 <div class="col-md-3">
                                     <div class="o-react">
                                         @if(auth()->check())
-                                        <i class="bi bi-heart"
+                                        <i class="bi bi-heart-fill like-post"
                                             style="color:@if(auth()->user()->likePost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;margin:5px"
                                             data-id="{{$Data['article']->id}}">
                                             <span>{{$Data['article']->likePost->count()}}</span>
                                         </i>
-                                        <i class="bi bi-bookmark"
+                                        <i class="bi bi-bookmark-fill collect-post"
                                             style="color: @if(auth()->user()->collectPost->where('post_id', $Data['article']->id)->count() == 1) red @else black @endif ;margin:5px"
                                             data-id="{{$Data['article']->id}}">
                                             <span>{{$Data['article']->collectPost->count()}}</span>
                                         </i>
                                         @else
-                                        <i class="bi bi-heart" style=" color:black; margin:5px"
+                                        <i class="bi bi-heart-fill like-post" style=" color:black; margin:5px"
                                             data-id="{{$Data['article']->id}}">
                                             <span>{{$Data['article']->likePost->count()}}</span>
                                         </i>
-                                        <i class="bi bi-bookmark" style=" color:black; margin:5px"
+                                        <i class="bi bi-bookmark-fill collect-post" style=" color:black; margin:5px"
                                             data-id="{{$Data['article']->id}}">
                                             <span>{{$Data['article']->collectPost->count()}}</span>
                                         </i>
@@ -108,12 +108,25 @@
                                 </h6>
                                 <!-- react icons -->
                                 <div class="c-studentCard_react" onclick="event.stopPropagation(); return false; ">
-                                    <i class="bi bi-heart">
-                                        <span>T</span>
-                                    </i>
-                                    <i class="bi bi-bookmark">
-                                        <span>T</span>
-                                    </i>
+                                    @if(auth()->check())
+                                        <i class="bi bi-heart-fill like-user" style="
+                                    color: @if($Data['article']->author->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['article']->author->id)->count() == 1) red @else black @endif ;
+                                    " data-id="{{$Data['article']->author->id}}">
+                                            <span>{{$Data['article']->author->likedUser->count()}}</span>
+                                        </i>
+                                        <i class="bi bi-bookmark-fill collect-user" style="
+                                    color: @if($Data['article']->author->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['article']->author->id)->count() == 1) red @else black @endif ;
+                                    " data-id="{{$Data['article']->author->id}}">
+                                            <span>{{$Data['article']->author->collectedUser->count()}}</span>
+                                        </i>
+                                    @else
+                                        <i class="bi bi-heart-fill like-user" style="color:black;">
+                                            <span>{{$Data['article']->author->likedUser->count()}}</span>
+                                        </i>
+                                        <i class="bi bi-bookmark-fill collect-user" style="color: black;">
+                                            <span>{{$Data['article']->author->collectedUser->count()}}</span>
+                                        </i>
+                                    @endif
                                 </div>
                                 <!-- post tag -->
                                 <div class="c-studentCard_postTag">
@@ -226,14 +239,14 @@
                                             <!-- reacts -->
                                             <div class="o-react w-100 p-3">
                                                 @if(auth()->check())
-                                                <i class="bi bi-heart" style="
+                                                <i class="bi bi-heart-fill like-post" style="
                                     color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                                     <span>
                                                         {{$post->likePost->count()}}
                                                     </span>
                                                 </i>
-                                                <i class="bi bi-bookmark" style="
+                                                <i class="bi bi-bookmark-fill collect-post" style="
                                     color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                                     <span>
@@ -241,12 +254,12 @@
                                                     </span>
                                                 </i>
                                                 @else
-                                                <i class="bi bi-heart" style="color: black;" data-id="{{$post->id}}">
+                                                <i class="bi bi-heart-fill like-post" style="color: black;" data-id="{{$post->id}}">
                                                     <span>
                                                         {{$post->likePost->count()}}
                                                     </span>
                                                 </i>
-                                                <i class="bi bi-bookmark" style="color: black;" data-id="{{$post->id}}">
+                                                <i class="bi bi-bookmark-fill collect-post" style="color: black;" data-id="{{$post->id}}">
                                                     <span>
                                                         {{$post->collectPost->count()}}
                                                     </span>
@@ -268,54 +281,103 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <script>
-        // fix container-fluid px-5 padding
-        $(document).ready(function () {
-            $(".adjOnSingleArticle").removeClass("px-5");
-            $(".adjOnSingleArticle").css("padding", "0");
-        });
-        $('.fa-heart').click(function () {
-            let that = $(this);
-            $.ajax({
-                url: "{{url('like-post/')}}" + "/" + $(this).data('id'),
-                method: 'GET',
-                success: function (res) {
-                    if (res.operator === 'no') {
-                        alert(res.message);
-                    } else if (res.operator === 'add') {
-                        that.css('color', 'red');
-                        that.children('span').text(res.total);
-                    } else if (res.operator === 'reduce') {
-                        that.css('color', 'black');
-                        that.children('span').text(res.total);
-                    }
-                },
-                error: function (error) {
-                    console.log(error)
-                }
+@section('page_js')
+        <script>
+            // fix container-fluid px-5 padding
+            $(document).ready(function () {
+                $(".adjOnSingleArticle").removeClass("px-5");
+                $(".adjOnSingleArticle").css("padding", "0");
             });
-        })
-
-        $('.fa-bookmark').click(function () {
-            let that = $(this);
-            $.ajax({
-                url: "{{url('collect-post/')}}" + "/" + $(this).data('id'),
-                method: 'GET',
-                success: function (res) {
-                    if (res.operator === 'no') {
-                        alert(res.message);
-                    } else if (res.operator === 'add') {
-                        that.removeClass('text-gray').addClass('text-danger');
-                    } else if (res.operator === 'reduce') {
-                        that.removeClass('text-danger').addClass('text-black');
+            $('.like-post').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('like-post/')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
                     }
-                },
-                error: function (error) {
-                    console.log(error)
-                }
-            });
+                });
+            })
 
-        })
-    </script>
-    @endsection
+            $('.collect-post').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('collect-post/')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+            })
+
+            $('.like-user').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('like-user')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            })
+
+            $('.collect-user').click(function () {
+                let that = $(this);
+                $.ajax({
+                    url: "{{url('collect-user')}}" + "/" + $(this).data('id'),
+                    method: 'GET',
+                    success: function (res) {
+                        if (res.operator === 'no') {
+                            alert(res.message);
+                        } else if (res.operator === 'add') {
+                            that.css('color', 'red');
+                            that.children('span').text(res.total);
+                        } else if (res.operator === 'reduce') {
+                            that.css('color', 'black');
+                            that.children('span').text(res.total);
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+            })
+        </script>
+@endsection

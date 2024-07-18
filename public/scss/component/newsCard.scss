@@ -1,21 +1,24 @@
 .c-newsCard{
     background-color: var(--color-white);
     padding: var(--spacing-32);
+    border-radius: var(--spacing-12);
+    overflow: hidden;
     &__bgImg{
        @include imgBackground;
        aspect-ratio: 16/9; 
-
+       margin: var(--spacing-32);
     }
     &__info{
         display: flex;
         flex-direction: column;
         align-items: start;
         justify-content: space-between;
+        height: 100%;
     }
     h5{
         font-size: var(--text-xl);
         font-weight: 800;
-        border-left: solid red var(--spacing-12);
+        border-left: solid red var(--spacing-8);
     }
     &__tags{
         width: 100%;

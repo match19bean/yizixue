@@ -1,19 +1,12 @@
 // layout setting for senior, university, studyabroad page
 
-@mixin sideBar_pages{
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    &_sideNav{
-        grid-column: 1/9;
-        grid-row: 1/2;
+@mixin sideBar_flex_ver{
+    &__sideNav{
+        height: 100%;
+        margin-right: calc(-1*var(--spacing-80));
     }
-    &_content{
-        grid-column: 6/21;
-        grid-row: 1/2;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        gap: var(--spacing-24);
+    &__content{
+        margin-left: calc(-1*var(--spacing-80));
     }
 }
 
@@ -30,6 +23,7 @@
 // student card setting
 
 @mixin studentCardSetting( $cardBorder, $studentImgBorder, $userNameFont, $SchoolEFont, $schoolCFont, $reactFont, $postFont){
+    cursor: pointer;
     border: $cardBorder;
     border-radius: var(--spacing-24) var(--spacing-24) 0 0;
     padding: 0;

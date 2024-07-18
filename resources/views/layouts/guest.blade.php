@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>易子學</title>
@@ -16,34 +15,37 @@
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/sbf-style.css') }}" rel="stylesheet" />
-    <!-- Swiper link -->
+    <!-- swiper cdn -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Broccoli DIY css -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom fonts for this template-->
+    <!-- broccoli style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('scss_convert/broccoli_style.css') }}">
 </head>
 
 <body>
     <!-- Responsive navbar-->
     <nav id="mainNav" class="l-header navbar navbar-expand-lg">
-        <a class="col-2" href="{{url('/')}}">
+        <a class="l-header__logo" href="{{url('/')}}">
             <img id="logoImg" src="{{asset('uploads/images/logo.png')}}" alt="logo">
         </a>
-        <div class="l-header-navBar container col-10">
+        <div class="l-header__navBar">
+            <!-- toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="l-header_navItems collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="l-header_ul navbar-nav">
-                    <li class="l-header_li nav-item"><a class="nav-link scrollFunction"
+            <div class="l-header__navItems collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="l-header__li nav-item"><a class="nav-link scrollFunction"
                             href="{{route('senior')}}">學長姐｜快找</a></li>
-                    <li class="l-header_li nav-item"><a class="nav-link scrollFunction"
+                    <li class="l-header__li nav-item"><a class="nav-link scrollFunction"
                             href="{{route('study-abroad')}}">留學誌｜推薦</a></li>
                     @if(auth()->check())
-                    <li class="l-header_li nav-item"><a class="nav-link scrollFunction"
+                    <li class="l-header__li nav-item"><a class="nav-link scrollFunction"
                             href="{{route('home')}}">易子學系統</a></li>
-                    <li class="l-header_li nav-item">
+                    <li class="l-header__li nav-item">
                         <a href="{{route('home')}}">
-                            <svg class="l-header_thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="l-header__thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
                                     <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
                                         @if(!is_null(auth()->user()->avatar))
@@ -60,10 +62,10 @@
                         </a>
                     </li>
                     @else
-                    <li class="l-header_li nav-item"><a class="nav-link scrollFunction"
+                    <li class="l-header__li nav-item"><a class="nav-link scrollFunction"
                             href="{{route('login')}}">註冊｜登入</a></li>
                     <li class="l-header_li nav-item">
-                        <svg class="l-header_thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="l-header__thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
                             <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
                         </svg>
                     </li>
@@ -73,61 +75,73 @@
         </div>
     </nav>
 
-
+    <div class="container-fluid p-0 m-0">
     @yield('content')
-
+    </div>
 
     <!-- Footer-->
     <footer>
-        <div class="l-footer">
-            <div class="row p-5">
-                <div class="l-footer_brand col-4">
-                    <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
-                    <p class="copyright">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
-                    <p>統一編號：83453577</p>
+        <div class="l-footer container-fluid">
+            <div class="row p-5 align-items-stretch">
+                <div class="col-md-4">
+                    <div class="l-footer_brand h-100">
+                        <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
+                        <div class="row g-3">
+                        <p class="col-md-12 text-center">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
+                            <p class="col-md-12 text-center">統一編號：83453577</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="l-footer_siteMap col-8">
-                    <div class="l-footer_siteMap_topic">
-                        <h6>加入｜易子學</h6>
-                        <div>
-                            <a href="{{route('login')}}">登入｜註冊</a>
-                            <a href="">聯絡我們</a>
+                <div class="col-md-8">
+                    <div class="l-footer_siteMap">
+                        <div class="l-footer_siteMap_topic">
+                            <h6>加入｜易子學</h6>
+                            <div>
+                                <a href="{{route('login')}}">登入｜註冊</a>
+                                <a href="">聯絡我們</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="l-footer_siteMap_topic">
-                        <h6>關於｜會員</h6>
-                        <div>
-                            <a href="{{route('senior')}}">找學長姐</a>
-                            <a href="{{route('university-list')}}">找學校</a>
-                            <a href="{{route('qna')}}">問與答</a>
-                            <a href="{{route('study-abroad')}}">留學誌</a>
+                        <div class="l-footer_siteMap_topic">
+                            <h6>關於｜會員</h6>
+                            <div>
+                                <a href="{{route('senior')}}">找學長姐</a>
+                                <a href="{{route('university-list')}}">找學校</a>
+                                <a href="{{route('qna')}}">問與答</a>
+                                <a href="{{route('study-abroad')}}">留學誌</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="l-footer_siteMap_topic">
-                        <h6>關於｜學長姐</h6>
-                        <div>
-                            <a href="{{route('pay-product-list')}}">成為學長姐</a>
-                            <!-- please replace with the real back-end code -->
-                            <a href="/yizixue-faq">教戰手則</a>
-                            <a>學長姐服務條款</a>
+                        <div class="l-footer_siteMap_topic">
+                            <h6>關於｜學長姐</h6>
+                            <div>
+                                <a href="{{route('pay-product-list')}}">成為學長姐</a>
+                                <!-- please replace with the real back-end code -->
+                                <a href="/yizixue-faq">教戰手則</a>
+                                <a>學長姐服務條款</a>
+                                <!-- unsure page, please clearify -->
+                                <!-- <a href="/subscription-agreement">註冊條款？</a> -->
+                            </div>
                         </div>
-                    </div>
-                    <div class="l-footer_siteMap_topic">
-                        <h6>關於｜易子學</h6>
-                        <div>
-                            <!-- please replace with the real back-end code -->
-                            <a href="/about-us">關於我們</a>
-                            <a href="">前輩網</a>
-                            <a>服務條款</a>
-                            <a>隱私權聲明</a>
-                            <a>免責聲明</a>
+                        <div class="l-footer_siteMap_topic">
+                            <h6>關於｜易子學</h6>
+                            <div>
+                                <!-- please replace with the real back-end code -->
+                                <a href="/about-us">關於我們</a>
+                                <a href="">前輩網</a>
+                                <!-- please replace with the real back-end code -->
+                                <a href="/service-agreement">服務條款</a>
+                                <!-- 為何figma隱私權聲明頁面是連到會員規約？？ -->
+                                <a href="/membership-agreement">隱私權聲明</a>
+                                <!-- please replace with the real back-end code -->
+                                <a href="/disclaimer">免責聲明</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- jquery cdn -->
+</body>
+<!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Bootstrap core JS-->
@@ -148,6 +162,11 @@
                 el: ".studentPagi",
                 clickable: true,
             },
+            breakpoints: {
+                1920: {
+                    slidesPerView: 5,
+                }
+            }
         });
 
         var swiper = new Swiper(".schoolSwiper", {
@@ -162,6 +181,11 @@
                 el: ".schoolPagi",
                 clickable: true,
             },
+            breakpoints: {
+                1920: {
+                    slidesPerView: 7,
+                }
+            }
         });
     </script>
     @yield('page_js')

@@ -1,0 +1,57 @@
+.l-articleList{
+    &__authorCard{
+        border: solid var(--spacing-8) $prime_purple_light;
+        border-radius: var(--spacing-32);
+        overflow: hidden;
+        .o-whiteBtn{
+            padding: var(--spacing-8);
+            font-size: var(--text-sm);
+            border-radius: var(--spacing-8);
+            margin: var(--spacing-2);
+        }
+    }
+    &__authorInfo{
+        overflow: hidden;
+        background-color: $prime_purple_light;
+        border-radius: var(--spacing-24);
+        margin-right: calc(-1*var(--spacing-32));
+        .o-whiteTitle{
+            font-size: var(--text-4xl);
+        }
+        .o-tag{
+            font-size: var(--text-lg)
+        }
+    }
+    &__authorImg{
+        @include imgBackground;
+    }
+    &__schoolImg{
+        @include imgBackground;
+    }
+    &__schoolNames{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__skills{
+        margin-left: var(--spacing-32);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    // posts
+    &__card{
+        min-height: var(--spacing-88);
+    }
+    &__tag{
+        min-height: var(--spacing-32);
+    }
+    .c-articleCard__postThumbnail{
+        padding: 0;
+    }
+    .c-articleCard__postThumbnail__postPhoto{
+        border-radius: var(--spacing-24);
+    }
+}

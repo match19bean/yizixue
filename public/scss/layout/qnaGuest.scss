@@ -1,0 +1,67 @@
+.l-qnaGuest{
+    &__title{
+        font-size: var(--text-3xl);
+    }
+    &__statusContent{
+        font-size: var(--text-2xl);
+    }
+    &__border{
+        border: solid var(--spacing-2) $prime_purple;
+    }
+    &__infoHeader{
+        background-color: $prime_purple;
+        text-align: center;
+        color: var(--color-white);
+        font-size: var(--text-2xl);
+        border-radius: var(--spacing-12) var(--spacing-12) 0 0;
+        padding: var(--spacing-12);
+    }
+    &__thumbNail{
+        width: var(--spacing-64);
+        z-index: 2;
+        circle{
+            fill: $prime_gray;
+        }
+    }
+    &__name{
+        text-align: center;
+        height: 100%;
+        background-color: $prime_purple_light;
+        color: var(--color-white);
+        font-size: var(--text-xl);
+        margin-left: calc(-1*var(--spacing-32));
+        align-content: center;
+    }
+    &__infoContact{
+        text{
+            font-size: var(--text-3xl);
+        }
+    }
+    &__callAction{
+        background-color: $prime_purple_light;
+        color: var(--color-white);
+        border-radius: 0 0 var(--spacing-12) var(--spacing-12);
+    }
+    &__seeMore{
+        text-align: center;
+        background-color: $prime_purple;
+        border-radius: var(--spacing-12);
+        color: var(--color-white);
+        font-size: var(--text-2xl);
+        margin-top: calc(-1*var(--spacing-24));
+        padding: var(--spacing-24);
+    }
+    &__quest{
+        text-align: center;
+        font-size:var(--text-2xl);
+        color: var(--color-white);
+    }
+    &__join{
+        text-align: center;
+        background-color: $prime_purple;
+        border-radius: var(--spacing-32);
+        color: var(--color-white);
+        font-size: var(--text-xl);
+        padding: var(--spacing-12);
+    }
+}

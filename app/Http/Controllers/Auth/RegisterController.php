@@ -95,8 +95,15 @@ class RegisterController extends Controller
 
     protected function showRegistrationForm()
     {
-        $universities = University::pluck('chinese_name', 'id');
-        $Data['universities'] = $universities;
+        $universities = University::all();
+
+        $Data['universities'] = $universities->transform(function ($item, $key) {
+            return [
+                'id' => $item->id,
+                'name' => $item->chinese_name. $item->english_name
+            ];
+        })->pluck('name', 'id');
+
         return view('auth.register', compact(['Data']));
     }
 }

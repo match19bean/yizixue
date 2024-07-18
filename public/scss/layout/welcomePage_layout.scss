@@ -14,7 +14,7 @@
     z-index: -1;
     background-color: var(--color-black);
     aspect-ratio: 16/8.5;
-    overflow-y: hidden;
+    overflow: hidden;
 
     &__headerCard {
         display: grid;
@@ -66,11 +66,47 @@
 
 .l-innerbody{
     &__student, &__university, &__qa, &__join, &__news, &__local{
-        width: 100%;
         margin: var(--spacing-80) 0 var(--spacing-80) 0;
     }
 
     // custom setting for main sections
+    &__student{
+        .c-studentCardSwiper_userName{
+            font-size: var(--text-2xl);
+        }
+        .c-studentCardSwiper_schoolEnglish{
+            font-size: var(--text-xl);
+        }
+        .c-studentCardSwiper_schoolChinese{
+            font-size: var(--text-lg);
+        }
+        .c-studentCardSwiper_react{
+            i span{
+                font-size: var(--text-md);
+            }
+        }
+        .c-studentCardSwiper_postTag{
+            padding: var(--spacing-4);
+            a{
+                font-size: var(--text-sm);
+            }
+        }
+    }
+    &__university{
+        .c-uniCard{
+            h4{
+                font-size: var(--text-lg);
+            }
+            h6{
+                font-size: var(--text-lg);
+            }
+        }
+    }
+    &__qa{
+        .c-qaCard__content{
+            height: 100%;
+        }
+    }
     &__join{
         min-height: 30rem;
         @include imgBackground;
@@ -123,17 +159,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-    &__qaSection{
-        display: flex;
-        padding: var(--spacing-32);
-        gap: var(--spacing-12);
-        justify-content: center;
-        align-self: center;
-        div.container.row{
-            justify-content: center;
-            align-items: center;
-        }
     }
     &__joinSection{
         display: flex;

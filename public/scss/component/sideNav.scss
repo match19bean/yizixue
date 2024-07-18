@@ -1,65 +1,59 @@
-// @import "broccoli_style";
-
 .c-sideNav {
     color: var(--color-white);
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     min-height: 100rem;
-    &_selections {
+    &__selections {
         grid-column: 1/12;
         grid-row: 1/2;
-        &_locations,
-        &_topics {
-            padding: var(--spacing-24);
-            background-color: $prime_purple;
-            border-radius: var(--spacing-24);
-            margin: var(--spacing-24);
-            text-align: center;
-            font-size: var(--text-3xl);
-            button{
-                padding: var(--spacing-12);
-            }
+    }
+    &__locations,
+    &__topics {
+        padding: var(--spacing-24);
+        background-color: $prime_purple;
+        border-radius: var(--spacing-12);
+        margin: var(--spacing-24);
+        text-align: center;
+        font-size: var(--text-2xl);
+        button{
+            padding: var(--spacing-12);
         }
     }
     // popup section
-    &_area {
+    &__area {
         z-index: 2;
         grid-column: 10/21;
         grid-row: 1/2;
-        // background-color: yellow;
-        display: grid;
-        grid-template-rows: repeat(20, 1fr);
-        &_english {
-            display: none;
-            grid-row: 1/21;
-            grid-column: 1/2;
-            transform-origin: 0% 0%;
-            transform: scale(0.8);
-            // background-color: blue;
-        }
+        display: block;
+    }
+    &__english {
+        display: none;
+        position: absolute;
+        top: var(--spacing-24);
+        transform-origin: 0% 0%;
+        transform: scale(0.8);
+    }
 
-        &_eurp {
-            display: none;
-            grid-row: 3/21;
-            grid-column: 1/2;
-            transform-origin: 0% 0%;
-            transform: scale(0.8);
-            // background-color: blue;
-        }
+    &__eurp {
+        display: none;
+        position: absolute;
+        top: calc(var(--spacing-24)*2 + var(--spacing-12) + var(--text-2xl) + var(--spacing-8));
+        transform-origin: 0% 0%;
+        transform: scale(0.8);
+    }
 
-        &_asia {
-            display: none;
-            grid-row: 5/21;
-            grid-column: 1/2;
-            transform-origin: 0% 0%;
-            transform: scale(0.8);
-            // background-color: blue;
-        }
+    &__asia {
+        display: none;
+        position: absolute;
+        top: calc((var(--spacing-24)*2 + var(--spacing-12) + var(--text-2xl) + var(--spacing-8))*2);
+        transform-origin: 0% 0%;
+        transform: scale(0.8);
     }
 
     hr, &__hr {
         opacity: 1;
         background-color: var(--color-white);
-        height: var(--spacing-2);
+        margin: var(--spacing-8) 0;
+        color: white;
     }
 }

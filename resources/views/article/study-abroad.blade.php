@@ -8,12 +8,12 @@
         <div class="col-md-7">
             <div class="c-breadcrumbs">
                 <div>
-                    <h4 class="c-breadcrumbs_prePage"><a href="{{url('/')}}"
+                    <h4 class="c-breadcrumbs__prePage"><a href="{{url('/')}}"
                             class="text-decoration-none text-black">首頁</a>
                         >
                         留學誌
                     </h4>
-                    <h3 class="c-breadcrumbs_currentPage">留學誌</h3>
+                    <h3 class="c-breadcrumbs__currentPage">留學誌</h3>
                 </div>
             </div>
         </div>
@@ -47,16 +47,16 @@
         <!-- side bar -->
         <div class="col-md-3">
             <!-- sideBar -->
-            <div class="sideBar">
+            <div>
                 <!-- categories -->
-                <div class="c-sideNav_selections_topics">
-                    <button><a style="text-decoration: none;" class="text-white text-center"
+                <div class="c-sideNav__topics">
+                    <button><a class="text-white text-center"
                             href="{{route('study-abroad')}}">
                             全部文章
                         </a></button>
                     <hr class="c-sideNav__hr">
                     @forelse($Data['category'] as $category)
-                    <button><a style="text-decoration: none;" class="text-white text-center"
+                    <button><a class="text-white text-center"
                             href="{{route('study-abroad', ['category_id' => $category->id])}}">
                             {{$category->name}}
                         </a></button>
@@ -116,8 +116,8 @@
                                                 style="background-image: url('/uploads/{{$post->author->avatar}}');">&nbsp;</span>
                                             @endif
                                         <!-- namecard -->
-                                            <a href="{{route('get-introduction', $post->author->id)}}">
-                                                {{ $post->author->name  }}
+                                            <a class="align-content-center" href="{{route('get-introduction', $post->author->id)}}">
+                                                {{ !is_null($post->author->name) ? \Illuminate\Support\Str::limit($post->author->name, 10) : '' }}
                                             </a>
                                     </div>
 
@@ -149,14 +149,14 @@
                                     <!-- reacts -->
                                     <div class="o-react w-100 p-3">
                                         @if(auth()->check())
-                                        <i class="bi bi-heart" style="
+                                        <i class="bi bi-heart-fill like-post" style="
                                     color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                             <span>
                                                 {{$post->likePost->count()}}
                                             </span>
                                         </i>
-                                        <i class="bi bi-bookmark" style="
+                                        <i class="bi bi-bookmark-fill collect-post" style="
                                     color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                             <span>
@@ -164,12 +164,12 @@
                                             </span>
                                         </i>
                                         @else
-                                        <i class="bi bi-heart" style="color: black;" data-id="{{$post->id}}">
+                                        <i class="bi bi-heart-fill like-post" style="color: black;" data-id="{{$post->id}}">
                                             <span>
                                                 {{$post->likePost->count()}}
                                             </span>
                                         </i>
-                                        <i class="bi bi-bookmark" style="color: black;" data-id="{{$post->id}}">
+                                        <i class="bi bi-bookmark-fill collect-post" style="color: black;" data-id="{{$post->id}}">
                                             <span>
                                                 {{$post->collectPost->count()}}
                                             </span>
@@ -195,48 +195,49 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('page_js')
+    <script>
+        $('.like-post').click(function () {
+            let that = $(this);
+            $.ajax({
+                url: "{{url('like-post')}}" + "/" + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if (res.operator === 'no') {
+                        alert(res.message);
+                    } else if (res.operator === 'add') {
+                        that.css('color', 'red').children('span').text(res.total);
 
-<script>
-    $('.socialIcons .fa-heart').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: "{{url('like-post')}}" + "/" + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red').children('span').text(res.total);
-
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black').children('span').text(res.total);
+                    } else if (res.operator === 'reduce') {
+                        that.css('color', 'black').children('span').text(res.total);
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
                 }
-            },
-            error: function (error) {
-                console.log(error)
-            }
+            });
         });
-    });
 
-    $('.socialIcons .fa-bookmark').click(function () {
-        let that = $(this);
-        $.ajax({
-            url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
-            method: 'GET',
-            success: function (res) {
-                if (res.operator === 'no') {
-                    alert(res.message);
-                } else if (res.operator === 'add') {
-                    that.css('color', 'red').children('span').text(res.total);
-                } else if (res.operator === 'reduce') {
-                    that.css('color', 'black').children('span').text(res.total);
+        $('.collect-post').click(function () {
+            let that = $(this);
+            $.ajax({
+                url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
+                method: 'GET',
+                success: function (res) {
+                    if (res.operator === 'no') {
+                        alert(res.message);
+                    } else if (res.operator === 'add') {
+                        that.css('color', 'red').children('span').text(res.total);
+                    } else if (res.operator === 'reduce') {
+                        that.css('color', 'black').children('span').text(res.total);
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
                 }
-            },
-            error: function (error) {
-                console.log(error)
-            }
+            });
         });
-    });
-</script>
+    </script>
 @endsection

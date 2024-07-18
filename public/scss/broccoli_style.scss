@@ -18,6 +18,9 @@
 @import 'layout/yizixueFAQ.scss';
 @import 'layout/contract.scss';
 @import 'layout/login.scss';
+@import 'layout/qnaGuest.scss';
+@import 'layout/articleList.scss';
+@import 'layout/qnaIndex';
 // components
 @import 'component/breadcrumbs.scss';
 @import 'component/sideNav.scss';
@@ -29,6 +32,7 @@
 @import 'component/callAction';
 @import 'component/pagination.scss';
 @import 'component/aboutCarousel.scss';
+@import 'component/qnaCard.scss';
 // objects
 @import 'object/btns.scss';
 @import 'object/searchBar.scss';
