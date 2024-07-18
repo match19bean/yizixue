@@ -83,7 +83,7 @@
                         <div class="l-singleArticle__rightDiv">
                             <h2>文章作者</h2>
                             <!-- new student card -->
-                            <div class="c-studentCard">
+                            <div class="c-studentCard" onclick="cardClickable({{ $Data['article']->author->id }})">
                                 <!-- img div -->
                                 <span class="c-studentCard_studentImg"
                                     style="background-image: url('{{asset('uploads/'.$Data['article']->author->avatar)}}');">&nbsp;</span>
