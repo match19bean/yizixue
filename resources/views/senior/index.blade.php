@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h4 class="c-breadcrumbs__prePage"><a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a>
-                    > 學長姊
+                    > 學長姊快找
                 </h4>
             </div>
             <div class="col-sm-12">

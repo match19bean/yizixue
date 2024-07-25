@@ -22,14 +22,13 @@ class FrontPageController extends Controller
     public function index()
     {
         $users = User::where('expired', '>=', now())->get();
-
         $Data = [
             'Skills' => new Skill,
             'UserSkillRelation' => new UserSkillRelation,
             'Users' => $users,
             'University' => University::withCount('vip')->orderBy('vip_count', 'desc')->limit(15)->get(),
             'PostCategory' => new PostCategory,
-            'QaCategory' => QACategory::with('QACategoryRelation')->get(),
+            'QaCategory' => QACategory::with(['QACategoryRelation' => function($q){$q->orderByDesc('created_at');}])->get(),
             'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first()
         ];
 
