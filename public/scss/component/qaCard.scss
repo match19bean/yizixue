@@ -1,9 +1,11 @@
 .c-qaCard{
+    height: 100%;
     font-size: var(--text-md);
     color: var(--color-white);
     border: solid var(--spacing-4) $prime_purple_light;
     border-radius: var(--spacing-32);
     overflow: hidden;
+    transition: 0.2s;
     &__content{
         background-color: $prime_purple_light;
         border-radius: var(--spacing-24);
@@ -14,11 +16,18 @@
         flex-direction: column;
         align-items: start;
         justify-content: space-around;
+        transition: 0.3s;
+        &:hover{
+            background-color: $prime_purple;
+        }
     }
     &__categName{
         font-size: var(--text-2xl);
     }
     &__icon{
         padding: var(--spacing-12);
+    }
+    &:hover{
+        border: solid var(--spacing-4) $prime_purple;
     }
 }

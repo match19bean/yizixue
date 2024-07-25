@@ -76,7 +76,7 @@
     </nav>
 
     <div class="container-fluid p-0 m-0">
-    @yield('content')
+        @yield('content')
     </div>
 
     <!-- Footer-->
@@ -87,7 +87,8 @@
                     <div class="l-footer_brand h-100">
                         <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
                         <div class="row g-3">
-                        <p class="col-md-12 text-center">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19</p>
+                            <p class="col-md-12 text-center">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19
+                            </p>
                             <p class="col-md-12 text-center">統一編號：83453577</p>
                         </div>
                     </div>
@@ -142,66 +143,76 @@
     </footer>
 </body>
 <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Swiper js -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- swiper costume -->
-    <script>
-        var swiper = new Swiper(".studentSwiper", {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 2000,
-            },
-            pagination: {
-                el: ".studentPagi",
-                clickable: true,
-            },
-            breakpoints: {
-                1920: {
-                    slidesPerView: 5,
-                }
+<!-- Swiper js -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- swiper costume -->
+<script>
+    var swiper = new Swiper(".studentSwiper", {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        allowTouchMove: false,
+        loop: true,
+        autoplay: {
+            delay: 2000,
+        },
+        pagination: {
+            el: ".studentPagi",
+            clickable: true,
+        },
+        breakpoints: {
+            1920: {
+                slidesPerView: 6,
             }
-        });
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
 
-        var swiper = new Swiper(".schoolSwiper", {
-            slidesPerView: 5,
-            spaceBetween: 30,
-            centeredSlides: true,
-            loop: true,
-            autoplay: {
-                delay: 2000,
-            },
-            pagination: {
-                el: ".schoolPagi",
-                clickable: true,
-            },
-            breakpoints: {
-                1920: {
-                    slidesPerView: 7,
-                }
+    var swiper = new Swiper(".schoolSwiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        allowTouchMove: false,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 2000,
+        },
+        pagination: {
+            el: ".schoolPagi",
+            clickable: true,
+        },
+        breakpoints: {
+            1920: {
+                slidesPerView: 7,
             }
-        });
-    </script>
-    @yield('page_js')
-    <!-- cards click function -->
-    <script>
-        function cardClickable(id) {
-            // console.log(id);
-            location.href = document.location.origin + "/introduction/" + id;
-        }
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+@yield('page_js')
+<!-- cards click function -->
+<script>
+    function cardClickable(id) {
+        // console.log(id);
+        location.href = document.location.origin + "/introduction/" + id;
+    }
 
-        function uniCardClick(uni) {
-            location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
-        }
-    </script>
-    <!-- header and news carousel function -->
-    <script src="{{ asset('js/broccoli-header.js')}}"></script>
+    function uniCardClick(uni) {
+        location.href = document.location.origin + "/senior?university=" + encodeURIComponent(uni);
+    }
+</script>
+<!-- header and news carousel function -->
+<script src="{{ asset('js/broccoli-header.js')}}"></script>
 </body>
 
 </html>

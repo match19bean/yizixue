@@ -2306,36 +2306,6 @@ section {
   fill: #4C2A70;
 }
 
-.l-innerbody__student, .l-innerbody__university, .l-innerbody__qa, .l-innerbody__join, .l-innerbody__news, .l-innerbody__local {
-  margin: var(--spacing-80) 0 var(--spacing-80) 0;
-}
-.l-innerbody__student .c-studentCardSwiper_userName {
-  font-size: var(--text-2xl);
-}
-.l-innerbody__student .c-studentCardSwiper_schoolEnglish {
-  font-size: var(--text-xl);
-}
-.l-innerbody__student .c-studentCardSwiper_schoolChinese {
-  font-size: var(--text-lg);
-}
-.l-innerbody__student .c-studentCardSwiper_react i span {
-  font-size: var(--text-md);
-}
-.l-innerbody__student .c-studentCardSwiper_postTag {
-  padding: var(--spacing-4);
-}
-.l-innerbody__student .c-studentCardSwiper_postTag a {
-  font-size: var(--text-sm);
-}
-.l-innerbody__university .c-uniCard h4 {
-  font-size: var(--text-lg);
-}
-.l-innerbody__university .c-uniCard h6 {
-  font-size: var(--text-lg);
-}
-.l-innerbody__qa .c-qaCard__content {
-  height: 100%;
-}
 .l-innerbody__join {
   min-height: 30rem;
   display: block;
@@ -2371,22 +2341,6 @@ section {
 .l-innerbody__local div p {
   font-size: var(--text-md);
 }
-.l-innerbody__title a {
-  min-width: 25rem;
-  text-align: end;
-  background-color: #4C2A70;
-  padding: var(--spacing-12);
-  border-radius: 0 var(--spacing-24) var(--spacing-24) 0;
-  font-size: var(--text-3xl);
-  color: var(--color-white);
-}
-.l-innerbody__content {
-  margin: var(--spacing-80) 0 var(--spacing-80) 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .l-innerbody__joinSection {
   display: flex;
   flex-direction: row;
@@ -2401,6 +2355,36 @@ section {
   color: var(--color-white);
   font-weight: 900;
   text-shadow: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--color-black);
+}
+
+.l-student .c-studentCardSwiper_userName {
+  font-size: var(--text-2xl);
+}
+.l-student .c-studentCardSwiper_schoolEnglish {
+  font-size: var(--text-xl);
+}
+.l-student .c-studentCardSwiper_schoolChinese {
+  font-size: var(--text-lg);
+}
+.l-student .c-studentCardSwiper_react i span {
+  font-size: var(--text-md);
+}
+.l-student .c-studentCardSwiper_postTag {
+  padding: var(--spacing-4);
+}
+.l-student .c-studentCardSwiper_postTag a {
+  font-size: var(--text-sm);
+}
+
+.l-university {
+  background-color: #e2d8e2;
+  border-radius: var(--spacing-24);
+}
+.l-university .c-uniCard h4 {
+  font-size: var(--text-lg);
+}
+.l-university .c-uniCard h6 {
+  font-size: var(--text-lg);
 }
 
 .l-uniList__sideNav {
@@ -2892,6 +2876,14 @@ section {
   background-position: center;
   aspect-ratio: 1/1;
 }
+.c-studentCard_schoolImg span {
+  margin: var(--spacing-12);
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
 .c-studentCard_userName {
   grid-column: 1/9;
   grid-row: 1/5;
@@ -2985,6 +2977,14 @@ section {
 .c-studentCardSwiper_schoolImg {
   grid-column: 2/5;
   grid-row: 13/16;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1/1;
+}
+.c-studentCardSwiper_schoolImg span {
+  margin: var(--spacing-12);
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3093,11 +3093,13 @@ section {
 }
 
 .c-qaCard {
+  height: 100%;
   font-size: var(--text-md);
   color: var(--color-white);
   border: solid var(--spacing-4) #BD9EBE;
   border-radius: var(--spacing-32);
   overflow: hidden;
+  transition: 0.2s;
 }
 .c-qaCard__content {
   background-color: #BD9EBE;
@@ -3109,12 +3111,19 @@ section {
   flex-direction: column;
   align-items: start;
   justify-content: space-around;
+  transition: 0.3s;
+}
+.c-qaCard__content:hover {
+  background-color: #4C2A70;
 }
 .c-qaCard__categName {
   font-size: var(--text-2xl);
 }
 .c-qaCard__icon {
   padding: var(--spacing-12);
+}
+.c-qaCard:hover {
+  border: solid var(--spacing-4) #4C2A70;
 }
 
 .c-newsCard {
@@ -3530,6 +3539,16 @@ section {
   border-radius: 0 var(--spacing-80) var(--spacing-80) 0;
 }
 
+.o-welcomeTitle a {
+  min-width: 25rem;
+  text-align: end;
+  background-color: #4C2A70;
+  padding: var(--spacing-12);
+  border-radius: 0 var(--spacing-24) var(--spacing-24) 0;
+  font-size: var(--text-3xl);
+  color: var(--color-white);
+}
+
 .o-subTitle {
   min-width: 25rem;
   text-align: end;
@@ -3571,13 +3590,17 @@ section {
 .s-swiperCustom .swiper {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .s-swiperCustom div.swiper.studentSwiper {
-  transform: scale(0.9);
+  transform: scale(0.8);
 }
-.s-swiperCustom div.swiper.schoolSwiper {
-  background-color: #e2d8e2;
-  border-radius: var(--spacing-24);
+.s-swiperCustom div.swiper-button-next::after, .s-swiperCustom div.swiper-button-prev::after {
+  font-size: var(--text-2xl);
+  color: #4C2A70;
+  font-weight: 900;
 }
 .s-swiperCustom div.swiper.schoolSwiper .swiper-slide {
   transform: scale(0.75);
