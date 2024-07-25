@@ -372,7 +372,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <a class="o-readMore" href="#">查看更多 &gt;</a>
+                    <a class="o-readMore" href="{{route('qna')}}">查看更多 &gt;</a>
                 </div>
             </div>
         </div>
