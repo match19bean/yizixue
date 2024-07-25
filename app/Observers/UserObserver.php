@@ -56,11 +56,11 @@ class UserObserver
             unlink(public_path('uploads'.$user->student_proof));
         }
 
-        if(file_exists(public_path('uploads'.$user->avatar))){
+        if(!empty($user->avatar) && file_exists(public_path('uploads'.$user->avatar))){
             unlink(public_path('uploads'.$user->avatar));
         }
 
-        if(file_exists(public_path('uploads/'.$user->avatar))){
+        if(!empty($user->avatar) && file_exists(public_path('uploads/'.$user->avatar))){
             unlink(public_path('uploads/'.$user->avatar));
         }
     }

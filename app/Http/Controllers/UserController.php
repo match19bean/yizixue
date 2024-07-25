@@ -32,7 +32,12 @@ class UserController extends Controller
             'skills' => $skills,
             'profile_video' => Auth::user()->profile_video,
             'profile_voice' => Auth::user()->profile_voice,
-            'universities' => University::all(),
+            'universities' => University::all()->transform(function ($item, $key) {
+                return [
+                    'id' => $item->id,
+                    'name' => $item->chinese_name. $item->english_name
+                ];
+            })->pluck('name', 'id'),
             'categories' => PostCategory::all(),
             'user_categories' => auth()->user()->postCategory->pluck('post_category_id')->toArray(),
             'user_skills' => $userSkills,
@@ -84,6 +89,7 @@ class UserController extends Controller
         $User->line = isset($req->line)?$req->line:$User->line;
         $User->fb = isset($req->fb)?$req->fb:$User->fb;
         $User->ig = isset($req->ig)?$req->ig:$User->ig;
+        $User->linkedin = isset($req->linkedin)?$req->linkedin:$User->linkedin;
         $User->address = isset($req->address)?$req->address:$User->address;
         $User->description = isset($req->description)?$req->description:$User->description;
         $User->profile_video = isset($req->profile_video)?$req->profile_video:$User->profile_video;

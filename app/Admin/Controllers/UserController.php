@@ -119,11 +119,19 @@ class UserController extends AdminController
         ])->default('pending');
         $form->image('avatar', __('Avatar'));
         $form->datetime('birth_day', __('Birth day'))->default(date('Y-m-d'));
-        $form->select('university', __('University'))->options(University::pluck('chinese_name', 'id'));
+        $form->text('university', __('University'))->datalist(University::all()->transform(function ($item, $key) {
+            return [
+                'id' => $item->id,
+                'name' => $item->chinese_name. $item->english_name
+            ];
+        })->pluck('name', 'id'));
         $form->switch('is_study', __('Is study'))->states(['在學中'=>true, '已畢業'=>false]);
         $form->email('email', __('Email'));
         $form->mobile('phone', __('Phone'));
         $form->text('line', __('Line'));
+        $form->text('facebook', __('Facebook'));
+        $form->text('ig', __('Ig'));
+        $form->text('linkedin', __('LinkedIn'));
         $form->text('address', __('Address'));
         $form->text('profile_video', __('Profile video'));
         $form->text('profile_voice', __('Profile voice'));

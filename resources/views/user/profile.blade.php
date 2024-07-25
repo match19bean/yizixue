@@ -348,6 +348,15 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
+                                        <p class="mb-0">LinkedIn</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ Auth::user()->linkedin }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <p class="mb-0">地址</p>
                                     </div>
                                     <div class="col-sm-9">
@@ -503,13 +512,23 @@
                             </div>
                             <div class="mb-3">
                                 <label for="university" class="form-label">大學</label>
-                                <select name="university" id="university" class="form-control">
-                                    @if(!is_null($Data['universities']))
-                                        @foreach($Data['universities'] as $university)
-                                            <option class="form-control" value="{{$university->id}}" @if(Auth::user()->university == $university->id) selected @endif>{{$university->name}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
+{{--                                <select name="university" id="university" class="form-control">--}}
+{{--                                    @if(!is_null($Data['universities']))--}}
+{{--                                        @foreach($Data['universities'] as $university)--}}
+{{--                                            <option class="form-control" value="{{$university->id}}" @if(Auth::user()->university == $university->id) selected @endif>{{$university->name}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
+{{--                                </select>--}}
+                                <input id="string" placeholder="就讀學校" list="universityList" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
+                                <!-- this datalist should contain all the school names -->
+                                <datalist id="universityList">
+                                    <!-- I have check the code works, but it can only search chinese name now, we have to add english name into search pool. -->
+                                    @foreach($Data['universities'] as $id => $name)
+                                        <!-- this option tag contains all the chinese names -->
+                                        <option value="{{$id}}">{{$name}}</option>
+                                    @endforeach
+                                </datalist>
+                                <input type="hidden" name="university" id="universityList-hidden">
 {{--                                <input type="text" value="{{ Auth::user()->university }}" name="university"--}}
 {{--                                    class="form-control">--}}
                             </div>
@@ -542,6 +561,11 @@
                             <div class="mb-3">
                                 <label for="line" class="form-label">Instagram</label>
                                 <input type="text" value="{{ Auth::user()->ig }}" name="ig"
+                                       class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="linkedin" class="form-label">LinkedIn</label>
+                                <input type="text" value="{{ Auth::user()->linkedin }}" name="linkedin"
                                        class="form-control">
                             </div>
                             <div class="mb-3">
@@ -827,4 +851,18 @@
 
     </div>
     <!-- /.container-fluid -->
+
+    <script>
+        document.querySelector('#string').addEventListener('input', function(e) {
+
+            var input = e.target,
+                list = input.getAttribute('list'),
+                options = document.querySelectorAll('#' + list + ' option[value="'+input.value+'"]'),
+                hiddenInput = document.getElementById('universityList-hidden');
+            if (options.length > 0) {
+                hiddenInput.value = input.value;
+                input.value = options[0].innerText;
+            }
+        });
+    </script>
 @endsection

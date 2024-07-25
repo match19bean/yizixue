@@ -66,6 +66,8 @@ class CarouselController extends AdminController
         $form = new Form(new Carousel());
 
         $form->image('image_path', __('Image path'))->removable();
+        $form->text('description1', __('Carousels Descripition1'));
+        $form->text('description1', __('Carousels Descripition2'));
         $form->switch('is_active', __('Is active'));
         $form->number('sort', __('Sort'));
 
