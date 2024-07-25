@@ -129,7 +129,7 @@ class UserController extends AdminController
         $form->email('email', __('Email'));
         $form->mobile('phone', __('Phone'));
         $form->text('line', __('Line'));
-        $form->text('facebook', __('Facebook'));
+        $form->text('fb', __('Facebook'));
         $form->text('ig', __('Ig'));
         $form->text('linkedin', __('LinkedIn'));
         $form->text('address', __('Address'));
