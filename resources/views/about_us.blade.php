@@ -82,7 +82,7 @@
                         <!-- the following card are just a demo, please replace it with the new back-end ver you made, thx ;) -->
                         @forelse($managers as $user)
                         <div class="swiper-slide">
-                            <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})>
+                            <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})">
                                 <!-- img div -->
                                 @if(is_null($user->avatar))
                                     <span class="c-studentCardSwiper_studentImg"
