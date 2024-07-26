@@ -52,8 +52,9 @@ class UserController extends AdminController
         $grid->column('state', __('State'));
         $grid->column('remember_token', __('Remember token'));
         $grid->column('verified', __('verified'))->bool();
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+//        $grid->column('created_at', __('Created at'));
+//        $grid->column('updated_at', __('Updated at'));
+        $grid->model()->orderBy('id', 'desc');
 
         return $grid;
     }
