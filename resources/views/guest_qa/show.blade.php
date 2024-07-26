@@ -29,7 +29,7 @@
                 <h2 class="col-md-10 l-qnaGuest__title">{{$qna->title}}</h2>
                 <div class="col-md-2 align-content-end">
                     @if(auth()->check())
-                        <i class="bi bi-bookmark-fill collect-qa d-flex" data-id="{{$qna->id}}" style="
+                        <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex" data-id="{{$qna->id}}" style="
                                     color: @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) red @else black @endif ;
                                             ">
                             <span>{{$qna->collectQa->count()}}</span>
