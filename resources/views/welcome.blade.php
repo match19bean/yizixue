@@ -75,21 +75,21 @@
                                         <div class="c-studentCardSwiper_react"
                                             onclick="event.stopPropagation(); return false; ">
                                             @if(auth()->check())
-                                            <i class="bi bi-heart-fill like-user" style="
+                                            <i class="bi @if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-heart-fill @else bi-heart @endif  like-user" style="
                                     color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
                                     " data-id="{{$user->id}}">
                                                 <span>{{$user->likedUser->count()}}</span>
                                             </i>
-                                            <i class="bi bi-bookmark-fill collect-user" data-id="{{$user->id}}" style="
+                                            <i class="bi @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif  collect-user" data-id="{{$user->id}}" style="
                                     color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
                                     ">
                                                 <span>{{$user->collectedUser->count()}}</span>
                                             </i>
                                             @else
-                                            <i class="bi bi-heart-fill like-user" style="color: black;" data-id="{{$user->id}}">
+                                            <i class="bi bi-heart like-user" data-id="{{$user->id}}">
                                                 <span>{{$user->likedUser->count()}}</span>
                                             </i>
-                                            <i class="bi bi-bookmark-fill collect-user" data-id="{{$user->id}}">
+                                            <i class="bi bi-bookmark collect-user" data-id="{{$user->id}}">
                                                 <span>{{$user->collectedUser->count()}}</span>
                                             </i>
                                             @endif
@@ -496,10 +496,10 @@
                     if (res.operator === 'no') {
                         alert(res.message);
                     } else if (res.operator === 'add') {
-                        that.css('color', 'red');
+                        that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart-fill').css('color', 'red');
                         that.children('span').text(res.total);
                     } else if (res.operator === 'reduce') {
-                        that.css('color', 'black');
+                        that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart').css('color', 'black');
                         that.children('span').text(res.total);
                     }
                 },
@@ -518,10 +518,10 @@
                     if (res.operator === 'no') {
                         alert(res.message);
                     } else if (res.operator === 'add') {
-                        that.css('color', 'red');
+                        that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark-fill').css('color', 'red');
                         that.children('span').text(res.total);
                     } else if (res.operator === 'reduce') {
-                        that.css('color', 'black');
+                        that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark').css('color', 'black');
                         that.children('span').text(res.total);
                     }
                 },
