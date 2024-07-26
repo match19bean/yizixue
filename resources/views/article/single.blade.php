@@ -72,7 +72,7 @@
                                             <span>{{$Data['article']->collectPost->count()}}</span>
                                         </i>
                                         @endif
-                                        <i class="bi bi-share" style=" color:black; margin:5px"></i>
+                                            <a href="https://social-plugins.line.me/lineit/share?url={{route('article', ['id' => $Data['article']->id])}}" class="text-none" target="_blank"><i class="bi bi-share" style=" color:black; margin:5px"></i></a>
                                     </div>
                                 </div>
                             </div>
