@@ -350,6 +350,8 @@
                     <div class="col-md-12">
                         @if($Data['user']->post->count() > 0)
                         <a class="o-readMore" href="{{route('article-list', $Data['user']->id)}}">查看更多文章</a>
+                        @else
+                            <a class="o-readMore"></a>
                         @endif
                     </div>
                 </div>
