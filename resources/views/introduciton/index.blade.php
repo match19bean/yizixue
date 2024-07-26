@@ -218,7 +218,6 @@
                                     IN: @if(!is_null($Data['user']->linkedin)) <a href="{{$Data['user']->linkedin}}"
                                                                             class="text-black text-decoration-none" target="_blank">
                                         {{ parse_url($Data['user']->linkedin, PHP_URL_PATH)}} </a> @else @endif</div>
-                                </div>
                             </div>
                         </div>
                     </div>
