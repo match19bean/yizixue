@@ -167,10 +167,11 @@
                         <h3 class="o-normalTitle">學歷經歷</h3>
                         @forelse($Data['user']->experiences as $experience)
                             <p>{{$experience->learning_experience}}</p>
+                            <hr>
                         @empty
                             <p></p>
+                            <hr>
                         @endforelse
-                        <hr>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -236,7 +237,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
      </div>
 </div>
@@ -508,10 +508,6 @@
 
 @section('page_js')
         <script>
-            $(document).ready(function () {
-                $(".adjOnIntroduction").removeClass("px-5");
-                $(".adjOnIntroduction").css("padding", "0");
-            });
             $('.like-user').click(function () {
                 let that = $(this);
                 $.ajax({
