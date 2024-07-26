@@ -13,7 +13,9 @@ class CarouselController extends Controller
 
         $carousel->transform(function($item){
             return [
-                'image_path' => url('uploads/'.$item->image_path),
+                'image_path' => (str_starts_with('/', $item->image_path)) ? str_replace(' ', '%20', url('uploads'.$item->image_path)) : str_replace(' ', '%20', url('uploads/'.$item->image_path)),
+                'description1' => $item->description1,
+                'description2' => $item->description2,
             ];
         });
 

@@ -10,13 +10,18 @@ let images = [
     "uploads/images/banner_p8.jpg",
 ];
 let backendImages = [];
+let description1 = [];
+let description2 = [];
 $.ajax({
     url: 'carousel-list',
     method: 'get',
     success: function(res){
         $.each(res, function(key, item){
             backendImages.push(item.image_path);
+            description1.push(item.description1);
+            description2.push(item.description2);
         });
+        totalPics = backendImages.length;
     },
     error: function(error){
         // console.log(error);
@@ -29,9 +34,9 @@ setInterval(headerSlide, 2000); // 每隔1秒呼叫一次headerSlide
 
 
 let currentPic = 1;
-const totalPics = 8; // 定義總共的圖片數量
+let totalPics; // 定義總共的圖片數量
 let timeout1; // 定義 timeout1
-
+totalPics = (backendImages.length === 0 ) ? images.length : backendImages.length
 function headerSlide(){
     // 清除之前的 setTimeout
     clearTimeout(timeout1);
@@ -42,7 +47,6 @@ function headerSlide(){
     } else {
         currentPic = 1;
     }
-
     // 根據 currentPic 切換圖片
     changePic(currentPic);
 }
@@ -50,7 +54,12 @@ function headerSlide(){
 function changePic(index)
 {
     let image_path = backendImages[index-1] !== undefined ? backendImages[index-1] : images[index-1];
-    $('#topic').text(text[index-1]+"，");
+    if(backendImages.length !== 0) {
+        $('.description1').text(description1[index-1]);
+        $('.description2').text(description2[index-1]);
+    } else {
+        $('#topic').text(text[index-1]+"，");
+    }
     $("#bannerImg").css("background-image", "url('" + image_path + "')");
 }
 

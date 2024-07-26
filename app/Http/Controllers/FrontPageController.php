@@ -47,7 +47,7 @@ class FrontPageController extends Controller
                 'id' => $item->id,
                 'body' => Str::limit(strip_tags($item->body)),
                 'title' => $item->title,
-                'image_path' => (str_starts_with('/', $item->image)) ? str_replace(' ', '%20', url('uploads'.$item->image_path)) : str_replace(' ', '%20', url('uploads/'.$item->image_path)),
+                'image_path' => (str_starts_with('/', $item->image_path)) ? str_replace(' ', '%20', url('uploads'.$item->image_path)) : str_replace(' ', '%20', url('uploads/'.$item->image_path)),
                 "category" => $item->category->transform(function($item){ return $item->postCategory->name; }),
                 'url' => url('article/'.$item->id)
             ];
