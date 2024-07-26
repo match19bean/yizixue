@@ -237,6 +237,7 @@
                 </div>
             </div>
         </div>
+        </div>
      </div>
 </div>
 <!-- my article -->
