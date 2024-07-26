@@ -21,7 +21,9 @@ $.ajax({
             description1.push(item.description1);
             description2.push(item.description2);
         });
-        totalPics = backendImages.length;
+        if(backendImages.length!==0){
+            totalPics = backendImages.length;
+        }
     },
     error: function(error){
         // console.log(error);

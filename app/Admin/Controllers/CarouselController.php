@@ -69,7 +69,7 @@ class CarouselController extends AdminController
         $form->text('description1', __('Carousels Descripition1'))->rules('nullable|max:10');
         $form->text('description2', __('Carousels Descripition2'))->rules('nullable|max:10');
         $form->switch('is_active', __('Is active'));
-        $form->number('sort', __('Sort'));
+        $form->number('sort', __('Sort'))->default(1);
 
         return $form;
     }
