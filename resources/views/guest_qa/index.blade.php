@@ -107,14 +107,14 @@
                                 <div class="col-md-2">
                                     <div class="lign-content-end">
                                         @if(auth()->check())
-                                            <i class="bi bi-bookmark-fill collect-qa d-flex" data-id="{{$qa->id}}" style="
+                                            <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qa->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex" data-id="{{$qa->id}}" style="
                                     color: @if(auth()->user()->collectQa->where('qa_id', $qa->id)->count()==1) red @else black @endif ;
                                             ">
-                                                <span class="text-black">{{$qa->collectQa->count()}}</span>
+                                                <span>{{$qa->collectQa->count()}}</span>
                                             </i>
                                         @else
-                                            <i class="bi bi-bookmark-fill collect-qa d-flex" data-id="{{$qa->id}}">
-                                                <span class="text-black">{{$qa->collectQa->count()}}</span>
+                                            <i class="bi bi-bookmark collect-qa d-flex" data-id="{{$qa->id}}">
+                                                <span>{{$qa->collectQa->count()}}</span>
                                             </i>
                                         @endif
                                     </div>
@@ -187,12 +187,12 @@
                                                     </span>
                                                 </i>
                                                 @else
-                                                <i class="bi bi-heart like-post" style="color: black;" data-id="{{$post->id}}">
+                                                <i class="bi bi-heart like-post" data-id="{{$post->id}}">
                                                     <span>
                                                         {{$post->likePost->count()}}
                                                     </span>
                                                 </i>
-                                                <i class="bi bi-bookmark like-collect-post" style="color: black;" data-id="{{$post->id}}">
+                                                <i class="bi bi-bookmark like-collect-post" data-id="{{$post->id}}">
                                                     <span>
                                                         {{$post->collectPost->count()}}
                                                     </span>
