@@ -6,7 +6,7 @@
         flex-direction: row;
         justify-content: center;
     }
-    div.swiper.studentSwiper{
+    div.swiper.studentSwiper, div.swiper.teamSwiper{
         transform: scale(0.8);
     }
     div.swiper-button-next::after, div.swiper-button-prev::after{

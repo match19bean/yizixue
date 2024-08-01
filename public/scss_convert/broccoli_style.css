@@ -1919,6 +1919,10 @@ section {
   -webkit-user-drag: none;
 }
 
+.u-cursor-pointer {
+  cursor: pointer;
+}
+
 :root {
   --spacing-160: 16rem;
   --spacing-120: 12rem;
@@ -2283,7 +2287,6 @@ section {
   background-size: cover;
   background-position: top;
   aspect-ratio: 16/9;
-  filter: opacity(0.6);
 }
 .l-innerHeader__headerCard__slogan {
   grid-row: 7/9;
@@ -2518,16 +2521,31 @@ section {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
+  padding: 0;
 }
 .l-introduction__postTag .o-tag {
   font-size: var(--text-3xl);
+  margin-left: 0;
+  margin-right: var(--spacing-8);
 }
 .l-introduction__socialBtn {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
 }
-.l-introduction__socialBtn .o-react, .l-introduction__socialBtn .o-tag, .l-introduction__socialBtn i {
+.l-introduction__socialBtn div {
+  margin: 0 var(--spacing-12);
+}
+.l-introduction__socialBtn .bi-heart, .l-introduction__socialBtn .bi-bookmark, .l-introduction__socialBtn .bi-heart-fill, .l-introduction__socialBtn .bi-bookmark-fill {
+  padding: var(--spacing-2);
+}
+.l-introduction__socialBtn .o-actBtn, .l-introduction__socialBtn .o-tag, .l-introduction__socialBtn i {
   font-size: var(--text-3xl);
+}
+.l-introduction__socialBtn .o-tag {
   padding: var(--spacing-4) var(--spacing-24) var(--spacing-4) var(--spacing-24);
 }
 .l-introduction__detailSection {
@@ -2548,7 +2566,7 @@ section {
   padding: var(--spacing-12);
   border-radius: 0 var(--spacing-12) var(--spacing-12) 0;
   margin-top: calc(-1 * var(--spacing-24));
-  margin-bottom: var(--spacing-24);
+  margin-bottom: var(--spacing-64);
   z-index: 2;
 }
 .l-introduction__myArticle {
@@ -2630,10 +2648,10 @@ section {
 }
 
 .l-qnaGuest__title {
-  font-size: var(--text-3xl);
+  font-size: var(--text-4xl);
 }
 .l-qnaGuest__statusContent {
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
 }
 .l-qnaGuest__border {
   border: solid var(--spacing-2) #4C2A70;
@@ -2810,21 +2828,18 @@ section {
 .c-sideNav__english {
   display: none;
   position: absolute;
-  top: var(--spacing-24);
   transform-origin: 0% 0%;
   transform: scale(0.8);
 }
 .c-sideNav__eurp {
   display: none;
   position: absolute;
-  top: calc(var(--spacing-24) * 2 + var(--spacing-12) + var(--text-2xl) + var(--spacing-8));
   transform-origin: 0% 0%;
   transform: scale(0.8);
 }
 .c-sideNav__asia {
   display: none;
   position: absolute;
-  top: calc((var(--spacing-24) * 2 + var(--spacing-12) + var(--text-2xl) + var(--spacing-8)) * 2);
   transform-origin: 0% 0%;
   transform: scale(0.8);
 }
@@ -3355,7 +3370,8 @@ section {
 
 .o-qnaBtn {
   all: unset;
-  font-size: var(--text-md);
+  font-size: var(--text-xl);
+  letter-spacing: var(--text-xxs);
   color: var(--color-white);
   cursor: pointer;
   padding: var(--spacing-12);
@@ -3416,6 +3432,15 @@ section {
   color: var(--color-white);
   width: -moz-fit-content;
   width: fit-content;
+  transition: 0.1s;
+}
+.o-tag:hover {
+  background-color: #6e6e6e;
+  color: var(--color-white);
+}
+.o-tag:active {
+  background-color: #C1C1C1;
+  color: var(--color-white);
 }
 
 .o-readMore {
@@ -3443,6 +3468,17 @@ section {
   font-size: var(--text-sm);
   text-decoration: none;
   text-transform: none;
+}
+
+.o-actBtn {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2);
+  cursor: pointer;
 }
 
 .o-socialIcon {
@@ -3594,7 +3630,7 @@ section {
   flex-direction: row;
   justify-content: center;
 }
-.s-swiperCustom div.swiper.studentSwiper {
+.s-swiperCustom div.swiper.studentSwiper, .s-swiperCustom div.swiper.teamSwiper {
   transform: scale(0.8);
 }
 .s-swiperCustom div.swiper-button-next::after, .s-swiperCustom div.swiper-button-prev::after {
@@ -3651,4 +3687,12 @@ section {
   text-align: center;
   transform: translate3d(0, 0, 0);
   z-index: 10;
+}
+
+.bi-heart, .bi-bookmark {
+  color: var(--color-black);
+}
+
+.bi-haert-fill, .bi-bookmark-fill {
+  color: var(--color-red);
 }/*# sourceMappingURL=broccoli_style.css.map */

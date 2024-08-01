@@ -29,7 +29,7 @@
         <!-- Student Card Section -->
         <div class="col-md-12 p-0 mt-5">
             <!-- title -->
-            <h3 class="o-welcomeTitle">
+            <h3 class="o-welcomeTitle mb-5">
                 <a href="{{route('senior')}}">學長姐 | 快找</a>
             </h3>
             <div class="p-5">
@@ -61,7 +61,7 @@
                                          </div>
                                         <!-- name card -->
                                         <h4 class="c-studentCardSwiper_userName">
-                                            {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
+                                            {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,7): "" }}
                                         </h4>
                                         <!-- school english -->
                                         <h5 class="c-studentCardSwiper_schoolEnglish">
@@ -123,7 +123,7 @@
         <!-- University section-->
         <div class="col-md-12 p-0 mt-5">
             <!-- title -->
-            <h3 class="o-welcomeTitle">
+            <h3 class="o-welcomeTitle mb-5">
                 <a href="{{route('university-list')}}">好學校｜關注</a>
             </h3>
             <div class="p-5">
@@ -172,7 +172,7 @@
         <!-- QA section -->
         <div class="col-md-12 p-0 mt-5">
             <!-- title -->
-            <h3 class="o-welcomeTitle">
+            <h3 class="o-welcomeTitle mb-5">
                 <a href="{{route('qna')}}">問與答｜諮詢</a>
             </h3>
             <div class="container p-5">

@@ -28,7 +28,8 @@
 
 .o-qnaBtn{
     all: unset;
-    font-size: var(--text-md);
+    font-size: var(--text-xl);
+    letter-spacing: var(--text-xxs);
     color: var(--color-white);
     cursor: pointer;
     padding: var(--spacing-12);
@@ -82,6 +83,15 @@
 
 .o-tag{
     @include tag;
+    transition: 0.1s;
+    &:hover{
+        background-color: $dark_gray;
+        color: var(--color-white);
+    }
+    &:active{
+        background-color: $prime_gray;
+        color: var(--color-white);
+    }
 }
 
 .o-readMore{
@@ -109,6 +119,16 @@
             text-transform: none;
         }
     }
+}
+
+.o-actBtn{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2);
+    cursor: pointer;
 }
 
 .o-socialIcon{

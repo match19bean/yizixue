@@ -10,7 +10,8 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico')}}" />
     <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -218,8 +219,9 @@
 <!-- swiper custom -->
 <script>
     var swiper = new Swiper(".studentSwiper", {
-        slidesPerView: 5,
+        slidesPerView: 4,
         spaceBetween: 30,
+        allowTouchMove: false,
         loop: true,
         autoplay: {
             delay: 2000,
@@ -232,7 +234,11 @@
             1920: {
                 slidesPerView: 6,
             }
-        }
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 
     var swiper = new Swiper(".aboutUsSwiper", {
@@ -249,6 +255,7 @@
     var swiper = new Swiper(".teamSwiper", {
         slidesPerView: 4,
         spaceBetween: 30,
+        allowTouchMove: false,
         loop: true,
         autoplay: {
             delay: 2000,
@@ -257,6 +264,61 @@
             el: ".teamPagi",
             clickable: true,
         },
+        breakpoints: {
+            1920: {
+                slidesPerView: 6,
+            }
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+<!-- like function -->
+<script>
+    $('.bi-heart').click(function () {
+        let that = $(this);
+        $.ajax({
+            url: "{{url('like-user')}}" + "/" + $(this).data('id'),
+            method: 'GET',
+            success: function (res) {
+                if (res.operator === 'no') {
+                    alert(res.message);
+                } else if (res.operator === 'add') {
+                    that.css('color', 'red');
+                    that.children('span').text(res.total);
+                } else if (res.operator === 'reduce') {
+                    that.css('color', 'black');
+                    that.children('span').text(res.total);
+                }
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    });
+
+    $('.bi-bookmark').click(function () {
+        let that = $(this);
+        $.ajax({
+            url: "{{url('collect-user')}}" + "/" + $(this).data('id'),
+            method: 'GET',
+            success: function (res) {
+                if (res.operator === 'no') {
+                    alert(res.message);
+                } else if (res.operator === 'add') {
+                    that.css('color', 'red');
+                    that.children('span').text(res.total);
+                } else if (res.operator === 'reduce') {
+                    that.css('color', 'black');
+                    that.children('span').text(res.total);
+                }
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
     });
 </script>
 <!-- end of cards click function -->

@@ -10,9 +10,6 @@
                     > 學長姊快找
                 </h4>
             </div>
-            <div class="col-sm-12">
-                <h3 class="c-breadcrumbs__currentPage">學長姊快找</h3>
-            </div>
         </div>
     </div>
 </div>
@@ -25,6 +22,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4 p-0">
+                            <!-- side nav -->
                             <div class="l-seniorPage__sideNav">
                                 <div class="c-sideNav">
                                     <!-- options -->
@@ -32,11 +30,11 @@
                                         <div class="row gy-1">
                                             <div class="col-md-12">
                                                 <div class="c-sideNav__locations">
-                                                    <button onclick="SideBarSelect(1)">英語系國家</button>
+                                                    <button id="englishBtn" onclick="SideBarSelect(1)">英語系國家</button>
                                                     <hr>
-                                                    <button onclick="SideBarSelect(2)">歐語系國家</button>
+                                                    <button id="europBtn" onclick="SideBarSelect(2)">歐語系國家</button>
                                                     <hr>
-                                                    <button onclick="SideBarSelect(3)">亞洲國家</button>
+                                                    <button id="asiaBtn" onclick="SideBarSelect(3)">亞洲國家</button>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -236,7 +234,7 @@
                                                     style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
                                                 <!-- name card -->
                                                 <h4 class="c-studentCard_userName">
-                                                    {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
+                                                    {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,8): "" }}
                                                 </h4>
                                                 <!-- school english -->
                                                 <h5 class="c-studentCard_schoolEnglish">

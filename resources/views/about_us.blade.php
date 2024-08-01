@@ -44,20 +44,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 p-5">
-                    <img src="{{asset('uploads/images/about_sponsor_1.png')}}" alt="">
+                    <img src="{{asset('uploads/images/goals.png')}}" alt="">
                 </div>
                 <div class="col-md-6 p-5">
                     <div class="row l-aboutUs__centerBorder p-5">
                         <!-- put the picture resource here -->
                         <img class="col-md-4" src="{{asset('uploads/images/about_sponsor_2.png')}}" alt="">
-                        <!-- these slides are just DEMOs, you can delete them after back-end setting -->
-                        <img class="col-md-4" src="{{asset('uploads/images/about_sponsor_2.png')}}" alt="">
-                        <img class="col-md-4" src="{{asset('uploads/images/about_sponsor_2.png')}}" alt="">
-                        <!-- end of the DEMOs -->
+                        <img class="col-md-4" src="{{asset('uploads/images/quality-icon.png')}}" alt="">
+                        <img class="col-md-4" src="{{asset('uploads/images/decent-icon.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-md-3 p-5">
-                    <img src="{{asset('uploads/images/about_sponsor_3.png')}}" alt="">
+                    <img src="{{asset('uploads/images/csr.png')}}" alt="">
                 </div>
             </div>
             <div class="row p-5">
@@ -147,8 +145,11 @@
                         <!-- end of the demo -->
                     </div>
                     <div class="teamPagi paginationCustom"></div>
-                    <a class="o-readMore" href="{{route('senior')}}">查看更多 &gt;</a>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
+                <!-- read more -->
+                <a class="o-readMore" href="/senior">查看更多 &gt;</a>
             </div>
         </div>
     </div>

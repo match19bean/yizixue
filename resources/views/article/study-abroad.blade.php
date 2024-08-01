@@ -13,7 +13,6 @@
                         >
                         留學誌推薦
                     </h4>
-                    <h3 class="c-breadcrumbs__currentPage">留學誌推薦</h3>
                 </div>
             </div>
         </div>
@@ -50,15 +49,14 @@
             <div class="pr-3">
                 <!-- categories -->
                 <div class="c-sideNav__topics">
-                    <button><a class="text-white text-center"
-                            href="{{route('study-abroad')}}">
+                    <button><a class="text-white text-center" href="{{route('study-abroad')}}">
                             全部文章
                         </a></button>
                     <hr class="c-sideNav__hr">
                     @forelse($Data['category'] as $category)
                     <button><a class="text-white text-center"
                             href="{{route('study-abroad', ['category_id' => $category->id])}}">
-                            {{$category->name}}
+                            {{ !is_null($category->name) ? \Illuminate\Support\Str::limit($category->name , 10) : '' }}
                         </a></button>
                     <hr class="c-sideNav__hr">
                     @empty
@@ -74,15 +72,15 @@
                     <h5 class="c-callAction__title">
                         讓專業持續變現
                     </h5>
-                        <p class="c-callAction__content">
-                            我們一起幫助學弟妹
-                            <br>
-                            更為自己創造收入
-                            <br>
-                            建立留學諮詢事業
-                            <br>
-                        </p>
-                        <a class="o-lightBtn m-3" href="{{route('pay-product-list')}}">立即成為學長姐</a>
+                    <p class="c-callAction__content">
+                        我們一起幫助學弟妹
+                        <br>
+                        更為自己創造收入
+                        <br>
+                        建立留學諮詢事業
+                        <br>
+                    </p>
+                    <a class="o-lightBtn m-3" href="{{route('pay-product-list')}}">立即成為學長姐</a>
                 </div>
                 @endif
             </div>
@@ -108,17 +106,18 @@
                                     @endif
                                     <div class="c-articleCard__postThumbnail__userInfo">
                                         <!-- user img -->
-                                            @if(is_null($post->image_path))
-                                            <span
-                                                style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
-                                            @else
-                                            <span
-                                                style="background-image: url('/uploads/{{$post->author->avatar}}');">&nbsp;</span>
-                                            @endif
+                                        @if(is_null($post->image_path))
+                                        <span
+                                            style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                        @else
+                                        <span
+                                            style="background-image: url('/uploads/{{$post->author->avatar}}');">&nbsp;</span>
+                                        @endif
                                         <!-- namecard -->
-                                            <a class="align-content-center" href="{{route('get-introduction', $post->author->id)}}">
-                                                {{ !is_null($post->author->name) ? \Illuminate\Support\Str::limit($post->author->name, 10) : '' }}
-                                            </a>
+                                        <a class="align-content-center"
+                                            href="{{route('get-introduction', $post->author->id)}}">
+                                            {{ !is_null($post->author->name) ? \Illuminate\Support\Str::limit($post->author->name, 10) : '' }}
+                                        </a>
                                     </div>
 
                                 </div>
@@ -140,7 +139,9 @@
                                     </div>
                                     <!-- title -->
                                     <a class="c-articleCard__title"
-                                        href="{{route('article', $post->id)}}">{{ $post->title }}</a>
+                                        href="{{route('article', $post->id)}}">
+                                        {{ !is_null($post->title) ? \Illuminate\Support\Str::limit($post->title , 35) : '' }}
+                                    </a>
                                     <!-- content -->
                                     <p class="c-articleCard__content">{!!
                                         \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}</p>
@@ -149,14 +150,14 @@
                                     <!-- reacts -->
                                     <div class="o-react w-100 p-3">
                                         @if(auth()->check())
-                                        <i class="bi @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) bi-heart-fill @else bi-heart @endif like-post" style="
+                                        <i class="bi @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) bi-heart-fill @else bi-heart @endif u-cursor-pointer like-post" style="
                                     color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                             <span>
                                                 {{$post->likePost->count()}}
                                             </span>
                                         </i>
-                                        <i class="bi @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-post" style="
+                                        <i class="bi @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif u-cursor-pointer collect-post" style="
                                     color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                             <span>
@@ -164,12 +165,12 @@
                                             </span>
                                         </i>
                                         @else
-                                        <i class="bi bi-heart like-post" style="color: black;" data-id="{{$post->id}}">
+                                        <i class="bi bi-heart like-post u-cursor-pointer" style="color: black;" data-id="{{$post->id}}">
                                             <span>
                                                 {{$post->likePost->count()}}
                                             </span>
                                         </i>
-                                        <i class="bi bi-bookmark collect-post" style="color: black;" data-id="{{$post->id}}">
+                                        <i class="bi bi-bookmark collect-post u-cursor-pointer" style="color: black;" data-id="{{$post->id}}">
                                             <span>
                                                 {{$post->collectPost->count()}}
                                             </span>
@@ -182,7 +183,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 @empty
                 @endforelse
@@ -190,7 +190,7 @@
             </div>
             <!-- navigation -->
             <div class="c-pagination">
-                    {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
+                {{$Data['posts']->appends($_GET)->links('vendor.pagination.bootstrap-4')}}
             </div>
         </div>
     </div>

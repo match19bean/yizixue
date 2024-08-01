@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <h4 class="c-breadcrumbs__prePage">
                     <a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a>
-                    > 問與答
+                    > 問與答諮詢
                     <a> > {{$qna->title}}</a>
                 </h4>
             </div>
@@ -26,16 +26,16 @@
                 <!-- date section -->
                 <p class="col-md-12">{{$qna->created_at->format('Y/m/d')}}</p>
                 <!-- The question title -->
-                <h2 class="col-md-10 l-qnaGuest__title">{{$qna->title}}</h2>
+                <h2 class="col-md-10 l-qnaGuest__title">{{ !is_null($qna->title) ? \Illuminate\Support\Str::limit($qna->title, 50) : '' }}</h2>
                 <div class="col-md-2 align-content-end">
                     @if(auth()->check())
-                        <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex" data-id="{{$qna->id}}" style="
+                        <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex u-cursor-pointer" data-id="{{$qna->id}}" style="
                                     color: @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) red @else black @endif ;
                                             ">
                             <span>{{$qna->collectQa->count()}}</span>
                         </i>
                     @else
-                        <i class="bi bi-bookmark-fill collect-qa d-flex" data-id="{{$qna->id}}">
+                        <i class="bi bi-bookmark-fill collect-qa d-flex u-cursor-pointer" data-id="{{$qna->id}}">
                             <span>{{$qna->collectQa->count()}}</span>
                         </i>
                     @endif
@@ -45,7 +45,7 @@
             <div class="row">
                 @if(!is_null($qna->categoryRelation))
                 @foreach($qna->categoryRelation as $relation)
-                <div class="col-md-2">
+                <div class="col-md-1 p-0">
                     <div class="o-smallBtn">
                         {{$relation->category->name}}
                     </div>
@@ -55,16 +55,18 @@
             </div>
             <!-- details -->
             <div class="row">
-                <div class="col-md-12 mt-3">
-                    <div class="row">
+                <!-- price -->
+                <div class="col-md-12 mt-5">
+                    <div class="row mt-3">
                         <span for="" class="o-qnaBtn col-md-2">金額</span>
                         <p class="align-content-end pt-2 col-md-10 l-qnaGuest__statusContent">
                             {{$qna->amount_down}}-{{$qna->amount_up}}</p>
                         <hr class="mt-3">
                     </div>
                 </div>
-                <div class="col-md-12 mt-3">
-                    <div class="row">
+                <!-- time -->
+                <div class="col-md-12 mt-5">
+                    <div class="row mt-3">
                         <span for="" class="o-qnaBtn col-md-2">時間</span>
                         <p class="align-content-end pt-2 col-md-10 l-qnaGuest__statusContent">
                             {{ Carbon\Carbon::parse($qna->contact_time)->format('H:i:s')}} 至
@@ -73,16 +75,18 @@
                     </div>
 
                 </div>
-                <div class="col-md-12 mt-3">
-                    <div class="row">
+                <!-- location -->
+                <div class="col-md-12 mt-5">
+                    <div class="row mt-3">
                         <span for="" class="o-qnaBtn col-md-2">地點</span>
                         <p class="align-content-end pt-2 col-md-10 l-qnaGuest__statusContent">{{$qna->place}}</p>
                         <hr class="mt-3">
                     </div>
 
                 </div>
-                <div class="col-md-12 mt-3">
-                    <div class="row">
+                <!-- discription -->
+                <div class="col-md-12 mt-5">
+                    <div class="row mt-3">
                         <span for="" class="o-qnaBtn col-md-2">說明</span>
                         <p class="align-content-end pt-5 col-md-10 text-break">
                             {!! $qna->body !!}
@@ -90,8 +94,9 @@
                         <hr class="mt-3">
                     </div>
                 </div>
-                <div class="col-md-12 mt-3">
-                    <div class="row">
+                <!-- reference -->
+                <div class="col-md-12 mt-5">
+                    <div class="row mt-3">
                         <span class="o-qnaBtn col-md-2">參考</span>
                         <!-- attachments -->
                         <div class="attachment">
@@ -299,13 +304,13 @@
                                 <div class="col-md-2">
                                     <div class="lign-content-end">
                                         @if(auth()->check())
-                                            <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qa->qa_id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif   collect-qa d-flex" data-id="{{$qa->qa_id}}" style="
+                                            <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qa->qa_id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif   collect-qa d-flex u-cursor-pointer" data-id="{{$qa->qa_id}}" style="
                                             color: @if(auth()->user()->collectQa->where('qa_id', $qa->qa_id)->count()==1) red @else black @endif ;
                                             ">
                                                 <span>{{$qa->qa->collectQa->count()}}</span>
                                             </i>
                                         @else
-                                            <i class="bi bi-bookmark collect-qa d-flex" data-id="{{$qa->qa_id}}">
+                                            <i class="bi bi-bookmark collect-qa d-flex u-cursor-pointer" data-id="{{$qa->qa_id}}">
                                                 <span>{{$qa->qa->collectQa->count()}}</span>
                                             </i>
                                         @endif

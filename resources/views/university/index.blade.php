@@ -10,9 +10,6 @@
                     > 好學校關注
                 </h4>
             </div>
-            <div class="col-sm-12">
-                <h3 class="c-breadcrumbs__currentPage">好學校關注</h3>
-            </div>
         </div>
     </div>
 </div>

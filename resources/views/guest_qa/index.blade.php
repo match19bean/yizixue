@@ -9,7 +9,6 @@
                 <h4 class="c-breadcrumbs__prePage">
                     <a href="{{url('/')}}" class="text-decoration-none text-black">首頁</a>> 問與答諮詢
                 </h4>
-                <h3 class="c-breadcrumbs__currentPage">問與答諮詢</h3>
             </div>
         </div>
     </div>
@@ -24,16 +23,14 @@
                 <!-- categories -->
                 <div class="c-sideNav__topics">
                     <button><a class="text-white text-center" href="{{route('qna')}}">
-                            全部文章
+                            全部問答
                         </a></button>
                     <hr class="c-sideNav__hr">
                     @forelse($categories as $category)
                         <button><a class="text-white text-center" href="{{route('qna', ['category_id'=>$category->id])}}">
                                 {{$category->name}}
                         </a></button>
-                        @if(!$loop->last)
-                            <hr class="c-sideNav__hr">
-                        @endif
+                        <hr class="c-sideNav__hr">
                     @empty
                     @endforelse
                     <!-- demo section, please delete them after you update the backend data -->
@@ -51,8 +48,8 @@
                 </div>
 
                 <!-- types (hot and new) -->
-                <!--a class="o-whiteBtn" href="{{route('study-abroad', ['filter' => 'popular'])}}">最熱門</a>
-                <a class="o-whiteBtn" href="{{route('study-abroad',['filter'=>'latest'])}}">最新</a-->
+{{--                <a class="o-whiteBtn" href="{{route('study-abroad', ['filter' => 'popular'])}}">最熱門</a>--}}
+{{--                <a class="o-whiteBtn" href="{{route('study-abroad',['filter'=>'latest'])}}">最新</a>--}}
                 <!-- call to action -->
                 @if(auth()->guest() || !auth()->user()->isVip())
                 <div class="c-callAction">
@@ -98,7 +95,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <a class="o-articleTitle" href="{{route('qna.show', $qa->id)}}">{{$qa->title}}</a>
+                            <a class="o-articleTitle" href="{{route('qna.show', $qa->qa_id)}}">{{$qa->title}}</a>
                             <div class="row">
                                 <div class="col-md-10">
                                     <p class="c-qnaCard__content">

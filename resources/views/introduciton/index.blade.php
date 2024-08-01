@@ -38,6 +38,7 @@
                         <div class="col-md-7">
                             <!-- school status -->
                             <div class="l-introduction__schoolRelate">
+                                <!-- school -->
                                 <div class="l-introduction__schoolStatus row">
                                     <!-- school img -->
                                     <div class="col-md-2">
@@ -56,11 +57,11 @@
                                     <h3 class="col-md-4 o-whiteBtn">{{$Data['user']->is_study == 1 ?'在學':'非在學'}}</h3>
                                 </div>
                                 <!-- post categ -->
-                                <div class="postCateg">
+                                <div class="row">
                                     <div class="l-introduction__postTag">
                                         @if(!is_null($Data['user']->postCategory))
                                         @foreach($Data['user']->postCategory as $relation)
-                                        <h4 class="o-tag">{{$relation->postCategory->name}}</h4>
+                                        <h4 class="o-tag u-cursor-pointer">{{$relation->postCategory->name}}</h4>
                                         @endforeach
                                         @endif
                                     </div>
@@ -68,11 +69,11 @@
                             </div>
                         </div>
                         <!-- user skill -->
-                        <div class="col-md-3 align-self-center">
+                        <div class="col-md-5 align-self-start">
                             <div class="row g-5">
                                 @if(!is_null($Data['user']->skills))
-                                @foreach($Data['user']->skills->slice(0, 6) as $skill)
-                                <span class="col-md-6">
+                                @foreach($Data['user']->skills->slice(0, 9) as $skill)
+                                <span class="col-md-4">
                                     <a class="o-skillBtn">
                                         {{ $skill->skill->name }}
                                     </a>
@@ -85,56 +86,61 @@
                 </div>
                 <!-- social btn -->
                 <div class="l-introduction__socialBtn">
-                    <div class="row">
-                        <!-- react -->
-                        <div class="col-md-6">
-                            <div class="o-react">
-                                @if(auth()->check())
-                                <i class="bi @if($Data['user']->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) bi-heart-fill @else bi-heart @endif  like-user"
-                                    style="color:  @if($Data['user']->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif"
-                                    data-id="{{$Data['user']->id}}">
-                                    <span>{{$Data['user']->likedUser->count()}}</span>
-                                </i>
-                                <i class="bi @if($Data['user']->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif  collect-user"
-                                    style="color:  @if($Data['user']->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif"
-                                    data-id="{{$Data['user']->id}}">
-                                    <span>{{$Data['user']->collectedUser->count()}}</span>
-                                </i>
-
-                                @else
-                                <i class="bi bi-heart like-user" style="margin:5px">
-                                    <span>{{$Data['user']->likedUser->count()}}</span>
-                                </i>
-                                <i class="bi bi-bookmark collect-user" style="margin:5px">
-                                    <span>{{$Data['user']->collectedUser->count()}}</span>
-                                </i>
-                                @endif
-                            </div>
+                    <!-- react -->
+                    @if(auth()->check())
+                        <div class="o-actBtn">
+                            <i class="bi @if($Data['user']->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) bi-heart-fill @else bi-heart @endif  like-user"
+                                style="color:  @if($Data['user']->likedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif"
+                                data-id="{{$Data['user']->id}}">
+                            </i>
+                            <p>{{$Data['user']->likedUser->count()}}</p>
                         </div>
-                        <!-- social -->
-                        <div class="col-md-6">
-                            <div class="o-react">
-                                @if(is_null($Data['user']->profile_video))
-                                <a class="o-tag" onClick="alert('學長姐尚未上傳影音');">
-                                    <i class="bi bi-play-fill"></i>
-                                </a>
-                                @else
-                                <a href="{{$Data['user']->profile_video}}" class="o-tag" target="_blank">
-                                    <i class="bi bi-play-fill"></i>
-                                </a>
-                                @endif
-                                @if(is_null($Data['user']->profile_voice))
-                                <a class="o-tag" onClick="alert('學長姐尚未上傳影音');">
-                                    <i class="bi bi-mic-fill"></i>
-                                </a>
-                                @else
-                                <a class="o-tag" href="{{$Data['user']->profile_voice}}" target="_blank">
-                                    <i class="bi bi-mic-fill"></i>
-                                </a>
-                                @endif
-                            </div>
+                        <div class="o-actBtn">
+                            <i class="bi @if($Data['user']->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif  collect-user"
+                                style="color:  @if($Data['user']->collectedUser->where('uid', auth()->user()->id)->where('user_id', $Data['user']->id)->count() == 1) red @else black @endif"
+                                data-id="{{$Data['user']->id}}">
+                            </i>
+                            <p>{{$Data['user']->collectedUser->count()}}</p>
                         </div>
+                    @else
+                        <div class="o-actBtn">
+                            <i class="bi bi-heart like-user" style="margin:5px">
+                            </i>
+                            <p>{{$Data['user']->likedUser->count()}}</p>
+                        </div>
+                        <div class="o-actBtn">
+                            <i class="bi bi-bookmark collect-user" style="margin:5px">
+                            </i>
+                            <p>{{$Data['user']->collectedUser->count()}}</p>
+                        </div>
+                    @endif
+                    <!-- video & audio -->
+                    @if(is_null($Data['user']->profile_video))
+                    <div>
+                        <a class="o-tag" onClick="alert('學長姐尚未上傳影音');">
+                            <i class="bi bi-play-fill"></i>
+                        </a>
                     </div>
+                    @else
+                    <div>
+                        <a href="{{$Data['user']->profile_video}}" class="o-tag" target="_blank">
+                            <i class="bi bi-play-fill"></i>
+                        </a>
+                    </div>
+                    @endif
+                    @if(is_null($Data['user']->profile_voice))
+                    <div>
+                        <a class="o-tag" onClick="alert('學長姐尚未上傳影音');">
+                            <i class="bi bi-mic-fill"></i>
+                        </a>
+                    </div>
+                    @else
+                    <div>
+                        <a class="o-tag" href="{{$Data['user']->profile_voice}}" target="_blank">
+                            <i class="bi bi-mic-fill"></i>
+                        </a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -149,10 +155,11 @@
         </div>
     </div>
     <!-- content -->
-     <div class="row">
+    <div class="row">
         <div class="col-md-12 p-5">
             <div class="container">
             <div class="row gy-5">
+                <!-- self intro -->
                 <div class="col-md-12">
                     <div class="l-introduction__detailContent">
                         @if(is_null($Data['user']->description))
@@ -162,6 +169,7 @@
                         @endif
                     </div>
                 </div>
+                <!-- education -->
                 <div class="col-md-12">
                     <div class="l-introduction__detailContent">
                         <h3 class="o-normalTitle">學歷經歷</h3>
@@ -174,57 +182,45 @@
                         @endforelse
                     </div>
                 </div>
+                <!-- social -->
                 <div class="col-md-12">
                     <div class="l-introduction__detailContent">
-                        <h3 class="o-normalTitle">社交網路</h3>
+                        <h3 class="o-normalTitle mb-5">社交網路</h3>
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <svg class="o-socialIcon" viewBox="0 0 200 200">
-                                        <path
-                                            d="M100,0c55.2,0,100,44.7,100,99.9,0,55.2-44.9,100.2-100.1,100.1C44.7,199.9,0,155.1,0,100,0,44.8,44.8,0,100,0ZM161.5,91.4c-.3-14.6-6.5-25.7-17.2-34.5-11.2-9.3-24.3-13.8-38.6-14.8-18.8-1.3-36,3.1-50.7,15.4-21.3,17.8-22,46.1-1.7,65,10.5,9.8,23.3,14.7,37.4,16.6,3.4.4,4.5,1.7,4,5.1-.4,3.1-.9,6.1-1,9.2,0,1.4.4,3.3,1.4,4,.8.7,2.9.5,4,0,6.5-3.3,12.9-6.7,19.1-10.5,14.3-8.7,26.9-19.3,36.1-33.5,4.4-6.8,6.8-14.2,7.1-21.8Z"
-                                            style="stroke-width: 0px;" />
-                                        <path
-                                            d="M161.5,91.4c-.2,7.7-2.6,15-7.1,21.8-9.2,14.2-21.9,24.8-36.1,33.5-6.2,3.8-12.7,7.1-19.1,10.5-1.1.6-3.2.7-4,0-1-.8-1.4-2.6-1.4-4,0-3.1.6-6.2,1-9.2.4-3.4-.6-4.6-4-5.1-14.1-1.8-26.8-6.8-37.4-16.6-20.3-18.9-19.7-47.1,1.7-65,14.7-12.3,31.9-16.7,50.7-15.4,14.3,1,27.4,5.5,38.6,14.8,10.7,8.8,16.9,20,17.2,34.5ZM110.6,92.2c-.8-.9-1.2-1.4-1.6-1.9-3.5-4.6-7.1-9.2-10.6-13.8-1.1-1.4-2.3-2.1-4-1.5-1.6.6-2,1.9-2,3.6,0,7.5,0,15,0,22.6,0,2.3,1.2,3.6,3.1,3.6,1.9,0,3.1-1.3,3.1-3.5,0-1.9,0-3.9,0-5.8,0-2.5,0-5,0-7.5,4.4,4.9,8.3,9.9,12.1,15,1,1.3,2.2,2.3,3.9,1.6,1.7-.6,2.1-2,2.1-3.7,0-7.4,0-14.7,0-22.1,0-2.6-1-3.8-3-3.9-2.1,0-3.2,1.3-3.2,3.9,0,4.3,0,8.5,0,13.4ZM128,92.9c2.8,0,5.5,0,8.2,0,2.7,0,4.3-1.2,4.2-3.3,0-1.9-1.6-3-4.2-3-2.8,0-5.5,0-8.2,0v-5.6c3,0,5.8,0,8.7,0,2.4,0,3.8-1.3,3.7-3.2,0-1.8-1.4-3-3.7-3-3.8,0-7.6,0-11.4,0-2.6,0-3.7,1.1-3.8,3.7,0,7.5,0,15,0,22.6,0,2.7,1.1,3.7,3.9,3.7,3.6,0,7.1,0,10.7,0,2.8,0,4.3-1.1,4.2-3.2,0-2-1.4-3-4.1-3.1-2.8,0-5.5,0-8.3,0v-5.6ZM65.8,98.5c0-1.1,0-1.9,0-2.7,0-5.7,0-11.4,0-17.2,0-2.5-1.2-3.8-3.1-3.8-2,0-3.1,1.3-3.1,3.8,0,7.4,0,14.9,0,22.3,0,2.8,1.1,3.9,4,3.9,3.6,0,7.3,0,10.9,0,2.5,0,3.8-1.1,3.9-3,0-2-1.3-3.2-3.9-3.2-2.8,0-5.5,0-8.6,0ZM87.7,89.8c0-4,0-7.9,0-11.9,0-2.5-.9-3.2-3.2-3.2-2.2,0-3,1.1-3,3.2,0,7.8,0,15.7,0,23.5,0,2.5.8,3.3,3.1,3.3,2.3,0,3.1-.7,3.1-3.3,0-3.9,0-7.7,0-11.6Z"
-                                            style="fill: #fff; stroke-width: 0px;" />
-                                        <path
-                                            d="M110.6,92.2c0-4.9,0-9.2,0-13.4,0-2.6,1.1-4,3.2-3.9,2,0,3,1.3,3,3.9,0,7.4,0,14.7,0,22.1,0,1.7-.4,3.1-2.1,3.7-1.8.6-2.9-.3-3.9-1.6-3.9-5-7.8-10-12.1-15,0,2.5,0,5,0,7.5,0,1.9,0,3.9,0,5.8,0,2.2-1.2,3.5-3.1,3.5-1.9,0-3.1-1.3-3.1-3.6,0-7.5,0-15,0-22.6,0-1.6.4-3,2-3.6,1.7-.6,3,.1,4,1.5,3.5,4.6,7.1,9.2,10.6,13.8.4.5.8.9,1.6,1.9Z"
-                                            style="stroke-width: 0px;" />
-                                        <path
-                                            d="M128,92.9v5.6c2.8,0,5.5,0,8.3,0,2.7,0,4.1,1.1,4.1,3.1,0,2-1.4,3.2-4.2,3.2-3.6,0-7.1,0-10.7,0-2.8,0-3.9-1-3.9-3.7,0-7.5,0-15,0-22.6,0-2.6,1.1-3.6,3.8-3.7,3.8,0,7.6,0,11.4,0,2.3,0,3.6,1.2,3.7,3,0,1.9-1.4,3.2-3.7,3.2-2.8,0-5.7,0-8.7,0v5.6c2.7,0,5.5,0,8.2,0,2.6,0,4.1,1.1,4.2,3,0,2-1.5,3.2-4.2,3.3-2.7,0-5.4,0-8.2,0Z"
-                                            style="stroke-width: 0px;" />
-                                        <path
-                                            d="M65.8,98.5c3.1,0,5.8,0,8.6,0,2.6,0,4,1.2,3.9,3.2,0,1.9-1.5,3-3.9,3-3.6,0-7.3,0-10.9,0-2.9,0-4-1.1-4-3.9,0-7.4,0-14.9,0-22.3,0-2.4,1.2-3.8,3.1-3.8,2,0,3.1,1.3,3.1,3.8,0,5.7,0,11.4,0,17.2,0,.8,0,1.6,0,2.7Z"
-                                            style="stroke-width: 0px;" />
-                                        <path
-                                            d="M87.7,89.8c0,3.9,0,7.7,0,11.6,0,2.6-.8,3.3-3.1,3.3-2.3,0-3.1-.8-3.1-3.3,0-7.8,0-15.7,0-23.5,0-2.1.9-3.2,3-3.2,2.4,0,3.2.7,3.2,3.2,0,4,0,7.9,0,11.9Z"
-                                            style="stroke-width: 0px;" />
-                                    </svg>
+                                <!-- line -->
+                                <div class="col-md-3 align-content-end">
+                                    <i class="bi bi-line o-socialIcon"></i>
                                     LINE:{{$Data['user']->line}}
                                 </div>
-                                <div class="col-md-3">
+                                <!-- fb -->
+                                <div class="col-md-3 align-content-end">
                                     <i class="bi bi-facebook o-socialIcon"></i>
-                                    FB: @if(!is_null($Data['user']->fb)) <a href="{{$Data['user']->fb}}"
+                                    @if(!is_null($Data['user']->fb)) <a href="{{$Data['user']->fb}}"
                                         class="text-black text-decoration-none" target="_blank">
-                                        {{ parse_url($Data['user']->fb, PHP_URL_PATH)}} </a> @else @endif</div>
-                                <div class="col-md-3">
+                                        FB: {{ parse_url($Data['user']->fb, PHP_URL_PATH)}} </a> @else @endif
+                                </div>
+                                <!-- ig -->
+                                <div class="col-md-3 align-content-end">
                                     <i class="bi bi-instagram o-socialIcon"></i>
-                                    IG: @if(!is_null($Data['user']->ig)) <a href="{{$Data['user']->ig}}"
+                                    @if(!is_null($Data['user']->ig)) <a href="{{$Data['user']->ig}}"
                                         class="text-black text-decoration-none" target="_blank">
-                                        {{ parse_url($Data['user']->ig, PHP_URL_PATH)}} </a> @else @endif</div>
-
-                                <div class="col-md-3">
+                                        IG: {{ parse_url($Data['user']->ig, PHP_URL_PATH)}} </a> @else @endif
+                                </div>
+                                <!-- linkedin -->
+                                <div class="col-md-3 align-content-end">
                                     <i class="bi bi-linkedin o-socialIcon"></i>
-                                    IN: @if(!is_null($Data['user']->linkedin)) <a href="{{$Data['user']->linkedin}}"
-                                                                            class="text-black text-decoration-none" target="_blank">
-                                        {{ parse_url($Data['user']->linkedin, PHP_URL_PATH)}} </a> @else @endif</div>
+                                    @if(!is_null($Data['user']->linkedin)) <a href="{{$Data['user']->linkedin}}"
+                                        class="text-black text-decoration-none" target="_blank">
+                                        LinkedIn: {{ parse_url($Data['user']->linkedin, PHP_URL_PATH)}} </a> @else @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="l-introduction__detailContent">
-                        <h3 class="o-normalTitle">與我聯繫</h3>
+                        <h3 class="o-normalTitle mb-5">與我聯繫</h3>
                         <div>
                             <p>
                                 <i class="bi bi-envelope-fill"></i>
@@ -296,12 +292,15 @@
                                                         </div>
                                                         <!-- title -->
                                                         <a class="c-articleCard__title"
-                                                            href="{{route('article', $post->id)}}">{{ $post->title }}</a>
+                                                            href="{{route('article', $post->id)}}">
+                                                            {{ !is_null($post->title) ? \Illuminate\Support\Str::limit($post->title, 15) : '' }}
+                                                        </a>
                                                         <!-- content -->
                                                         <p class="c-articleCard__content">
                                                             {{!is_null(strip_tags($post->body)) ? \Illuminate\Support\Str::limit(strip_tags($post->body), 35): ''}}
                                                         </p>
-                                                        <a class="o-readMore" href="{{route('article', $post->id)}}">...閱讀更多</a>
+                                                        <a class="o-readMore"
+                                                            href="{{route('article', $post->id)}}">...閱讀更多</a>
                                                         <hr>
                                                         <!-- reacts -->
                                                         <div class="o-react w-100 p-3">
@@ -333,7 +332,8 @@
                                                             </i>
                                                             @endif
                                                             <!-- date -->
-                                                            <p class="c-articleCard__date">發表日期：{{ $post->created_at->format('Y/m/d') }}
+                                                            <p class="c-articleCard__date">
+                                                                發表日期：{{ $post->created_at->format('Y/m/d') }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -427,80 +427,85 @@
     <div class="row">
         <div class="col-md-12 mt-3">
             <div class="carouselSection">
-                <div class="o-swiperCustom">
+                <div class="s-swiperCustom">
                     <div class="swiper studentSwiper">
                         <div class="swiper-wrapper">
                             @foreach ($Data['vip'] as $key => $user)
-                            <div class="c-studentCardSwiper swiper-slide" onclick="cardClickable({{ $user->id }})">
-                                <!-- img div -->
-                                @if(is_null($user->avatar))
-                                <span class="c-studentCardSwiper_studentImg"
-                                    style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
-                                @else
-                                <span class="c-studentCardSwiper_studentImg"
-                                    style="background-image: url('/uploads/{{ $user->avatar }}');">&nbsp;</span>
-                                @endif
-                                <!-- background -->
-                                <svg class="c-studentCardSwiper_bg" viewBox="0 0 330 170">
-                                    <polygon class="cls-1" points="329.5 170 0 170 0 0 330 45.1 329.5 170" />
-                                </svg>
-                                <!-- school img -->
-                                <span class="c-studentCardSwiper_schoolImg"
-                                    style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
-                                <!-- name card -->
-                                <h4 class="c-studentCardSwiper_userName">
-                                    {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
-                                </h4>
-                                <!-- school english -->
-                                <h5 class="c-studentCardSwiper_schoolEnglish">
-                                    {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->english_name, 15) : '' }}
-                                </h5>
-                                <!-- school chinese -->
-                                <h6 class="c-studentCardSwiper_schoolChinese">
-                                    {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->chinese_name, 10) : '' }}
-                                </h6>
-                                <!-- react icons -->
-                                <div class="c-studentCardSwiper_react"
-                                    onclick="event.stopPropagation(); return false; ">
-                                    @if(auth()->check())
-                                    <i class="bi @if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-heart-fill @else bi-heart @endif  like-user" style="
-                                    color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
-                                    " data-id="{{$user->id}}">
-                                        <span>{{$user->likedUser->count()}}</span>
-                                    </i>
-                                    <i class="bi  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif  collect-user" data-id="{{$user->id}}" style="
-                                    color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
-                                    ">
-                                        <span>{{$user->collectedUser->count()}}</span>
-                                    </i>
+                            <div class=" swiper-slide">
+                                <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})">
+                                    <!-- img div -->
+                                    @if(is_null($user->avatar))
+                                    <span class="c-studentCardSwiper_studentImg"
+                                        style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
                                     @else
-                                    <i class="bi bi-heart like-user" style="color: black;" data-id="{{$user->id}}">
-                                        <span>{{$user->likedUser->count()}}</span>
-                                    </i>
-                                    <i class="bi bi-bookmark collect-user" data-id="{{$user->id}}">
-                                        <span>{{$user->collectedUser->count()}}</span>
-                                    </i>
+                                    <span class="c-studentCardSwiper_studentImg"
+                                        style="background-image: url('/uploads/{{ $user->avatar }}');">&nbsp;</span>
                                     @endif
-                                </div>
-                                <!-- post tag -->
-                                <div class="c-studentCardSwiper_postTag">
-                                    @forelse ($user->postCategory as $count => $cate)
-                                    @if ($count < 3) <a
-                                        href="{{route('senior', ['category' => $cate->postCategory->id])}}"
-                                        class="text-white">
-                                        {{ $cate->postCategory->name }}
-                                        </a>
+                                    <!-- background -->
+                                    <svg class="c-studentCardSwiper_bg" viewBox="0 0 330 170">
+                                        <polygon class="cls-1" points="329.5 170 0 170 0 0 330 45.1 329.5 170" />
+                                    </svg>
+                                    <!-- school img -->
+                                    <span class="c-studentCardSwiper_schoolImg"
+                                        style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
+                                    <!-- name card -->
+                                    <h4 class="c-studentCardSwiper_userName">
+                                        {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
+                                    </h4>
+                                    <!-- school english -->
+                                    <h5 class="c-studentCardSwiper_schoolEnglish">
+                                        {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->english_name, 15) : '' }}
+                                    </h5>
+                                    <!-- school chinese -->
+                                    <h6 class="c-studentCardSwiper_schoolChinese">
+                                        {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->chinese_name, 10) : '' }}
+                                    </h6>
+                                    <!-- react icons -->
+                                    <div class="c-studentCardSwiper_react"
+                                        onclick="event.stopPropagation(); return false; ">
+                                        @if(auth()->check())
+                                        <i class="bi @if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-heart-fill @else bi-heart @endif  like-user" style="
+                                        color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                        " data-id="{{$user->id}}">
+                                            <span>{{$user->likedUser->count()}}</span>
+                                        </i>
+                                        <i class="bi  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif  collect-user" data-id="{{$user->id}}" style="
+                                        color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                        ">
+                                            <span>{{$user->collectedUser->count()}}</span>
+                                        </i>
+                                        @else
+                                        <i class="bi bi-heart like-user" style="color: black;" data-id="{{$user->id}}">
+                                            <span>{{$user->likedUser->count()}}</span>
+                                        </i>
+                                        <i class="bi bi-bookmark collect-user" data-id="{{$user->id}}">
+                                            <span>{{$user->collectedUser->count()}}</span>
+                                        </i>
                                         @endif
-                                        @empty
-                                        @endforelse
+                                    </div>
+                                    <!-- post tag -->
+                                    <div class="c-studentCardSwiper_postTag">
+                                        @forelse ($user->postCategory as $count => $cate)
+                                        @if ($count < 3) <a
+                                            href="{{route('senior', ['category' => $cate->postCategory->id])}}"
+                                            class="text-white">
+                                            {{ $cate->postCategory->name }}
+                                            </a>
+                                            @endif
+                                            @empty
+                                            @endforelse
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
                         </div>
                         <div class="studentPagi paginationCustom"></div>
-                        <a class="o-readMore" href="/senior">查看更多 &gt;</a>
                     </div>
+                    <div class="studentPagi paginationCustom"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
+                <a class="o-readMore" href="/senior">查看更多 &gt;</a>
             </div>
         </div>
     </div>

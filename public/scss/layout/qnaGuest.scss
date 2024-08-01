@@ -1,9 +1,9 @@
 .l-qnaGuest{
     &__title{
-        font-size: var(--text-3xl);
+        font-size: var(--text-4xl);
     }
     &__statusContent{
-        font-size: var(--text-2xl);
+        font-size: var(--text-xl);
     }
     &__border{
         border: solid var(--spacing-2) $prime_purple;

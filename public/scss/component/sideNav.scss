@@ -29,7 +29,6 @@
     &__english {
         display: none;
         position: absolute;
-        top: var(--spacing-24);
         transform-origin: 0% 0%;
         transform: scale(0.8);
     }
@@ -37,7 +36,6 @@
     &__eurp {
         display: none;
         position: absolute;
-        top: calc(var(--spacing-24)*2 + var(--spacing-12) + var(--text-2xl) + var(--spacing-8));
         transform-origin: 0% 0%;
         transform: scale(0.8);
     }
@@ -45,7 +43,6 @@
     &__asia {
         display: none;
         position: absolute;
-        top: calc((var(--spacing-24)*2 + var(--spacing-12) + var(--text-2xl) + var(--spacing-8))*2);
         transform-origin: 0% 0%;
         transform: scale(0.8);
     }
