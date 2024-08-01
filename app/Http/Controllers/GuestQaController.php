@@ -20,7 +20,7 @@ class GuestQaController extends Controller
             $query->whereIn('id', $qas_id);
         }
 
-        $qas = $query->with('categoryRelation')->paginate(5);
+        $qas = $query->with('categoryRelation')->orderByDesc('created_at')->paginate(5);
         $posts = Post::latest('created_at')->limit(2)->get();
         $categories = QACategory::all();
         return view('guest_qa.index', compact(['qas', 'posts', 'categories']));

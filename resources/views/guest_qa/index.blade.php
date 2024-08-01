@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <a class="o-articleTitle" href="{{route('qna.show', $qa->qa_id)}}">{{$qa->title}}</a>
+                            <a class="o-articleTitle" href="{{route('qna.show', $qa->id)}}">{{$qa->title}}</a>
                             <div class="row">
                                 <div class="col-md-10">
                                     <p class="c-qnaCard__content">

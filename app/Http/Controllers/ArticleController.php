@@ -44,17 +44,17 @@ class ArticleController extends Controller
     {
         if($request->filled('filter')){
             if($request->filter === 'latest'){
-                $Data['posts'] = Post::orderBy('created_at', 'desc')->paginate();
+                $Data['posts'] = Post::orderByDesc('created_at')->paginate();
             } elseif ($request->filter === 'popular') {
                 $ids = LikePost::select('post_id')->groupBy('post_id')->pluck('post_id');
-                $Data['posts'] = Post::whereIn('id', $ids)->with('author')->paginate();
+                $Data['posts'] = Post::whereIn('id', $ids)->orderByDesc('created_at')->with('author')->paginate();
             }
         } elseif ($request->filled('category_id')) {
-            $Data['posts'] = Post::whereIn('id', PostCategoryRelation::select('post_id')->where('category_id', $request->category_id))->paginate();
+            $Data['posts'] = Post::whereIn('id', PostCategoryRelation::select('post_id')->where('category_id', $request->category_id))->orderByDesc('created_at')->paginate();
         } elseif ($request->filled('title')) {
-            $Data['posts'] = Post::where('title', 'Like', '%'.$request->title.'%')->paginate();
+            $Data['posts'] = Post::where('title', 'Like', '%'.$request->title.'%')->orderByDesc('created_at')->paginate();
         } else {
-            $Data['posts'] = Post::paginate();
+            $Data['posts'] = Post::orderByDesc('created_at')->paginate();
         }
 
         $Data['category'] = PostCategory::all();
