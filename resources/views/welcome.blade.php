@@ -6,7 +6,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="l-innerHeader__headerCard">
-                    {{dd($Data['Carousel'])}}
                     <div class="l-innerHeader__headerCard__banner">
                         <span id="bannerImg"
                             style="background-image: {{ !empty($Data['Carousel']) ? asset('uploads/'.$Data['Carousel']->image_path) : '' }}">&nbsp;</span>
