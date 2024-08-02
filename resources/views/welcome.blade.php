@@ -6,10 +6,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="l-innerHeader__headerCard">
-                    <input type="hidden" value="{{asset('uploads/'.$Data['Carousel']->image_path)}}">
                     <div class="l-innerHeader__headerCard__banner">
                         <span id="bannerImg"
-                            style="background-image: {{ !empty($Data['Carousel']) ? asset('uploads/'.$Data['Carousel']->image_path) : '' }}">&nbsp;</span>
+                            style="background-image: {{ !empty($Data['Carousel']) ? 'url("'.asset('uploads/'.$Data['Carousel']->image_path).'")' : 'url("")' }}">&nbsp;</span>
                     </div>
                     <div class="l-innerHeader__headerCard__slogan">
                         <h1 id="topic" class="fw-bolder text-white mb-2 description1">{{ !empty($Data['Carousel']) ? $Data['Carousel']->description1 : '' }}</h1>
