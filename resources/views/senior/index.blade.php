@@ -213,7 +213,7 @@
                             <div class="l-seniorPage__content">
                                 <div class="container-fluid">
                                     <div class="row gy-5">
-                                        @forelse($users as $user)
+                                        @forelse($users->sortByDesc(function($user){return $user->liked_user_count + $user->collected_user_count;}) as $user)
                                         <div class="col-md-4 p-0">
                                             <div class="c-studentCard" onclick="cardClickable({{ $user->id }})">
                                                 <!-- img div -->

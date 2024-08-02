@@ -32,7 +32,7 @@ class GuestQaController extends Controller
         if(is_null($qna)){
             return redirect()->back();
         }
-        $sameqna = QACategoryRelation::whereIn('category_id', $qna->categoryRelation->pluck('category_id'))->inRandomOrder()->paginate();
+        $sameqna = QACategoryRelation::whereIn('category_id', $qna->categoryRelation->pluck('category_id'))->inRandomOrder()->limit(6);
         $categories = QACategory::all();
         return view('guest_qa.show', compact(['qna', 'sameqna', 'categories']));
     }
