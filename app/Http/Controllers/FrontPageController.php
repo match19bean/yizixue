@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BulletinBoard;
+use App\Carousel;
 use App\Post;
 use App\QACategory;
 use App\QACategoryRelation;
@@ -29,10 +30,9 @@ class FrontPageController extends Controller
             'University' => University::withCount('vip')->orderBy('vip_count', 'desc')->limit(15)->get(),
             'PostCategory' => new PostCategory,
             'QaCategory' => QACategory::with(['QACategoryRelation' => function($q){$q->orderByDesc('created_at');}])->get(),
-            'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first()
+            'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first(),
+            'Carousel' => Carousel::where('is_active', true)->first(),
         ];
-
-//        dd($Data['QaCategory']);
 
         return view('welcome')->with('Data', $Data);
     }

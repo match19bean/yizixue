@@ -7,11 +7,12 @@
             <div class="col-md-12">
                 <div class="l-innerHeader__headerCard">
                     <div class="l-innerHeader__headerCard__banner">
-                        <span id="bannerImg">&nbsp;</span>
+                        <span id="bannerImg"
+                            style="background-image: {{ !empty($Data['carousel']) ? asset('uploads/'.$Data['carousel']->image_path) : '' }}">&nbsp;</span>
                     </div>
                     <div class="l-innerHeader__headerCard__slogan">
-                        <h1 id="topic" class="fw-bolder text-white mb-2 description1"></h1>
-                        <h1 class="fw-bolder text-white mb-5 description2"></h1>
+                        <h1 id="topic" class="fw-bolder text-white mb-2 description1">{{ !empty($Data['carousel']) ? asset('uploads/'.$Data['carousel']->description1) : '' }}</h1>
+                        <h1 class="fw-bolder text-white mb-5 description2">{{ !empty($Data['carousel']) ? asset('uploads/'.$Data['carousel']->description2) : '' }}</h1>
                     </div>
                     <svg viewBox="0 0 1920 1080">
                         <polygon points="298.8 1079.5 0 1080 0 .5 750 0 298.8 1079.5" />
