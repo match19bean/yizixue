@@ -10,10 +10,10 @@
                     <a class="c-breadcrumbs__prePage" href="{{url('/')}}">首頁</a>
                     >
                     <a class="c-breadcrumbs__prePage" href="{{route('article-list', $Data['user']->id)}}">
-                        {{$Data['user']->name}}
+                        {{$Data['user']->nickname}}
                     </a>
                 </h4>
-                <h3 class="c-breadcrumbs__currentPage">{{$Data['user']->name}}</h3>
+                <h3 class="c-breadcrumbs__currentPage">{{$Data['user']->nickname}}</h3>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="col-md-8">
             <div class="l-introduction__infoCard">
                 <!-- user name -->
-                <h2 class="l-introduction__userName">{{$Data['user']->name}}</h2>
+                <h2 class="l-introduction__userName">{{$Data['user']->nickname}}</h2>
                 <!-- tags -->
                 <div class="l-introduction__tags">
                     <div class="row">
@@ -450,7 +450,7 @@
                                         style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
                                     <!-- name card -->
                                     <h4 class="c-studentCardSwiper_userName">
-                                        {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
+                                        {{ ($user->nickname) ? \Illuminate\Support\Str::limit($user->nickname,10): "" }}
                                     </h4>
                                     <!-- school english -->
                                     <h5 class="c-studentCardSwiper_schoolEnglish">

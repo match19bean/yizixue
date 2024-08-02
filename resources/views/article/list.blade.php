@@ -11,14 +11,14 @@
                     <a class="c-breadcrumbs__prePage" href="{{url('/')}}">首頁</a>
                     >
                     <a class="c-breadcrumbs__prePage" href="{{route('get-introduction', $Data['user']->id)}}">
-                        {{$Data['user']->name}}
+                        {{$Data['user']->nickname}}
                     </a>
                     >
                     <a class="c-breadcrumbs__prePage" href="{{route('get-introduction', $Data['user']->id)}}">
-                        {{$Data['user']->name}}的文章
+                        {{$Data['user']->nickname}}的文章
                     </a>
                 </h4>
-                <h3 class="c-breadcrumbs__currentPage">{{$Data['user']->name}}的文章</h3>
+                <h3 class="c-breadcrumbs__currentPage">{{$Data['user']->nickname}}的文章</h3>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                                 <div class="row">
                                     <!-- author name -->
                                     <div class="col-md-12">
-                                        <h2 class="o-whiteTitle">{{$Data['user']->name}}</h2>
+                                        <h2 class="o-whiteTitle">{{$Data['user']->nickname}}</h2>
                                     </div>
                                     <!-- school img -->
                                     <div class="col-md-2 p-2">
@@ -116,7 +116,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="o-normalTitle">
-                <h2 class="o-normalTitle">{{$Data['user']->name}}的文章</h2>
+                <h2 class="o-normalTitle">{{$Data['user']->nickname}}的文章</h2>
             </div>
         </div>
         @if($Data['posts']->total())

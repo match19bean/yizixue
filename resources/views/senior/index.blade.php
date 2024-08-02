@@ -234,7 +234,7 @@
                                                     style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
                                                 <!-- name card -->
                                                 <h4 class="c-studentCard_userName">
-                                                    {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,8): "" }}
+                                                    {{ ($user->nickname) ? \Illuminate\Support\Str::limit($user->nickname,8): "" }}
                                                 </h4>
                                                 <!-- school english -->
                                                 <h5 class="c-studentCard_schoolEnglish">
@@ -318,7 +318,7 @@
                                                     style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
                                                 <!-- name card -->
                                                 <h4 class="c-studentCard_userName">
-                                                    {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}
+                                                    {{ ($user->nickname) ? \Illuminate\Support\Str::limit($user->nickname,10): "" }}
                                                 </h4>
                                                 <!-- school english -->
                                                 <h5 class="c-studentCard_schoolEnglish">

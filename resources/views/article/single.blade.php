@@ -100,7 +100,7 @@
                                     style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
                                 <!-- name card -->
                                 <h4 class="c-studentCard_userName">
-                                    {{ ($Data['article']->author->name) ? \Illuminate\Support\Str::limit($Data['article']->author->name,8): "" }}
+                                    {{ ($Data['article']->author->nickname) ? \Illuminate\Support\Str::limit($Data['article']->author->nickname,8): "" }}
                                 </h4>
                                 <!-- school english -->
                                 <h5 class="c-studentCard_schoolEnglish">
@@ -212,7 +212,7 @@
                                                 @endif
                                                 <!-- namecard -->
                                                 <a href="{{route('get-introduction', $post->author->id)}}">
-                                                    {{ $post->author->name  }}
+                                                    {{ $post->author->nickname  }}
                                                 </a>
                                             </div>
 

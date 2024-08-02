@@ -116,7 +116,7 @@
                                         <!-- namecard -->
                                         <a class="align-content-center"
                                             href="{{route('get-introduction', $post->author->id)}}">
-                                            {{ !is_null($post->author->name) ? \Illuminate\Support\Str::limit($post->author->name, 10) : '' }}
+                                            {{ !is_null($post->author->nickname) ? \Illuminate\Support\Str::limit($post->author->nickname, 10) : '' }}
                                         </a>
                                     </div>
 

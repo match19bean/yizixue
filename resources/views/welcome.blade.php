@@ -61,7 +61,7 @@
                                          </div>
                                         <!-- name card -->
                                         <h4 class="c-studentCardSwiper_userName">
-                                            {{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,7): "" }}
+                                            {{ ($user->nickname) ? \Illuminate\Support\Str::limit($user->nickname,7): "" }}
                                         </h4>
                                         <!-- school english -->
                                         <h5 class="c-studentCardSwiper_schoolEnglish">
