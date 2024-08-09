@@ -66,15 +66,6 @@
 
 .l-innerbody{
     // custom setting for main sections
-    &__join{
-        min-height: 30rem;
-        @include imgBackground;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: end;
-        aspect-ratio: unset;
-    }
     &__news{
         background-color: $prime_purple_bright;
         padding: var(--spacing-80);
@@ -99,26 +90,50 @@
             }
         }
     }
+}
 
-    // other settings
-    &__joinSection{
+.l-join{
+    padding: 0 var(--spacing-80) 0 var(--spacing-80);
+    &__content{
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
+        flex-direction: column;
+        align-items: end;
+        justify-content: space-between;
+        height: 100%;
         padding: var(--spacing-12);
         gap: var(--spacing-12);
         p{
-            font-size: var(--text-4xl);
-            color: var(--color-white);
+            font-size: var(--text-2xl);
+            color: $prime_purple;
             font-weight: 900;
-            text-shadow: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--color-black);
+            text-align: end;
         }
+    }
+    &__img{
+        border-radius: var(--spacing-8);
+        @include imgBackground;
+        height: 100%;
+        min-height: 30rem;
+        aspect-ratio: 16/9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        aspect-ratio: unset;
     }
 }
 
 .l-student{
+    .c-studentCardSwiper{
+        transform: scale(
+            0.95
+        );
+        @media (max-width: 768px){
+            transform: scale(
+                0.8
+            );
+        }
+    }
     .c-studentCardSwiper_userName{
         font-size: var(--text-2xl);
     }

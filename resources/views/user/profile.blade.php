@@ -330,7 +330,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Facebook</p>
+                                        <p class="mb-0">Facebook網址</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">{{ Auth::user()->fb }}</p>
@@ -339,7 +339,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Instagram</p>
+                                        <p class="mb-0">Instagram網址</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">{{ Auth::user()->ig }}</p>
@@ -348,7 +348,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">LinkedIn</p>
+                                        <p class="mb-0">LinkedIn網址</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">{{ Auth::user()->linkedin }}</p>
@@ -469,7 +469,7 @@
                                     readonly>
                             </div>
                             <div class="mb-3">
-                                <textarea id="article-ckeditor" name="description">{{ Auth::user()->description }}</textarea>
+                                <textarea class="form-control" rows="20" id="article-ckeditor" name="description">{{ Auth::user()->description }}</textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -554,17 +554,17 @@
                                     class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="line" class="form-label">Facebook</label>
+                                <label for="line" class="form-label">Facebook網址</label>
                                 <input type="text" value="{{ Auth::user()->fb }}" name="fb"
                                        class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="line" class="form-label">Instagram</label>
+                                <label for="line" class="form-label">Instagram網址</label>
                                 <input type="text" value="{{ Auth::user()->ig }}" name="ig"
                                        class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="linkedin" class="form-label">LinkedIn</label>
+                                <label for="linkedin" class="form-label">LinkedIn網址</label>
                                 <input type="text" value="{{ Auth::user()->linkedin }}" name="linkedin"
                                        class="form-control">
                             </div>

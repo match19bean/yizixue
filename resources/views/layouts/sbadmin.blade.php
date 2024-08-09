@@ -13,6 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -20,8 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- broccoli style -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/broccoli-color.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/artical.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('scss_convert/broccoli_style.css') }}">
 
 </head>
 <style>
@@ -56,39 +56,42 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul style="background:#4C2A70" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="l-collectPost__sideBar navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-                <div class="sidebar-brand-text mx-3">易子學 系統</div>
+                <div class="o-collectPost_btn sidebar-brand-text mx-3">易子學系統</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-compass fa-tachometer-alt"></i>
-                    <span>易子學前台</span></a>
+                <a class="o-collectPost_btn nav-link" href="/">
+                    <i class="bi bi-ui-checks-grid"></i>
+                    易子學前台
+                </a>
             </li>
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/user/profile">
-                    <i class="fas fa-user fa-tachometer-alt"></i>
-                    <span>個人檔案</span></a>
+                <a class="o-collectPost_btn nav-link" href="/user/profile">
+                    <i class="bi bi-speedometer"></i>
+                    個人檔案
+                </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="/bulletinboard">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                    <span>佈告欄</span></a>
+                <a class="o-collectPost_btn nav-link" href="/bulletinboard">
+                    <i class="bi bi-bookmark"></i>
+                    佈告欄
+                </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
-                    data-target="#post-list" aria-expanded="false" aria-controls="post-list">
-                    <i style="color:white !important" class="fa fa-book" aria-hidden="true"></i>
-                    <span>文章管理</span>
+                <a class="o-collectPost_btn nav-link collapsed" href="#" data-toggle="collapse" data-target="#post-list"
+                    aria-expanded="false" aria-controls="post-list">
+                    <i style="color:white !important" class="bi bi-book" aria-hidden="true"></i>
+                    文章管理
                 </a>
                 <div id="post-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
@@ -115,69 +118,52 @@
                     </div>
                 </div>
             </li>
-{{--            <hr class="sidebar-divider">--}}
-{{--            <li class="nav-item active">--}}
-{{--                <a class="nav-link" href="#">--}}
-{{--                    <i class="fa fa-envelope" aria-hidden="true"></i>--}}
-{{--                    <span>我的訊息</span></a>--}}
-{{--            </li>--}}
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
+                <a style="color:white !important" class="o-collectPost_btn nav-link collapsed" href="#" data-toggle="collapse"
                     data-target="#invite-list" aria-expanded="false" aria-controls="invite-list">
                     <i style="color:white !important" class="fa fa-users" aria-hidden="true"></i>
-                    <span>學長姊管理</span>
+                    學長姊管理
                 </a>
                 <div id="invite-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
                     <div class="bg-white py-2 collapse-inner rounded">
-{{--                        <a class="collapse-item" href="/user/invite-list">邀請學長姊</a>--}}
                         <a class="collapse-item" href="/user/collect-user">收藏學長姐</a>
                     </div>
                 </div>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('pay-product-list') }} ">
+                <a class="o-collectPost_btn nav-link" href="{{ route('pay-product-list') }} ">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
-                    <span>付費加值</span></a>
+                    付費加值
+                </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('pay-order-list') }}">
+                <a class="o-collectPost_btn nav-link" href="{{ route('pay-order-list') }}">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
-                    <span>加值服務紀錄</span></a>
+                    加值服務紀錄
+                </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="o-collectPost_btn nav-link" href="#">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
-                    <span>聯繫案件</span></a>
+                    聯繫案件
+                </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="o-collectPost_btn nav-link" href="#">
                     <i class="fa fa-bell" aria-hidden="true"></i>
-                    <span>線上客服</span></a>
+                    線上客服
+                </a>
             </li>
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-{{--            <div class="sidebar-heading">--}}
-{{--                Interface--}}
-{{--            </div>--}}
 
-            <!-- Nav Item - Pages Collapse Menu -->
-{{--            <li class="nav-item">--}}
-{{--                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"--}}
-{{--                    aria-expanded="true" aria-controls="collapseTwo">--}}
-{{--                    <i class="fas fa-fw fa-cog"></i>--}}
-{{--                    <span>調整</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
-            <!-- Divider -->
-{{--            <hr class="sidebar-divider d-none d-md-block">--}}
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -215,8 +201,8 @@
                                 <img class="img-profile rounded-circle"
                                     src="{{ url('/') . '/uploads/' . Auth::user()->avatar }}">
                                 @else
-                                    <img class="img-profile rounded-circle"
-                                         src="{{ url('/') . '/uploads/images/default_avatar.png' }}">
+                                <img class="img-profile rounded-circle"
+                                    src="{{ url('/') . '/uploads/images/default_avatar.png' }}">
                                 @endif
                             </a>
                             <!-- Dropdown - User Information -->
@@ -226,13 +212,9 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     修改基本資料
                                 </a>
-{{--                                <a class="dropdown-item" href="#">--}}
-{{--                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>--}}
-{{--                                    系統設定--}}
-{{--                                </a>--}}
+
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal"
-                                    onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
@@ -304,7 +286,8 @@
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('sb-admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
     <!-- Custom scripts for all pages-->
@@ -312,11 +295,11 @@
 
     <script src="{{ asset('vendor/laravel-ckeditor/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.replace('article-ckeditor');
+        // CKEDITOR.replace('article-ckeditor');
     </script>
 
     <script>
-        $('#OpenImgUpload').click(function() {
+        $('#OpenImgUpload').click(function () {
             $('#imgInp').trigger('click');
         });
 
@@ -326,7 +309,7 @@
         function readURL() {
             var file = document.getElementById("imgInp").files[0];
             var reader = new FileReader();
-            reader.onloadend = function() {
+            reader.onloadend = function () {
                 document.getElementById('upload-img-div').style.backgroundImage = "url(" + reader.result + ")";
             }
             if (file) {

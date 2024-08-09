@@ -212,7 +212,7 @@
                                                 @endif
                                                 <!-- namecard -->
                                                 <a href="{{route('get-introduction', $post->author->id)}}">
-                                                    {{ $post->author->nickname  }}
+                                                    {{ !is_null($post->author->nickname) ? \Illuminate\Support\Str::limit($post->author->nickname, 8) : '' }}
                                                 </a>
                                             </div>
 

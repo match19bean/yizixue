@@ -113,7 +113,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <textarea id="article-ckeditor" name="postbody">{{ $Data['post']->body }}</textarea>
+                                    <textarea id="article-ckeditor" class="form-control" rows="30" style="border: 2px solid #4C2A70;
+                                padding: 10px; border-radius: 5px; width:100%;" name="postbody">{{ $Data['post']->body }}</textarea>
                                 </div>
                                 @if($errors->has('postbody'))
                                     <div class="alert alert-danger alert-dismissible text-center">

@@ -69,11 +69,6 @@
                                                     {{$errors->first('contact_time')}}
                                                 </div>
                                             @endif
-                                            {{--                                            <select class="form-control" name="contact_time" aria-label="Default select example">--}}
-                                            {{--                                                <option value="morning">上午</option>--}}
-                                            {{--                                                <option value="afternoon">下午</option>--}}
-                                            {{--                                                <option value="night">晚上</option>--}}
-                                            {{--                                            </select>--}}
                                             <input type="time" class="form-control" name="contact_time" value="{{ $Data['qa']->contact_time }}">
                                         </div>
                                         <div class="col-2 text-center">
@@ -86,11 +81,6 @@
                                                     {{$errors->first('contact_time_end')}}
                                                 </div>
                                             @endif
-                                            {{--                                            <select class="form-control" name="contact_time_end" aria-label="Default select example">--}}
-                                            {{--                                                <option value="morning">上午</option>--}}
-                                            {{--                                                <option value="afternoon">下午</option>--}}
-                                            {{--                                                <option value="night">晚上</option>--}}
-                                            {{--                                            </select>--}}
                                             <input type="time" class="form-control" name="contact_time_end" value="{{ $Data['qa']->contact_time_end }}">
                                         </div>
                                     </div>
@@ -194,7 +184,7 @@
                                             {{$errors->first('qabody')}}
                                         </div>
                                     @endif
-                                    <textarea id="article-ckeditor" name="qabody">{{ $Data['qa']->body }}</textarea>
+                                    <textarea id="article-ckeditor" class="form-control" rows="30" name="qabody">{{ $Data['qa']->body }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="avatar" class="form-label">參考文件</label>
@@ -216,21 +206,6 @@
                                     @empty
                                     @endforelse
                                 </div>
-                {{--                <div class="mb-3">--}}
-                {{--                    <label for="state" class="form-label">狀態</label>--}}
-                {{--                    <select class="form-control" name="state" aria-label="Default select example">--}}
-                {{--                        <option value="pending" {{ $Data['qa']->state == 'pending' ? 'selected' : '' }}>審核中</option>--}}
-                {{--                        <option value="approve" {{ $Data['qa']->state == 'approve' ? 'selected' : '' }}>已審核</option>--}}
-                {{--                    </select>--}}
-                {{--                </div>--}}
-                {{--                <div class="mb-3">--}}
-                {{--                    <label for="contact_time" class="form-label">聯絡時間</label>--}}
-                {{--                    <select class="form-control" name="contact_time" aria-label="Default select example">--}}
-                {{--                        <option value="morning">上午</option>--}}
-                {{--                        <option value="afternoon">下午</option>--}}
-                {{--                        <option value="night">晚上</option>--}}
-                {{--                    </select>--}}
-                {{--                </div>--}}
                                 <button type="submit" class="btn btn-primary">更新</button>
                             </form>
                         </div>

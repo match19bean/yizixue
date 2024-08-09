@@ -2,26 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Disclaimer;
+use App\MemberAgreement;
+use App\ServiceAgreement;
+use App\SubscriptionAgreement;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
     public function membershipAgreement()
     {
-        return view('contract.membership-agreement');
+        $contract = MemberAgreement::first();
+        return view('contract.membership-agreement', compact('contract'));
     }
 
     public function serviceAgreement()
     {
-        return view('contract.service-agreement');
+        $contract = ServiceAgreement::first();
+        return view('contract.service-agreement', compact('contract'));
     }
     public function disclaimer()
     {
-        return view('contract.disclaimer');
+        $contract = DisClaimer::first();
+        return view('contract.disclaimer', compact('contract'));
     }
 
     public function subscriptionAgreement()
     {
-        return view('contract.subscription-agreement');
+        $contract = SubscriptionAgreement::first();
+        return view('contract.subscription-agreement', compact('contract'));
     }
 }

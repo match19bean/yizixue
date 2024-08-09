@@ -100,7 +100,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="article-ckeditor" class="form-label" style="color:#4C2A70;">輸入內文</label>
-                                    <textarea id="article-ckeditor" name="postbody">{{old('postbody')}}</textarea>
+                                    <textarea class="form-control" style="border: 2px solid #4C2A70;
+                                padding: 10px; border-radius: 5px; width:100%;"  rows="30" id="article-ckeditor" name="postbody">{{old('postbody')}}</textarea>
                                 </div>
                                 @if($errors->has('postbody'))
                                     <div class="alert alert-danger alert-dismissible text-center">

@@ -101,6 +101,11 @@
     font-size: var(--text-lg);
     color: $prime_purple;
     z-index: 5;
+
+    @media (max-width: 768px){
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .o-react{
@@ -200,5 +205,20 @@
             text-align: center;
             font-weight: 800;
         }
+    }
+}
+
+.o-collectPost_btn{
+    width: 100%;
+    text-align: start;
+    color: var(--color-white);
+    font-weight: 800;
+    font-size: var(--text-sm);
+    padding: var(--spacing-12);
+    i{
+        color: var(--color-white);
+    }
+    &:hover{
+        color: $prime_purple_light;
     }
 }

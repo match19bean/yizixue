@@ -27,13 +27,13 @@ class UserController extends AdminController
     {
         $grid = new Grid(new User());
 
-        $grid->column('id', __('Id'));
-        $grid->column('uuid', __('Uuid'));
-        $grid->column('name', __('Name'));
+        $grid->column('id', __('Id'))->sortable();
+//        $grid->column('uuid', __('Uuid'));
+        $grid->column('name', __('Name'))->sortable();
         $grid->column('nickname', __('Nickname'));
         $grid->column('role', __('Role'));
         $grid->column('student_proof', __('Student proof'));
-        $grid->column('avatar', __('Avatar'));
+        $grid->column('avatar', __('Avatar'))->image();
         $grid->column('birth_day', __('Birth day'));
         $grid->column('universityItem.name', __('University'));
         $grid->column('is_study', __('Is Study'))->bool();
@@ -41,18 +41,18 @@ class UserController extends AdminController
         $grid->column('phone', __('Phone'));
         $grid->column('line', __('Line'));
         $grid->column('address', __('Address'));
-        $grid->column('profile_video', __('Profile video'));
-        $grid->column('profile_voice', __('Profile voice'));
-        $grid->column('password', __('Password'));
-        $grid->column('description', __('Description'));
-        $grid->column('rate', __('Rate'));
+//        $grid->column('profile_video', __('Profile video'));
+//        $grid->column('profile_voice', __('Profile voice'));
+//        $grid->column('password', __('Password'));
+        $grid->column('description', __('Description'))->style('max-width:500px;overflow-wrap: break-word;word-break: auto-phrase;');
+//        $grid->column('rate', __('Rate'));
         $grid->column('ispaied', __('Ispaied'));
         $grid->column('expired', __('Expired'));
         $grid->column('is_manager', __('Is Manager'));
         $grid->column('state', __('State'));
-        $grid->column('remember_token', __('Remember token'));
+//        $grid->column('remember_token', __('Remember token'));
         $grid->column('verified', __('verified'))->bool();
-//        $grid->column('created_at', __('Created at'));
+        $grid->column('created_at', __('Created at'))->sortable();
 //        $grid->column('updated_at', __('Updated at'));
         $grid->model()->orderBy('id', 'desc');
 

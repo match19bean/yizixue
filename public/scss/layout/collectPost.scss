@@ -1,0 +1,10 @@
+.l-collectPost{
+    &__sideBar{
+        background-color: $prime_purple;
+    }
+
+    &__cards{
+       background-color: var(--color-white);
+        border-radius: var(--spacing-8);
+    }
+}

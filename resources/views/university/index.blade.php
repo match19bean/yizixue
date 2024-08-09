@@ -25,11 +25,11 @@
                         <div class="row gy-1">
                             <div class="col-md-12">
                                 <div class="c-sideNav__locations">
-                                    <button onclick="SideBarSelect(1)">英語系國家</button>
+                                    <button id="englishBtn" onclick="SideBarSelect(1)">英語系國家</button>
                                     <hr>
-                                    <button onclick="SideBarSelect(2)">歐語系國家</button>
+                                    <button id="europBtn" onclick="SideBarSelect(2)">歐語系國家</button>
                                     <hr>
-                                    <button onclick="SideBarSelect(3)">亞洲國家</button>
+                                    <button id="asiaBtn" onclick="SideBarSelect(3)">亞洲國家</button>
                                 </div>
                             </div>
                         </div>

@@ -87,9 +87,11 @@
                     <div class="l-footer_brand h-100">
                         <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
                         <div class="row g-3">
-                            <p class="col-md-12 text-center">@2022行家在線有限公司. All Right Reservec. | Powered by Match 19
-                            </p>
-                            <p class="col-md-12 text-center">統一編號：83453577</p>
+                            <p class="col-md-12 text-center">
+                            行家在線有限公司 | 統一編號 83453577 | all rights reserved<br>
+                            <br>
+                            客服信箱 service@yizixue.com.tw | 客服時間 Mon-Fri 09:30-17:30
+                        </p>
                         </div>
                     </div>
                 </div>
@@ -153,8 +155,8 @@
 <!-- swiper costume -->
 <script>
     var swiper = new Swiper(".studentSwiper", {
-        slidesPerView: 4,
-        spaceBetween: 30,
+        slidesPerView: 1,
+        spaceBetween: 10,
         allowTouchMove: false,
         loop: true,
         autoplay: {
@@ -165,9 +167,22 @@
             clickable: true,
         },
         breakpoints: {
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
             1920: {
                 slidesPerView: 6,
-            }
+                spaceBetween: 30,
+            },
         },
         navigation: {
             nextEl: ".swiper-button-next",
@@ -176,8 +191,8 @@
     });
 
     var swiper = new Swiper(".schoolSwiper", {
-        slidesPerView: 5,
-        spaceBetween: 30,
+        slidesPerView: 1,
+        spaceBetween: 5,
         allowTouchMove: false,
         centeredSlides: true,
         loop: true,
@@ -189,9 +204,22 @@
             clickable: true,
         },
         breakpoints: {
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 5,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            },
             1920: {
                 slidesPerView: 7,
-            }
+                spaceBetween: 30,
+            },
         },
         navigation: {
             nextEl: ".swiper-button-next",

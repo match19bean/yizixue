@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdColumn;
 use App\BulletinBoard;
 use App\Carousel;
 use App\Post;
@@ -32,6 +33,7 @@ class FrontPageController extends Controller
             'QaCategory' => QACategory::with(['QACategoryRelation' => function($q){$q->orderByDesc('created_at');}])->get(),
             'Post' => Post::whereIn('uid', $users->pluck('id'))->inRandomOrder()->first(),
             'Carousel' => Carousel::where('is_active', true)->first(),
+            'Ad' => AdColumn::first(),
         ];
 
         return view('welcome')->with('Data', $Data);

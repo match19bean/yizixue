@@ -2,61 +2,119 @@
 
 @section('content')
 <!-- broccoli content -->
-<div class="collectPost">
-    <h2>收藏的文章</h2>
-    <!-- broccoli post -->
-    <div class="postsSection">
-{{--        {{dd($Data['posts'])}})--}}
-            @foreach ($Data['posts'] as $key => $post)
-                <div class="cardborder">
-                    <!-- Post images -->
-                    <div class="postImg">
-                        <!-- img -->
-                        <img class="postPhoto" src="{{ asset('uploads/'.$post->image_path) }}" alt="">
-                        <img class="userimg" src="{{ asset('uploads/'.$post->author->avatar) }}" alt="">
-                        <!-- namecard -->
-                        <p class="text-white namecard">{{ $post->author->name }}</p>
-                    </div>
-                    <!-- Post Contents -->
-                    <div class="">
-                        <div class="postTitle" style="font-size:2rem;">
-                            <h5 class="text-break">
-                            {{$post->title}}
-                            </h5>
-                            @forelse($post->category as $cate)
-                                <p class="text-break">#{{$cate->postCategory->name}}</p>
-                            @empty
-                            @endforelse
-                        </div>
+<div class="container pl-5 pr-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="o-sbadminTitle">收藏的文章</h2>
+        </div>
+    </div>
+</div>
+<div class="container p-5">
+    <div class="row justify-content-center l-collectPost__cards">
+    @forelse($Data['posts'] as $key => $post)
+        <div class="col-md-9">
+            <div class="c-articleCard">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <!-- Post images -->
+                            <div class="c-articleCard__postThumbnail">
+                                <!-- post img -->
+                                @if(is_null($post->image_path))
+                                <span class="c-articleCard__postThumbnail__postPhoto"
+                                    style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                @else
+                                <span class="c-articleCard__postThumbnail__postPhoto"
+                                    style="background-image: url('/uploads/{{$post->image_path}}');">&nbsp;</span>
+                                @endif
+                                <div class="c-articleCard__postThumbnail__userInfo">
+                                    <!-- user img -->
+                                    @if(is_null($post->image_path))
+                                    <span
+                                        style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                    @else
+                                    <span
+                                        style="background-image: url('/uploads/{{$post->author->avatar}}');">&nbsp;</span>
+                                    @endif
+                                    <!-- namecard -->
+                                    <a class="align-content-center"
+                                        href="{{route('get-introduction', $post->author->id)}}">
+                                        {{ !is_null($post->author->nickname) ? \Illuminate\Support\Str::limit($post->author->nickname, 10) : '' }}
+                                    </a>
+                                </div>
 
-                        <div class="text-break content">
-                            {!!substr($post->body, 0, 300)!!}...
-                            <p class="readMore"><a href="{{route('article', $post->id)}}" class="text-decoration-none" style="color: #4C2A70;">...閱讀更多</a></p>
+                            </div>
                         </div>
-                        <div class="socialIcons">
-                                <i class="fa fa-heart" style="font-size:30px; color:red;">
-                                    <span style="color:black;"></span>
-                                </i>
-                                <i class="fa fa-bookmark" style="font-size:30px;">
-                                    <span style="color:black;"></span>
-                                </i>
-                                <i>
-                                    <svg viewBox="0 0 512 512" >
-                                        <path d="M295.4,235.2c32.9,0,59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5s-59.5,26.7-59.5,59.5c0,2.5,0.1,5,0.4,7.4l-58.4,29.1
-                                            c-10.7-10.4-25.2-16.7-41.3-16.7c-32.9,0-59.5,26.7-59.5,59.5s26.7,59.5,59.5,59.5c16.1,0,30.6-6.3,41.3-16.7l58.4,29.1
-                                            c-0.3,2.4-0.4,4.8-0.4,7.4c0,32.9,26.7,59.5,59.5,59.5s59.5-26.7,59.5-59.5s-26.7-59.5-59.5-59.5c-16.1,0-30.6,6.3-41.3,16.7
-                                            l-58.4-29.1c0.3-2.4,0.4-4.8,0.4-7.4c0-2.5-0.1-5-0.4-7.4l58.4-29.1C264.7,228.8,279.3,235.2,295.4,235.2z"/>
-                                        <circle class="st0" cx="224" cy="256" r="216.3"/>
-                                    </svg>
-                                </i>
-
-                                <p>發表日期：{{$post->created_at}}</p>
+                        <div class="col-md-9">
+                            <!-- Post Contents -->
+                            <div class="c-articleCard__postInfo">
+                                <!-- tags -->
+                                <div>
+                                    @forelse($post->category as $count => $cate)
+                                    @if($count < 3) <a
+                                        href="{{route('study-abroad', ['category_id' => $cate->postCategory->id])}}"
+                                        class="o-tag">
+                                        {{ $post->author->name }}
+                                        </a>
+                                        @endif
+                                        @empty
+                                        @endforelse
+                                </div>
+                                <!-- title -->
+                                <a class="c-articleCard__title" href="{{route('article', $post->id)}}">
+                                    {{ !is_null($post->title) ? \Illuminate\Support\Str::limit($post->title , 35) : '' }}
+                                </a>
+                                <!-- content -->
+                                <p class="c-articleCard__content">{!!
+                                    \Illuminate\Support\Str::limit(strip_tags($post->body)) !!}</p>
+                                <a class="o-readMore" href="{{route('article', $post->id)}}">...閱讀更多</a>
+                                <hr>
+                                <!-- reacts -->
+                                <div class="o-react w-100 p-3">
+                                    @if(auth()->check())
+                                    <i class="bi @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) bi-heart-fill @else bi-heart @endif u-cursor-pointer like-post"
+                                        style="
+                                    color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->likePost->count()}}
+                                        </span>
+                                    </i>
+                                    <i class="bi @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif u-cursor-pointer collect-post"
+                                        style="
+                                    color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
+                                    " data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->collectPost->count()}}
+                                        </span>
+                                    </i>
+                                    @else
+                                    <i class="bi bi-heart like-post u-cursor-pointer" style="color: black;"
+                                        data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->likePost->count()}}
+                                        </span>
+                                    </i>
+                                    <i class="bi bi-bookmark collect-post u-cursor-pointer" style="color: black;"
+                                        data-id="{{$post->id}}">
+                                        <span>
+                                            {{$post->collectPost->count()}}
+                                        </span>
+                                    </i>
+                                    @endif
+                                    <!-- date -->
+                                    <p class="c-articleCard__date">發表日期：{{ $post->created_at->format('Y/m/d') }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+        </div>
+    @empty
+    @endforelse
     </div>
-    <!-- end -->
+
 </div>
 
 @endsection

@@ -34,5 +34,9 @@ Route::group([
     $router->resource('yizixue-faq-categories', YizixueFaqCategoryController::class);
     $router->resource('yizixue-faqs', YizixueFaqController::class);
     $router->resource('yizixue-faq-carousels', YizixueFaqCarouselController::class);
-
+    $router->resource('ad-columns', AdController::class);
+    $router->resource('disclaimers', DisclaimerController::class);
+    $router->resource('member-agreements', MemberAgreementController::class);
+    $router->resource('service-agreements', ServiceAgreementController::class);
+    $router->resource('subscription-agreements', SubscriptionAgreementController::class);
 });

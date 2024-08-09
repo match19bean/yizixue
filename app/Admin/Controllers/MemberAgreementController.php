@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\AboutUsContent;
+use App\MemberAgreement;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class AboutUsContentController extends AdminController
+class MemberAgreementController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'AboutUsContent';
+    protected $title = 'MemberAgreement';
 
     /**
      * Make a grid builder.
@@ -24,16 +24,12 @@ class AboutUsContentController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new AboutUsContent());
+        $grid = new Grid(new MemberAgreement());
 
         $grid->column('id', __('Id'));
         $grid->column('content', __('Content'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
-        $grid->actions(function($action){
-            $action->disableDelete();
-            $action->disableView();
-        });
 
         return $grid;
     }
@@ -46,7 +42,7 @@ class AboutUsContentController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(AboutUsContent::findOrFail($id));
+        $show = new Show(MemberAgreement::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('content', __('Content'));
@@ -63,9 +59,10 @@ class AboutUsContentController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new AboutUsContent());
+        $form = new Form(new MemberAgreement());
 
-        $form->textarea('content', __('Content'))->options(['lang' => 'zh-TW']);
+        $form->textarea('content', __('Content'));
+
         return $form;
     }
 }
