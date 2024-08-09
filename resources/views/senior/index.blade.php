@@ -40,16 +40,10 @@
                                             <div class="col-md-12">
                                                 <div class="c-sideNav__topics">
                                                     @forelse($post_categories as $category)
-                                                    @if($loop->last)
-                                                    <button><a
-                                                            href="{{route('senior', ['category' => $category->id])}}">{{$category->name}}</a>
-                                                    </button>
-                                                    @else
                                                     <button><a
                                                             href="{{route('senior', ['category' => $category->id])}}">{{$category->name}}</a>
                                                     </button>
                                                     <hr>
-                                                    @endif
                                                     @empty
                                                     @endforelse
                                                 </div>
