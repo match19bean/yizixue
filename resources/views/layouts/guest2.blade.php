@@ -174,7 +174,7 @@
                                 <a href="{{route('pay-product-list')}}">成為學長姐</a>
                                 <!-- please replace with the real back-end code -->
                                 <a href="/yizixue-faq">教戰手則</a>
-                                <a>學長姐服務條款</a>
+                                <a href="/subscription-agreement">學長姐服務條款</a>
                                 <!-- unsure page, please clearify -->
                                 <!-- <a href="/subscription-agreement">註冊條款？</a> -->
                             </div>
@@ -188,7 +188,7 @@
                                 <!-- please replace with the real back-end code -->
                                 <a href="/service-agreement">服務條款</a>
                                 <!-- 為何figma隱私權聲明頁面是連到會員規約？？ -->
-                                <a href="/membership-agreement">隱私權聲明</a>
+                                <a href="/membership-agreement">會員規約</a>
                                 <!-- please replace with the real back-end code -->
                                 <a href="/disclaimer">免責聲明</a>
                             </div>
