@@ -394,8 +394,7 @@
                         <div class="col-md-5">
                             <div class="l-join__content">
                                 <!-- please merge back-end content here -->
-
-                                <p>{{ !empty($Data['Ad']->description) ? $Data['Ad']->ad_description : '' }}</p>
+                                <p>{{ !empty($Data['Ad']->ad_description) ? $Data['Ad']->ad_description : '' }}</p>
                                 <!-- please merge back-end btn content here -->
                                 <a class="o-btn" href="{{ !empty($Data['Ad']->button_url) ? $Data['Ad']->button_url : '#'}}">{{ !empty($Data['Ad']->button_text) ? $Data['Ad']->button_text : '' }}</a>
                             </div>
