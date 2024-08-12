@@ -63,7 +63,7 @@
                     <p></p>
                 @else
                     <p>
-                        {!! $content->content !!}
+                        {!! nl2br($content->content) !!}
                     </p>
                 @endif
             </div>
