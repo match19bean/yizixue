@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7493a414190d8dff4dc48cb5dc6f067",
+    "content-hash": "489880122264dcfee47066e491e7d4c6",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2523,6 +2523,63 @@
                 }
             ],
             "time": "2022-12-19T21:55:10+00:00"
+        },
+        {
+            "name": "super-eggs/laravel-admin-tinymce",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/super-eggs/tinymce.git",
+                "reference": "cf892bcd84e83c6a29012897ef00256e06a42445"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/super-eggs/tinymce/zipball/cf892bcd84e83c6a29012897ef00256e06a42445",
+                "reference": "cf892bcd84e83c6a29012897ef00256e06a42445",
+                "shasum": ""
+            },
+            "require": {
+                "encore/laravel-admin": "~1.6",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Encore\\TinyMCE\\TinyMCEServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Encore\\TinyMCE\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "super-eggs",
+                    "email": "1552915523@qq.com"
+                }
+            ],
+            "description": "TinyMCE extension for laravel-admin",
+            "homepage": "https://github.com/super-eggs/tinymce",
+            "keywords": [
+                "editor",
+                "extension",
+                "laravel-admin"
+            ],
+            "support": {
+                "issues": "https://github.com/super-eggs/tinymce/issues",
+                "source": "https://github.com/super-eggs/tinymce/tree/master"
+            },
+            "time": "2020-03-13T08:00:05+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

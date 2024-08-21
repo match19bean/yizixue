@@ -65,7 +65,7 @@ class AboutUsContentController extends AdminController
     {
         $form = new Form(new AboutUsContent());
 
-        $form->textarea('content', __('Content'))->options(['lang' => 'zh-TW']);
+        $form->tinymce('content', __('Content'));
         return $form;
     }
 }

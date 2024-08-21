@@ -408,11 +408,22 @@ return [
         'ckeditor' => [
         
             //Set to false if you want to disable this extension
-            'enable' => true,
+            'enable' => false,
             
             // Editor configuration
             'config' => [
                 
+            ]
+        ],
+        'tinymce' => [
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            // Editor configuration
+            'config' => [
+                'resize'=> false,
+                'plugins'=> 'advlist autolink link image lists preview code help fullscreen table autoresize ',   // 插件
+                'toolbar'=> 'undo redo | styleselect | fontsizeselect bold italic | link image blockquote removeformat | indent outdent bullist numlist code',   // 配置工具栏
+                'images_upload_url'=> '/api/v1/images',  //图片上传接口  返回格式：{ location : "/demo/image/1.jpg" }'
             ]
         ]
     ],

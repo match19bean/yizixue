@@ -61,7 +61,7 @@ class MemberAgreementController extends AdminController
     {
         $form = new Form(new MemberAgreement());
 
-        $form->textarea('content', __('Content'));
+        $form->tinymce('content', __('Content'));
 
         return $form;
     }

@@ -61,7 +61,7 @@ class SubscriptionAgreementController extends AdminController
     {
         $form = new Form(new SubscriptionAgreement());
 
-        $form->textarea('content', __('Content'));
+        $form->tinymce('content', __('Content'));
 
         return $form;
     }

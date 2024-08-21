@@ -61,7 +61,7 @@ class DisclaimerController extends AdminController
     {
         $form = new Form(new Disclaimer());
 
-        $form->textarea('content', __('Content'));
+        $form->tinymce('content', __('Content'));
 
         return $form;
     }
