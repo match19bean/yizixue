@@ -178,7 +178,7 @@
                                 <a href="{{route('pay-product-list')}}">成為學長姐</a>
                                 <!-- please replace with the real back-end code -->
                                 <a href="/yizixue-faq">教戰守則</a>
-                                <a href="/subscription-agreement">學長姐服務條款</a>
+                                <a href="/subscription-agreement">付費訂閱條款</a>
                                 <!-- unsure page, please clearify -->
                                 <!-- <a href="/subscription-agreement">註冊條款？</a> -->
                             </div>

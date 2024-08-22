@@ -285,7 +285,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">大學</p>
+                                        <p class="mb-0">學校</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <p class="text-muted mb-0">{{ is_null(Auth::user()->universityItem)? '' : Auth::user()->universityItem->english_name }}</p>
@@ -520,7 +520,7 @@
                                     class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="university" class="form-label">大學</label>
+                                <label for="university" class="form-label">學校</label>
                                 <input id="string" placeholder="就讀學校" list="universityList" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
                                 <!-- this datalist should contain all the school names -->
                                 <datalist id="universityList">
