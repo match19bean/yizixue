@@ -80,7 +80,8 @@
                                     <svg class="c-qnaCard__thumbNail" viewbox="0 0 100 100">
                                         <circle cx="50" cy="50" r="50" />
                                     </svg>
-                                    <p class="align-content-center">匿名</p>
+                                    <p class="align-content-center">{{ (auth()->check() && auth()->user()->isVip() ) ? $qa->author->nickname : mb_substr($qa->author->nickname, 0, 1).'*****'}}</p>
+
                                 </div>
                                 <div class="col-md-10 align-content-center">
                                     @if($qa->category)
@@ -97,7 +98,7 @@
                                 <!-- content -->
                                 <div class="col-md-10">
                                     <p class="c-qnaCard__content">
-                                        {{ !is_null($qa->body) ? \Illuminate\Support\Str::limit( $qa->body , 50) : '' }}
+                                        {!! !is_null($qa->body) ? \Illuminate\Support\Str::limit( $qa->body , 50) : '' !!}
                                     </p>
                                 </div>
                                 <!-- bookmark -->
