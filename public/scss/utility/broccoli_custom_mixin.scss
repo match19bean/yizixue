@@ -4,9 +4,15 @@
     &__sideNav{
         height: 100%;
         margin-right: calc(-1*var(--spacing-80));
+        @media (max-width: 768px) {
+            margin-right: 0;
+        }
     }
     &__content{
         margin-left: calc(-1*var(--spacing-80));
+        @media (max-width: 768px) {
+            margin-left: 0;
+        }
     }
 }
 
@@ -80,7 +86,7 @@
         text-align: end;
         align-self: end;
         font-size: $schoolCFont;
-        padding: var(--spacing-8);
+        padding: 0 var(--spacing-8);
     }
     &_react{
         grid-column: 1/5;
@@ -117,6 +123,9 @@
             margin: var(--spacing-2) var(--spacing-8) var(--spacing-2) var(--spacing-8);
             
         }
+        @media (max-width: 768px){
+            display: none;
+          }
     }
 }
 

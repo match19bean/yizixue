@@ -16,7 +16,7 @@
             <div class="c-articleCard">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-md-3">
+                        <div class="col-4 col-md-3">
                             <!-- Post images -->
                             <div class="c-articleCard__postThumbnail">
                                 <!-- post img -->
@@ -45,7 +45,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-8 col-md-9">
                             <!-- Post Contents -->
                             <div class="c-articleCard__postInfo">
                                 <!-- tags -->

@@ -1,6 +1,24 @@
 .l-introduction{
+    &__crumbs{
+        @media (max-width:768px) {
+            .c-breadcrumbs__currentPage{
+                font-size: var(--text-4xl)
+            }
+            margin-bottom: calc(-1 * var(--spacing-120));
+            background-color: $prime_purple_light;
+            border-radius: var(--spacing-12);
+            margin-left: var(--spacing-12);
+            h3{
+                color: var(--color-white);
+            }
+        }
+    }
     &__portriat, &__schoolImg{
         @include imgBackground;
+        @media (max-width:768px) {
+            border: solid var(--spacing-2) $prime_purple;
+            border-radius: var(--spacing-12);
+        }
     }
 
     &__briefInfo{
@@ -14,6 +32,9 @@
         justify-content: space-between;
         align-items: start;
         padding-top: var(--spacing-80);
+        @media (max-width:768px) {
+            padding: var(--spacing-2);
+        }
     }
     &__userName{
         font-size: var(--text-3xl);
@@ -23,6 +44,9 @@
         margin-right: calc(-1*var(--spacing-64));
         border-radius: var(--spacing-12) 0 0 var(--spacing-12);
         padding: var(--spacing-8);
+        @media (max-width:768px) {
+            display: none;
+        }
     }
     &__tags{
         border: solid 1px black;
@@ -31,6 +55,9 @@
         padding: var(--spacing-24);
         .o-skillBtn{
             font-size: var(--text-md);
+        }
+        @media (max-width:768px) {
+            border-radius: var(--spacing-12);
         }
     }
     &__schoolRelate{
@@ -48,17 +75,24 @@
             border-radius: var(--spacing-12);
             padding: var(--spacing-4) var(--spacing-12) var(--spacing-4) var(--spacing-12);
         }
+        @media (max-width:768px) {
+            padding: var(--spacing-8);
+        }
     }
     &__postTag{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: start;
         padding: 0;
         .o-tag{
             font-size: var(--text-3xl);
             margin-left: 0;
             margin-right: var(--spacing-8);
+            @media (max-width:768px) {
+                font-size: var(--text-md);
+                padding: var(--spacing-2) var(--spacing-12);
+                margin: 0;
+            }
+        }
+        @media (max-width:768px) {
+            justify-content: space-between;
         }
     }
 
@@ -80,6 +114,9 @@
         .o-tag{
             padding: var(--spacing-4) var(--spacing-24) var(--spacing-4) var(--spacing-24);
         }
+        @media (max-width:768px) {
+            justify-content: space-between;
+        }
     }
 
     // detail section
@@ -94,6 +131,10 @@
         border-radius: var(--spacing-32);
         border: solid 1px var(--color-black);
         padding: var(--spacing-32);
+        @media (max-width:768px) {
+            padding: var(--spacing-8);
+            border-radius: var(--spacing-8);
+        }
     }
 
     &__title{
@@ -113,6 +154,9 @@
         background-color: $light_gray;
         border-radius: var(--spacing-24);
         margin-top: calc(-1*var(--spacing-64));
+        .c-articleCard{
+            padding: var(--spacing-8);
+        }
     }
 
     &__articleCard{

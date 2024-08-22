@@ -17,11 +17,21 @@
 .c-studentCardSwiper{
     aspect-ratio: 3/4;
     @include studentCardSetting(
-    solid var(--spacing-2) $prime_purple , //card border
+    solid var(--spacing-4) $prime_purple , //card border
     solid var(--spacing-2) $prime_purple_light, //student img border
     var(--text-sm), //user name font
     var(--text-md), //school english font
     var(--text-sm), //school chinese font
     var(--text-md), //react font
     var(--text-xxs)); //post font
+    @media (max-width: 768px){
+        @include studentCardSetting(
+            solid var(--spacing-8) $prime_purple , //card border
+            solid var(--spacing-4) $prime_purple_light, //student img border
+            var(--text-lg), //user name font
+            var(--text-lg), //school english font
+            var(--text-md), //school chinese font
+            var(--text-lg), //react font
+            var(--text-xs)); //post font
+      }
 }

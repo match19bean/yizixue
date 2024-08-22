@@ -1,22 +1,37 @@
 .c-articleCard{
     padding: var(--spacing-12);
+    @media (max-width:768px) {
+        padding: var(--spacing-24);
+    }
     div.container{
         overflow: hidden;
         border: solid var(--spacing-2) $prime_purple_light;
         border-radius: var(--spacing-32);
+        @media (max-width:768px) {
+            border-radius: var(--spacing-8);
+        }
     }
     &__postThumbnail{
         padding: var(--spacing-24);
         position: relative;
+        @media (max-width:768px) {
+            padding: var(--spacing-12);
+        }
         &__postPhoto{
             @include imgBackground;
             height: 100%;
             border-radius: var(--spacing-12) var(--spacing-12) 0 0;
+            @media (max-width:768px) {
+                border-radius: var(--spacing-4);
+            }
         }
         &__userInfo{
             width: 100%;
             display: grid;
             grid-template-columns: 15% 85%;
+            @media (max-width:768px) {
+                display: none;
+            }
             span{
                 grid-row: 1/2;
                 grid-column: 1/2;
@@ -51,6 +66,9 @@
     &__content{
         color: gray;
         font-size: var(--text-lg);
+        @media (max-width:768px) {
+            display: none;
+        }
     }
     hr{
         width: 100%;
@@ -62,6 +80,9 @@
         text-align: end;
         color: $prime_purple;
         font-size: var(--text-sm);
+        @media (max-width:768px) {
+           font-size: var(--text-xs);
+        }
     }
 }
 

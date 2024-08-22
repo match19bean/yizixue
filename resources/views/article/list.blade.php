@@ -25,15 +25,15 @@
 </div>
 
 <!-- user info section -->
-<div class="container p-5">
+<div class="container p-2 p-md-5">
     <div class="l-articleList__authorCard">
         <div class="row">
             <!-- author info -->
-            <div class="col-md-8">
+            <div class="col-12 col-md-8">
                 <div class="l-articleList__authorInfo">
                     <div class="row">
                         <!-- author img -->
-                        <div class="col-md-3 p-5">
+                        <div class="col-4 col-md-3 p-0 p-md-5">
                             @if(is_null($Data['user']->avatar))
                             <span class="l-articleList__authorImg"
                                 style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
@@ -42,25 +42,21 @@
                                 style="background-image: url('{{asset('uploads/'.$Data['user']->avatar)}}') ;">&nbsp;</span>
                             @endif
                         </div>
-                        <!-- white space -->
-                        <div class="col-md-3">
-                            &nbsp;
-                        </div>
                         <!-- author details -->
-                        <div class="col-md-6 align-content-center">
+                        <div class="col-8 col-md-6 align-content-center">
                             <div class="container">
                                 <div class="row">
                                     <!-- author name -->
-                                    <div class="col-md-12">
+                                    <div class="col-12 col-md-12">
                                         <h2 class="o-whiteTitle">{{$Data['user']->nickname}}</h2>
                                     </div>
                                     <!-- school img -->
-                                    <div class="col-md-2 p-2">
+                                    <div class="col-5 col-md-2 p-2">
                                         <span class="l-articleList__schoolImg"
                                             style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
                                     </div>
                                     <!-- school name -->
-                                    <div class="col-md-10">
+                                    <div class="col-7 col-md-10">
                                         <div class="l-articleList__schoolNames">
                                             <h5 class="o-smallWhiteTitle">
                                                 {{!is_null($Data['user']->universityItem) ? $Data['user']->universityItem->english_name:''}}
@@ -90,7 +86,7 @@
                 </div>
             </div>
             <!-- author skill -->
-            <div class="col-md-4">
+            <div class="col-3 col-md-4 l-articleList__tag">
                 <!-- skill tags -->
                 <div class="container h-100 w-75">
                     <div class="row h-100 align-items-center">
@@ -112,20 +108,18 @@
 <!-- posts section -->
 
 <!-- post cards -->
-<div class="container p-5">
+<div class="container p-3 p-md-5">
     <div class="row">
         <div class="col-md-12">
-            <div class="o-normalTitle">
-                <h2 class="o-normalTitle">{{$Data['user']->nickname}}的文章</h2>
-            </div>
+                <h2 class="o-normalTitle pl-3 pl-md-2">{{$Data['user']->nickname}}的文章</h2>
         </div>
         @if($Data['posts']->total())
         @foreach($Data['posts'] as $post)
-        <div class="col-md-6 p-0">
-            <div class="c-articleCard l-articleList">
-                <div class="container l-articleList__card">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 p-0">
+        <div class="l-articleList__card col-md-6 p-0">
+            <div class="c-articleCard">
+                <div class="container">
+                    <div class="row align-items-center p-2 p-md-0">
+                        <div class="col-4 col-md-3 p-0">
                             <!-- Post images -->
                             <div class="c-articleCard__postThumbnail">
                                 <!-- post img -->
@@ -138,7 +132,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-8 col-md-9">
                             <!-- Post Contents -->
                             <div class="c-articleCard__postInfo">
                                 <!-- title -->

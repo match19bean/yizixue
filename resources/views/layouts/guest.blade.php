@@ -24,17 +24,13 @@
 </head>
 
 <body>
-    <!-- Responsive navbar-->
-    <nav id="mainNav" class="l-header navbar navbar-expand-lg">
+    <!-- desk ver navbar-->
+    <nav class="l-header l-header__hideOnDesk navbar navbar-expand-lg">
         <a class="l-header__logo" href="{{url('/')}}">
             <img id="logoImg" src="{{asset('uploads/images/logo.png')}}" alt="logo">
         </a>
         <div class="l-header__navBar">
-            <!-- toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="l-header__navItems collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="l-header__navItems collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="l-header__li nav-item"><a class="nav-link scrollFunction"
                             href="{{route('senior')}}">學長姐｜快找</a></li>
@@ -74,6 +70,66 @@
             </div>
         </div>
     </nav>
+    <!-- phone ver -->
+    <nav id="mainNav" class="l-header l-header__hideOnPhone navbar navbar-expand-lg p-0">
+        <div class="container p-3">
+            <div class="row">
+                <!-- logo -->
+                <div class="col-5">
+                    <a href="{{url('/')}}">
+                        <img id="logoImgPhone" src="{{asset('uploads/images/logo.png')}}" alt="logo">
+                    </a>
+                </div>
+                <!-- toggler -->
+                <div class="col-4 text-end align-content-center">
+                    <button class="l-header__hamburger" type="button" data-bs-toggle="collapse" onclick="bg_change()"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+                </div>
+                <!-- thumb nail -->
+                <div class="col-3">
+                    @if(auth()->check())
+                    <a href="{{route('home')}}">
+                        <svg class="l-header__thumbNail" viewbox="0 0 80 80">
+                            <defs>
+                                <pattern id="image" patternUnits="userSpaceOnUse" height="80" width="80">
+                                    @if(!is_null(auth()->user()->avatar))
+                                    <image x="0" y="0" xlink:href="{{asset('uploads/'.auth()->user()->avatar)}}"
+                                        width="80" height="80"></image>
+                                    @else
+                                    <image x="0" y="0" xlink:href="{{asset('uploads/images/default_avatar.png')}}"
+                                        width="80" height="80"></image>
+                                    @endif
+                                </pattern>
+                            </defs>
+                            <circle cx="40" cy="40" r="30" fill="url(#image)" />
+                        </svg>
+                    </a>
+                    @else
+                    <svg class="l-header__thumbNail" viewbox="0 0 80 80">
+                        <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
+                    </svg>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <!-- nav items -->
+        <div class="l-header__navItems collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="l-header__links">
+                <a href="{{route('senior')}}">學長姐｜快找</a>
+            </div>
+            <div class="l-header__links">
+                <a href="{{route('study-abroad')}}">留學誌｜推薦</a>
+            </div>
+            <div class="l-header__links">
+                @if(auth()->check())
+                <a href="{{route('home')}}">易子學系統</a>
+                @else
+                <a href="{{route('login')}}">註冊｜登入</a>
+                @endif
+            </div>
+        </div>
+    </nav>
 
     <div class="container-fluid p-0 m-0">
         @yield('content')
@@ -83,28 +139,31 @@
     <footer>
         <div class="l-footer container-fluid">
             <div class="row p-5 align-items-stretch">
-                <div class="col-md-4">
-                    <div class="l-footer_brand h-100">
+                <!-- logo -->
+                <div class="col-12 col-md-6 col-lg-4 mx-auto">
+                    <div class="l-footer__brand h-lg-100">
                         <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
                         <div class="row g-3">
                             <p class="col-md-12 text-center">
-                            行家在線有限公司 | 統一編號 83453577 | all rights reserved<br>
-                            <br>
-                            客服信箱 service@yizixue.com.tw | 客服時間 Mon-Fri 09:30-17:30
-                        </p>
+                                行家在線有限公司 | 統一編號 83453577 | all rights reserved<br>
+                                <br>
+                                客服信箱 service@yizixue.com.tw | 客服時間 Mon-Fri 09:30-17:30
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="l-footer_siteMap">
-                        <div class="l-footer_siteMap_topic">
+                <!-- site map -->
+                <div class="col-lg-8">
+                    <!-- desk ver -->
+                    <div class="l-footer__siteMap_desk">
+                        <div class="l-footer__siteMap_desk_topic">
                             <h6>加入｜易子學</h6>
                             <div>
                                 <a href="{{route('login')}}">登入｜註冊</a>
                                 <a href="">聯絡我們</a>
                             </div>
                         </div>
-                        <div class="l-footer_siteMap_topic">
+                        <div class="l-footer__siteMap_desk_topic">
                             <h6>關於｜會員</h6>
                             <div>
                                 <a href="{{route('senior')}}">找學長姐</a>
@@ -113,18 +172,18 @@
                                 <a href="{{route('study-abroad')}}">留學誌</a>
                             </div>
                         </div>
-                        <div class="l-footer_siteMap_topic">
+                        <div class="l-footer__siteMap_desk_topic">
                             <h6>關於｜學長姐</h6>
                             <div>
                                 <a href="{{route('pay-product-list')}}">成為學長姐</a>
                                 <!-- please replace with the real back-end code -->
-                                <a href="/yizixue-faq">教戰手則</a>
+                                <a href="/yizixue-faq">教戰守則</a>
                                 <a href="/subscription-agreement">學長姐服務條款</a>
                                 <!-- unsure page, please clearify -->
                                 <!-- <a href="/subscription-agreement">註冊條款？</a> -->
                             </div>
                         </div>
-                        <div class="l-footer_siteMap_topic">
+                        <div class="l-footer__siteMap_desk_topic">
                             <h6>關於｜易子學</h6>
                             <div>
                                 <!-- please replace with the real back-end code -->
@@ -138,6 +197,16 @@
                                 <a href="/disclaimer">免責聲明</a>
                             </div>
                         </div>
+                    </div>
+                    <!-- phone ver -->
+                    <div class="l-footer__siteMap_phone p-5">
+                        <h6>
+                            <a>關於我們</a>
+                        </h6>
+                        <p>｜</p>
+                        <h6>
+                            <a>聯絡我們</a>
+                        </h6>
                     </div>
                 </div>
             </div>

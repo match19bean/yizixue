@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 p-5">
-                    <img src="{{asset('uploads/images/goals.png')}}" alt="">
+                    <img src="{{asset('uploads/images/goals-new.png')}}" alt="">
                 </div>
                 <div class="col-md-6 p-5">
                     <div class="row l-aboutUs__centerBorder p-5">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 p-5">
-                    <img src="{{asset('uploads/images/csr.png')}}" alt="">
+                    <img src="{{asset('uploads/images/csr-new.png')}}" alt="">
                 </div>
             </div>
             <div class="row p-5">

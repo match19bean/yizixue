@@ -77,7 +77,7 @@ class PostController extends AdminController
         $form->text('title', __('Title'));
         $form->text('uid', __('Uid'));
         $form->text('image_path', __('Image path'));
-        $form->textarea('body', __('Body'));
+        $form->tinymce('body', __('Body'));
         $form->text('state', __('State'))->default('approve');
 
         return $form;

@@ -14,111 +14,113 @@
     </div>
 </div>
 
-<div class="container l-qnaIndex p-5">
+<div class="container l-qnaIndex">
     <div class="row">
         <!-- side bar -->
-        <div class="col-md-3">
-            <!-- sideBar -->
-            <div>
+        <div class="col-md-3 pr-lg-5">
+            <div class="row">
                 <!-- categories -->
-                <div class="c-sideNav__topics">
-                    <button><a class="text-white text-center" href="{{route('qna')}}">
-                            全部問答
-                        </a></button>
-                    <hr class="c-sideNav__hr">
-                    @forelse($categories as $category)
-                        <button><a class="text-white text-center" href="{{route('qna', ['category_id'=>$category->id])}}">
-                                {{$category->name}}
-                        </a></button>
-                        <hr class="c-sideNav__hr">
-                    @empty
-                    @endforelse
-                    <!-- demo section, please delete them after you update the backend data -->
-                    <!-- end of demos -->
-                    <!-- this is the code for categories, please add back-end datas for this -->
-                    {{--@forelse($Data['category'] as $category)
-                    <button><a class="text-white text-center"
-                            href="{{route('study-abroad', ['category_id' => $category->id])}}">
-                    {{$category->name}}
-                    </a></button>
-                    <hr class="c-sideNav__hr">
-                    @empty
-                    @endforelse--}}
-                    <!-- end of back-end prepar section -->
-                </div>
+                <div class="col-md-12">
+                    <div class="c-sideNav__topics row justify-content-start">
+                        <button class="col-3 col-md-12 text-center"><a href="{{route('qna')}}">全部問答</a>
+                            <hr class="c-sideNav__hr">
+                        </button>
+                        @forelse($categories as $category)
+                        @if($loop->last)
+                        <button class="col-3 col-md-12 text-center"><a
+                                href="{{route('qna', ['category_id'=>$category->id])}}">{{ !is_null($category->name) ? \Illuminate\Support\Str::limit($category->name , 10) : '' }}</a>
+                            <!-- <hr class="c-sideNav__hr"> -->
+                        </button>
 
-                <!-- types (hot and new) -->
-{{--                <a class="o-whiteBtn" href="{{route('study-abroad', ['filter' => 'popular'])}}">最熱門</a>--}}
-{{--                <a class="o-whiteBtn" href="{{route('study-abroad',['filter'=>'latest'])}}">最新</a>--}}
-                <!-- call to action -->
-                @if(auth()->guest() || !auth()->user()->isVip())
-                <div class="c-callAction">
-                    <h5 class="c-callAction__title">
-                        讓專業持續變現
-                    </h5>
-                    <p class="c-callAction__content">
-                        我們一起幫助學弟妹
-                        <br>
-                        更為自己創造收入
-                        <br>
-                        建立留學諮詢事業
-                        <br>
-                    </p>
-                    <a class="o-lightBtn m-3" href="{{route('pay-product-list')}}">立即成為學長姐</a>
+                        @else
+                        <button class="col-3 col-md-12 text-center"><a
+                                href="{{route('qna', ['category_id'=>$category->id])}}">{{ !is_null($category->name) ? \Illuminate\Support\Str::limit($category->name , 10) : '' }}</a>
+                            <hr class="c-sideNav__hr">
+                        </button>
+
+                        @endif
+                        @empty
+                        @endforelse
+                    </div>
                 </div>
-                @endif
+                <!-- call to action -->
+                <div class="col-md-12">
+                    @if(auth()->guest() || !auth()->user()->isVip())
+                    <div class="c-callAction">
+                        <h5 class="c-callAction__title">
+                            讓專業持續變現
+                        </h5>
+                        <p class="c-callAction__content">
+                            我們一起幫助學弟妹
+                            <br>
+                            更為自己創造收入
+                            <br>
+                            建立留學諮詢事業
+                            <br>
+                        </p>
+                        <a class="o-lightBtn m-3" href="{{route('pay-product-list')}}">立即成為學長姐</a>
+                    </div>
+                    @endif
+                </div>
             </div>
         </div>
+        <!-- content -->
         <div class="col-md-9">
             <!-- qa cards -->
             @if(!is_null($qas))
             @forelse($qas as $num => $qa)
-            <div class="row m-5">
+            <div class="row m-3 m-md-5">
                 <div class="c-qnaCard">
                     <div class="row">
-                        <div class="col-md-11 p-5">
+                        <!-- content -->
+                        <div class="col-10 col-md-11 p-2 p-md-5">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <div class="c-qnaCard__info">
-                                        <svg class="c-qnaCard__thumbNail" viewbox="0 0 100 100">
-                                            <circle cx="50" cy="50" r="50" />
-                                        </svg>
-                                        <p class="align-content-center">匿名</p>
-                                    </div>
+                                <!-- author -->
+                                <div class="col-md-2 d-flex p-3">
+                                    <svg class="c-qnaCard__thumbNail" viewbox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="50" />
+                                    </svg>
+                                    <p class="align-content-center">匿名</p>
                                 </div>
                                 <div class="col-md-10 align-content-center">
                                     @if($qa->category)
-                                    <span class="o-smallBtn">
+                                    <span class="o-tag">
                                         {{$qa->category->name}}
                                     </span>
                                     @endif
                                 </div>
-                            </div>
-                            <hr>
-                            <a class="o-articleTitle" href="{{route('qna.show', $qa->id)}}">{{$qa->title}}</a>
-                            <div class="row">
+                                <hr>
+                                <!-- title -->
+                                <a class="col-md-12 o-articleTitle" href="{{route('qna.show', $qa->id)}}">
+                                    {{ !is_null($qa->title) ? \Illuminate\Support\Str::limit( $qa->title , 20) : '' }}
+                                </a>
+                                <!-- content -->
                                 <div class="col-md-10">
                                     <p class="c-qnaCard__content">
-                                        {!!\Illuminate\Support\Str::limit(strip_tags($qa->body))!!}</p>
+                                        {{ !is_null($qa->body) ? \Illuminate\Support\Str::limit( $qa->body , 50) : '' }}
+                                    </p>
                                 </div>
-                                <div class="col-md-2">
+                                <!-- bookmark -->
+                                <div class="col-md-2 c-qnaCard__bookmark">
                                     <div class="lign-content-end">
                                         @if(auth()->check())
-                                            <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qa->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex" data-id="{{$qa->id}}" style="
+                                        <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qa->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex"
+                                            data-id="{{$qa->id}}" style="
                                     color: @if(auth()->user()->collectQa->where('qa_id', $qa->id)->count()==1) red @else black @endif ;
                                             ">
-                                                <span>{{$qa->collectQa->count()}}</span>
-                                            </i>
+                                            <span>{{$qa->collectQa->count()}}</span>
+                                        </i>
                                         @else
-                                            <i class="bi bi-bookmark collect-qa d-flex" data-id="{{$qa->id}}">
-                                                <span>{{$qa->collectQa->count()}}</span>
-                                            </i>
+                                        <i class="bi bi-bookmark collect-qa d-flex" data-id="{{$qa->id}}">
+                                            <span>{{$qa->collectQa->count()}}</span>
+                                        </i>
                                         @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-1 p-0">
+                        <!-- svg -->
+                        <div class="col-2 col-md-1 p-0">
                             <svg viewBox="0 0 45 150">
                                 <polygon fill="#4C2A70" points="50,150 0,150 35,75 0,0 50,0 " />
                             </svg>
@@ -137,11 +139,11 @@
                     @if(!is_null($posts))
                     @foreach($posts as $post)
                     <!-- new posts -->
-                    <div class="col-md-6 p-4">
+                    <div class="col-md-6 p-2 p-md-4">
                         <div class="c-articleCard">
                             <div class="container">
                                 <div class="row align-items-center">
-                                    <div class="col-md-3 p-0">
+                                    <div class="col-4 col-md-3 p-0">
                                         <!-- Post images -->
                                         <div class="c-articleCard__postThumbnail">
                                             <!-- post img -->
@@ -154,12 +156,11 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-8 col-md-9">
                                         <!-- Post Contents -->
                                         <div class="c-articleCard__postInfo">
                                             <!-- title -->
-                                            <a class="c-articleCard__title"
-                                                href="{{route('article', $post->id)}}">
+                                            <a class="c-articleCard__title" href="{{route('article', $post->id)}}">
                                                 {{!is_null($post->title) ? \Illuminate\Support\Str::limit(strip_tags($post->title), 13): ''}}
                                             </a>
                                             <!-- content -->
@@ -171,14 +172,16 @@
                                             <!-- reacts -->
                                             <div class="o-react w-100 pb-2 pr-2">
                                                 @if(auth()->check())
-                                                <i class="bi @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) bi-heart-fill @else bi-heart @endif  like-post" style="
+                                                <i class="bi @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) bi-heart-fill @else bi-heart @endif  like-post"
+                                                    style="
                                     color: @if(auth()->user()->likePost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                                     <span>
                                                         {{$post->likePost->count()}}
                                                     </span>
                                                 </i>
-                                                <i class="bi @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif collect-post" style="
+                                                <i class="bi @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif collect-post"
+                                                    style="
                                     color: @if(auth()->user()->collectPost->where('post_id', $post->id)->count()==1) red @else black @endif ;
                                     " data-id="{{$post->id}}">
                                                     <span>
@@ -226,7 +229,7 @@
             <!-- pagination -->
             <div class="col-md-12">
                 <div class="c-pagination">
-                    {!!  $qas->appends($_GET)->links('vendor.pagination.bootstrap-4') !!}
+                    {!! $qas->appends($_GET)->links('vendor.pagination.bootstrap-4') !!}
                 </div>
             </div>
             @endif
@@ -237,71 +240,77 @@
 @endsection
 
 @section('page_js')
-    <script>
-        $('.like-post').click(function () {
-            let that = $(this);
-            $.ajax({
-                url: "{{url('like-post')}}" + "/" + $(this).data('id'),
-                method: 'GET',
-                success: function (res) {
-                    if (res.operator === 'no') {
-                        alert(res.message);
-                    } else if (res.operator === 'add') {
-                        that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart-fill').css('color', 'red');
-                        that.children('span').text(res.total);
-                    } else if (res.operator === 'reduce') {
-                        that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart').css('color', 'black');
-                        that.children('span').text(res.total);
-                    }
-                },
-                error: function (error) {
-                    console.log(error)
+<script>
+    $('.like-post').click(function () {
+        let that = $(this);
+        $.ajax({
+            url: "{{url('like-post')}}" + "/" + $(this).data('id'),
+            method: 'GET',
+            success: function (res) {
+                if (res.operator === 'no') {
+                    alert(res.message);
+                } else if (res.operator === 'add') {
+                    that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass(
+                        'bi-heart-fill').css('color', 'red');
+                    that.children('span').text(res.total);
+                } else if (res.operator === 'reduce') {
+                    that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart')
+                        .css('color', 'black');
+                    that.children('span').text(res.total);
                 }
-            });
+            },
+            error: function (error) {
+                console.log(error)
+            }
         });
+    });
 
-        $('.collect-post').click(function () {
-            let that = $(this);
-            $.ajax({
-                url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
-                method: 'GET',
-                success: function (res) {
-                    if (res.operator === 'no') {
-                        alert(res.message);
-                    } else if (res.operator === 'add') {
-                        that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark-fill').css('color', 'red');
-                        that.children('span').text(res.total);
-                    } else if (res.operator === 'reduce') {
-                        that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark').css('color', 'black');
-                        that.children('span').text(res.total);
-                    }
-                },
-                error: function (error) {
-                    console.log(error)
+    $('.collect-post').click(function () {
+        let that = $(this);
+        $.ajax({
+            url: "{{url('collect-post')}}" + "/" + $(this).data('id'),
+            method: 'GET',
+            success: function (res) {
+                if (res.operator === 'no') {
+                    alert(res.message);
+                } else if (res.operator === 'add') {
+                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass(
+                        'bi-bookmark-fill').css('color', 'red');
+                    that.children('span').text(res.total);
+                } else if (res.operator === 'reduce') {
+                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass(
+                        'bi-bookmark').css('color', 'black');
+                    that.children('span').text(res.total);
                 }
-            });
+            },
+            error: function (error) {
+                console.log(error)
+            }
         });
+    });
 
-        $('.collect-qa').click(function () {
-            let that = $(this);
-            $.ajax({
-                url: "{{url('collect-qa')}}" + "/" + $(this).data('id'),
-                method: 'GET',
-                success: function (res) {
-                    if (res.operator === 'no') {
-                        alert(res.message);
-                    } else if (res.operator === 'add') {
-                        that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark-fill').css('color', 'red');
-                        that.children('span').text(res.total);
-                    } else if (res.operator === 'reduce') {
-                        that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark').css('color', 'black');
-                        that.children('span').text(res.total);
-                    }
-                },
-                error: function (error) {
-                    console.log(error)
+    $('.collect-qa').click(function () {
+        let that = $(this);
+        $.ajax({
+            url: "{{url('collect-qa')}}" + "/" + $(this).data('id'),
+            method: 'GET',
+            success: function (res) {
+                if (res.operator === 'no') {
+                    alert(res.message);
+                } else if (res.operator === 'add') {
+                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass(
+                        'bi-bookmark-fill').css('color', 'red');
+                    that.children('span').text(res.total);
+                } else if (res.operator === 'reduce') {
+                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass(
+                        'bi-bookmark').css('color', 'black');
+                    that.children('span').text(res.total);
                 }
-            });
+            },
+            error: function (error) {
+                console.log(error)
+            }
         });
-    </script>
+    });
+</script>
 @endsection

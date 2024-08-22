@@ -1,0 +1,34 @@
+.l-payList{
+    &__img{
+        @include imgBackground;
+        aspect-ratio: 5/1;
+        @media (max-width:768px) {
+            aspect-ratio: 4/3;
+        }
+    }
+    &__card{
+        border-radius: var(--spacing-24);
+        font-weight: 900;
+        border: solid var(--spacing-2) $prime_purple;
+        overflow: hidden;
+    }
+    &__header{
+        border-bottom: solid var(--spacing-4) $prime_purple;
+    }
+    &__btns{
+        .o-btn{
+            font-size: var(--text-md);
+            border-radius: var(--spacing-8);
+        }
+    }
+    &__slogan{
+        display: block;
+        color: $prime_purple;
+        font-size: var(--text-lg);
+        border-radius: var(--spacing-24);
+        background-color: var(--color-white);
+        align-content: center;
+        justify-content: center;
+        box-shadow: $light_gray var(--spacing-8) var(--spacing-8) var(--spacing-8);
+    }
+}

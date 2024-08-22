@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="m-0 l-singleArticle">
-    <div class="container l-singleArticle__main p-5">
+    <div class="container l-singleArticle__main p-2 p-md-5">
         <div class="row">
             <!-- breadcrumb -->
             <div class="c-breadcrumbs">
@@ -22,14 +22,14 @@
                 <h3 class="c-breadcrumbs__currentPage">{{$Data['article']->title}}</h3>
             </div>
             <!-- post content -->
-            <div class="container">
+            <div class="container pl-5 pr-5 p-md-0">
                 <div class="row">
                     <!-- main article -->
                     <div class="col-md-9">
                         <!-- article -->
                         <div class="l-singleArticle__contentDiv">
                             <!-- p date -->
-                            <p class="text-right">發布日期{{$Data['article']->created_at->format('Y/m/d')}}</p>
+                            <p class="l-singleArticle__date text-right">發布日期{{$Data['article']->created_at->format('Y/m/d')}}</p>
                             <!-- main pic -->
                             <div class="l-singleArticle__postPic"
                                 style="background-image: url('{{asset('uploads/'.$Data['article']->image_path)}}');">
@@ -38,9 +38,9 @@
                             <p>
                                 {!! $Data['article']->body !!}
                             </p>
-                            <div class="row">
+                            <!-- tags and social -->
+                            <div class="row justify-content-between">
                                 <!-- categorys -->
-                                <div class="col-md-9">
                                     @if(!is_null($Data['article']->category))
                                     @foreach($Data['article']->category as $category)
                                     <a class="o-tag"
@@ -49,9 +49,8 @@
                                     </a>
                                     @endforeach
                                     @endif
-                                </div>
                                 <!-- social icons -->
-                                <div class="col-md-3">
+                                <div class="col-6 col-md-6">
                                     <div class="o-react">
                                         @if(auth()->check())
                                         <i class="bi @if(auth()->user()->likePost->where('post_id', $Data['article']->id)->count() == 1) bi-heart-fill @else bi-heart @endif u-cursor-pointer like-post"
@@ -180,8 +179,8 @@
             </div>
         </div>
         <!-- more articles -->
-        <div class="row">
-            <h2 class="l-singleArticle__title">您可能感興趣的文章</h2>
+        <div class="row mt-5 mt-md-0">
+            <h2 class="l-singleArticle__title text-center text-md-start">您可能感興趣的文章</h2>
             <div class="container">
                 <div class="row">
                     @if(!is_null($Data['article']->author->post))
@@ -190,7 +189,7 @@
                         <div class="c-articleCard">
                             <div class="container">
                                 <div class="row align-items-center">
-                                    <div class="col-md-4">
+                                    <div class="col-4">
                                         <!-- Post images -->
                                         <div class="c-articleCard__postThumbnail">
                                             <!-- post img -->
@@ -218,7 +217,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-8">
                                         <!-- Post Contents -->
                                         <div class="c-articleCard__postInfo">
                                             <!-- tags -->

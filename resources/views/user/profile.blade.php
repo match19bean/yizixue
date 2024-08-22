@@ -366,6 +366,15 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
+                                        <p class="mb-0">推薦人MAIL</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ Auth::user()->recommender }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <p class="mb-0">學生證上傳</p>
                                     </div>
                                     <div class="col-sm-9">
@@ -512,13 +521,6 @@
                             </div>
                             <div class="mb-3">
                                 <label for="university" class="form-label">大學</label>
-{{--                                <select name="university" id="university" class="form-control">--}}
-{{--                                    @if(!is_null($Data['universities']))--}}
-{{--                                        @foreach($Data['universities'] as $university)--}}
-{{--                                            <option class="form-control" value="{{$university->id}}" @if(Auth::user()->university == $university->id) selected @endif>{{$university->name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-{{--                                </select>--}}
                                 <input id="string" placeholder="就讀學校" list="universityList" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
                                 <!-- this datalist should contain all the school names -->
                                 <datalist id="universityList">
@@ -529,8 +531,6 @@
                                     @endforeach
                                 </datalist>
                                 <input type="hidden" name="university" id="universityList-hidden">
-{{--                                <input type="text" value="{{ Auth::user()->university }}" name="university"--}}
-{{--                                    class="form-control">--}}
                             </div>
                             <div class="mb-3">
                                 <label for="is_study" class="form-label">在學中</label>
@@ -572,6 +572,11 @@
                                 <label for="address" class="form-label">地址</label>
                                 <input type="text" value="{{ Auth::user()->address }}" name="address"
                                     class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recommender" class="form-label">推薦人MAIL</label>
+                                <input type="text" id="recommender" name="recommender" value="{{Auth::user()->recommender}}"
+                                       class="form-control" {{ is_null(Auth::user()->recommender) ?: 'disabled'  }} >
                             </div>
                             <div class="mb-3">
                                 <label for="student_proof" class="form-label">學生證上傳</label>

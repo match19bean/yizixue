@@ -1,4 +1,4 @@
-.o-btn{
+.o-btn {
     all: unset;
     font-size: var(--text-4xl);
     color: var(--color-white);
@@ -7,11 +7,14 @@
     border-radius: var(--spacing-12);
     background-color: $prime_purple;
     font-weight: 900;
-    &:hover{
+
+    &:hover {
         color: var(--color-white);
+        background-color: $prime_purple_light;
     }
 }
-.o-smallBtn{
+
+.o-smallBtn {
     all: unset;
     font-size: var(--text-sm);
     color: var(--color-white);
@@ -21,12 +24,13 @@
     background-color: $prime_purple;
     font-weight: 900;
     align-content: center;
-    &:hover{
+
+    &:hover {
         color: var(--color-white);
     }
 }
 
-.o-qnaBtn{
+.o-qnaBtn {
     all: unset;
     font-size: var(--text-xl);
     letter-spacing: var(--text-xxs);
@@ -36,12 +40,13 @@
     border-radius: var(--spacing-12);
     background-color: $prime_purple;
     font-weight: 900;
-    &:hover{
+
+    &:hover {
         color: var(--color-white);
     }
 }
 
-.o-lightBtn{
+.o-lightBtn {
     all: unset;
     font-size: var(--text-md);
     color: var(--color-white);
@@ -52,12 +57,13 @@
     background-color: $prime_purple_light;
     font-weight: 900;
     box-shadow: var(--spacing-4) var(--spacing-4) var(--spacing-4) gray;
-    &:hover{
+
+    &:hover {
         color: var(--color-white);
     }
 }
 
-.o-whiteBtn{
+.o-whiteBtn {
     all: unset;
     display: block;
     cursor: pointer;
@@ -65,12 +71,15 @@
     padding: var(--spacing-8);
     margin: var(--spacing-24);
     font-size: var(--text-lg);
-    border: var(--spacing-2) solid $prime_purple; 
+    border: var(--spacing-2) solid $prime_purple;
     border-radius: var(--spacing-32);
     background-color: var(--color-white);
+    @media (max-width:768px) {
+        margin: 0;
+    }
 }
 
-.o-skillBtn{
+.o-skillBtn {
     all: unset;
     display: block;
     cursor: pointer;
@@ -81,20 +90,27 @@
     border: solid var(--spacing-2) $prime_purple;
 }
 
-.o-tag{
+.o-tag {
     @include tag;
     transition: 0.1s;
-    &:hover{
+
+    &:hover {
         background-color: $dark_gray;
         color: var(--color-white);
     }
-    &:active{
+
+    &:active {
         background-color: $prime_gray;
         color: var(--color-white);
     }
+
+    @media (max-width: 768px) {
+        font-size: var(--text-xs);
+        border-radius: var(--spacing-4);
+    }
 }
 
-.o-readMore{
+.o-readMore {
     width: 100%;
     padding: var(--spacing-12);
     text-align: end;
@@ -102,22 +118,23 @@
     color: $prime_purple;
     z-index: 5;
 
-    @media (max-width: 768px){
-        width: 100%;
-        text-align: center;
+    @media (max-width: 768px) {
+        display: none;
     }
 }
 
-.o-react{
+.o-react {
     font-size: var(--text-md);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    i{
+
+    i {
         display: flex;
         flex-direction: row;
         padding: 0 var(--spacing-8) 0 var(--spacing-8);
-        span{
+
+        span {
             all: unset;
             font-size: var(--text-sm);
             text-decoration: none;
@@ -126,7 +143,7 @@
     }
 }
 
-.o-actBtn{
+.o-actBtn {
     width: fit-content;
     display: flex;
     flex-direction: row;
@@ -136,13 +153,13 @@
     cursor: pointer;
 }
 
-.o-socialIcon{
+.o-socialIcon {
     font-size: var(--text-2xl);
     width: var(--text-2xl);
     aspect-ratio: 1/1;
 }
 
-.o-reference{
+.o-reference {
     all: unset;
     cursor: pointer;
     display: block;
@@ -150,13 +167,7 @@
     aspect-ratio: 1/1;
 }
 
-.o-subTitle{
-    font-size: var(--text-2xl);
-    color: $prime_purple;
-    font-weight: 800;
-}
-
-.o-faqTopic{
+.o-faqTopic {
     all: unset;
     display: block;
     width: 100%;
@@ -167,39 +178,47 @@
     text-align: center;
     font-size: var(--text-lg);
     font-weight: 800;
-    &:hover{
+
+    &:hover {
         background-color: $prime_purple;
         color: var(--color-white);
     }
-    &:active{
+
+    &:active {
         background-color: var(--color-white);
         color: $prime_purple_light;
     }
-    &__selected{
+
+    &__selected {
         background-color: $prime_gray;
         color: var(--color-black);
     }
 }
 
-.o-faqBtn{
+.o-faqBtn {
     all: unset;
     display: block;
     width: 100%;
-    span{
+
+    span {
         background-color: $prime_purple_light;
         border-radius: var(--spacing-4);
         border: solid var(--color-black) 1px;
-        svg{
+
+        svg {
             display: inline;
             width: var(--text-4xl);
-            circle{
+
+            circle {
                 fill: $prime_purple;
             }
-            path{
+
+            path {
                 fill: $prime_purple_light;
             }
         }
-        p{
+
+        p {
             font-size: var(--text-lg);
             color: var(--color-white);
             text-align: center;
@@ -208,17 +227,32 @@
     }
 }
 
-.o-collectPost_btn{
+.o-collectPost_btn {
     width: 100%;
     text-align: start;
     color: var(--color-white);
     font-weight: 800;
     font-size: var(--text-sm);
     padding: var(--spacing-12);
-    i{
+
+    i {
         color: var(--color-white);
     }
-    &:hover{
+
+    &:hover {
         color: $prime_purple_light;
+    }
+}
+
+.o-basicLink {
+    font-weight: 400;
+    color: var(--color-black);
+    cursor: pointer;
+    &:hover {
+        font-weight: 800;
+        color: $prime_purple;
+    }
+    @media (max-width:768px) {
+        font-size: var(--text-sm);
     }
 }

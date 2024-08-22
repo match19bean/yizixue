@@ -1,10 +1,52 @@
-.l-collectPost{
-    &__sideBar{
+.l-collectPost {
+    &__sideBar {
         background-color: $prime_purple;
     }
 
-    &__cards{
-       background-color: var(--color-white);
+    &__cards {
+        background-color: var(--color-white);
         border-radius: var(--spacing-8);
+    }
+
+    // dsshboard
+    &__topbar {
+        i {
+            @media (max-width:768px) {
+                font-size: var(--text-4xl);
+            }
+        }
+
+        #sidebarToggleTop {
+            @media (max-width:768px) {
+                width: var(--spacing-64);
+                height: var(--spacing-64);
+            }
+        }
+
+        @media (max-width:768px) {
+            height: var(--spacing-64);
+        }
+    }
+    &__deshSide{
+        background-color: $prime_purple;
+        @media (max-width:768px) {
+            width: 80vw;
+            .o-collectPost_btn{
+                width: 100%;
+                font-size: var(--text-xl);
+                height: var(--spacing-64);
+            }
+            #post-list, #qa-list, #invite-list{
+                transform: translateX(var(--spacing-64));
+                a{
+                    font-size: var(--text-sm);
+                }
+            }
+        }
+    }
+    &__main{
+        .sidebar.toggled{
+            display: none;
+        }
     }
 }

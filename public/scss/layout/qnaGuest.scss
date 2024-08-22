@@ -2,6 +2,11 @@
     &__title{
         font-size: var(--text-4xl);
     }
+    &__bookmark{
+        @media (max-width:768px) {
+            display: none;
+        }
+    }
     &__statusContent{
         font-size: var(--text-xl);
     }
@@ -35,6 +40,9 @@
     &__infoContact{
         text{
             font-size: var(--text-3xl);
+            @media (max-width:768px) {
+                font-size: 10vw;
+            }
         }
     }
     &__callAction{
@@ -63,5 +71,10 @@
         color: var(--color-white);
         font-size: var(--text-xl);
         padding: var(--spacing-12);
+    }
+    &__bookmark{
+        @media (max-width:768px) {
+                display: none;
+        }
     }
 }

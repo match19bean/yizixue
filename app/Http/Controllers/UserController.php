@@ -91,6 +91,7 @@ class UserController extends Controller
         $User->ig = isset($req->ig)?$req->ig:$User->ig;
         $User->linkedin = isset($req->linkedin)?$req->linkedin:$User->linkedin;
         $User->address = isset($req->address)?$req->address:$User->address;
+        $User->recommender = isset($req->recommender)?$req->recommender:$User->recommender;
         $User->description = isset($req->description)?$req->description:$User->description;
         $User->profile_video = isset($req->profile_video)?$req->profile_video:$User->profile_video;
         $User->profile_voice = isset($req->profile_voice)?$req->profile_voice:$User->profile_voice;

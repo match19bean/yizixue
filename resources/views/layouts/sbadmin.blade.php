@@ -53,20 +53,20 @@
 <body id="page-top">
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" class="l-collectPost__main">
 
         <!-- Sidebar -->
-        <ul class="l-collectPost__sideBar navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-
+        <ul class="l-collectPost__deshSide navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-                <div class="o-collectPost_btn sidebar-brand-text mx-3">易子學系統</div>
+            <a class="o-collectPost_btn align-content-center" href="/home">
+            <i class="fa fa-home"></i>
+            易子學系統
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="/">
+                <a class="o-collectPost_btn" href="/">
                     <i class="bi bi-ui-checks-grid"></i>
                     易子學前台
                 </a>
@@ -74,21 +74,21 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="/user/profile">
+                <a class="o-collectPost_btn" href="/user/profile">
                     <i class="bi bi-speedometer"></i>
                     個人檔案
                 </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="/bulletinboard">
+                <a class="o-collectPost_btn" href="/bulletinboard">
                     <i class="bi bi-bookmark"></i>
                     佈告欄
                 </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="o-collectPost_btn nav-link collapsed" href="#" data-toggle="collapse" data-target="#post-list"
+                <a class="o-collectPost_btn collapsed" href="#" data-toggle="collapse" data-target="#post-list"
                     aria-expanded="false" aria-controls="post-list">
                     <i style="color:white !important" class="bi bi-book" aria-hidden="true"></i>
                     文章管理
@@ -104,10 +104,10 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="nav-link collapsed" href="#" data-toggle="collapse"
-                    data-target="#qa-list" aria-expanded="false" aria-controls="qa-list">
+                <a style="color:white !important" class="o-collectPost_btn collapsed" href="#"
+                    data-toggle="collapse" data-target="#qa-list" aria-expanded="false" aria-controls="qa-list">
                     <i style="color:white !important" class="fa fa-window-maximize" aria-hidden="true"></i>
-                    <span>問與答管理</span>
+                    問與答管理
                 </a>
                 <div id="qa-list" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
                     style="">
@@ -120,8 +120,8 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a style="color:white !important" class="o-collectPost_btn nav-link collapsed" href="#" data-toggle="collapse"
-                    data-target="#invite-list" aria-expanded="false" aria-controls="invite-list">
+                <a style="color:white !important" class="o-collectPost_btn collapsed" href="#"
+                    data-toggle="collapse" data-target="#invite-list" aria-expanded="false" aria-controls="invite-list">
                     <i style="color:white !important" class="fa fa-users" aria-hidden="true"></i>
                     學長姊管理
                 </a>
@@ -134,28 +134,28 @@
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="{{ route('pay-product-list') }} ">
+                <a class="o-collectPost_btn" href="{{ route('pay-product-list') }} ">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
                     付費加值
                 </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="{{ route('pay-order-list') }}">
+                <a class="o-collectPost_btn" href="{{ route('pay-order-list') }}">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
-                    加值服務紀錄
+                    加值紀錄
                 </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="#">
+                <a class="o-collectPost_btn" href="#">
                     <i class="fa fa-asterisk" aria-hidden="true"></i>
                     聯繫案件
                 </a>
             </li>
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="o-collectPost_btn nav-link" href="#">
+                <a class="o-collectPost_btn" href="#">
                     <i class="fa fa-bell" aria-hidden="true"></i>
                     線上客服
                 </a>
@@ -174,14 +174,13 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper">
 
             <!-- Main Content -->
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                <nav class="l-collectPost__topbar navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -294,9 +293,18 @@
     <script src="{{ asset('sb-admin/js/sb-admin-2.min.js') }}"></script>
 
     <script src="{{ asset('vendor/laravel-ckeditor/ckeditor.js') }}"></script>
+
+    <!-- TinyMce editor-->
+    <script src="{{ asset('vendor/laravel-admin-ext/tinymce/tinymce/tinymce.min.js')  }}"></script>
     <script>
         // CKEDITOR.replace('article-ckeditor');
+        tinymce.init({
+            selector: '#article-ckeditor',
+            language: 'zh_CN',
+            "resize":false,"plugins":"advlist autolink link image lists preview code help fullscreen table autoresize ","toolbar":"undo redo | styleselect | fontsizeselect bold italic | link image blockquote removeformat | indent outdent bullist numlist code","images_upload_url":"\/api\/v1\/images"
+        });
     </script>
+
 
     <script>
         $('#OpenImgUpload').click(function () {
@@ -317,12 +325,12 @@
             } else {}
         }
 
-        imgInp_studentProof.onchange = evt => {
-            const [file] = imgInp_studentProof.files
-            if (file) {
-                blahStudentProof.src = URL.createObjectURL(file)
-            }
-        }
+        // imgInp_studentProof.onchange = evt => {
+        //     const [file] = imgInp_studentProof.files
+        //     if (file) {
+        //         blahStudentProof.src = URL.createObjectURL(file)
+        //     }
+        // }
     </script>
 
 </body>

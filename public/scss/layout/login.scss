@@ -1,10 +1,15 @@
 .l-login{
     background-color: $prime_gray;
-    padding: var(--spacing-120);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &__box{
         background-color: var(--color-white);
-        border-radius: var(--spacing-64);
-        padding: var(--spacing-64);
+        border-radius: var(--spacing-32);
+        width: 50%;
+        @media (max-width:768px) {
+            width: 90%;
+        }
     }
     &__info{
         font-size: var(--text-lg);

@@ -7,19 +7,27 @@
     padding: var(--spacing-12);
     background-color: $color;
     z-index: 10;
-    
 
-    &__hidePhone {
+
+    &__hideOnPhone {
         display: none;
     }
 
     &__logo {
         width: 20%;
+
+        @media (max-width: 768px) {
+            width: 30%;
+        }
     }
 
     &__navBar {
         margin: 0;
         width: 80%;
+
+        @media (max-width: 768px) {
+            width: 70%;
+        }
     }
 
     &__navItems {
@@ -54,15 +62,15 @@
     }
 }
 
-@mixin header_mobile {
+@mixin header_mobile($bgcolor) {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-12);
-    background-color: var(--color-white);
+    background-color: $bgcolor;
 
-    &__hideDesk {
+    &__hideOnDesk {
         display: none;
     }
 
@@ -76,16 +84,16 @@
         align-content: center;
     }
 
-    &__navItems{
+    &__navItems {
         background-color: $prime_purple;
         display: flex;
         flex-direction: row;
         padding: var(--spacing-24);
-        border-radius: 0 0 var(--spacing-24) var(--spacing-24);
     }
 
-    &__links{
+    &__links {
         width: 33%;
+
         a {
             all: unset;
             cursor: pointer;
@@ -106,17 +114,17 @@
     z-index: 2;
     width: 100%;
     @include header_template(fixed, $transprent);
+
+    @media (max-width: 768px) {
+        @include header_mobile(none);
+    }
 }
 
 // for other pages
 .l-header-2 {
     @include header_template(inherit, var(--color-black));
-}
 
-
-// media query for phone
-@media only screen and (max-width: 767.98px) {
-    .l-header-2 {
-        @include header_mobile();
+    @media (max-width: 768px) {
+        @include header_mobile(var(--color-white));
     }
 }

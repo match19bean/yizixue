@@ -25,16 +25,15 @@
     </div>
 </div>
 
-<!-- <div class="l-innerbody"> -->
 <div class="container-fluid l-innerbody">
     <div class="row">
         <!-- Student Card Section -->
         <div class="col-md-12 p-0 mt-5">
             <!-- title -->
-            <h3 class="o-welcomeTitle mb-5">
+            <h3 class="o-welcomeTitle mb-md-5">
                 <a href="{{route('senior')}}">學長姐 | 快找</a>
             </h3>
-            <div class="p-5">
+            <div class="p-md-5">
                 <div class="l-student">
                     <div class="s-swiperCustom">
                         <div class="swiper studentSwiper">
@@ -179,15 +178,15 @@
             <h3 class="o-welcomeTitle mb-5">
                 <a href="{{route('qna')}}">問與答｜諮詢</a>
             </h3>
-            <div class="container p-5">
+            <div class="container p-3 p-md-5">
                 <!-- QA section -->
-                <div class="row g-5 u-deskver-flex">
+                <div class="row g-2 g-md-5">
                     <!-- studyabroad -->
-                    <div class="col-md-4">
+                    <div class="col-6 col-md-4">
                         <div class="container-fluid">
                             <div class="c-qaCard">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-11 col-md-8">
                                         @php
                                         $category = $Data['QaCategory']->get(0);
                                         @endphp
@@ -207,7 +206,7 @@
                                         </div>
                                     </div>
                                     <!-- merge to back end -->
-                                    <div class="col-md-4">
+                                    <div class="col col-md-4">
                                         <img class="c-qaCard__icon"
                                             src="{{ asset('uploads/images/yzl-studyabroad.png') }}" alt="icons">
                                     </div>
@@ -216,11 +215,11 @@
                         </div>
                     </div>
                     <!-- test -->
-                    <div class="col-md-4">
+                    <div class="col-6 col-md-4">
                         <div class="container-fluid">
                             <div class="c-qaCard">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-11 col-md-8">
                                         @php
                                         $category = $Data['QaCategory']->get(1);
                                         @endphp
@@ -239,7 +238,7 @@
                                             @endforelse
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-1 col-md-4">
                                         <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-test.png') }}"
                                             alt="icons">
                                     </div>
@@ -248,11 +247,11 @@
                         </div>
                     </div>
                     <!-- schools -->
-                    <div class="col-md-4">
+                    <div class="col-6 col-md-4">
                         <div class="container-fluid">
                             <div class="c-qaCard">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-11 col-md-8">
                                         @php
                                         $category = $Data['QaCategory']->get(2);
                                         @endphp
@@ -271,7 +270,7 @@
                                             @endforelse
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-1 col-md-4">
                                         <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-school.png') }}"
                                             alt="icons">
                                     </div>
@@ -280,11 +279,11 @@
                         </div>
                     </div>
                     <!-- campus -->
-                    <div class="col-md-4">
+                    <div class="col-6 col-md-4">
                         <div class="container-fluid">
                             <div class="c-qaCard">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-11 col-md-8">
                                         @php
                                         $category = $Data['QaCategory']->get(4);
                                         @endphp
@@ -303,7 +302,7 @@
                                             @endforelse
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-1 col-md-4">
                                         <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-campus.png') }}"
                                             alt="icons">
                                     </div>
@@ -312,11 +311,11 @@
                         </div>
                     </div>
                     <!-- clubs -->
-                    <div class="col-md-4">
+                    <div class="col-6 col-md-4">
                         <div class="container-fluid">
                             <div class="c-qaCard">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-11 col-md-8">
                                         @php
                                         $category = $Data['QaCategory']->get(5);
                                         @endphp
@@ -335,7 +334,7 @@
                                             @endforelse
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-1 col-md-4">
                                         <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-club.png') }}"
                                             alt="icons">
                                     </div>
@@ -344,11 +343,11 @@
                         </div>
                     </div>
                     <!-- coop -->
-                    <div class="col-md-4">
+                    <div class="col-6 col-md-4">
                         <div class="container-fluid">
                             <div class="c-qaCard">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-11 col-md-8">
                                         @php
                                         $category = $Data['QaCategory']->get(6);
                                         @endphp
@@ -367,7 +366,7 @@
                                             @endforelse
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-1 col-md-4">
                                         <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-coop.png') }}"
                                             alt="icons">
                                     </div>
@@ -376,10 +375,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- QA phone ver -->
-                 <div class="u-phonever-flex">
-                    phone ver
-                 </div>
                 <div class="col-md-12">
                     <a class="o-readMore" href="{{route('qna')}}">查看更多 &gt;</a>
                 </div>
@@ -390,7 +385,7 @@
             <!-- new code -->
             <div class="l-join">
                 <div class="container">
-                    <div class="row">
+                    <div class="row justify-content-around">
                         <div class="col-md-5">
                             <div class="l-join__content">
                                 <!-- please merge back-end content here -->
@@ -399,15 +394,17 @@
                                 <a class="o-btn" href="{{ !empty($Data['Ad']->button_url) ? $Data['Ad']->button_url : '#'}}">{{ !empty($Data['Ad']->button_text) ? $Data['Ad']->button_text : '' }}</a>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-5">
                             <!-- please merger back-end photo here -->
                             @if(!empty($Data['Ad']->image_path))
                             <div class="l-join__img"
-                                style="background-image: url('{{asset('uploads/'.$Data['Ad']->image_path)}}') ">
+                                style="background-image: url('{{asset('uploads/'.$Data['Ad']->image_path)}}');">
+                                &nbsp;
                             </div>
                             @else
                             <div class="l-join__img"
-                                 style="background-image: url('{{asset('uploads/images/join-banner-cut.jpg')}}')">
+                                 style="background-image: url('{{asset('uploads/images/join-banner-cut.jpg')}}');">
+                                &nbsp;
                             </div>
                             @endif
                         </div>
@@ -467,8 +464,8 @@
             <div class="col-md-12">
                 <section class="l-innerbody__local">
                     <h6>地區找學長姐</h6>
-                    <div>
-                        <p>
+                    <div class="row">
+                        <p class="col-md-4">
                             <a href="{{route('university-list', ['country'=>'USA'])}}"
                                 class="text-decoration-none text-black">美國</a>｜
                             <a href="{{route('university-list', ['country'=>'CANADA'])}}"
@@ -480,13 +477,13 @@
                             <a href="{{route('university-list', ['country'=>'NEW ZEALAND'])}}"
                                 class="text-decoration-none text-black">紐⻄蘭</a>
                         </p>
-                        <p>
+                        <p class="col-md-2">
                             <a href="{{route('university-list', ['country'=>'FRANCE'])}}"
                                 class="text-decoration-none text-black">法國</a>｜
                             <a href="{{route('university-list', ['country'=>'GERMANY'])}}"
                                 class="text-decoration-none text-black">德國</a>｜其他歐洲
                         </p>
-                        <p>
+                        <p class="col-md-4">
                             <a href="{{route('university-list', ['country'=>'TAIWAN'])}}"
                                 class="text-decoration-none text-black">台灣</a>｜
                             <a href="{{route('university-list', ['country'=>'SINGAPORE'])}}"
@@ -497,7 +494,7 @@
                                 class="text-decoration-none text-black">韓國</a>｜
                             其他亞洲
                         </p>
-                        <p>
+                        <p class="col-md-2">
                             中國｜
                             <a href="{{route('university-list', ['country'=>'HONG KONG'])}}"
                                 class="text-decoration-none text-black">香港</a>｜
@@ -509,7 +506,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 @endsection

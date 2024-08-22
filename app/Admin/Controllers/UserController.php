@@ -54,6 +54,11 @@ class UserController extends AdminController
         $grid->column('verified', __('verified'))->bool();
         $grid->column('created_at', __('Created at'))->sortable();
 //        $grid->column('updated_at', __('Updated at'));
+
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->equal('email', 'Email');
+        });
         $grid->model()->orderBy('id', 'desc');
 
         return $grid;

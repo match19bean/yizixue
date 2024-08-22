@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- breadcrumb -->
-<div class="container-fluid">
-    <div class="row pl-5">
+<div class="container-fluid l-introduction__crumbs">
+    <div class="row pl-2 pl-md-5">
         <div class="col-md-12">
             <div class="c-breadcrumbs">
                 <h4>
@@ -20,33 +20,33 @@
 </div>
 <!-- user basic info -->
 <div class="container-fluid">
-    <div class="row pl-5">
+    <div class="row pl-2 pl-md-5 justify-content-end">
         <!-- portriat -->
-        <div class="col-md-4 p-5">
+        <div class="col-7 col-md-4 p-2 p-md-5">
             <div class="l-introduction__portriat"
                 style="background-image: url('{{asset('uploads/'.$Data['user']->avatar)}}') ;">
                 &nbsp;
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-12 col-md-8 p-1 p-md-0">
             <div class="l-introduction__infoCard">
                 <!-- user name -->
                 <h2 class="l-introduction__userName">{{$Data['user']->nickname}}</h2>
                 <!-- tags -->
                 <div class="l-introduction__tags">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-7 p-2 p-md-4">
                             <!-- school status -->
                             <div class="l-introduction__schoolRelate">
                                 <!-- school -->
                                 <div class="l-introduction__schoolStatus row">
                                     <!-- school img -->
-                                    <div class="col-md-2">
+                                    <div class="col-3 col-md-2">
                                         <span class="l-introduction__schoolImg"
                                             style="background-image: url('{{asset($Data['user']->universityItem->image_path)}}') ;">&nbsp;</span>
                                     </div>
                                     <!-- school name -->
-                                    <div class="col-md-6">
+                                    <div class="col-5 col-md-6">
                                         <h6 class="text-white">
                                             {{!is_null($Data['user']->universityItem) ?$Data['user']->universityItem->chinese_name:''}}
                                         </h6>
@@ -54,26 +54,24 @@
                                             {{!is_null($Data['user']->universityItem) ?$Data['user']->universityItem->english_name:''}}
                                         </h6>
                                     </div>
-                                    <h3 class="col-md-4 o-whiteBtn">{{$Data['user']->is_study == 1 ?'在學':'非在學'}}</h3>
+                                    <h3 class="col-2 col-md-4 o-whiteBtn">{{$Data['user']->is_study == 1 ?'在學':'非在學'}}</h3>
                                 </div>
                                 <!-- post categ -->
-                                <div class="row">
-                                    <div class="l-introduction__postTag">
+                                <div class="l-introduction__postTag row p-2 p-md-0">
                                         @if(!is_null($Data['user']->postCategory))
                                         @foreach($Data['user']->postCategory as $relation)
                                         <h4 class="o-tag u-cursor-pointer">{{$relation->postCategory->name}}</h4>
                                         @endforeach
                                         @endif
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- user skill -->
-                        <div class="col-md-5 align-self-start">
-                            <div class="row g-5">
+                        <div class="col-md-5 align-self-start p-0 p-md-4">
+                            <div class="row g-3 g-md-5">
                                 @if(!is_null($Data['user']->skills))
                                 @foreach($Data['user']->skills->slice(0, 9) as $skill)
-                                <span class="col-md-4">
+                                <span class="col-3 col-md-4">
                                     <a class="o-skillBtn">
                                         {{ $skill->skill->name }}
                                     </a>
@@ -156,9 +154,9 @@
     </div>
     <!-- content -->
     <div class="row">
-        <div class="col-md-12 p-5">
+        <div class="col-md-12 p-3 p-md-5">
             <div class="container">
-            <div class="row gy-5">
+            <div class="row gy-3 gy-md-5">
                 <!-- self intro -->
                 <div class="col-md-12">
                     <div class="l-introduction__detailContent">
@@ -250,19 +248,19 @@
         <div class="col-md-12">
             <div class="container l-introduction__myArticle">
                 <div class="row pt-5">
-                    <div class="col-md-12 p-5">
+                    <div class="col-md-12 p-3">
                         <!-- cards -->
-                        <div class="container">
+                        <div class="container p-3 p-md-0">
                             <div class="row">
                                 <!-- card -->
                                 @if(!is_null($Data['user']->post))
                                 @foreach($Data['user']->post as $count => $post)
                                 @if($count < 4)
-                                <div class="col-md-6">
+                                <div class="col-md-6 p-0 p-md-0">
                                     <div class="c-articleCard">
                                         <div class="container l-introduction__articleCard">
                                             <div class="row align-items-center">
-                                                <div class="col-md-3">
+                                                <div class="col-4 col-md-3">
                                                     <!-- Post images -->
                                                     <div class="c-articleCard__postThumbnail">
                                                         <!-- post img -->
@@ -275,7 +273,7 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <div class="col-md-9">
+                                                <div class="col-8 col-md-9">
                                                     <!-- Post Contents -->
                                                     <div class="c-articleCard__postInfo">
                                                         <!-- tags -->
@@ -348,7 +346,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 p-3">
                         @if($Data['user']->post->count() > 0)
                         <a class="o-readMore" href="{{route('article-list', $Data['user']->id)}}">查看更多文章</a>
                         @else
@@ -367,7 +365,7 @@
         <div class="row">
             <!-- files -->
             @forelse($Data['user']->references as $reference)
-            <div class="col-md-2">
+            <div class="col-3 col-md-2">
                 <a class="o-reference" href="{{route('reference-download', $reference->id)}}">
                     <svg viewBox="0 0 300 300">
                         <path fill="#C39FC0" d="M265.4,300H34.6C15.5,300,0,284.5,0,265.4V34.6C0,15.5,15.5,0,34.6,0h230.8C284.5,0,300,15.5,300,34.6v230.8
@@ -425,8 +423,8 @@
 <!-- real carsuel -->
 <div class="container">
     <div class="row">
-        <div class="col-md-12 mt-3">
-            <div class="carouselSection">
+        <div class="col-md-12 mt-md-3">
+            <div class="l-student">
                 <div class="s-swiperCustom">
                     <div class="swiper studentSwiper">
                         <div class="swiper-wrapper">
@@ -499,7 +497,6 @@
                             </div>
                             @endforeach
                         </div>
-                        <div class="studentPagi paginationCustom"></div>
                     </div>
                     <div class="studentPagi paginationCustom"></div>
                     <div class="swiper-button-next"></div>

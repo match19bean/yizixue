@@ -1,7 +1,6 @@
 .c-qnaCard{
     border: solid var(--spacing-2) $prime_purple;
-    transform-origin: 0 0;
-    transform: scale(0.9);
+    height: fit-content;
     &__info{
         display: flex;
         flex-direction: row;
@@ -12,10 +11,18 @@
         circle{
             fill: $prime_gray;
         }
+        @media (max-width:768px) {
+            width: var(--spacing-24);
+        }
     }
     &__content{
         color: $dark_gray;
         text-wrap: wrap;
         font-size: var(--text-lg);
+    }
+    &__bookmark{
+        @media (max-width:768px) {
+            display: none;
+        }
     }
 }

@@ -26,62 +26,56 @@
 
 
 @section('content')
-<div class="l-login">
-    <div class="container w-50">
+<div class="l-login container p-5">
+    <div class="l-login__box row p-5">
+        <h1 class="col-md-12 o-loginTitle">會員登入</h1>
+        <div class="col-md-12 pt-5">
+            <form class="row l-login__info" method="POST" action="{{ route('login') }}">
+                <!-- <div class=""> -->
+                {{ csrf_field() }}
+                <div class="col-md-12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <input id="email" type="email" class="form-control form-control-user" name="email"
+                        value="{{ old('email') }}" placeholder="會員帳號" autofocus>
+                    @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                    @endif
+                </div>
 
-        <div class="l-login__box">
-            <!-- <div class="card-body"> -->
-            <h1 class="o-loginTitle">會員登入</h1>
+                <div class="col-md-12 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <input id="password" type="password" class="form-control form-control-user" name="password"
+                        placeholder="輸入密碼" required>
+                    @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                </div>
 
-            <form class="p-3" method="POST" action="{{ route('login') }}">
-                <div class="l-login__info">
-                    {{ csrf_field() }}
-
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input id="email" type="email" class="form-control form-control-user" name="email"
-                            value="{{ old('email') }}" placeholder="會員帳號" autofocus>
-                        @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                        @endif
+                <div class="col-md-12 form-group">
+                    <div class="checkbox">
+                        <label style="color: #4C2A70;">
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 記住帳號
+                        </label>
                     </div>
+                </div>
 
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <input id="password" type="password" class="form-control form-control-user" name="password"
-                            placeholder="輸入密碼" required>
-                        @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <div class="checkbox">
-                                <label style="color: #4C2A70;">
-                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 記住帳號
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <button class="o-btn" type="submit">
-                            登入
-                        </button>
-                    </div>
-                    <a href="{{url('line')}}" class="btn btn-user btn-block line">
+                <!-- <div class="col-md-12 form-group"> -->
+                <button class="col-md-12 o-btn" type="submit">
+                    登入
+                </button>
+                <!-- </div> -->
+                <div class="col-md-12">
+                    <a href="{{url('line')}}" class="o-basicLink btn btn-user btn-block line">
                         Login with Line
                     </a>
                 </div>
+                <!-- </div> -->
             </form>
-
-            <hr>
-            <a class="notmember" href="{{route('register')}}">還不是會員？點我註冊</a>
-            <!-- </div> -->
         </div>
+        <hr>
+        <a class="o-basicLink" href="{{route('register')}}">還不是會員？點我註冊</a>
     </div>
 </div>
 

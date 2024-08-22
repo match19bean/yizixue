@@ -1,40 +1,10 @@
-
-@mixin PhoneVer{
-    &__hidePhoneVer{
-        display: none;
-    }
-    &__hideDeskVer{
-        display: block;
-    }
-}
-
-@mixin DeskVer{
-    &__hideDeskVer{
-        display: none;
-    }
-    &__hidePhoneVer{
-        display: block;
-    }
-}
-
 .l-seniorPage{
-    @include sideBar_flex_ver;
-    .c-studentCard_schoolEnglish{
-        font-size: var(--text-md);
+    .c-studentCard_userName{
+        padding: var(--spacing-4) var(--spacing-8);
     }
-    hr{
-        height: var(--spacing-2);
-    }
-    @include PhoneVer();
-}
-
-// media query for phone
-@media only screen and (max-width: 767.98px) {
-    .l-seniorPage{
-        @include DeskVer();
-        &__content{
-            margin: 0;
-            padding: var(--spacing-8);
+    @media (max-width:768px) {
+        .c-studentCard{
+            transform: scale(0.95);
         }
     }
 }

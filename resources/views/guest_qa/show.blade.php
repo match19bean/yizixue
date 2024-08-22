@@ -17,8 +17,8 @@
 </div>
 
 <!-- main content section -->
-<div class="container p-5">
-    <div class="row gx-5 m-5">
+<div class="container p-md-5">
+    <div class="row gx-5 m-2 m-md-5">
         <!-- main -->
         <div class="col-md-8">
             <!-- Basic informations -->
@@ -27,7 +27,8 @@
                 <p class="col-md-12">{{$qna->created_at->format('Y/m/d')}}</p>
                 <!-- The question title -->
                 <h2 class="col-md-10 l-qnaGuest__title">{{ !is_null($qna->title) ? \Illuminate\Support\Str::limit($qna->title, 50) : '' }}</h2>
-                <div class="col-md-2 align-content-end">
+                <!-- bookmark -->
+                <div class="col-md-2 align-content-end l-qnaGuest__bookmark">
                     @if(auth()->check())
                         <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif  collect-qa d-flex u-cursor-pointer" data-id="{{$qna->id}}" style="
                                     color: @if(auth()->user()->collectQa->where('qa_id', $qna->id)->count()==1) red @else black @endif ;
@@ -45,7 +46,7 @@
             <div class="row">
                 @if(!is_null($qna->categoryRelation))
                 @foreach($qna->categoryRelation as $relation)
-                <div class="col-md-1 p-0">
+                <div class="col-3 col-md-1 p-0">
                     <div class="o-smallBtn">
                         {{$relation->category->name}}
                     </div>
@@ -56,19 +57,19 @@
             <!-- details -->
             <div class="row">
                 <!-- price -->
-                <div class="col-md-12 mt-5">
-                    <div class="row mt-3">
-                        <span for="" class="o-qnaBtn col-md-2">金額</span>
-                        <p class="align-content-end pt-2 col-md-10 l-qnaGuest__statusContent">
+                <div class="col-md-12 mt-2 mt-md-5">
+                    <div class="row mt-2 mt-md-3">
+                        <span for="" class="o-qnaBtn col-3 col-md-2">金額</span>
+                        <p class="align-content-end pt-md-2 col-9 col-md-10 l-qnaGuest__statusContent">
                             {{$qna->amount_down}}-{{$qna->amount_up}}</p>
                         <hr class="mt-3">
                     </div>
                 </div>
                 <!-- time -->
-                <div class="col-md-12 mt-5">
-                    <div class="row mt-3">
-                        <span for="" class="o-qnaBtn col-md-2">時間</span>
-                        <p class="align-content-end pt-2 col-md-10 l-qnaGuest__statusContent">
+                <div class="col-md-12 mt-2 mt-md-5">
+                    <div class="row mt-2 mt-md-3">
+                        <span for="" class="o-qnaBtn col-3 col-md-2">時間</span>
+                        <p class="align-content-end pt-md-2 col-9 col-md-10 l-qnaGuest__statusContent">
                             {{ Carbon\Carbon::parse($qna->contact_time)->format('H:i:s')}} 至
                             {{ \Carbon\Carbon::parse($qna->contact_time_end)->format('H:i:s')}}</p>
                         <hr class="mt-3">
@@ -76,28 +77,27 @@
 
                 </div>
                 <!-- location -->
-                <div class="col-md-12 mt-5">
-                    <div class="row mt-3">
-                        <span for="" class="o-qnaBtn col-md-2">地點</span>
-                        <p class="align-content-end pt-2 col-md-10 l-qnaGuest__statusContent">{{$qna->place}}</p>
+                <div class="col-md-12 mt-2 mt-md-5">
+                    <div class="row mt-2 mt-md-3">
+                        <span for="" class="o-qnaBtn col-3 col-md-2">地點</span>
+                        <p class="align-content-end pt-md-2 col-9 col-md-10 l-qnaGuest__statusContent">{{$qna->place}}</p>
                         <hr class="mt-3">
                     </div>
-
                 </div>
                 <!-- discription -->
-                <div class="col-md-12 mt-5">
-                    <div class="row mt-3">
-                        <span for="" class="o-qnaBtn col-md-2">說明</span>
-                        <p class="align-content-end pt-5 col-md-10 text-break">
+                <div class="col-md-12 mt-2 mt-md-5">
+                    <div class="row mt-2 mt-md-3">
+                        <span for="" class="o-qnaBtn col-3 col-md-2">說明</span>
+                        <p class="align-content-end pt-md-2 col-9 col-md-10 text-break">
                             {!! $qna->body !!}
                         </p>
                         <hr class="mt-3">
                     </div>
                 </div>
                 <!-- reference -->
-                <div class="col-md-12 mt-5">
-                    <div class="row mt-3">
-                        <span class="o-qnaBtn col-md-2">參考</span>
+                <div class="col-md-12 mt-2 mt-md-5">
+                    <div class="row mt-2 mt-md-3">
+                        <span class="o-qnaBtn col-3 col-md-2">參考</span>
                         <!-- attachments -->
                         <div class="attachment">
                             <!-- files -->
@@ -158,7 +158,7 @@
             </div>
         </div>
         <!-- side info -->
-        <div class="col-md-4 p-5">
+        <div class="col-md-4 p-3 p-md-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -166,23 +166,23 @@
                     </div>
                 </div>
 
-                <div class="l-qnaGuest__border pb-5">
+                <div class="l-qnaGuest__border p-2 pb-md-5">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- name card -->
-                                <div class="row p-3">
-                                    <div class="col-md-2 p-0">
+                                <div class="row p-2 p-md-3">
+                                    <div class="col-3 col-md-2 p-0">
                                         <svg class="l-qnaGuest__thumbNail" viewbox="0 0 100 100">
                                             <circle cx="50" cy="50" r="50" />
                                         </svg>
                                     </div>
-                                    <div class="col-md-10 p-0">
-                                        <span class="l-qnaGuest__name">{{$qna->nickname}}</span>
+                                    <div class="col-9 col-md-10 pl-2 p-md-0">
+                                        <span class="l-qnaGuest__name">{{ (auth()->check() && auth()->user()->isVip() ) ? $qna->nickname : mb_substr($qna->nickname, 0, 1).'*****'}}</span>
                                     </div>
                                 </div>
                                 <!-- contact -->
-                                <div class="container pl-5 pr-5 pb-3">
+                                <div class="container pl-md-5 pr-md-5 pb-3">
                                     <div class="row">
                                         <p class="pl-5">
                                             聯絡電話
@@ -262,31 +262,31 @@
         </div>
     </div>
 </div>
-<div class="container p-5">
-    <div class="row m-5">
+<div class="container p-2 p-md-5">
+    <div class="row m-3 m-md-5">
         <div class="col-md-12">
             <h2 class="o-normalTitle">相似問題</h2>
         </div>
     </div>
-    <div class="row m-5">
+    <div class="row m-1 m-md-5">
         @if(!is_null($sameqna))
         @foreach($sameqna as $qa)
-        <div class="col-md-9">
+        <div class="col-md-9 pb-3 pb-md-5">
             <div class="container-fluid">
                 <!-- qna card -->
                 <div class="c-qnaCard">
                     <div class="row">
-                        <div class="col-md-11 p-5">
-                            <div class="row">
-                                <div class="col-md-2">
+                        <div class="col-10 col-md-11 p-md-5">
+                            <div class="row p-2 p-md-0">
+                                <div class="col-3 col-md-2">
                                     <div class="c-qnaCard__info">
                                         <svg class="c-qnaCard__thumbNail" viewbox="0 0 100 100">
                                             <circle cx="50" cy="50" r="50" />
                                         </svg>
-                                        <p class="align-content-center">匿名</p>
+                                        <p class="align-content-center">{{ mb_substr($qa->qa->author->nickname, 0, 1) }}{{ str_repeat('*', 5) }}</p>
                                     </div>
                                 </div>
-                                <div class="col-md-10 align-content-center">
+                                <div class="col-9 col-md-10 align-content-center">
                                     @if($qa->category)
                                     <span class="o-smallBtn">
                                         {{$qa->category->name}}
@@ -295,13 +295,14 @@
                                 </div>
                             </div>
                             <hr>
-                            <a class="o-articleTitle" href="{{route('qna.show', $qa->qa_id)}}">{{$qa->qa->title}}</a>
-                            <div class="row">
+                            <a class="o-articleTitle pl-2 pl-md-0" href="{{route('qna.show', $qa->qa_id)}}">{{$qa->qa->title}}</a>
+                            <div class="row p-2 p-md-0">
                                 <div class="col-md-10">
                                     <p class="c-qnaCard__content">
-                                        {!!\Illuminate\Support\Str::limit(strip_tags($qa->qa->body))!!}</p>
+                                        {{!is_null(strip_tags($qa->qa->body)) ? \Illuminate\Support\Str::limit(strip_tags($qa->qa->body), 35): ''}}
+                                    </p>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 l-qnaGuest__bookmark">
                                     <div class="lign-content-end">
                                         @if(auth()->check())
                                             <i class="bi @if(auth()->user()->collectQa->where('qa_id', $qa->qa_id)->count()==1) bi-bookmark-fill @else bi-bookmark @endif   collect-qa d-flex u-cursor-pointer" data-id="{{$qa->qa_id}}" style="
@@ -318,7 +319,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-2 col-md-1">
                             <svg viewBox="0 0 45 150">
                                 <polygon fill="#4C2A70" points="50,150 0,150 35,75 0,0 50,0 " />
                             </svg>

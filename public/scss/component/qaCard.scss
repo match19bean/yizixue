@@ -26,6 +26,9 @@
     }
     &__icon{
         padding: var(--spacing-12);
+        @media (max-width:768px) {
+            display: none;
+        }
     }
     &:hover{
         border: solid var(--spacing-4) $prime_purple;

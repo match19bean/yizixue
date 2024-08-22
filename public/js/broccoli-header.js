@@ -105,20 +105,49 @@ function pic8(){
     $("#bannerImg").attr("src", "uploads/images/banner_p8.jpg");
 }
 
+// header background function
+
 $(window).scroll(function(){
-    let screenRoll = $(window).scrollTop();
-    const bannerHeight = $(".l-innerHeader").height();
-    if (screenRoll >= bannerHeight){
-        $(".l-header__li a").css("color", "#000000");
-        $("#logoImg").attr("src","uploads/images/color_ezl.png");
-        $("nav#mainNav").css("background-color", "white");
+    if ($(window).width() > 768) {  // Apply only on desktop
+        let screenRoll = $(window).scrollTop();
+        const bannerHeight = $(".l-innerHeader").height();
+        if (screenRoll >= bannerHeight){
+            $(".l-header__li a").css("color", "#000000");
+            $("#logoImg").attr("src","uploads/images/color_ezl.png");
+            $(".l-header").css("background-color", "white");
+        }
+        else{
+            $(".l-header__li a").css("color", "#FFFFFF");
+            $("#logoImg").attr("src","uploads/images/logo.png");
+            $(".l-header").css("background-color", "rgba(255, 255, 255, 0)");
+        }
+    }else{
+        let screenRoll = $(window).scrollTop();
+        const bannerHeight = $(".l-student").offset().top;
+        if (screenRoll >= bannerHeight){
+            $(".l-header__li a").css("color", "#000000");
+            $("#logoImgPhone").attr("src","uploads/images/color_ezl.png");
+            $(".l-header").css("background-color", "white");
+        }
+        else{
+            $(".l-header__li a").css("color", "#FFFFFF");
+            $("#logoImgPhone").attr("src","uploads/images/logo.png");
+            $(".l-header").css("background-color", "rgba(255, 255, 255, 0)");
+        }
     }
-    else{
-        $(".l-header__li a").css("color", "#FFFFFF");
-        $("#logoImg").attr("src","uploads/images/logo.png");
-        $("nav#mainNav").css("background-color", "rgba(255, 255, 255, 0)");
+});
+
+function bg_change(){
+    var navbar_state = $(".l-header__hamburger").attr('aria-expanded');
+    if(navbar_state === "true"){
+        $("#logoImgPhone").attr("src","uploads/images/color_ezl.png");
+        $(".l-header").css("background-color", "white");
+    }else{
+        $("#logoImgPhone").attr("src","uploads/images/logo.png");
+        $(".l-header").css("background-color", "rgba(255, 255, 255, 0)");
     }
-})
+}
+
 
 
 

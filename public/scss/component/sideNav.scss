@@ -1,56 +1,68 @@
 .c-sideNav {
-    color: var(--color-white);
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    min-height: 100rem;
     &__selections {
-        grid-column: 1/12;
-        grid-row: 1/2;
+        position: relative;
+        color: var(--color-white);
     }
+
     &__locations,
+    &__locationsMobile,
     &__topics {
         padding: var(--spacing-24);
         background-color: $prime_purple;
         border-radius: var(--spacing-12);
         margin: var(--spacing-24);
         text-align: center;
-        font-size: var(--text-2xl);
-        button{
-            padding: var(--spacing-12);
+        font-size: var(--text-xl);
+        button {
+            padding: var(--spacing-8);
+            color: var(--color-white);
+        }
+        @media (max-width: 1024px) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            font-size: var(--text-md);
         }
     }
+
+    &__locations {
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    &__locationsMobile {
+        @media (min-width: 1024px) {
+            display: none;
+        }
+    }
+
     // popup section
     &__area {
         z-index: 2;
-        grid-column: 10/21;
-        grid-row: 1/2;
         display: none;
-    }
-    &__english {
-        display: none;
+        width: 100%;
         position: absolute;
-        transform-origin: 0% 0%;
-        transform: scale(0.8);
+        @media (max-width: 1024px) {
+            display: none;
+        }
     }
 
-    &__eurp {
+    &__english, &__europ, &__asia {
         display: none;
         position: absolute;
-        transform-origin: 0% 0%;
-        transform: scale(0.8);
+        width: 50%;
+        height: auto;
     }
 
-    &__asia {
-        display: none;
-        position: absolute;
-        transform-origin: 0% 0%;
-        transform: scale(0.8);
-    }
-
-    hr, &__hr {
+    &__hr {
         opacity: 1;
         background-color: var(--color-white);
         margin: var(--spacing-8) 0;
         color: white;
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
 }

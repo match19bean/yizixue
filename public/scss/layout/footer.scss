@@ -1,7 +1,7 @@
 .l-footer{
     background-color: var(--color-black);
     color: var(--color-white);
-    &_brand{
+    &__brand{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -14,8 +14,17 @@
         p{
             font-size: var(--text-xxs);
         }
+        @media (max-width:768px) {
+            border: none;
+            img{
+                width: 90%;
+            }
+            p{
+                font-size: var(--text-xs);
+            }
+        }
     }
-    &_siteMap{
+    &__siteMap_desk{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -35,6 +44,21 @@
                     margin-bottom: var(--spacing-24);
                 }
             }
+        }
+        @media (max-width:768px) {
+            display: none;
+        }
+    }
+    &__siteMap_phone{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        h6, p{
+            font-size: var(--text-md);
+            margin-bottom: var(--spacing-24);
+        }
+        @media (min-width:768px) {
+            display: none;
         }
     }
 }

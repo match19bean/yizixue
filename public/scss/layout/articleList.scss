@@ -19,11 +19,21 @@
             font-size: var(--text-4xl);
         }
         .o-tag{
-            font-size: var(--text-lg)
+            font-size: var(--text-lg);
+            @media (max-width:768px) {
+                display: none;
+            }
+        }
+        @media (max-width:768px) {
+            margin: 0;
+            border-radius: var(--spacing-12);
         }
     }
     &__authorImg{
         @include imgBackground;
+        @media (max-width:768px) {
+            border-radius: var(--spacing-12);
+        }
     }
     &__schoolImg{
         @include imgBackground;
@@ -44,9 +54,16 @@
     // posts
     &__card{
         min-height: var(--spacing-88);
+        @media (max-width:768px) {
+            .c-articleCard{
+                padding: var(--spacing-8) var(--spacing-24);
+            }
+        }
     }
     &__tag{
-        min-height: var(--spacing-32);
+        @media (max-width:768px) {
+            display: none;
+        }
     }
     .c-articleCard__postThumbnail{
         padding: 0;

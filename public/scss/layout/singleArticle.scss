@@ -1,8 +1,8 @@
 .l-singleArticle{
     background-color: $light_gray;
     padding: var(--spacing-24) var(--spacing-100) var(--spacing-24) var(--spacing-100);
-    .c-breadcrumbs_currentPage{
-        font-size: var(--text-4xl);
+    @media (max-width:768px) {
+        padding: var(--spacing-2);
     }
     &__main{
         background-color: var(--color-white);
@@ -10,6 +10,9 @@
     &__contentDiv{
         display: flex;
         flex-direction: column;
+    }
+    &__date{
+        font-size: var(--text-xs);
     }
     &__postPic{
         @include imgBackground;
@@ -22,6 +25,9 @@
         font-size: var(--text-2xl);
         color: $prime_purple;
         font-weight: 800;
+       }
+       @media (max-width:768px) {
+        display: none;
        }
     }
     &__authorMore{
@@ -49,8 +55,10 @@
         color: $prime_purple;
     }
     .c-articleCard{
-        div.container{
-            min-height: 20rem;
+        @media (min-width:768px) {
+            div.container{
+                min-height: 20rem;
+            }
         }
     }
     .c-articleCard__content{
