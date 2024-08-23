@@ -141,7 +141,7 @@
             <div class="row p-5 align-items-stretch">
                 <!-- logo -->
                 <div class="col-12 col-md-6 col-lg-4 mx-auto">
-                    <div class="l-footer__brand h-lg-100">
+                    <div class="l-footer__brand h-100">
                         <img src="{{asset('uploads/images/yzl-footer-logo.png')}}" alt="footer logo">
                         <div class="row g-3">
                             <p class="col-md-12 text-center">
@@ -191,7 +191,7 @@
                                 <a href="">前輩網</a>
                                 <!-- please replace with the real back-end code -->
                                 <a href="/service-agreement">服務條款</a>
-                                <!-- 為何figma隱私權聲明頁面是連到會員規約？？ -->
+                                <!-- 會員規約 -->
                                 <a href="/membership-agreement">會員規約</a>
                                 <!-- please replace with the real back-end code -->
                                 <a href="/disclaimer">免責聲明</a>

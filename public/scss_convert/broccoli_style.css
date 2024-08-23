@@ -3092,20 +3092,29 @@ section {
 .l-collectPost__deshSide {
   background-color: #4C2A70;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .l-collectPost__deshSide {
     width: 80vw;
   }
   .l-collectPost__deshSide .o-collectPost_btn {
     width: 100%;
     font-size: var(--text-xl);
+  }
+  .l-collectPost__deshSide #post-list a, .l-collectPost__deshSide #qa-list a, .l-collectPost__deshSide #invite-list a {
+    font-size: var(--text-xs);
+  }
+}
+@media (max-width: 768px) {
+  .l-collectPost__deshSide {
+    width: 80vw;
+  }
+  .l-collectPost__deshSide .o-collectPost_btn {
+    width: 100%;
+    font-size: var(--text-sm);
     height: var(--spacing-64);
   }
   .l-collectPost__deshSide #post-list, .l-collectPost__deshSide #qa-list, .l-collectPost__deshSide #invite-list {
     transform: translateX(var(--spacing-64));
-  }
-  .l-collectPost__deshSide #post-list a, .l-collectPost__deshSide #qa-list a, .l-collectPost__deshSide #invite-list a {
-    font-size: var(--text-sm);
   }
 }
 .l-collectPost__main .sidebar.toggled {
@@ -3204,7 +3213,7 @@ section {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    font-size: var(--text-md);
+    font-size: var(--text-xs);
   }
 }
 @media (max-width: 1024px) {
@@ -3302,7 +3311,7 @@ section {
   grid-row: 1/5;
   color: #4C2A70;
   font-weight: 800;
-  font-size: var(--text-xl);
+  font-size: var(--text-sm);
   padding: var(--spacing-8);
 }
 .c-studentCard_schoolEnglish {
@@ -3310,7 +3319,7 @@ section {
   grid-row: 16/21;
   padding: var(--spacing-4);
   color: var(--color-white);
-  font-size: var(--text-md);
+  font-size: var(--text-xs);
   align-self: center;
 }
 .c-studentCard_schoolChinese {
@@ -3318,7 +3327,7 @@ section {
   grid-row: 1/3;
   text-align: end;
   align-self: end;
-  font-size: var(--text-md);
+  font-size: var(--text-xxs);
   padding: 0 var(--spacing-8);
 }
 .c-studentCard_react {
@@ -3608,6 +3617,7 @@ section {
   .c-uniCard {
     width: 100%;
     height: auto;
+    aspect-ratio: none;
   }
 }
 .c-uniCard_img {
@@ -3808,6 +3818,11 @@ section {
   font-size: var(--text-2xl);
   font-weight: 700;
 }
+@media (max-width: 768px) {
+  .c-articleCard__title {
+    font-size: var(--text-md);
+  }
+}
 .c-articleCard__content {
   color: gray;
   font-size: var(--text-lg);
@@ -3830,7 +3845,7 @@ section {
 }
 @media (max-width: 768px) {
   .c-articleCard__date {
-    font-size: var(--text-xs);
+    font-size: var(--text-xxs);
   }
 }
 
@@ -4030,7 +4045,7 @@ section {
 }
 @media (max-width: 768px) {
   .o-tag {
-    font-size: var(--text-xs);
+    font-size: var(--text-xxs);
     border-radius: var(--spacing-4);
   }
 }
@@ -4267,6 +4282,10 @@ section {
   width: 100%;
   border-radius: var(--spacing-4);
   text-align: center;
+}
+
+.o-bulletBoard {
+  background-color: #4C2A70;
 }
 
 .s-swiperCustom .swiper {

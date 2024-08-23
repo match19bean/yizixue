@@ -6,9 +6,9 @@
     @include studentCardSetting(
     solid var(--spacing-4) $prime_purple , //card border
     solid var(--spacing-2) $prime_purple_light, //student img border
-    var(--text-xl), //user name font
-    var(--text-md), //school english font
-    var(--text-md), //school chinese font
+    var(--text-sm), //user name font
+    var(--text-xs), //school english font
+    var(--text-xxs), //school chinese font
     var(--text-lg), //react font
     var(--text-sm)); //post font
 }

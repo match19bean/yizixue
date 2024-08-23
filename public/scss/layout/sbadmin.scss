@@ -29,18 +29,27 @@
     }
     &__deshSide{
         background-color: $prime_purple;
-        @media (max-width:768px) {
+        @media (max-width:1024px) {
             width: 80vw;
             .o-collectPost_btn{
                 width: 100%;
                 font-size: var(--text-xl);
+            }
+            #post-list, #qa-list, #invite-list{
+                a{
+                    font-size: var(--text-xs);
+                }
+            }
+        }
+        @media (max-width:768px) {
+            width: 80vw;
+            .o-collectPost_btn{
+                width: 100%;
+                font-size: var(--text-sm);
                 height: var(--spacing-64);
             }
             #post-list, #qa-list, #invite-list{
                 transform: translateX(var(--spacing-64));
-                a{
-                    font-size: var(--text-sm);
-                }
             }
         }
     }

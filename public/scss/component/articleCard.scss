@@ -62,6 +62,9 @@
         color: $prime_purple;
         font-size: var(--text-2xl);
         font-weight: 700;
+        @media (max-width:768px) {
+            font-size: var(--text-md);
+        }
     }
     &__content{
         color: gray;
@@ -81,7 +84,7 @@
         color: $prime_purple;
         font-size: var(--text-sm);
         @media (max-width:768px) {
-           font-size: var(--text-xs);
+           font-size: var(--text-xxs);
         }
     }
 }

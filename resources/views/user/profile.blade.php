@@ -375,7 +375,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">學生證上傳</p>
+                                        <p class="mb-0">證件上傳</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <img style="max-width: 150px"
