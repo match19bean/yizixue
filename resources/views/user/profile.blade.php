@@ -252,6 +252,12 @@
                                         {{$errors->first('email')}}
                                     </div>
                                 @endif
+                                @if($errors->has('recommender'))
+                                    <div class="alert alert-danger alert-dismissible text-center">
+                                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                        {{$errors->first('recommender')}}
+                                    </div>
+                                @endif
                                 <div class="dropdown no-arrow">
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
