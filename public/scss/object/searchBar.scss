@@ -17,5 +17,8 @@
         height: 100%;
         border: solid var(--spacing-4) $prime_purple;
         border-radius: 0 var(--spacing-80) var(--spacing-80) 0;
+        @media (max-width:768px) {
+            padding-left: var(--spacing-24);
+        }
     }
 }

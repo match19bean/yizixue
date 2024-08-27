@@ -46,35 +46,35 @@
                 <div>
                     <div class="l-uniList__popup collapse multi-collapse container" id="englishMobile">
                         <div class="row">
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'NORTHEAST'])}}">美國東北部</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'WEST'])}}">美國西部</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'MIDWEST'])}}">美國中西部</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'SOUTH'])}}">美國南部</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'CANADA'])}}">加拿大</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'UK'])}}">英國</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'AUSTRALIA'])}}">澳洲</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'NEW ZEALAND'])}}">紐西蘭</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'NORTHEAST'])}}">美國東北部</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'WEST'])}}">美國西部</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'MIDWEST'])}}">美國中西部</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'SOUTH'])}}">美國南部</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'CANADA'])}}">加拿大</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'UK'])}}">英國</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'AUSTRALIA'])}}">澳洲</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'NEW ZEALAND'])}}">紐西蘭</a>
                         </div>
                     </div>
                     <div class="l-uniList__popup collapse multi-collapse container" id="europMobile">
                         <div class="row">
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'FRANCE'])}}">法國</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'GERMANY'])}}">德國</a>
-                            <a class="o-basicLink col-3" href="">其他歐洲</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'FRANCE'])}}">法國</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'GERMANY'])}}">德國</a>
+                            <a class="o-basicLink col-4" href="">其他歐洲</a>
                         </div>
                     </div>
                     <div class="l-uniList__popup collapse multi-collapse container" id="asiaMobile">
                         <div class="row">
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'INTERNATIONAL'])}}">台灣｜國際學校</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'HIGHSCHOOL'])}}">台灣｜高中</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['area'=>'COLLEGE'])}}">台灣｜大學</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'SINGAPORE'])}}">新加坡</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'JAPAN'])}}">日本</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'KOREA'])}}">韓國</a>
-                            <a class="o-basicLink col-3" href="">中國</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'HONG KONG'])}}">香港</a>
-                            <a class="o-basicLink col-3" href="{{route('senior', ['country'=>'MACAU'])}}">澳門</a>
-                            <a class="o-basicLink col-3" href="">其他亞洲</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'INTERNATIONAL'])}}">台灣｜國際學校</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'HIGHSCHOOL'])}}">台灣｜高中</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['area'=>'COLLEGE'])}}">台灣｜大學</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'SINGAPORE'])}}">新加坡</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'JAPAN'])}}">日本</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'KOREA'])}}">韓國</a>
+                            <a class="o-basicLink col-4" href="">中國</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'HONG KONG'])}}">香港</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'MACAU'])}}">澳門</a>
+                            <a class="o-basicLink col-4" href="">其他亞洲</a>
                         </div>
                     </div>
                 </div>

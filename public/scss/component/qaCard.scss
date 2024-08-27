@@ -20,9 +20,20 @@
         &:hover{
             background-color: $prime_purple;
         }
+        @media (max-width:768px) {
+            min-height: 8rem;
+            a.categQA, p{
+                display: none;
+            }
+        }
     }
     &__categName{
         font-size: var(--text-2xl);
+        @media (max-width:768px) {
+            font-size: var(--text-3xl);
+            font-weight: 900;
+            letter-spacing: 0.5rem;
+        }
     }
     &__icon{
         padding: var(--spacing-12);

@@ -2,15 +2,21 @@
     &__crumbs{
         @media (max-width:768px) {
             .c-breadcrumbs__currentPage{
-                font-size: var(--text-4xl)
+                font-size: var(--text-3xl);
+                width: 40%;
+                overflow-wrap: break-word;
             }
-            margin-bottom: calc(-1 * var(--spacing-120));
             background-color: $prime_purple_light;
             border-radius: var(--spacing-12);
             margin-left: var(--spacing-12);
             h3{
                 color: var(--color-white);
             }
+        }
+    }
+    &__userBasic{
+        @media (max-width:768px) {
+            margin-top: calc(-1 * var(--spacing-120));
         }
     }
     &__portriat, &__schoolImg{

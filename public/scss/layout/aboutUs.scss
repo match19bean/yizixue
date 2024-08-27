@@ -15,5 +15,8 @@
     &__teamSwiper{
         background-color: var(--color-white);
         margin: var(--spacing-24) var(--spacing-160);
+        @media (max-width:768px) {
+            margin: unset;
+        }
     }
 }

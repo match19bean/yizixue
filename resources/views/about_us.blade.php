@@ -8,11 +8,11 @@
         <div class="c-bannerCarousel swiper aboutUsSwiper">
             <div class="swiper-wrapper">
                 @forelse($carousels as $carousel)
-                    <div class="swiper-slide">
-                        <!-- put the picture resource here -->
-                        <span class="c-bannerCarousel__slide"
-                              style="background-image: url('{{asset('uploads/'.$carousel->image_path)}}') ;">&nbsp;</span>
-                    </div>
+                <div class="swiper-slide">
+                    <!-- put the picture resource here -->
+                    <span class="c-bannerCarousel__slide"
+                        style="background-image: url('{{asset('uploads/'.$carousel->image_path)}}') ;">&nbsp;</span>
+                </div>
                 @empty
                 <div class="swiper-slide">
                     <!-- put the picture resource here -->
@@ -43,28 +43,28 @@
     <div class="l-aboutUs__sponsor">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 p-5">
+                <div class="col-md-3 p-2 p-md-5">
                     <img src="{{asset('uploads/images/goals-new.png')}}" alt="">
                 </div>
-                <div class="col-md-6 p-5">
+                <div class="col-md-6 p-2 p-md-5">
                     <div class="row l-aboutUs__centerBorder p-5">
                         <!-- put the picture resource here -->
-                        <img class="col-md-4" src="{{asset('uploads/images/about_sponsor_2.png')}}" alt="">
-                        <img class="col-md-4" src="{{asset('uploads/images/quality-icon.png')}}" alt="">
-                        <img class="col-md-4" src="{{asset('uploads/images/decent-icon.png')}}" alt="">
+                        <img class="col-4" src="{{asset('uploads/images/about_sponsor_2.png')}}" alt="">
+                        <img class="col-4" src="{{asset('uploads/images/quality-icon.png')}}" alt="">
+                        <img class="col-4" src="{{asset('uploads/images/decent-icon.png')}}" alt="">
                     </div>
                 </div>
-                <div class="col-md-3 p-5">
+                <div class="col-md-3 p-2 p-md-5">
                     <img src="{{asset('uploads/images/csr-new.png')}}" alt="">
                 </div>
             </div>
             <div class="row p-5">
                 @if(empty($content))
-                    <p></p>
+                <p></p>
                 @else
-                    <p>
-                        {!! nl2br($content->content) !!}
-                    </p>
+                <p>
+                    {!! $content->content !!}
+                </p>
                 @endif
             </div>
         </div>
@@ -83,60 +83,71 @@
                             <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})">
                                 <!-- img div -->
                                 @if(is_null($user->avatar))
-                                    <span class="c-studentCardSwiper_studentImg"
-                                          style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
+                                <span class="c-studentCardSwiper_studentImg"
+                                    style="background-image: url('{{asset('uploads/images/default_avatar.png')}}') ;">&nbsp;</span>
                                 @else
-                                    <span class="c-studentCardSwiper_studentImg"
-                                          style="background-image: url('/uploads/{{ $user->avatar }}');">&nbsp;</span>
+                                <span class="c-studentCardSwiper_studentImg"
+                                    style="background-image: url('/uploads/{{ $user->avatar }}');">&nbsp;</span>
                                 @endif
                                 <!-- background -->
                                 <svg class="c-studentCardSwiper_bg" viewBox="0 0 330 170">
                                     <polygon class="cls-1" points="329.5 170 0 170 0 0 330 45.1 329.5 170" />
                                 </svg>
                                 <!-- school img -->
-                                <span class="c-studentCardSwiper_schoolImg"
-                                    style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">&nbsp;</span>
-                                <!-- name card -->
-                                <h4 class="c-studentCardSwiper_userName">{{ ($user->name) ? \Illuminate\Support\Str::limit($user->name,10): "" }}</h4>
-                                <!-- school english -->
-                                <h5 class="c-studentCardSwiper_schoolEnglish">{{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->english_name, 15) : '' }}</h5>
-                                <!-- school chinese -->
-                                <h6 class="c-studentCardSwiper_schoolChinese">{{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->chinese_name, 10) : '' }}</h6>
-                                <!-- react icons -->
-                                @if(auth()->check())
-                                <div class="c-studentCardSwiper_react">
-                                    <i class="bi @if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-heart-fill @else bi-heart @endif like-user"
-                                       style="color:
-                                       @if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif"
-                                       data-id="{{$user->id}}">
-                                            <span>{{$user->likedUser->count()}}</span>
-                                    </i>
-                                    <i class="bi @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif collect-user"
-                                       style="color:
-                                       @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif"
-                                       data-id="{{$user->id}}">
-                                            <span>{{$user->collectedUser->count()}}</span>
-                                    </i>
+                                <div class="c-studentCardSwiper_schoolImg">
+                                    <span
+                                        style="background-image: url('{{asset($user->universityItem->image_path)}}') ;">
+                                        &nbsp;
+                                    </span>
                                 </div>
-                                @else
-                                <div class="c-studentCardSwiper_react">
+                                <!-- name card -->
+                                <h4 class="c-studentCardSwiper_userName">
+                                    {{ ($user->nickname) ? \Illuminate\Support\Str::limit($user->nickname,7): "" }}
+                                </h4>
+                                <!-- school english -->
+                                <h5 class="c-studentCardSwiper_schoolEnglish">
+                                    {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->english_name, 20) : '' }}
+                                </h5>
+                                <!-- school chinese -->
+                                <h6 class="c-studentCardSwiper_schoolChinese">
+                                    {{ !is_null($user->universityItem) ? \Illuminate\Support\Str::limit($user->universityItem->chinese_name, 10) : '' }}
+                                </h6>
+                                <!-- react icons -->
+                                <div class="c-studentCardSwiper_react"
+                                    onclick="event.stopPropagation(); return false; ">
+                                    @if(auth()->check())
+                                    <i class="bi @if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-heart-fill @else bi-heart @endif  like-user"
+                                        style="
+                                    color:@if($user->likedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                    " data-id="{{$user->id}}">
+                                        <span>{{$user->likedUser->count()}}</span>
+                                    </i>
+                                    <i class="bi @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) bi-bookmark-fill @else bi-bookmark @endif  collect-user"
+                                        data-id="{{$user->id}}" style="
+                                    color:  @if($user->collectedUser->where('uid', auth()->user()->id)->where('user_id', $user->id)->count() == 1) red @else black @endif
+                                    ">
+                                        <span>{{$user->collectedUser->count()}}</span>
+                                    </i>
+                                    @else
                                     <i class="bi bi-heart like-user" data-id="{{$user->id}}">
                                         <span>{{$user->likedUser->count()}}</span>
                                     </i>
                                     <i class="bi bi-bookmark collect-user" data-id="{{$user->id}}">
                                         <span>{{$user->collectedUser->count()}}</span>
                                     </i>
+                                    @endif
                                 </div>
-                                @endif
                                 <!-- post tag -->
                                 <div class="c-studentCardSwiper_postTag">
                                     @forelse ($user->postCategory as $count => $cate)
-                                        @if ($count < 3) <a href="{{route('senior', ['category' => $cate->postCategory->id])}}" class="text-white">
-                                            {{ $cate->postCategory->name }}
+                                    @if ($count < 3) <a
+                                        href="{{route('senior', ['category' => $cate->postCategory->id])}}"
+                                        class="text-white">
+                                        {{ $cate->postCategory->name }}
                                         </a>
                                         @endif
-                                    @empty
-                                    @endforelse
+                                        @empty
+                                        @endforelse
                                 </div>
                             </div>
                         </div>
@@ -144,10 +155,10 @@
                         @endforelse
                         <!-- end of the demo -->
                     </div>
-                    <div class="teamPagi paginationCustom"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
+                <div class="teamPagi paginationCustom"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
                 <!-- read more -->
                 <a class="o-readMore" href="/senior">查看更多 &gt;</a>
             </div>
@@ -167,10 +178,12 @@
                 if (res.operator === 'no') {
                     alert(res.message);
                 } else if (res.operator === 'add') {
-                    that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart-fill').css('color', 'red');
+                    that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass(
+                        'bi-heart-fill').css('color', 'red');
                     that.children('span').text(res.total);
                 } else if (res.operator === 'reduce') {
-                    that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart').css('color', 'black');
+                    that.removeClass('bi-heart').removeClass('bi-heart-fill').addClass('bi-heart')
+                        .css('color', 'black');
                     that.children('span').text(res.total);
                 }
             },
@@ -189,10 +202,12 @@
                 if (res.operator === 'no') {
                     alert(res.message);
                 } else if (res.operator === 'add') {
-                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark-fill').css('color', 'red');
+                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass(
+                        'bi-bookmark-fill').css('color', 'red');
                     that.children('span').text(res.total);
                 } else if (res.operator === 'reduce') {
-                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass('bi-bookmark').css('color', 'black');
+                    that.removeClass('bi-bookmark').removeClass('bi-bookmark-fill').addClass(
+                        'bi-bookmark').css('color', 'black');
                     that.children('span').text(res.total);
                 }
             },

@@ -193,6 +193,9 @@
         background-color: $prime_gray;
         color: var(--color-black);
     }
+    @media (max-width:768px) {
+        font-size: var(--text-xs);
+    }
 }
 
 .o-faqBtn {
@@ -224,6 +227,9 @@
             text-align: center;
             font-weight: 800;
         }
+    }
+    @media (max-width:768px) {
+        font-size: var(--text-xs);
     }
 }
 

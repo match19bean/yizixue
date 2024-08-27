@@ -20,7 +20,7 @@
                                 <div class="card d-flex justify-content-center shadow" style="border-right: 50px solid #4C2A70">
                                     <!-- Card Header - Dropdown -->
                                     <div class="d-flex flex-row align-items-center justify-content-between">
-                                        <p class="m-0 font-weight-bold text-primary"></p>
+                                    <p class="ml-3 o-articleTitle">{{ substr($qa->title, 0, 25) }}...</p>
                                         <div class="dropdown no-arrow">
                                             <a style="margin:5px" class="dropdown-toggle" href="#" role="button"
                                                 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -42,7 +42,6 @@
                                             $QAcategories = $Data['QACategoryRelation']->where('qa_id', $qa->id)->get();
                                         ?>
                                         <h4 style="align-items: center;">
-                                        {{ substr($qa->title, 0, 25) }}...
                                         @foreach ($QAcategories as $cateId)
                                             <?php
                                                 $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();

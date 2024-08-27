@@ -19,7 +19,7 @@
     </div>
 </div>
 <!-- user basic info -->
-<div class="container-fluid">
+<div class="container-fluid l-introduction__userBasic">
     <div class="row pl-2 pl-md-5 justify-content-end">
         <!-- portriat -->
         <div class="col-7 col-md-4 p-2 p-md-5">

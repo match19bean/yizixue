@@ -163,7 +163,7 @@
                             <h6>加入｜易子學</h6>
                             <div>
                                 <a href="{{route('login')}}">登入｜註冊</a>
-                                <a href="">聯絡我們</a>
+                                <a href="https://lin.ee/RjpZvEC">聯絡我們</a>
                             </div>
                         </div>
                         <div class="l-footer__siteMap_desk_topic">
@@ -204,11 +204,11 @@
                     <!-- phone ver -->
                     <div class="l-footer__siteMap_phone p-5">
                         <h6>
-                            <a>關於我們</a>
+                            <a href="/about-us">關於我們</a>
                         </h6>
                         <p>｜</p>
                         <h6>
-                            <a>聯絡我們</a>
+                            <a href="https://lin.ee/RjpZvEC">聯絡我們</a>
                         </h6>
                     </div>
                 </div>
@@ -283,8 +283,8 @@
     });
 
     var swiper = new Swiper(".teamSwiper", {
-        slidesPerView: 4,
-        spaceBetween: 30,
+        slidesPerView: 1,
+        spaceBetween: 10,
         allowTouchMove: false,
         loop: true,
         autoplay: {
@@ -295,9 +295,22 @@
             clickable: true,
         },
         breakpoints: {
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
             1920: {
                 slidesPerView: 6,
-            }
+                spaceBetween: 30,
+            },
         },
         navigation: {
             nextEl: ".swiper-button-next",

@@ -33,15 +33,19 @@
                                     <p>加值{{$product->pay_time}}個月</p>
                                     <p>加值金額：{{$product->price}}</p>
                                 </div>
-                                <div class="l-payList__btns card-footer d-flex justify-content-around">
-                                    <form action="{{ route('pay-product' , $product->id) }}" method="post">
-                                        {{csrf_field()}}
-                                        <button class="o-btn">Line Pay</button>
-                                    </form>
-                                    <form action="{{ route('pay-product-ecpay' , $product->id) }}" method="post">
-                                        {{csrf_field()}}
-                                        <button class="o-btn">綠界</button>
-                                    </form>
+                                <div class="l-payList__btns card-footer container">
+                                    <div class="row">
+                                        <form class="col-md-6 p-2" action="{{ route('pay-product' , $product->id) }}"
+                                            method="post">
+                                            {{csrf_field()}}
+                                            <button class="o-btn">Line Pay</button>
+                                        </form>
+                                        <form class="col-md-6 p-2" action="{{ route('pay-product-ecpay' , $product->id) }}"
+                                            method="post">
+                                            {{csrf_field()}}
+                                            <button class="o-btn">綠界</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -52,12 +56,13 @@
             </div>
         </div>
         <div class="container">
-                <div class="row p-4">
-                    <div class="col-md-12 l-payList__slogan">
-                        <p class="text-center p-3 p-md-5">我們深信你的留學經歷正是人生第一個資產，除了珍惜更要善用變現的機會。<br>每個月省下一杯拿鐵的錢錢，在易子學發展自己的留學諮詢事業。</p>
-                    </div>
+            <div class="row p-4">
+                <div class="col-md-12 l-payList__slogan">
+                    <p class="text-center p-3 p-md-5">
+                        我們深信你的留學經歷正是人生第一個資產，除了珍惜更要善用變現的機會。<br>每個月省下一杯拿鐵的錢錢，在易子學發展自己的留學諮詢事業。</p>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 @endsection
