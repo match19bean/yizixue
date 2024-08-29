@@ -43,7 +43,7 @@
                                         <form class="col-md-6 p-2" action="{{ route('pay-product-ecpay' , $product->id) }}"
                                             method="post">
                                             {{csrf_field()}}
-                                            <button class="o-btn">綠界</button>
+                                            <button class="o-btn">信用卡</button>
                                         </form>
                                     </div>
                                 </div>
