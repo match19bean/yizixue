@@ -285,7 +285,7 @@
                                 <div class="row">
                                     <div class="col-11 col-md-8">
                                         @php
-                                        $category = $Data['QaCategory']->get(4);
+                                        $category = $Data['QaCategory']->get(3);
                                         @endphp
                                         <div class="c-qaCard__content">
                                             <a class="c-qaCard__categName"
@@ -317,7 +317,7 @@
                                 <div class="row">
                                     <div class="col-11 col-md-8">
                                         @php
-                                        $category = $Data['QaCategory']->get(5);
+                                            $category = $Data['QaCategory']->get(4);
                                         @endphp
                                         <div class="c-qaCard__content">
                                             <a class="c-qaCard__categName"
@@ -349,7 +349,7 @@
                                 <div class="row">
                                     <div class="col-11 col-md-8">
                                         @php
-                                        $category = $Data['QaCategory']->get(6);
+                                        $category = $Data['QaCategory']->get(5);
                                         @endphp
                                         <div class="c-qaCard__content">
                                             <a class="c-qaCard__categName"
