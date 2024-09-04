@@ -283,7 +283,7 @@
                                         <svg class="c-qnaCard__thumbNail" viewbox="0 0 100 100">
                                             <circle cx="50" cy="50" r="50" />
                                         </svg>
-                                        <p class="align-content-center">{{ mb_substr($qa->qa->author->nickname, 0, 1) }}{{ str_repeat('*', 5) }}</p>
+                                        <p class="align-content-center">{{ (auth()->check() && auth()->user()->isVip()) ? $qa->qa->nickname : mb_substr($qa->qa->nickname, 0, 1).'*****' }}</p>
                                     </div>
                                 </div>
                                 <div class="col-9 col-md-10 align-content-center">

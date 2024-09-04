@@ -80,7 +80,7 @@
                                     <svg class="c-qnaCard__thumbNail" viewbox="0 0 100 100">
                                         <circle cx="50" cy="50" r="50" />
                                     </svg>
-                                    <p class="align-content-center">{{ (auth()->check() && auth()->user()->isVip() ) ? $qa->author->nickname : mb_substr($qa->author->nickname, 0, 1).'*****'}}</p>
+                                    <p class="align-content-center">{{ (auth()->check() && auth()->user()->isVip()) ? $qa->nickname : mb_substr($qa->nickname, 0, 1).'*****'}}</p>
 
                                 </div>
                                 <div class="col-md-10 align-content-center">
