@@ -1,12 +1,4 @@
 .l-uniList{
-    &__popup{
-        .o-basicLink{
-            font-size: var(--text-sm);
-            @media (max-width:768px) {
-                font-size: var(--text-sm);
-            }
-        }
-    }
     &__content{
         .c-uniCard h4{
             font-size: var(--text-md);

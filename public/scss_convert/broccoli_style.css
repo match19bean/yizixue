@@ -2554,14 +2554,6 @@ section {
   font-size: var(--text-lg);
 }
 
-.l-uniList__popup .o-basicLink {
-  font-size: var(--text-sm);
-}
-@media (max-width: 768px) {
-  .l-uniList__popup .o-basicLink {
-    font-size: var(--text-sm);
-  }
-}
 .l-uniList__content .c-uniCard h4 {
   font-size: var(--text-md);
 }
@@ -3623,6 +3615,7 @@ section {
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 @media (max-width: 768px) {
   .c-uniCard {
@@ -3651,11 +3644,21 @@ section {
   width: 90%;
   min-height: 10rem;
 }
+@media (max-width: 768px) {
+  .c-uniCard h4 {
+    min-height: 7rem;
+  }
+}
 .c-uniCard h5 {
   font-size: var(--text-sm);
 }
 .c-uniCard h5 a {
   color: #4676ED;
+}
+@media (max-width: 768px) {
+  .c-uniCard h5 {
+    min-height: 2.5rem;
+  }
 }
 
 .c-qaCard {
@@ -4221,7 +4224,7 @@ section {
 }
 @media (max-width: 768px) {
   .o-basicLink {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
   }
 }
 

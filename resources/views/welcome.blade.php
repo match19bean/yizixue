@@ -430,7 +430,8 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="c-newsCard__info">
-                                                <h5 id="newsTopic">{{$Data['Post']->title}}</h5>
+                                                <!-- fix the link -->
+                                                <h5><a id="newsTopic" href="{{route('article', $Data['Post']->id)}}">{{$Data['Post']->title}}</a></h5>
                                                 <div class="c-newsCard__tags">
                                                     @foreach($Data['Post']->category as $relation)
                                                     @if($relation->postCategory && $relation->postCategory->name)

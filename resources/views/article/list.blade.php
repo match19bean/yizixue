@@ -137,7 +137,7 @@
                             <div class="c-articleCard__postInfo">
                                 <!-- title -->
                                 <a class="c-articleCard__title"
-                                    href="{{route('article', $post->id)}}">{{ $post->title }}</a>
+                                    href="{{route('article', $post->id)}}">{{ !is_null($post->title) ? \Illuminate\Support\Str::limit($post->title , 35) : '' }}</a>
                                 <!-- content -->
                                 <p class="c-articleCard__content">
                                     {{!is_null(strip_tags($post->body)) ? \Illuminate\Support\Str::limit(strip_tags($post->body), 35): ''}}

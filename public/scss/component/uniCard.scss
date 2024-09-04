@@ -11,6 +11,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    overflow: hidden;
     @media (max-width:768px) {
         width: 100%;
         height: auto;
@@ -31,11 +32,17 @@
         padding: var(--spacing-24);
         width: 90%;
         min-height: 10rem;
+        @media (max-width:768px) {
+            min-height: 7rem;
+        }
     }
     h5{
         font-size: var(--text-sm);
         a{
             color: $schoolMember;
+        }
+        @media (max-width:768px) {
+            min-height: 2.5rem;
         }
     }
 }

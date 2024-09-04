@@ -182,6 +182,7 @@ function newsSlide(){
     if(posts[currentNews-1] !== undefined){
         // 根據 currentPic 切換標題
         $("#newsTopic").text(posts[currentNews-1].topic);
+        $("#newsTopic").attr('href', posts[currentNews-1].url);
         // 根據 currentPic 切換圖片
         $(".c-newsCard__bgImg").css("background-image", "url(" + posts[currentNews - 1].image_path + ")");
         let string = posts[currentNews-1].category.map(function(item){return `<p class="o-tag">`+item+`</p>`});
