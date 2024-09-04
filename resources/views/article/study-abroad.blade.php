@@ -102,7 +102,7 @@
         <div class="col-md-9">
             <!-- cards -->
             <div>
-                @forelse($Data['posts'] as $post)
+                @forelse($Data['posts']->sortByDesc(function($post){ return $post->like_post_count + $post->collect_post_count; }) as $post)
                 <div class="c-articleCard">
                     <div class="container">
                         <div class="row align-items-center">
