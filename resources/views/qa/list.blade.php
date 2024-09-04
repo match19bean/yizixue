@@ -47,7 +47,7 @@
                                                 $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
                                             ?>
                                             <span style="background: #4C2A70; color:#FFFFFF" href="#" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
-                                                #{{$cate->name}}
+                                                {{$cate->name}}
                                             </span>
                                         @endforeach
                                         </h4>

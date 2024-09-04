@@ -49,8 +49,8 @@ class QnAController extends Controller
             "category" => "required|array|max:3|min:1",
             'nickname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|max:255',
-            'line' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:255',
+            'line' => 'nullable|string|max:255',
             'contact_time' => 'required|string|max:255',
             'contact_time_end' => 'required|string|max:255',
             'place' => 'string|max:255',
@@ -68,14 +68,12 @@ class QnAController extends Controller
             "category.min" => "主題不得低於:min個",
             "nickname.required" => "暱稱必須填寫",
             'nickname.max' => "暱稱不得超過:max字",
-            "email.required" => "email必須填寫",
             "email.email" => "email格式不正確",
             "email.max" => "email不得超過:max",
             "contact_time.required" => "聯絡時間必須填寫",
             "contact_time_end.required" => "聯絡時間必須填寫",
             'qabody.required' => "內文必須填寫",
             'place.string' => "地點必須為文字",
-            'line.required' => 'LINE必須填寫',
             'phone.required' => '聯絡電話必須填寫',
             'category.required' => '問題類別必須選擇'
         ]);
@@ -157,8 +155,8 @@ class QnAController extends Controller
             "category" => "rquired|array|max:3|min:1",
             'nickname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|max:255',
-            'line' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:255',
+            'line' => 'nullable|string|max:255',
             'contact_time' => 'required|string|max:255',
             'contact_time_end' => 'required|string|max:255',
             'place' => 'string|max:255',
@@ -183,8 +181,8 @@ class QnAController extends Controller
             "contact_time_end.required" => "聯絡時間必須填寫",
             'qabody.required' => "內文必須填寫",
             'place.string' => "地點必須為文字",
-            'line.required' => 'LINE必須填寫',
-            'phone.required' => '聯絡電話必須填寫'
+//            'line.required' => 'LINE必須填寫',
+//            'phone.required' => '聯絡電話必須填寫'
         ]);
 
         $QnA = QnA::where('uuid', $req->uuid)->first();

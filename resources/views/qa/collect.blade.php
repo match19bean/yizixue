@@ -20,7 +20,7 @@
                                 <div class="card d-flex justify-content-center shadow" style="border-right: 50px solid #4C2A70">
                                     <!-- Card Header - Dropdown -->
                                     <div class="d-flex flex-row align-items-center justify-content-between">
-                                    <p class="ml-3 o-articleTitle">{{ substr($qa->title, 0, 25) }}...</p>
+                                    <p class="ml-3 o-articleTitle"> {{ Illuminate\Support\Str::limit($qa->title, 26)  }}...</p>
                                         <div class="dropdown no-arrow">
                                             <a style="margin:5px" class="dropdown-toggle" href="#" role="button"
                                                 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -38,20 +38,17 @@
                                     </div>
                                     <!-- Card Body -->
                                     <div class="card-body">
-                                        <?php
-                                            $QAcategories = $Data['QACategoryRelation']->where('qa_id', $qa->id)->get();
-                                        ?>
+
+
                                         <h4 style="align-items: center;">
-                                        @foreach ($QAcategories as $cateId)
-                                            <?php
-                                                $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
-                                            ?>
-                                            <span style="background: #4C2A70; color:#FFFFFF" href="#" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
-                                                #{{$cate->name}}
-                                            </span>
-                                        @endforeach
+                                            @forelse($qa->categoryRelation as $relation)
+                                                <span style="background: #4C2A70; color:#FFFFFF" href="#" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
+                                                    {{$relation->category->name}}
+                                                </span>
+                                            @empty
+                                            @endforelse
                                         </h4>
-                                        <p>{!! substr($qa->body, 0, 300) !!}...</p>
+                                        <p>{!! Illuminate\Support\Str::limit($qa->body, 300) !!}</p>
                                     </div>
                                 </div>
                             </div>
