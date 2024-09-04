@@ -48,7 +48,8 @@
                             <form method="POST" action="{{ route('save-post') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="mb-3">
-                                    <input type="text" name="title" class="form-control" placeholder="輸入文章標題" value="{{old('title')}}">
+                                    <label for="title" class="form-label" style="color:#4C2A70;">文章標題</label>
+                                    <input type="text" id="title" name="title" class="form-control" placeholder="輸入文章標題" value="{{old('title')}}">
                                 </div>
                                 @if($errors->has('title'))
                                     <div class="alert alert-danger alert-dismissible text-center">
