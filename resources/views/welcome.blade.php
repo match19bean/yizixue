@@ -208,7 +208,7 @@
                                     <!-- merge to back end -->
                                     <div class="col col-md-4">
                                         <img class="c-qaCard__icon"
-                                            src="{{ asset('uploads/images/yzl-studyabroad.png') }}" alt="icons">
+                                            src="{{ !empty($category->image_path) ? asset('uploads/'.$category->image_path) : asset('uploads/images/yzl-studyabroad.png') }}" alt="icons">
                                     </div>
                                 </div>
                             </div>
@@ -239,7 +239,7 @@
                                         </div>
                                     </div>
                                     <div class="col-1 col-md-4">
-                                        <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-test.png') }}"
+                                        <img class="c-qaCard__icon" src="{{ !empty($category->image_path) ? asset('uploads/'.$category->image_path) : asset('uploads/images/yzl-test.png') }}"
                                             alt="icons">
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
                                         </div>
                                     </div>
                                     <div class="col-1 col-md-4">
-                                        <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-school.png') }}"
+                                        <img class="c-qaCard__icon" src="{{ !empty($category->image_path) ? asset('uploads/'.$category->image_path) : asset('uploads/images/yzl-school.png') }}"
                                             alt="icons">
                                     </div>
                                 </div>
@@ -303,7 +303,7 @@
                                         </div>
                                     </div>
                                     <div class="col-1 col-md-4">
-                                        <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-campus.png') }}"
+                                        <img class="c-qaCard__icon" src="{{ !empty($category->image_path) ? asset('uploads/'.$category->image_path) : asset('uploads/images/yzl-campus.png') }}"
                                             alt="icons">
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@
                                         </div>
                                     </div>
                                     <div class="col-1 col-md-4">
-                                        <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-club.png') }}"
+                                        <img class="c-qaCard__icon" src="{{ !empty($category->image_path) ? asset('uploads/'.$category->image_path) : asset('uploads/images/yzl-club.png') }}"
                                             alt="icons">
                                     </div>
                                 </div>
@@ -367,7 +367,7 @@
                                         </div>
                                     </div>
                                     <div class="col-1 col-md-4">
-                                        <img class="c-qaCard__icon" src="{{ asset('uploads/images/yzl-coop.png') }}"
+                                        <img class="c-qaCard__icon" src="{{ !empty($category->image_path) ? asset('uploads/'.$category->image_path) : asset('uploads/images/yzl-coop.png') }}"
                                             alt="icons">
                                     </div>
                                 </div>

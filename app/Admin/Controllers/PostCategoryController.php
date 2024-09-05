@@ -29,6 +29,7 @@ class PostCategoryController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('slug', __('Slug'));
         $grid->column('name', __('Name'));
+        $grid->column('image_path', __('Image path'))->image();
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -65,6 +66,7 @@ class PostCategoryController extends AdminController
 
         $form->text('slug', __('Slug'));
         $form->text('name', __('Name'));
+        $form->image('image_path', __('Image path'))->removable();
 
         return $form;
     }
