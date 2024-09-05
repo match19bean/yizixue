@@ -29,6 +29,7 @@ Route::get('membership-agreement', 'ContractController@membershipAgreement')->na
 Route::get('service-agreement', 'ContractController@serviceAgreement')->name('service-agreement');
 Route::get('disclaimer', 'ContractController@disclaimer')->name('disclaimer');
 Route::get('subscription-agreement', 'ContractController@subscriptionAgreement')->name('subscription-agreement');
+Route::get('privacy', 'ContractController@privacy')->name('privacy');
 
 //line login
 Route::get('/line', 'LoginController@pageLine');

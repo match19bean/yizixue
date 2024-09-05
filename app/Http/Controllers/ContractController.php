@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Disclaimer;
 use App\MemberAgreement;
+use App\Privacy;
 use App\ServiceAgreement;
 use App\SubscriptionAgreement;
 use Illuminate\Http\Request;
@@ -31,5 +32,11 @@ class ContractController extends Controller
     {
         $contract = SubscriptionAgreement::first();
         return view('contract.subscription-agreement', compact('contract'));
+    }
+
+    public function privacy()
+    {
+        $contract = Privacy::first();
+        return view('contract.privacy', compact('contract'));
     }
 }
