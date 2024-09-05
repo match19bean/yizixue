@@ -94,7 +94,10 @@ class UniversityController extends AdminController
                 'SINGAPORE' => 'SINGAPORE',
                 'HONG KONG' => 'HONG KONG',
                 'MACAU' => 'MACAU',
-                'TAIWAN' => 'TAIWAN'
+                'TAIWAN' => 'TAIWAN',
+                'CHINA' => 'CHINA',
+                'ASIA' => 'ASIA',
+                'EUROPE' => 'EUROPE',
             ]
         )->when('=', 'USA', function (Form $form) {
             $form->select('area', __('Area'))->options([

@@ -39,4 +39,5 @@ Route::group([
     $router->resource('member-agreements', MemberAgreementController::class);
     $router->resource('service-agreements', ServiceAgreementController::class);
     $router->resource('subscription-agreements', SubscriptionAgreementController::class);
+    $router->resource('pay-orders', PayOrderController::class);
 });

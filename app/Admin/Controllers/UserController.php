@@ -38,6 +38,7 @@ class UserController extends AdminController
         $grid->column('universityItem.name', __('University'));
         $grid->column('is_study', __('Is Study'))->bool();
         $grid->column('email', __('Email'));
+        $grid->column('recommender', __('推薦人mail'));
         $grid->column('phone', __('Phone'));
         $grid->column('line', __('Line'));
         $grid->column('address', __('Address'));
@@ -48,10 +49,10 @@ class UserController extends AdminController
 //        $grid->column('rate', __('Rate'));
         $grid->column('ispaied', __('Ispaied'));
         $grid->column('expired', __('Expired'));
-        $grid->column('is_manager', __('Is Manager'));
-        $grid->column('state', __('State'));
+        $grid->column('is_manager', __('Is manager'))->bool();
+//        $grid->column('state', __('State'));
 //        $grid->column('remember_token', __('Remember token'));
-        $grid->column('verified', __('verified'))->bool();
+        $grid->column('verified', __('Verified'))->bool();
         $grid->column('created_at', __('Created at'))->sortable();
 //        $grid->column('updated_at', __('Updated at'));
 

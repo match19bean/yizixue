@@ -12,4 +12,14 @@ class PayProduct extends Model
     {
         return $this->hasMany(PayOrder::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(PayProduct::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
