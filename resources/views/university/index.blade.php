@@ -71,10 +71,10 @@
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'SINGAPORE'])}}">新加坡</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'JAPAN'])}}">日本</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'KOREA'])}}">韓國</a>
-                            <a class="o-basicLink col-4" href="">中國</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'CHINA'])}}">中國</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'HONG KONG'])}}">香港</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'MACAU'])}}">澳門</a>
-                            <a class="o-basicLink col-4" href="">其他亞洲</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'ASIA'])}}">其他亞洲</a>
                         </div>
                     </div>
                 </div>
@@ -178,7 +178,9 @@
                         <a href="{{route('senior', ['country'=>'KOREA'])}}" class="text-none">韓國</a>
                     </text>
                     <text transform="translate(75 272.8)"
-                        style="fill: #4c2a70; font-family: MyriadPro-Regular; font-size: 20px;">中國</text>
+                        style="fill: #4c2a70; font-family: MyriadPro-Regular; font-size: 20px;">
+                        <a href="{{route('senior', ['country' => 'CHINA'])}}" class="text-none">中國</a>
+                    </text>
                     <text transform="translate(75 312.3)"
                         style="fill: #4c2a70; font-family: MyriadPro-Regular; font-size: 20px;">
                         <a href="{{route('senior', ['country'=>'HONG KONG'])}}" class="text-none">香港</a>

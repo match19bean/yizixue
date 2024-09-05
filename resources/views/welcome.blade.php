@@ -496,7 +496,8 @@
                             其他亞洲
                         </p>
                         <p class="col-md-2">
-                            中國｜
+                            <a href="{{route('university-list', ['country' => 'CHINA'])}}"
+                                class="text-decoration-none text-black">中國</a>｜
                             <a href="{{route('university-list', ['country'=>'HONG KONG'])}}"
                                 class="text-decoration-none text-black">香港</a>｜
                             <a href="{{route('university-list', ['country'=>'MACAU'])}}"
