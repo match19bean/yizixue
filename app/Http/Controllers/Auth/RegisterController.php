@@ -99,10 +99,10 @@ class RegisterController extends Controller
 
         $Data['universities'] = $universities->transform(function ($item, $key) {
             return [
-                'id' => $item->id,
-                'name' => $item->chinese_name. $item->english_name
+                'value' => $item->id,
+                'label' => $item->chinese_name. $item->english_name
             ];
-        })->pluck('name', 'id');
+        });
 
         return view('auth.register', compact(['Data']));
     }

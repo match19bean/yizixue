@@ -529,13 +529,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="university" class="form-label">學校</label>
-                                <input id="string" placeholder="就讀學校" list="universityList" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
+                                <input list="universityList" id="string" placeholder="就讀學校" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
                                 <!-- this datalist should contain all the school names -->
                                 <datalist id="universityList">
                                     <!-- I have check the code works, but it can only search chinese name now, we have to add english name into search pool. -->
                                     @foreach($Data['universities'] as $id => $name)
                                         <!-- this option tag contains all the chinese names -->
-                                        <option value="{{$id}}">{{$name}}</option>
+                                        <option data-value="{{$id}}">{{$name}}</option>
                                     @endforeach
                                 </datalist>
                                 <input type="hidden" name="university" id="universityList-hidden">
@@ -866,15 +866,23 @@
     <!-- /.container-fluid -->
 
     <script>
-        document.querySelector('#string').addEventListener('input', function(e) {
+        document.querySelector('input[list]').addEventListener('input', function(e) {
 
             var input = e.target,
                 list = input.getAttribute('list'),
-                options = document.querySelectorAll('#' + list + ' option[value="'+input.value+'"]'),
-                hiddenInput = document.getElementById('universityList-hidden');
-            if (options.length > 0) {
-                hiddenInput.value = input.value;
-                input.value = options[0].innerText;
+                options = document.querySelectorAll('#' + list + ' option'),
+                hiddenInput = document.getElementById('universityList-hidden'),
+                inputValue = input.value;
+                hiddenInput.value = inputValue;
+                console.log(inputValue);
+
+            for(let i=0; i < options.length; i++) {
+                let option = options[i];
+
+                if(option.innerText === inputValue) {
+                    hiddenInput.value = option.getAttribute('data-value');
+                    break;
+                }
             }
         });
     </script>

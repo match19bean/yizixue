@@ -53,18 +53,10 @@
                                     </div>
                                     <!-- member school -->
                                      <!-- this section have been updated, please check the from still submit the right infos. -->
-                                    <div class="form-group{{ $errors->has('university') ? ' has-error' : '' }}">
+                                    <div class="form-group {{ $errors->has('university') ? ' has-error' : '' }}">
                                         <!-- this input tag can search for the school names -->
-                                        <input id="string" placeholder="就讀學校" list="universityList" class="form-control form-control-user">
-                                        <!-- this datalist should contain all the school names -->
-                                        <datalist id="universityList">
-                                            <!-- I have check the code works, but it can only search chinese name now, we have to add english name into search pool. -->
-                                            @foreach($Data['universities'] as $id => $name)
-                                            <!-- this option tag contains all the chinese names -->
-                                            <option value="{{$id}}">{{$name}}</option>
-                                            @endforeach
-                                        </datalist>
-                                        <input type="hidden" name="university" id="universityList-hidden">
+                                        <input id="input" placeholder="就讀學校" list="universityList" class="form-control form-control-user">
+                                        <input type="hidden" name="university" id="university">
                                         @if ($errors->has('university'))
                                         <span class="help-block alert-danger">
                                             <strong>{{ $errors->first('university') }}</strong>
@@ -136,109 +128,35 @@
 </div>
 @endsection
 
-<!--
-
-{{--<div class="container">--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-md-8 col-md-offset-2">--}}
-{{--            <div class="panel panel-default">--}}
-{{--                <div class="panel-heading">註冊帳號</div>--}}
-
-{{--                <div class="panel-body">--}}
-{{--                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">--}}
-{{--                        {{ csrf_field() }}--}}
-
-{{--                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">--}}
-{{--                            <label for="name" class="col-md-4 control-label">姓名</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>--}}
-
-{{--                                @if ($errors->has('name'))--}}
-{{--                                    <span class="help-block">--}}
-{{--                                        <strong>{{ $errors->first('name') }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">--}}
-{{--                            <label for="email" class="col-md-4 control-label">E-Mail</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>--}}
-
-{{--                                @if ($errors->has('email'))--}}
-{{--                                    <span class="help-block">--}}
-{{--                                        <strong>{{ $errors->first('email') }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group{{ $errors->has('birth_day') ? ' has-error' : '' }}">--}}
-{{--                            <label for="email" class="col-md-4 control-label">E-Mail</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="email" type="email" class="form-control" name="birth_day" value="{{ old('email') }}" required>--}}
-
-{{--                                @if ($errors->has('birth_day'))--}}
-{{--                                    <span class="help-block">--}}
-{{--                                        <strong>{{ $errors->first('birth_day') }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">--}}
-{{--                            <label for="password" class="col-md-4 control-label">Password</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="password" type="password" class="form-control" name="password" required>--}}
-
-{{--                                @if ($errors->has('password'))--}}
-{{--                                    <span class="help-block">--}}
-{{--                                        <strong>{{ $errors->first('password') }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group">--}}
-{{--                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>--}}
-
-{{--                            <div class="col-md-6">--}}
-{{--                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group">--}}
-{{--                            <div class="col-md-6 col-md-offset-4">--}}
-{{--                                <button type="submit" class="btn form-control text-white" style="background-color: #4C2A70;">--}}
-{{--                                    註冊--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
- -->
 @section('page_js')
-    <script>
-        document.querySelector('#string').addEventListener('input', function(e) {
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/ui-lightness/jquery-ui.css"/>
 
-            var input = e.target,
-                list = input.getAttribute('list'),
-                options = document.querySelectorAll('#' + list + ' option[value="'+input.value+'"]'),
-                hiddenInput = document.getElementById('universityList-hidden');
-            if (options.length > 0) {
-                hiddenInput.value = input.value;
-                input.value = options[0].innerText;
+    <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        const data = {!!  json_encode($Data['universities']) !!};
+        const tags = {!! json_encode($Data['universities']->pluck('label')) !!};
+
+        $('#input').autocomplete({
+            source : tags,
+            select : showResult,
+            focus : showResult,
+            change :showResult
+        })
+
+        function showResult(event, ui) {
+            let value = ui.item.value;
+            let id = '';
+            for (var i = 0; i < data.length; i++) {
+                if (value == data[i].label) {
+                    id = data[i].value;
+                    break;
+                }
             }
-        });
+            $('#input').val(value);
+            $("#university").val(id);
+            return false;
+        }
     </script>
 @endsection
