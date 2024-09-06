@@ -34,10 +34,10 @@ class UserController extends Controller
             'profile_voice' => Auth::user()->profile_voice,
             'universities' => University::all()->transform(function ($item, $key) {
                 return [
-                    'id' => $item->id,
-                    'name' => $item->chinese_name. $item->english_name
+                    'value' => $item->id,
+                    'label' => $item->chinese_name. $item->english_name
                 ];
-            })->pluck('name', 'id'),
+            }),
             'categories' => PostCategory::all(),
             'user_categories' => auth()->user()->postCategory->pluck('post_category_id')->toArray(),
             'user_skills' => $userSkills,

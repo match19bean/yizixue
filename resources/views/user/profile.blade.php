@@ -529,16 +529,18 @@
                             </div>
                             <div class="mb-3">
                                 <label for="university" class="form-label">學校</label>
-                                <input list="universityList" id="string" placeholder="就讀學校" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
+{{--                                <input list="universityList" id="string" placeholder="就讀學校" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">--}}
                                 <!-- this datalist should contain all the school names -->
-                                <datalist id="universityList">
+{{--                                <datalist id="universityList">--}}
                                     <!-- I have check the code works, but it can only search chinese name now, we have to add english name into search pool. -->
-                                    @foreach($Data['universities'] as $id => $name)
+{{--                                    @foreach($Data['universities'] as $id => $name)--}}
                                         <!-- this option tag contains all the chinese names -->
-                                        <option data-value="{{$id}}">{{$name}}</option>
-                                    @endforeach
-                                </datalist>
-                                <input type="hidden" name="university" id="universityList-hidden">
+{{--                                        <option data-value="{{$id}}">{{$name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </datalist>--}}
+{{--                                <input type="hidden" name="university" id="universityList-hidden">--}}
+                                <input id="input" placeholder="就讀學校" list="universityList" class="form-control form-control-user" value="{{!empty(Auth::user()->universityItem) ? Auth::user()->universityItem->chinese_name.Auth::user()->universityItem->english_name : ""}}">
+                                <input type="hidden" name="university" id="university">
                             </div>
                             <div class="mb-3">
                                 <label for="is_study" class="form-label">在學中</label>
@@ -885,5 +887,36 @@
                 }
             }
         });
+    </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/ui-lightness/jquery-ui.css"/>
+
+    <script src="//code.jquery.com/jquery-2.1.3.js"></script>
+
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        const data = {!!  json_encode($Data['universities']) !!};
+        const tags = {!! json_encode($Data['universities']->pluck('label')) !!};
+
+        $('#input').autocomplete({
+            source : tags,
+            select : showResult,
+            focus : showResult,
+            change :showResult,
+            appendTo: "#edit-profile"
+        })
+
+        function showResult(event, ui) {
+            let value = ui.item.value;
+            let id = '';
+            for (var i = 0; i < data.length; i++) {
+                if (value == data[i].label) {
+                    id = data[i].value;
+                    break;
+                }
+            }
+            $('#input').val(value);
+            $("#university").val(id);
+            return false;
+        }
     </script>
 @endsection
