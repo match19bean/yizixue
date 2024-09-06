@@ -77,7 +77,7 @@
                                     <input type="text" name="line" class="form-control" value="{{old('line')}}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="contact_time" class="form-label">聯絡時間(台灣時間 GMT+8)</label>
+                                    <label for="contact_time" class="form-label">聯絡時間（台灣時間 GMT+8）</label>
                                     <div class="row">
                                         <div class="col-5">
                                             @if($errors->has('contact_time'))

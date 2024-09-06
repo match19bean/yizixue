@@ -159,8 +159,6 @@
                 <div class="teamPagi paginationCustom"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <!-- read more -->
-{{--                <a class="o-readMore" href="/senior">查看更多 &gt;</a>--}}
             </div>
         </div>
     </div>

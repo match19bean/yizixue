@@ -69,10 +69,9 @@
                 <div class="col-md-12 mt-2 mt-md-5">
                     <div class="row mt-2 mt-md-3">
                         <span for="" class="o-qnaBtn col-3 col-md-2">時間</span>
-                        <span class="col-6 col-md-6 col-sm-6">（台灣時間 GMT+8）</span>
                         <p class="align-content-end pt-md-2 col-9 col-md-10 l-qnaGuest__statusContent">
                             {{ Carbon\Carbon::parse($qna->contact_time)->format('H:i:s')}} 至
-                            {{ \Carbon\Carbon::parse($qna->contact_time_end)->format('H:i:s')}}</p>
+                            {{ \Carbon\Carbon::parse($qna->contact_time_end)->format('H:i:s')}}（台灣時間 GMT+8）</p>
                         <hr class="mt-3">
                     </div>
 
