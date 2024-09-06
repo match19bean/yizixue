@@ -129,11 +129,11 @@
 @endsection
 
 @section('page_js')
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/ui-lightness/jquery-ui.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/ui-lightness/jquery-ui.css"/>
 
-    <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.3.js"></script>
 
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script>
         const data = {!!  json_encode($Data['universities']) !!};
         const tags = {!! json_encode($Data['universities']->pluck('label')) !!};
