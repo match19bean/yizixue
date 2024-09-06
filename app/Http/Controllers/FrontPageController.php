@@ -42,7 +42,7 @@ class FrontPageController extends Controller
     public function random()
     {
         $users = User::where('role', 'vip')->where('expired', ">=", now())->pluck('id');
-        $posts = Post::whereIn('uid', $users)->with('category.postCategory')->inRandomOrder()->limit(3)->get();
+        $posts = Post::whereIn('uid', $users)->with('category.postCategory')->inRandomOrder()->limit(5)->get();
         $posts->transform(function($item){
             return [
                 'topic' => '留學誌',
