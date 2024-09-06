@@ -23,7 +23,7 @@ class FrontPageController extends Controller
 {
     public function index()
     {
-        $users = User::where('role', 'vip')->where('expired', '>=', now())->withCount('likedUser')->withCount('collectedUser')->get();
+        $users = User::where('role', 'vip')->where('expired', '>=', now())->withCount('likedUser')->withCount('collectedUser')->inRandomOrder()->get();
         $Data = [
             'Skills' => new Skill,
             'UserSkillRelation' => new UserSkillRelation,

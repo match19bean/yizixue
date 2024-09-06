@@ -38,7 +38,7 @@
                     <div class="s-swiperCustom">
                         <div class="swiper studentSwiper">
                             <div class="swiper-wrapper">
-                                @foreach ($Data['Users']->sortByDesc(function($user){ return $user->liked_user_count + $user->collected_user_count; })->take(8) as $key => $user)
+                                @foreach ($Data['Users']->take(8)->sortByDesc(function($user){ return $user->liked_user_count + $user->collected_user_count; }) as $key => $user)
                                 <div class="swiper-slide">
                                     <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})">
                                         <!-- img div -->
