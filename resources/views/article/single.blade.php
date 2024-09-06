@@ -239,7 +239,7 @@
                                             </a>
                                             <!-- content -->
                                             <p class="c-articleCard__content">
-                                                {{ !is_null($post->body) ? \Illuminate\Support\Str::limit($post->body , 40) : '' }}
+                                                {{ !is_null($post->body) ? \Illuminate\Support\Str::limit(strip_tags($post->body) , 40) : '' }}
                                             </p>
                                             <a class="o-readMore" href="{{route('article', $post->id)}}">...閱讀更多</a>
                                             <hr>
