@@ -482,7 +482,9 @@
                             <a href="{{route('university-list', ['country'=>'FRANCE'])}}"
                                 class="text-decoration-none text-black">法國</a>｜
                             <a href="{{route('university-list', ['country'=>'GERMANY'])}}"
-                                class="text-decoration-none text-black">德國</a>｜其他歐洲
+                                class="text-decoration-none text-black">德國</a>｜
+                            <a href="{{route('university-list', ['country'=>'EUROPE'])}}"
+                               class="text-decoration-none text-black">其他歐洲</a>
                         </p>
                         <p class="col-md-4">
                             <a href="{{route('university-list', ['country'=>'TAIWAN'])}}"
@@ -493,7 +495,8 @@
                                 class="text-decoration-none text-black">⽇本</a>｜
                             <a href="{{route('university-list', ['country'=>'KOREA'])}}"
                                 class="text-decoration-none text-black">韓國</a>｜
-                            其他亞洲
+                            <a href="{{route('university-list', ['country'=>'ASIA'])}}"
+                               class="text-decoration-none text-black">其他亞洲</a>
                         </p>
                         <p class="col-md-2">
                             <a href="{{route('university-list', ['country' => 'CHINA'])}}"

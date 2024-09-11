@@ -60,7 +60,7 @@
                         <div class="row">
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'FRANCE'])}}">法國</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'GERMANY'])}}">德國</a>
-                            <a class="o-basicLink col-4" href="">其他歐洲</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'EUROPE'])}}">其他歐洲</a>
                         </div>
                     </div>
                     <div class="l-uniList__popup collapse multi-collapse container" id="asiaMobile">
@@ -74,7 +74,7 @@
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'CHINA'])}}">中國</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'HONG KONG'])}}">香港</a>
                             <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'MACAU'])}}">澳門</a>
-                            <a class="o-basicLink col-4" href="">其他亞洲</a>
+                            <a class="o-basicLink col-4" href="{{route('senior', ['country'=>'ASIA'])}}">其他亞洲</a>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,9 @@
                         <a href="{{route('senior', ['country'=>'GERMANY'])}}" class="text-none">德國</a>
                     </text>
                     <text transform="translate(75 114.7)"
-                        style="fill: #4c2a70; font-family: MyriadPro-Regular; font-size: 20px;">其他歐洲</text>
+                        style="fill: #4c2a70; font-family: MyriadPro-Regular; font-size: 20px;">
+                        <a href="{{route('senior', ['country'=>'EUROPE'])}}" class="text-none">其他歐洲</a>
+                    </text>
                     <line x1="70.7" y1="49.4" x2="220.7" y2="49.4"
                         style="fill: none; stroke: #000; stroke-miterlimit: 10;" />
                     <line x1="70.7" y1="89" x2="220.7" y2="89"
