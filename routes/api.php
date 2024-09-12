@@ -22,3 +22,7 @@ Route::get('/post-random', 'FrontPageController@random');
 Route::get('search-university', 'UniversityController@search');
 
 Route::post('/v1/images', 'EditorController@image');
+
+Route::post('/phone-verification', 'PhoneVerificationController@sendVerificationCode');
+
+Route::post('/code-verification', 'PhoneVerificationController@verifyCode');
