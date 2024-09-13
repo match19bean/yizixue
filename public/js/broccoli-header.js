@@ -155,7 +155,7 @@ setInterval(newsSlide, 2000); // 每隔2秒呼叫一次headerSlide
 
 
 let currentNews = 1;
-const totalNews = 3; // 定義總共的圖片數量
+const totalNews = 5; // 定義總共的圖片數量
 let timeout2; // 定義 timeout2
 
 let posts;
@@ -201,37 +201,3 @@ function encodeHTML(dirtyString) {
     container.appendChild(text);
     return container.innerHTML; // innerHTML will be a xss safe string
 }
-
-
-// test
-$(document).on('click', '.bookmark-icon', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    var icon = $(this);
-    var userId = icon.data('id');
-    var currentCount = parseInt(icon.data('collected-count'));
-
-    // 发送 AJAX 请求更新收藏总数
-    $.ajax({
-        url: '/', // 替换成实际的路由
-        method: 'POST',
-        data: {
-            user_id: userId
-        },
-        success: function(response) {
-            // 更新收藏总数的显示元素
-            var newCount = response.count;
-            $('#collected-count-' + userId).text(newCount);
-
-            // 更新图标颜色
-            icon.css('color', response.colored ? 'red' : 'black');
-
-            // 更新图标的 data-collected-count 属性
-            icon.data('collected-count', newCount);
-        },
-        error: function(xhr, status, error) {
-            console.error('Error occurred:', error);
-        }
-    });
-});
