@@ -23,7 +23,7 @@
                                     {{ csrf_field() }}
                                     <!-- member name -->
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <input id="name" type="text" class="form-control form-control-user" name="name"
+                                        <input id="name" type="text" class="form-control form-control-user o-input" name="name"
                                             value="{{ old('name') }}" placeholder="會員姓名" autofocus>
                                         @if ($errors->has('name'))
                                         <span class="help-block alert-danger">
@@ -33,7 +33,7 @@
                                     </div>
                                     <!-- member nickname -->
                                     <div class="form-group{{ $errors->has('nickname') ? ' has-error' : '' }}">
-                                        <input id="nickname" type="text" class="form-control form-control-user"
+                                        <input id="nickname" type="text" class="form-control form-control-user o-input"
                                             name="nickname" value="{{ old('nickname') }}" placeholder="會員暱稱" autofocus>
                                         @if ($errors->has('nickname'))
                                         <span class="help-block alert-danger">
@@ -43,7 +43,7 @@
                                     </div>
                                     <!-- member email -->
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <input id="email" type="email" class="form-control form-control-user"
+                                        <input id="email" type="email" class="form-control form-control-user o-input"
                                             name="email" value="{{ old('email') }}" placeholder="會員帳號(email)" autofocus>
                                         @if ($errors->has('email'))
                                         <span class="help-block alert-danger">
@@ -55,7 +55,7 @@
                                      <!-- this section have been updated, please check the from still submit the right infos. -->
                                     <div class="form-group {{ $errors->has('university') ? ' has-error' : '' }}">
                                         <!-- this input tag can search for the school names -->
-                                        <input id="input" placeholder="就讀學校" list="universityList" class="form-control form-control-user">
+                                        <input id="input" placeholder="就讀學校" list="universityList" class="form-control form-control-user o-input">
                                         <input type="hidden" name="university" id="university">
                                         @if ($errors->has('university'))
                                         <span class="help-block alert-danger">
@@ -65,7 +65,7 @@
                                     </div>
                                     <!-- password -->
                                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <input id="password" type="password" class="form-control form-control-user"
+                                        <input id="password" type="password" class="form-control form-control-user o-input"
                                             name="password" placeholder="輸入密碼" required>
                                         @if ($errors->has('password'))
                                         <span class="help-block alert-danger">
@@ -76,7 +76,7 @@
                                     <!-- password check -->
                                     <div class="form-group">
 
-                                        <input id="password-confirm" type="password" class="form-control"
+                                        <input id="password-confirm" type="password" class="form-control o-input"
                                             name="password_confirmation" placeholder="確認密碼" required>
 
                                         @if ($errors->has('password'))
@@ -87,7 +87,7 @@
                                     </div>
                                     <!-- member country code -->
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <select id="country_code" class="form-control form-control-user" name="country_code">
+                                        <select id="country_code" class="form-control form-control-user o-input" name="country_code">
                                             @foreach($Data['country_codes'] as $code => $text)
                                                 <option value="{{$code}}">+{{$code}} {{$text}}</option>
                                             @endforeach
@@ -100,7 +100,7 @@
                                     </div>
                                     <!-- member phone -->
                                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                        <input id="phone" type="text" class="form-control form-control-user"
+                                        <input id="phone" type="text" class="form-control form-control-user o-input"
                                                name="phone" value="{{ old('phone') }}" placeholder="會員手機">
                                         <button class="btn btn-outline-primary" id="send-verify">發送驗證碼</button>
                                         @if ($errors->has('phone'))
@@ -111,7 +111,7 @@
                                     </div>
                                     <!-- member verification code -->
                                     <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
-                                        <input id="code" type="text" class="form-control form-control-user"
+                                        <input id="code" type="text" class="form-control form-control-user o-input"
                                                name="code" value="{{ old('code') }}" placeholder="驗證碼">
                                         <button class="btn btn-outline-primary">驗證</button>
                                         @if ($errors->has('code'))
