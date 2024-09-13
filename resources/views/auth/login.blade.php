@@ -34,7 +34,7 @@
                 <!-- <div class=""> -->
                 {{ csrf_field() }}
                 <div class="col-md-12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input id="email" type="email" class="form-control form-control-user" name="email"
+                    <input id="email" type="email" class="form-control form-control-user o-input" name="email"
                         value="{{ old('email') }}" placeholder="會員帳號" autofocus>
                     @if ($errors->has('email'))
                     <span class="help-block">
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-md-12 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <input id="password" type="password" class="form-control form-control-user" name="password"
+                    <input id="password" type="password" class="form-control form-control-user o-input" name="password"
                         placeholder="輸入密碼" required>
                     @if ($errors->has('password'))
                     <span class="help-block">
@@ -56,7 +56,7 @@
                 <div class="col-md-12 form-group">
                     <div class="checkbox">
                         <label style="color: #4C2A70;">
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 記住帳號
+                            <input type="checkbox" name="remember" class="o-input" {{ old('remember') ? 'checked' : '' }}> 記住帳號
                         </label>
                     </div>
                 </div>

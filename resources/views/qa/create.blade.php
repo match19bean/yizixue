@@ -29,11 +29,11 @@
                                             {{$errors->first('title')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="title" class="form-control" value="{{old('title')}}">
+                                    <input type="text" name="title" class="form-control o-input" value="{{old('title')}}">
                                 </div>
                                 <div class="mb-3" style="display:none">
                                     <label for="author" class="form-label">作者</label>
-                                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control"
+                                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control o-input"
                                         readonly>
                                 </div>
                                 <div class="mb-3">
@@ -44,7 +44,7 @@
                                             {{$errors->first('nickname')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="nickname" class="form-control" value="{{old('nickname')}}" required>
+                                    <input type="text" name="nickname" class="form-control o-input" value="{{old('nickname')}}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -54,7 +54,7 @@
                                             {{$errors->first('email')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="email" class="form-control" value="{{old('email')}}" required>
+                                    <input type="text" name="email" class="form-control o-input" value="{{old('email')}}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">聯絡電話</label>
@@ -64,7 +64,7 @@
                                             {{$errors->first('phone')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="phone" class="form-control" value="{{old('phone')}}">
+                                    <input type="text" name="phone" class="form-control o-input" value="{{old('phone')}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="line" class="form-label">Line</label>
@@ -74,7 +74,7 @@
                                             {{$errors->first('line')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="line" class="form-control" value="{{old('line')}}">
+                                    <input type="text" name="line" class="form-control o-input" value="{{old('line')}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="contact_time" class="form-label">聯絡時間（台灣時間 GMT+8）</label>
@@ -86,7 +86,7 @@
                                                     {{$errors->first('contact_time')}}
                                                 </div>
                                             @endif
-                                            <input type="time" class="form-control" name="contact_time" value="{{old('contact_time')}}">
+                                            <input type="time" class="form-control o-input" name="contact_time" value="{{old('contact_time')}}">
                                         </div>
                                         <div class="col-2 text-center">
                                             -
@@ -98,7 +98,7 @@
                                                     {{$errors->first('contact_time_end')}}
                                                 </div>
                                             @endif
-                                            <input type="time" class="form-control" name="contact_time_end" value="{{old('contact_time_end')}}">
+                                            <input type="time" class="form-control o-input" name="contact_time_end" value="{{old('contact_time_end')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                                     {{$errors->first('amount_down')}}
                                                 </div>
                                             @endif
-                                            <input type="number" class="form-control" name="amount_down" value="{{old('amount_down')}}">
+                                            <input type="number" class="form-control o-input" name="amount_down" value="{{old('amount_down')}}">
                                         </div>
                                         <div class="col-2 text-center">
                                             -
@@ -124,7 +124,7 @@
                                                     {{$errors->first('amount_up')}}
                                                 </div>
                                             @endif
-                                            <input type="number" class="form-control" name="amount_up" value="{{old('amount_up')}}">
+                                            <input type="number" class="form-control o-input" name="amount_up" value="{{old('amount_up')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                             {{$errors->first('place')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="place" class="form-control" value="{{old('place')}}">
+                                    <input type="text" name="place" class="form-control o-input" value="{{old('place')}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label">問題類別</label>
@@ -149,7 +149,7 @@
                                     <div id="checkbox">
                                         @foreach ($Data['categories'] as $category)
                                             <label>
-                                                <input type="checkbox" name="category[]" value="{{ $category->id }}"
+                                                <input type="checkbox" name="category[]" value="{{ $category->id }}" class="o-input"
                                                     {{ is_array(old('category')) &&  in_array($category->id,old('category'))   ? 'checked' : '' }}
                                                 /><span
                                                     class="round button">{{ $category->name }}</span>
@@ -203,9 +203,9 @@
                                             {{$errors->all()}}
                                         </div>
                                     @endif
-                                    <input type="file" id="imgInp" name="attachments[]" class="form-control">
-                                    <input type="file" id="imgInp" name="attachments[]" class="form-control">
-                                    <input type="file" id="imgInp" name="attachments[]" class="form-control">
+                                    <input type="file" id="imgInp" name="attachments[]" class="form-control mb-2">
+                                    <input type="file" id="imgInp" name="attachments[]" class="form-control mb-2">
+                                    <input type="file" id="imgInp" name="attachments[]" class="form-control mb-2">
                                 </div>
                                 <button type="submit" class="btn btn-primary">送出</button>
                             </form>

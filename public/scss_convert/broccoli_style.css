@@ -4228,6 +4228,31 @@ section {
   }
 }
 
+.o-articlePhoto {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 9rem;
+}
+@media (max-width: 768px) {
+  .o-articlePhoto {
+    padding: 1rem;
+  }
+}
+
+.o-topicBox {
+  border: 2px solid #4C2A70;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: var(--text-lg);
+}
+@media (max-width: 768px) {
+  .o-topicBox {
+    font-size: var(--text-2xl);
+  }
+}
+
 .o-searchBar {
   overflow: hidden;
   border-radius: var(--spacing-80);
@@ -4253,6 +4278,13 @@ section {
   .o-searchBar__input {
     padding-left: var(--spacing-24);
   }
+}
+
+.o-input {
+  caret-shape: block;
+  caret-color: #BD9EBE;
+  letter-spacing: 0.2rem;
+  font-size: var(--text-xl);
 }
 
 .o-welcomeTitle a {

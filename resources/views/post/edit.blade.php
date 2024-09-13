@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('update-post') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <input style="display:none" type="text" name="uuid" class="form-control" value="{{ $Data['post']->uuid }}">
+                                <input style="display:none" type="text" name="uuid" class="form-control o-input" value="{{ $Data['post']->uuid }}">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">文章抬頭</label>
                                     @if($errors->has('title'))
@@ -56,12 +56,12 @@
                                             {{$errors->first('title')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="title" class="form-control"
+                                    <input type="text" name="title" class="form-control o-input"
                                         value="{{ $Data['post']->title }}">
                                 </div>
                                 <div class="mb-3" style="display:none">
                                     <label for="author" class="form-label">作者</label>
-                                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control"
+                                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control o-input"
                                         readonly>
                                 </div>
                                 <div id='upload-img-div' class="mb-3"
@@ -79,7 +79,7 @@
                                             {{$errors->first('image_path')}}
                                         </div>
                                     @endif
-                                    <input type="file" id="imgInp" name="image_path" class="form-control"
+                                    <input type="file" id="imgInp" name="image_path" class="form-control o-input"
                                         style="display:none">
                                     <a type="button" id="OpenImgUpload"
                                         style="
@@ -102,10 +102,10 @@
                                             <label>
                                                 @if (in_array($category->id, $Data['selectCategories']))
                                                     <input type="checkbox" name="category[]" value="{{ $category->id }}"
-                                                        checked="checked" />
+                                                        checked="checked" class="o-input" />
                                                     <span class="round button">{{ $category->name }}</span>
                                                 @else
-                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" />
+                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" class="o-input" />
                                                     <span class="round button">{{ $category->name }}</span>
                                                 @endif
                                             </label>

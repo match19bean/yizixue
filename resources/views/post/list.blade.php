@@ -46,7 +46,7 @@
                                                 $QAcategories = $Data['QACategoryRelation']->where('post_id', $post->id)->get();
                                                 ?>
                                                 <h4 style="align-items: center;">
-                                                    {{ substr($post->title, 0, 105) }}...
+                                                    {{ Illuminate\Support\Str::limit($post->title, 30) }}...
                                                     @foreach ($QAcategories as $cateId)
                                                         <?php
                                                         $cate = $Data['QACategory']->where('id', $cateId->category_id)->first();
@@ -57,7 +57,7 @@
                                                         </span>
                                                     @endforeach
                                                 </h4>
-                                                <p>{!! substr(strip_tags($post->body), 0, 300) !!}...</p>
+                                                <p>{!! Illuminate\Support\Str::limit(strip_tags($post->body), 300) !!}...</p>
                                             </div>
                                         </div>
                                     </div>

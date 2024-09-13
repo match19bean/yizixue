@@ -20,7 +20,7 @@
                                 <div class="card d-flex justify-content-center shadow" style="border-right: 50px solid #4C2A70">
                                     <!-- Card Header - Dropdown -->
                                     <div class="d-flex flex-row align-items-center justify-content-between">
-                                        <p class="ml-3 o-articleTitle">{{ substr($qa->title, 0, 25) }}...</p>
+                                        <p class="ml-3 o-articleTitle">{{ Illuminate\Support\Str::limit($qa->title,  25) }}...</p>
                                         <div class="dropdown no-arrow">
                                             <a style="margin:5px" class="dropdown-toggle" href="#" role="button"
                                                 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -51,7 +51,7 @@
                                             </span>
                                         @endforeach
                                         </h4>
-                                        <p>{!! substr($qa->body, 0, 300) !!}...</p>
+                                        <p>{!! Illuminate\Support\Str::limit(strip_tags($qa->body), 300) !!}...</p>
                                     </div>
                                 </div>
                             </div>

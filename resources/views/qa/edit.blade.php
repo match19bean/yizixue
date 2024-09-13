@@ -18,7 +18,7 @@
 
                             <form method="POST" action="{{ route('update-qa') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <input type="text" name="uuid" class="form-control" value="{{ $Data['qa']->uuid }}" readonly style="display: none;">
+                                <input type="text" name="uuid" class="form-control o-input" value="{{ $Data['qa']->uuid }}" readonly style="display: none;">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">QA問題</label>
                                     @if($errors->has('title'))
@@ -27,7 +27,7 @@
                                             {{$errors->first('title')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="title" class="form-control" value="{{ $Data['qa']->title }}">
+                                    <input type="text" name="title" class="form-control o-input" value="{{ $Data['qa']->title }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="nickname" class="form-label">暱稱</label>
@@ -37,7 +37,7 @@
                                             {{$errors->first('nickname')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="nickname" class="form-control" value="{{ $Data['qa']->nickname }}">
+                                    <input type="text" name="nickname" class="form-control o-input" value="{{ $Data['qa']->nickname }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -47,7 +47,7 @@
                                             {{$errors->first('email')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="email" class="form-control" value="{{ $Data['qa']->email }}">
+                                    <input type="text" name="email" class="form-control o-input" value="{{ $Data['qa']->email }}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">聯絡電話</label>
@@ -57,10 +57,10 @@
                                             {{$errors->first('phone')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="phone" class="form-control" value="{{ $Data['qa']->phone }}">
+                                    <input type="text" name="phone" class="form-control o-input" value="{{ $Data['qa']->phone }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="contact_time" class="form-label">聯絡時間(台灣時間 GMT+8)</label>
+                                    <label for="contact_time" class="form-label">聯絡時間（台灣時間 GMT+8）</label>
                                     <div class="row">
                                         <div class="col-5">
                                             @if($errors->has('contact_time'))
@@ -69,7 +69,7 @@
                                                     {{$errors->first('contact_time')}}
                                                 </div>
                                             @endif
-                                            <input type="time" class="form-control" name="contact_time" value="{{ $Data['qa']->contact_time }}">
+                                            <input type="time" class="form-control o-input" name="contact_time" value="{{ $Data['qa']->contact_time }}">
                                         </div>
                                         <div class="col-2 text-center">
                                             -
@@ -81,7 +81,7 @@
                                                     {{$errors->first('contact_time_end')}}
                                                 </div>
                                             @endif
-                                            <input type="time" class="form-control" name="contact_time_end" value="{{ $Data['qa']->contact_time_end }}">
+                                            <input type="time" class="form-control o-input" name="contact_time_end" value="{{ $Data['qa']->contact_time_end }}">
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                                     {{$errors->first('amount_down')}}
                                                 </div>
                                             @endif
-                                            <input type="number" class="form-control" name="amount_down" value="{{ $Data['qa']->amount_down }}">
+                                            <input type="number" class="form-control o-input" name="amount_down" value="{{ $Data['qa']->amount_down }}">
                                         </div>
                                         <div class="col-2 text-center">
                                             -
@@ -107,7 +107,7 @@
                                                     {{$errors->first('amount_up')}}
                                                 </div>
                                             @endif
-                                            <input type="number" class="form-control" name="amount_up" value="{{ $Data['qa']->amount_up }}">
+                                            <input type="number" class="form-control o-input" name="amount_up" value="{{ $Data['qa']->amount_up }}">
                                         </div>
                                     </div>
                                 </div>
@@ -119,11 +119,11 @@
                                             {{$errors->first('place')}}
                                         </div>
                                     @endif
-                                    <input type="text" name="place" class="form-control" value="{{ $Data['qa']->place }}">
+                                    <input type="text" name="place" class="form-control o-input" value="{{ $Data['qa']->place }}">
                                 </div>
                                 <div class="mb-3" style="display:none">
                                     <label for="author" class="form-label">作者</label>
-                                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control" readonly>
+                                    <input type="text" value="{{ $Data['authId'] }}" name="author" class="form-control o-input" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label">問題類別</label>
@@ -137,11 +137,11 @@
                                         @foreach ($Data['categories'] as $category)
                                             <label>
                                                 @if (in_array($category->id, $Data['selectCategories']))
-                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}"
+                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" class="o-input"
                                                         checked="checked" />
                                                     <span class="round button">{{ $category->name }}</span>
                                                 @else
-                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" />
+                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" class="o-input" />
                                                     <span class="round button">{{ $category->name }}</span>
                                                 @endif
                                             </label>
@@ -196,7 +196,7 @@
                                     @endif
                                     @if($Data['qa']->attachments->count() < 3)
                                         @for($i=$Data['qa']->attachments->count();$i<3;$i++)
-                                        <input type="file" id="imgInp" name="attachments[]" class="form-control">
+                                        <input type="file" id="imgInp" name="attachments[]" class="form-control o-input">
                                         @endfor
                                     @endif
                                     @forelse($Data['qa']->attachments as $attachment)

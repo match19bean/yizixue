@@ -32,7 +32,7 @@
                         </g>
                     </svg>
                     <div class="col-11 col-md-11">
-                        <input class="o-searchBar__input" type="search" name="title">
+                        <input class="o-searchBar__input o-input" type="search" name="title">
                         <button type="submit" style="display: none;"></button>
                     </div>
                 </form>

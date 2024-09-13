@@ -190,6 +190,8 @@ function newsSlide(){
         $(".c-newsCard__meta").text(posts[currentNews-1].title);
         $(".c-newsCard__brief").text(encodeHTML(posts[currentNews-1].body));
         $(".c-newsCard__readMore").attr('href', posts[currentNews-1].url);
+        $(".c-newsCard__meta").attr('href', posts[currentNews-1].url);
+        $(".c-newsCard__brief").attr('href', posts[currentNews-1].url);
     }
 }
 

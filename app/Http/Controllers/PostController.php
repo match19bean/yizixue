@@ -39,7 +39,7 @@ class PostController extends Controller
         if(is_null($user)){
             return redirect()->back();
         }
-        if($user->expired < now()){
+        if(!$user->isVip() && $user->expired < now()){
             return redirect()->route('pay-product-list');
         }
 
