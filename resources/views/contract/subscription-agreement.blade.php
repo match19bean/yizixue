@@ -3,7 +3,7 @@
 @section('content')
     <div class="l-contract">
     <div class="l-contract__content container">
-    <h2 class="l-contract__title">註冊條款</h2>
+    <h2 class="l-contract__title">付費訂閱條款</h2>
     <div class="row">
         <div class="col-md-12">
         <section class="my-3">
