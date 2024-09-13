@@ -31,6 +31,9 @@ class UniversityController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('slug', __('Slug'));
         $grid->column('image_path', __('Image Path'))->display(function($image_path){
+            if(empty($image_path)){
+                return '';
+            }
             return url($image_path);
         })->image();
         $grid->column('name', __('Name'));
