@@ -15,10 +15,10 @@ class PhoneVerificationController extends Controller
         $code = random_int(100000, 999999);
         $country_code = $request->input('country_code');
 
-        if(!preg_match("/^[0][1-9]{1,3}[0-9]{6,8}$/", $phone) ||
-            strlen($phone) < 10 || strlen($phone) > 11) {
-            return response()->json(['message' => '電話號碼格式有誤']);
-        }
+//        if(!preg_match("/^[0][1-9]{1,3}[0-9]{6,8}$/", $phone) ||
+//            strlen($phone) < 10 || strlen($phone) > 11) {
+//            return response()->json(['message' => '電話號碼格式有誤']);
+//        }
 
         $sid = env('TWILIO_SID');
         $token = env('TWILIO_AUTH_TOKEN');

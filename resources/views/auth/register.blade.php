@@ -203,9 +203,7 @@
             e.preventDefault();
             e.stopPropagation();
             let phone = $('#phone').val();
-            console.log(phone);
             let country_code = $('#country_code').find(":selected").val();
-            console.log(country_code);
             if(phone == ''){
                alert('請填寫會員手機');
             }
@@ -220,8 +218,8 @@
                 data:{ "phone": phone, "country_code": country_code},
                 success:function(response){
                     alert(response.message);
-                    $('#send-verify').attr('disabled', true);
-                    setTimeout("enableButton()", 1000*60);
+                    // $('#send-verify').attr('disabled', true);
+                    // setTimeout("enableButton()", 1000*60);
                 },
                 error:function(error){console.log(error)}
             });
