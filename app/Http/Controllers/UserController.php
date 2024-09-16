@@ -79,7 +79,6 @@ class UserController extends Controller
             }
         }
 
-
         $uid = $req->uid;
         $User = User::where('id', $uid)->first();
         $User->name = isset($req->name)?$req->name:$User->name;
@@ -87,16 +86,16 @@ class UserController extends Controller
         $User->university = isset($req->university)?$req->university:$User->university;
         $User->is_study = $req->has('is_study')?1:0;
         $User->email = isset($req->email)?$req->email:$User->email;
-        $User->phone = isset($req->phone)?$req->phone:'';
-        $User->line = isset($req->line)?$req->line:'';
-        $User->fb = isset($req->fb)?$req->fb:'';
-        $User->ig = isset($req->ig)?$req->ig:'';
-        $User->linkedin = isset($req->linkedin)?$req->linkedin:'';
+        if($req->has('phone')) { $User->phone = isset($req->phone)?$req->phone:''; }
+        if($req->has('line')) {$User->line = isset($req->line)?$req->line:''; }
+        if($req->has('fb')) { $User->fb = isset($req->fb)?$req->fb:''; }
+        if($req->has('ig')) { $User->ig = isset($req->ig)?$req->ig:''; }
+        if($req->has('linkedin')) { $User->linkedin = isset($req->linkedin)?$req->linkedin:''; }
         $User->address = isset($req->address)?$req->address:$User->address;
         $User->recommender = isset($req->recommender)?$req->recommender:$User->recommender;
-        $User->description = isset($req->description)?$req->description:'';
-        $User->profile_video = isset($req->profile_video)?$req->profile_video:'';
-        $User->profile_voice = isset($req->profile_voice)?$req->profile_voice:'';
+        if($req->has('description')) { $User->description = $req->description; }
+        if($req->has('profile_video')) { $User->profile_video = $req->profile_video; }
+        if($req->has('profile_voice')){ $User->profile_voice = $req->profile_voice; }
         if(isset($req->skills)) 
         {
             // dd($req->skills);
