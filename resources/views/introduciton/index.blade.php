@@ -428,7 +428,7 @@
                 <div class="s-swiperCustom">
                     <div class="swiper studentSwiper">
                         <div class="swiper-wrapper">
-                            @foreach ($Data['vip'] as $key => $user)
+                            @foreach ($Data['vip']->take(8) as $key => $user)
                             <div class=" swiper-slide">
                                 <div class="c-studentCardSwiper" onclick="cardClickable({{ $user->id }})">
                                     <!-- img div -->

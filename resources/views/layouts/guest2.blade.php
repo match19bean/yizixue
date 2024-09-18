@@ -240,9 +240,9 @@
         spaceBetween: 10,
         allowTouchMove: false,
         loop: true,
-        autoplay: {
-            delay: 2000,
-        },
+        // autoplay: {
+        //     delay: 2000,
+        // },
         pagination: {
             el: ".studentPagi",
             clickable: true,

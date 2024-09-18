@@ -136,51 +136,51 @@
     }
 }
 
-.l-student{
-    .c-studentCardSwiper{
-        transform: scale(
-            0.95
-        );
-    }
-    .c-studentCardSwiper_userName{
-        font-size: var(--text-2xl);
-        @media (max-width: 768px){
-            font-size: var(--text-4xl);
-        }
-        @media (max-width: 1024px){
-            font-size: var(--text-xl);
-        }
-    }
-    .c-studentCardSwiper_schoolEnglish{
-        font-size: var(--text-lg);
-        @media (max-width: 768px){
-            font-size: var(--text-xl);
-        }
-        @media (max-width: 1024px){
-            font-size: var(--text-lg);
-        }
-    }
-    .c-studentCardSwiper_schoolChinese{
-        font-size: var(--text-xl);
-        @media (max-width: 768px){
-            font-size: var(--text-2xl);
-        }
-        @media (max-width: 1024px){
-            font-size: var(--text-sm);
-        }
-    }
-    .c-studentCardSwiper_react{
-        i span{
-            font-size: var(--text-xl);
-        }
-    }
-    .c-studentCardSwiper_postTag{
-        padding: var(--spacing-4);
-        a{
-            font-size: var(--text-sm);
-        }
-    }
-}
+// .l-student{
+//     .c-studentCardSwiper{
+//         transform: scale(
+//             0.95
+//         );
+//     }
+//     .c-studentCardSwiper_userName{
+//         font-size: var(--text-2xl);
+//         @media (max-width: 768px){
+//             font-size: var(--text-4xl);
+//         }
+//         @media (max-width: 1024px){
+//             font-size: var(--text-xl);
+//         }
+//     }
+//     .c-studentCardSwiper_schoolEnglish{
+//         font-size: var(--text-lg);
+//         @media (max-width: 768px){
+//             font-size: var(--text-xl);
+//         }
+//         @media (max-width: 1024px){
+//             font-size: var(--text-lg);
+//         }
+//     }
+//     .c-studentCardSwiper_schoolChinese{
+//         font-size: var(--text-xl);
+//         @media (max-width: 768px){
+//             font-size: var(--text-2xl);
+//         }
+//         @media (max-width: 1024px){
+//             font-size: var(--text-sm);
+//         }
+//     }
+//     .c-studentCardSwiper_react{
+//         i span{
+//             font-size: var(--text-xl);
+//         }
+//     }
+//     .c-studentCardSwiper_postTag{
+//         padding: var(--spacing-4);
+//         a{
+//             font-size: var(--text-sm);
+//         }
+//     }
+// }
 
 .l-university{
     background-color: $prime_purple_bright;
