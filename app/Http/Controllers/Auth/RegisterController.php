@@ -139,7 +139,7 @@ class RegisterController extends Controller
 //            965=>'科威特 Kuwait',
 //            92=>'巴基斯坦 Pakistan',
             853=>'澳門 Macao',
-//            60=>'馬來西亞 Malaysia',
+            60=>'馬來西亞 Malaysia',
 //            63=>'菲律賓 Philippines',
 //            966=>'沙烏地阿拉伯 Saudi Arabia',
             65=>'新加坡 Singapore',
