@@ -27,6 +27,7 @@ class FacebookController extends Controller
         logger($request);
         $code = $request->input('code');
         logger('code');
+        logger($code);
         // 用 code 交換 access token
         $client = new Client();
 //        $response = $client->request('GET', 'https://graph.facebook.com/v2.12/oauth/access_token', [
@@ -38,11 +39,9 @@ class FacebookController extends Controller
                 'code' => $code,
             ]
         ]);
-        logger('response');
-        logger($response);
         $data = json_decode($response->getBody(), true);
         logger('data');
-        logger('data');
+        logger($data);
         $accessToken = $data['access_token'];
 
         // 使用 access token 獲取用戶資料
