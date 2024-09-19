@@ -52,6 +52,10 @@ Route::delete('reference-delete/{id}', 'UserController@referenceDelete')->name('
 Route::get('reference-download/{id}', 'UserController@referenceDownload')->name('reference-download');
 
 
+//meta login
+Route::get('facebook/login', 'FacebookController@login')->name('facebook-login');
+Route::get('facebook/callback', 'FacebookController@callback')->name('facebook-callback');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
