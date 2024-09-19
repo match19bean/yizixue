@@ -53,8 +53,8 @@ Route::get('reference-download/{id}', 'UserController@referenceDownload')->name(
 
 
 //meta login
-Route::get('facebook/login', 'Auth\FacebookController@login')->name('facebook-login');
-Route::get('facebook/callback', 'Auth\FacebookController@callback')->name('facebook-callback');
+Route::get('facebook-login', 'Auth\FacebookController@login')->name('facebook-login');
+Route::get('facebook-callback', 'Auth\FacebookController@callback')->name('facebook-callback');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

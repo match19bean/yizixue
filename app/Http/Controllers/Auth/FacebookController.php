@@ -12,7 +12,7 @@ class FacebookController extends Controller
 {
     private $clientId = '914391163652960';
     private $clientSecret = '34c24b5671b4b4d12a04547314fffffa';
-    private $redirectUri = 'https://yizixue.com.tw/facebook/callback';
+    private $redirectUri = 'https://yizixue.com.tw/facebook-callback';
 
     public function login()
     {
