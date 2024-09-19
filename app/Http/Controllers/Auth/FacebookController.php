@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class FacebookController extends Controller
 {
@@ -23,14 +24,9 @@ class FacebookController extends Controller
 
     public function callback(Request $request)
     {
-        logger('request');
-        logger($request);
         $code = $request->input('code');
-        logger('code');
-        logger($code);
         // 用 code 交換 access token
         $client = new Client();
-//        $response = $client->request('GET', 'https://graph.facebook.com/v2.12/oauth/access_token', [
         $response = $client->request('GET', 'https://graph.facebook.com/v19.0/oauth/access_token', [
             'query' => [
                 'client_id' => $this->clientId,
@@ -40,21 +36,49 @@ class FacebookController extends Controller
             ]
         ]);
         $data = json_decode($response->getBody(), true);
-        logger('data');
-        logger($data);
         $accessToken = $data['access_token'];
 
         // 使用 access token 獲取用戶資料
         $userResponse = $client->request('GET', 'https://graph.facebook.com/me?fields=id,name,email&access_token=' . $accessToken);
-        $user = json_decode($userResponse->getBody(), true);
-        logger('user');
-        logger($user);
+        $fb_user = json_decode($userResponse->getBody(), true);
 
         // 這裡可以使用 $user 進行用戶的登入或註冊邏輯
         // 例如：User::firstOrCreate([...]);
+        $user = Auth::user();
+        if($user != null)
+        {
+            if ($user->fb_auth == null) {
 
-        // 登入用戶
-//        auth()->login($user);
+                $user->fb_auth = $fb_user['id'];
+                $user->save();
+
+                $theUser = User::where('fb_auth', $fb_user['id'])->first();
+                Auth::login($theUser);
+                return redirect('/');
+            }
+            else {
+                Auth::login($user);
+                return redirect('/');
+            }
+        }else{
+            $find_user = User::where('fb_auth', $fb_user['id'])->first();
+            if($find_user != null){
+                Auth::login($find_user);
+                return redirect('/');
+            }else{
+                $user = User::create([
+                    'name' => $fb_user['name'],
+                    'nickname' => $fb_user['name'],
+                    'uuid' => 'post-'.uniqid(),
+                    'email' => $fb_user['email'],
+                    'verified' => 1,
+                    'password' => bcrypt('password'),
+                    'fb_auth' => $fb_user['id']
+                ]);
+                Auth::login($user);
+                return redirect('/home');
+            }
+        }
 
         return redirect('/home');
     }
