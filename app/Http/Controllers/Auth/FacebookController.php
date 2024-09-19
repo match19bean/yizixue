@@ -25,6 +25,11 @@ class FacebookController extends Controller
     public function callback(Request $request)
     {
         $code = $request->input('code');
+
+        if($request->has('error')){
+            return redirect('/');
+        }
+
         // 用 code 交換 access token
         $client = new Client();
         $response = $client->request('GET', 'https://graph.facebook.com/v19.0/oauth/access_token', [
