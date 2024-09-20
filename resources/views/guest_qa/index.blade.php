@@ -98,7 +98,7 @@
                                 <!-- content -->
                                 <div class="col-md-10">
                                     <p class="c-qnaCard__content">
-                                        {!! !is_null($qa->body) ? \Illuminate\Support\Str::limit( $qa->body , 50) : '' !!}
+                                        {!! !is_null($qa->body) ? \Illuminate\Support\Str::limit( strip_tags($qa->body) , 50) : '' !!}
                                     </p>
                                 </div>
                                 <!-- bookmark -->
