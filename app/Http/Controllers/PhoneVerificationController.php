@@ -12,12 +12,17 @@ class PhoneVerificationController extends Controller
     {
 
         $phone = $request->input('phone');
+        $phone = str_replace(' ', '', $phone);
         $code = random_int(100000, 999999);
         $country_code = $request->input('country_code');
 
         if(empty($phone)) {
             return response()->json(['message' => '電話號碼必需填寫']);
         }
+        if(!ctype_digit($phone)) {
+            return response()->json(['message' => '請填寫正確電話號碼']);
+        }
+
 //        if(!preg_match("/^[0][1-9]{1,3}[0-9]{6,8}$/", $phone) ||
 //            strlen($phone) < 10 || strlen($phone) > 11) {
 //            return response()->json(['message' => '電話號碼格式有誤']);
@@ -49,6 +54,7 @@ class PhoneVerificationController extends Controller
     public function verifyCode(Request $request)
     {
         $phone = $request->input('phone');
+        $phone = str_replace(' ', '', $phone);
         $code = $request->input('code');
         $country_code = $request->input('country_code');
 
