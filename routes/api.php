@@ -26,3 +26,5 @@ Route::post('/v1/images', 'EditorController@image');
 Route::post('/phone-verification', 'PhoneVerificationController@sendVerificationCode');
 
 Route::post('/code-verification', 'PhoneVerificationController@verifyCode');
+
+Route::any('/facebook-delete', 'Auth\FacebookController@delete');

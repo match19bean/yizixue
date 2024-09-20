@@ -87,4 +87,8 @@ class FacebookController extends Controller
 
         return redirect('/home');
     }
+
+    public function delete(Request $request){
+        logger($request->all());
+    }
 }
