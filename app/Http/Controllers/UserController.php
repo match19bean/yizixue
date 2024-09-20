@@ -62,7 +62,8 @@ class UserController extends Controller
             'post_categories' => 'array|min:0|max:3',
             'email' => 'required_with:email|email|unique:users,email,'.auth()->user()->id,
             'learning_experience' => 'array|min:0|max:5',
-            'recommender' => 'nullable|email'
+            'recommender' => 'nullable|email',
+            'avatar' => 'nullable|mimes:jpeg,jpg,bmp,png|max:10240'
         ], [
             'references.max.file' => '檔案不得超過2M',
             'description.max' => '字數不得超過1200字',
@@ -70,7 +71,9 @@ class UserController extends Controller
             'post_categories.max' => '主題不得超過3個',
             'email.email' => 'Email格式不正確',
             'email.unique' => '已有相同Email註冊',
-            'recommender.email' => '請填寫推薦人Email'
+            'recommender.email' => '請填寫推薦人Email',
+            'avatar.mimes' => '圖片格式不正確，請使用jpeg,jpg,bmp,png檔案',
+            'avatar.max' => "圖片不得大於10MB"
         ]);
 
         if($req->filled('post_categories')){
