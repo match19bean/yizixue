@@ -11,8 +11,8 @@ use Auth;
 
 class FacebookController extends Controller
 {
-    private $clientId = '914391163652960';
-    private $clientSecret = '34c24b5671b4b4d12a04547314fffffa';
+    private $clientId = '373524802044694';
+    private $clientSecret = '7e4be9ff52ce598a391d3b7686ab7707';
     private $redirectUri = 'https://yizixue.com.tw/facebook-callback';
 
     public function login()
