@@ -24,8 +24,8 @@
 </head>
 
 <body>
-    <!-- desk ver navbar-->
-    <nav class="l-header l-header__hideOnDesk navbar navbar-expand-lg">
+<!-- desk ver navbar-->
+<nav class="l-header l-header__hideOnDesk navbar navbar-expand-lg">
         <a class="l-header__logo" href="{{url('/')}}">
             <img id="logoImg" src="{{asset('uploads/images/logo.png')}}" alt="logo">
         </a>
