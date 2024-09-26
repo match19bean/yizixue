@@ -24,7 +24,7 @@
         <!-- portriat -->
         <div class="col-7 col-md-4 p-2 p-md-5">
             <div class="l-introduction__portriat"
-                style="background-image: url('{{asset('uploads/'.$Data['user']->avatar)}}') ;">
+                style="background-image: url('{{ empty($Data['user']->avatar) ? asset('uploads/images/default_avatar.png') : asset('uploads/'.$Data['user']->avatar) }}') ;">
                 &nbsp;
             </div>
         </div>
