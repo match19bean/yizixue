@@ -86,45 +86,45 @@
                                         @endif
                                     </div>
                                     <!-- member country code -->
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <select id="country_code" class="form-control form-control-user o-input" name="country_code">
-                                            @foreach($Data['country_codes'] as $code => $text)
-                                                <option value="{{$code}}">+{{$code}} {{$text}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('country_code'))
-                                            <span class="help-block alert-danger">
-                                            <strong>{{ $errors->first('country_code') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+{{--                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">--}}
+{{--                                        <select id="country_code" class="form-control form-control-user o-input" name="country_code">--}}
+{{--                                            @foreach($Data['country_codes'] as $code => $text)--}}
+{{--                                                <option value="{{$code}}">+{{$code}} {{$text}}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                        @if ($errors->has('country_code'))--}}
+{{--                                            <span class="help-block alert-danger">--}}
+{{--                                            <strong>{{ $errors->first('country_code') }}</strong>--}}
+{{--                                        </span>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
                                     <!-- member phone -->
-                                    <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                        <input id="phone" type="text" class="form-control form-control-user o-input"
-                                               name="phone" value="{{ old('phone') }}" placeholder="會員手機">
-                                        <button class="btn btn-outline-primary" id="send-verify">發送驗證碼</button>
-                                        @if ($errors->has('phone'))
-                                            <span class="help-block alert-danger">
-                                            <strong>{{ $errors->first('phone') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+{{--                                    <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">--}}
+{{--                                        <input id="phone" type="text" class="form-control form-control-user o-input"--}}
+{{--                                               name="phone" value="{{ old('phone') }}" placeholder="會員手機">--}}
+{{--                                        <button class="btn btn-outline-primary" id="send-verify">發送驗證碼</button>--}}
+{{--                                        @if ($errors->has('phone'))--}}
+{{--                                            <span class="help-block alert-danger">--}}
+{{--                                            <strong>{{ $errors->first('phone') }}</strong>--}}
+{{--                                        </span>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
                                     <!-- member verification code -->
-                                    <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
-                                        <input id="code" type="text" class="form-control form-control-user o-input"
-                                               name="code" value="{{ old('code') }}" placeholder="驗證碼">
-                                        <button class="btn btn-outline-primary">驗證</button>
-                                        @if ($errors->has('code'))
-                                            <span class="help-block alert-danger">
-                                            <strong>{{ $errors->first('code') }}</strong>
-                                        </span>
-                                        @endif
-                                        @if ($errors->has('code_check'))
-                                            <span class="help-block alert-danger">
-                                            <strong>{{ $errors->first('code_check') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+{{--                                    <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">--}}
+{{--                                        <input id="code" type="text" class="form-control form-control-user o-input"--}}
+{{--                                               name="code" value="{{ old('code') }}" placeholder="驗證碼">--}}
+{{--                                        <button class="btn btn-outline-primary">驗證</button>--}}
+{{--                                        @if ($errors->has('code'))--}}
+{{--                                            <span class="help-block alert-danger">--}}
+{{--                                            <strong>{{ $errors->first('code') }}</strong>--}}
+{{--                                        </span>--}}
+{{--                                        @endif--}}
+{{--                                        @if ($errors->has('code_check'))--}}
+{{--                                            <span class="help-block alert-danger">--}}
+{{--                                            <strong>{{ $errors->first('code_check') }}</strong>--}}
+{{--                                        </span>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
                                     <!-- concent -->
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-4">

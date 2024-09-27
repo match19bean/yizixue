@@ -52,10 +52,10 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $verify = PhoneVerification::where('country_code', $data['country_code'])->where('phone', $data['phone'])->where('code', $data['code'])->first();
-        if(!is_null($verify)){
-            $data['code_check'] = true;
-        }
+//        $verify = PhoneVerification::where('country_code', $data['country_code'])->where('phone', $data['phone'])->where('code', $data['code'])->first();
+//        if(!is_null($verify)){
+//            $data['code_check'] = true;
+//        }
 
         return Validator::make($data, [
             'name' => 'required|string|max:255',
@@ -64,10 +64,10 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'check_contract' => 'required|boolean',
             'nickname' => 'required|string',
-            'phone' => 'required|string',
-            'country_code' => 'required|string',
-            'code' => 'required|string',
-            'code_check' => 'required|boolean',
+//            'phone' => 'required|string',
+//            'country_code' => 'required|string',
+//            'code' => 'required|string',
+//            'code_check' => 'required|boolean',
         ], [
             'name.required' => '姓名欄位必需填寫',
             'name.string' => '姓名必需填寫文字',
@@ -83,10 +83,10 @@ class RegisterController extends Controller
             'university.exists' => '學校選擇錯誤請重新選擇',
             'university.required' => '學校必需填寫',
             'nickname.required' => '暱稱為必填欄位',
-            'phone.required' => '手機為必填欄位',
-            'country.required' => '國際碼必需填寫',
-            'code.required' => '驗證碼必需填寫',
-            'code_check.required' => '驗證碼錯誤，請驗證手機後註冊'
+//            'phone.required' => '手機為必填欄位',
+//            'country.required' => '國際碼必需填寫',
+//            'code.required' => '驗證碼必需填寫',
+//            'code_check.required' => '驗證碼錯誤，請驗證手機後註冊'
         ]);
     }
 
@@ -103,8 +103,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'country_code' => $data['country_code'],
-            'phone' => $data['phone'],
+//            'country_code' => $data['country_code'],
+//            'phone' => $data['phone'],
             'university' => $data['university'],
             'nickname' => $data['nickname']
         ]);
