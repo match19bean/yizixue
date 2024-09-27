@@ -18,7 +18,7 @@ class FacebookController extends Controller
     public function login()
     {
 //        $url = 'https://www.facebook.com/v2.12/dialog/oauth?client_id=' . $this->clientId . '&redirect_uri=' . urlencode($this->redirectUri) . '&scope=email';
-        $url = 'https://www.facebook.com/v19.0/dialog/oauth?client_id=' . $this->clientId . '&redirect_uri=' . urlencode($this->redirectUri) . '&scope=email';
+        $url = 'https://www.facebook.com/v20.0/dialog/oauth?client_id=' . $this->clientId . '&redirect_uri=' . urlencode($this->redirectUri) . '&scope=email';
         return redirect($url);
     }
 
@@ -32,7 +32,7 @@ class FacebookController extends Controller
 
         // 用 code 交換 access token
         $client = new Client();
-        $response = $client->request('GET', 'https://graph.facebook.com/v19.0/oauth/access_token', [
+        $response = $client->request('GET', 'https://graph.facebook.com/v20.0/oauth/access_token', [
             'query' => [
                 'client_id' => $this->clientId,
                 'redirect_uri' => $this->redirectUri,
