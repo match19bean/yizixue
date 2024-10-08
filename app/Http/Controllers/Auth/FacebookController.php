@@ -46,7 +46,6 @@ class FacebookController extends Controller
         // 使用 access token 獲取用戶資料
         $userResponse = $client->request('GET', 'https://graph.facebook.com/me?fields=id,name,email&access_token=' . $accessToken);
         $fb_user = json_decode($userResponse->getBody(), true);
-        logger($fb_user);
 
         // 這裡可以使用 $user 進行用戶的登入或註冊邏輯
         // 例如：User::firstOrCreate([...]);
