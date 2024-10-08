@@ -66,8 +66,11 @@ class FacebookController extends Controller
                 return redirect('/');
             }
         }else{
-            $find_user = User::where('fb_auth', $fb_user['id'])->first();
+            $find_user = User::where('email', $fb_user['email'])->first();
             if($find_user != null){
+                if(empty($find_user->fb_auth)){
+                    $find_user->update(['fb_auth' => $fb_user['id']]);
+                }
                 Auth::login($find_user);
                 return redirect('/');
             }else{
