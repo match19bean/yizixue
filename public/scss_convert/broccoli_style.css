@@ -4535,6 +4535,14 @@ section {
   aspect-ratio: 1/1;
 }
 
+.o-socialIcon__line {
+  color: #07C655;
+}
+
+.o-socialIcon__meta {
+  color: #0081FB;
+}
+
 .o-reference {
   all: unset;
   cursor: pointer;
