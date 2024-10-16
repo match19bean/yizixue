@@ -116,3 +116,6 @@ Route::any('ecpay-return-url', 'EcpayController@ecpayReturn')->name('ecpay-retur
 Route::get('register/verify', 'Auth\RegisterController@verify')->name('verifyEmailLink');
 Route::get('register/verify/resend', 'Auth\RegisterController@showResendVerificationEmailForm')->name('showResendVerificationEmailForm');
 Route::post('register/verify/resend', 'Auth\RegisterController@resendVerificationEmail')->name('resendVerificationEmail');
+
+Route::get('sms_confirm', 'SmsContractController@index')->name('sms.index');
+Route::post('sms_confirm', 'SmsContractController@store')->name('sms.confirm');
