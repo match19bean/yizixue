@@ -53,7 +53,7 @@
                                     <!-- school img -->
                                     <div class="col-5 col-md-2 p-2">
                                         <span class="l-articleList__schoolImg"
-                                            style="background-image: url('{{asset('university/USA/US1.png')}}') ;">&nbsp;</span>
+                                            style="background-image: url('{{ !is_null($Data['user']->universityItem) ? $Data['user']->universityItem->image_path: '' }}') ;">&nbsp;</span>
                                     </div>
                                     <!-- school name -->
                                     <div class="col-7 col-md-10">
