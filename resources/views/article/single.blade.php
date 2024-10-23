@@ -96,7 +96,7 @@
                                 </svg>
                                 <!-- school img -->
                                 <span class="c-studentCard_schoolImg"
-                                    style="background-image: url('{{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->image_path: '' }}') ;">&nbsp;</span>
+                                    style="background-image: url('{{ !is_null($Data['article']->author->universityItem) ? asset($Data['article']->author->universityItem->image_path): '' }}') ;">&nbsp;</span>
                                 <!-- name card -->
                                 <h4 class="c-studentCard_userName">
                                     {{ ($Data['article']->author->nickname) ? \Illuminate\Support\Str::limit($Data['article']->author->nickname,8): "" }}
