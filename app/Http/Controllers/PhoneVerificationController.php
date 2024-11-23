@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PhoneVerification;
+use App\SmsConfirm;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 
@@ -10,18 +11,23 @@ class PhoneVerificationController extends Controller
 {
     public function sendVerificationCode(Request $request)
     {
+        $confirm = SmsConfirm::where('phone', $request->input('phone'))->where('country_code')->count();
+        if($confirm < 0){
+            return response()->json(['message' => '請先同意簡訊條款']);
+        }
+
+        if(empty($phone)) {
+            return response()->json(['message' => '電話號碼必需填寫']);
+        }
+
+        if(!ctype_digit($phone)) {
+            return response()->json(['message' => '請填寫正確電話號碼']);
+        }
 
         $phone = $request->input('phone');
         $phone = str_replace(' ', '', $phone);
         $code = random_int(100000, 999999);
         $country_code = $request->input('country_code');
-
-        if(empty($phone)) {
-            return response()->json(['message' => '電話號碼必需填寫']);
-        }
-        if(!ctype_digit($phone)) {
-            return response()->json(['message' => '請填寫正確電話號碼']);
-        }
 
 //        if(!preg_match("/^[0][1-9]{1,3}[0-9]{6,8}$/", $phone) ||
 //            strlen($phone) < 10 || strlen($phone) > 11) {

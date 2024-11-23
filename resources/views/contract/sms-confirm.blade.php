@@ -9,11 +9,15 @@
                     <dl>
                         <dd>
                             <ol>
-                                此簡訊於註冊 https://yizixue.com.tw/ 發送手機驗證碼註冊會員使用。
+                                <li>此簡訊於註冊 https://yizixue.com.tw/ 發送手機驗證碼註冊會員使用。</li>
+                                <li>網站 https://yizixue.com.tw/ 不會將手機資訊分享給第三方/合作夥伴用於行銷或促銷目的。</li>
+                                <li>網站 https://yizixue.com.tw/ 不會分享、出售或交換客戶/用戶的手機號碼。</li>
                             </ol>
 
                             <ol>
-                                By sending a text message, registered members can receive a verification code to assist in verifying their identity.
+                                <li>By sending a text message, registered members can receive a verification code to assist in verifying their identity.</li>
+                                <li>All other use case categories exclude text messaging originator opt-in data and consent; no mobile information will be shared with third parties/affiliates for marketing/promotional purposes.</li>
+                                <li>All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</li>
                             </ol>
                         </dd>
                     </dl>
