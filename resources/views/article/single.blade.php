@@ -103,11 +103,11 @@
                                 </h4>
                                 <!-- school english -->
                                 <h5 class="c-studentCard_schoolEnglish">
-                                    {{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->english_name: '' }}
+                                    {{ !is_null($Data['article']->author->universityItem) ?  \Illuminate\Support\Str::limit($Data['article']->author->universityItem->english_name,35): '' }}
                                 </h5>
                                 <!-- school chinese -->
                                 <h6 class="c-studentCard_schoolChinese">
-                                    {{ !is_null($Data['article']->author->universityItem) ? $Data['article']->author->universityItem->chinese_name: '' }}
+                                    {{ !is_null($Data['article']->author->universityItem) ?  \Illuminate\Support\Str::limit($Data['article']->author->universityItem->chinese_name,8): '' }}
                                 </h6>
                                 <!-- react icons -->
                                 <div class="c-studentCard_react" onclick="event.stopPropagation(); return false; ">

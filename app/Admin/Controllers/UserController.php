@@ -40,7 +40,15 @@ class UserController extends AdminController
         $grid->column('email', __('Email'));
         $grid->column('recommender', __('推薦人mail'));
         $grid->column('phone', __('Phone'));
-        $grid->column('line', __('Line'));
+        $grid->column('line', __('Social'))->display(function(){
+            if(!is_null($this->fb_auth)) {
+                return '<span style="color:blue">FB:</span>'.$this->fb_auth;
+            }
+            if(!is_null($this->line_auth)) {
+                return "<span style='color:green'>LINE:</span>".$this->line_auth;
+            }
+            return '';
+        });
         $grid->column('address', __('Address'));
 //        $grid->column('profile_video', __('Profile video'));
 //        $grid->column('profile_voice', __('Profile voice'));

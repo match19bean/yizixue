@@ -590,7 +590,7 @@
                                     class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="recommender" class="form-label">推薦人MAIL</label>
+                                <label for="recommender" class="form-label">推薦人Email</label>
                                 <input type="text" id="recommender" name="recommender" value="{{Auth::user()->recommender}}"
                                        class="form-control" {{ is_null(Auth::user()->recommender) ?: 'disabled'  }} >
                             </div>
