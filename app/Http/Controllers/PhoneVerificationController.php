@@ -11,6 +11,8 @@ class PhoneVerificationController extends Controller
 {
     public function sendVerificationCode(Request $request)
     {
+        $phone = $request->input('phone');
+        $phone = str_replace(' ', '', $phone);
         $confirm = SmsConfirm::where('phone', $request->input('phone'))->where('country_code')->count();
         if($confirm < 0){
             return response()->json(['message' => '請先同意簡訊條款']);
@@ -24,8 +26,6 @@ class PhoneVerificationController extends Controller
             return response()->json(['message' => '請填寫正確電話號碼']);
         }
 
-        $phone = $request->input('phone');
-        $phone = str_replace(' ', '', $phone);
         $code = random_int(100000, 999999);
         $country_code = $request->input('country_code');
 
