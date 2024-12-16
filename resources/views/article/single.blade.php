@@ -183,8 +183,8 @@
             <h2 class="l-singleArticle__title text-center text-md-start">您可能感興趣的文章</h2>
             <div class="container">
                 <div class="row">
-                    @if(!is_null($Data['article']->author->post))
-                    @foreach($Data['article']->author->post as $post)
+                    @if(!is_null($Data['interested']))
+                    @foreach($Data['interested'] as $post)
                     <div class="col-md-6">
                         <div class="c-articleCard">
                             <div class="container">
