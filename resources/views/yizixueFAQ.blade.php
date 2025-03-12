@@ -40,11 +40,7 @@
                 <!-- contents -->
                 <div id="pills-tabContent" class="tab-content">
                     @forelse($categories as $category)
-                        @if($loop->first)
-                            <div class="tab-pane fade show active" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
-                        @else
-                            <div class="tab-pane fade" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
-                        @endif
+<div class="tab-pane fade" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
                             @forelse($contents->where('yizixue_faq_category_id', $category->id) as $content)
                                 <div class="row m-3">
                                     <div class="col-md-12">
