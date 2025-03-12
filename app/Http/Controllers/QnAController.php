@@ -152,7 +152,7 @@ class QnAController extends Controller
             'attachment.*' => 'file|max:2000|nullable',
             "amount_up" => "integer|max:999999999|min:0",
             "amount_down" => "integer|max:999999999|min:0",
-            "category" => "rquired|array|max:3|min:1",
+            "category" => "required|array|max:3|min:1",
             'nickname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'phone' => 'nullable|string|max:255',

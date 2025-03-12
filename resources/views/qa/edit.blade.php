@@ -59,6 +59,16 @@
                                     @endif
                                     <input type="text" name="phone" class="form-control o-input" value="{{ $Data['qa']->phone }}">
                                 </div>
+                                                                <div class="mb-3">
+                                    <label for="line" class="form-label">Line</label>
+                                    @if($errors->has('line'))
+                                        <div class="alert alert-danger alert-dismissible text-center">
+                                            <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                            {{$errors->first('line')}}
+                                        </div>
+                                    @endif
+                                    <input type="text" name="line" class="form-control o-input" value="{{ $Data['qa']->line }}">
+                                </div>
                                 <div class="mb-3">
                                     <label for="contact_time" class="form-label">聯絡時間（台灣時間 GMT+8）</label>
                                     <div class="row">
