@@ -61,12 +61,11 @@
                                         </span>
                                     </span>
                                         </button>
-                                        <div class="collapse multi-collapse mt-2" id="content{{$content->id}}">
-    <div class="card card-body border-start border-4 border-primary p-3">
-        {!! nl2br(e($content->content)) !!}
-    </div>
-</div>
-
+                                        <div class="collapse multi-collapse" id="content{{$content->id}}">
+                                            <div class="card card-body">
+                                                {!! nl2br(strip_tags($content->content, '<p>')) !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @empty
