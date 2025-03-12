@@ -320,7 +320,7 @@
         </div>
         <div class="col-md-12 p-md-5">
             <div class="c-pagination">
-                {!! $users->links('vendor.pagination.bootstrap-4') !!}
+                {!! $users->appends(request()->query())->links('vendor.pagination.bootstrap-4') !!}
             </div>
         </div>
     </div>
