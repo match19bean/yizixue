@@ -66,17 +66,20 @@
                                                 </span>
                                             </span>
                                         </button>
-                                    </div>
-                                </div>
-                                <div class="collapse multi-collapse" id="content{{ $content->id }}">
-                                    <div class="card card-body">
-                                        {!! $content->content !!}
+                                        <div class="collapse" id="content{{ $content->id }}">
+                                            <div class="card card-body">
+                                                {!! $content->content !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @empty
                             @endforelse
                     </div>
                 @empty
+                    @endforelse
+                    @forelse($contents as $content)
+                    @empty
                     @endforelse
                 </div>
             </div>
