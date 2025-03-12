@@ -199,7 +199,7 @@
                         </div>
                     </div>
                     <!-- phone ver -->
-                    <div class="l-footer__siteMap_phone p-5">
+                    <div class="l-footer__siteMap_phone p-5 pb-0">
                         <h6>
                             <a href="/about-us">關於我們</a>
                         </h6>
@@ -207,6 +207,17 @@
                         <h6>
                             <a href="https://lin.ee/RjpZvEC">聯絡我們</a>
                         </h6>
+                        <br>
+                    </div>
+                    <div class="l-footer__siteMap_phone">
+                        <h6>
+                            <a href="/yizixue-faq">教戰守則</a>
+                        </h6>
+                        <p>｜</p>
+                        <h6>
+                            <a href="/login">登入註冊</a>
+                        </h6>
+                        <br>
                     </div>
                 </div>
             </div>
