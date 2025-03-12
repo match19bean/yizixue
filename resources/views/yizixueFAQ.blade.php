@@ -67,10 +67,10 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <div class="collapse multi-collapse" id="content{{ $content->id }}">
-                                        <div class="card card-body">
-                                            {!! $content->content !!}
-                                        </div>
+                                </div>
+                                <div class="collapse multi-collapse" id="content{{ $content->id }}">
+                                    <div class="card card-body">
+                                        {!! $content->content !!}
                                     </div>
                                 </div>
                             @empty
