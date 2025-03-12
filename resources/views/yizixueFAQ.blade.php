@@ -41,7 +41,7 @@
                             
                             @forelse($contents->where('yizixue_faq_category_id', $category->id) as $content)
                                 <div class="mb-3">
-                                    <button class="o-faqBtn w-100 text-start d-flex align-items-center p-3" 
+                                    <button class="o-faqBtn w-100 text-start d-flex align-items-center p-3 border rounded" 
                                             type="button" 
                                             data-bs-toggle="collapse"
                                             data-bs-target="#content{{$content->id}}" 
@@ -57,12 +57,12 @@
                                                          c-3.8,19.7,5.4,36.1,24.7,36.1h32.1c6.7,0,12.8-2,18.1-5.3l-42.8-70.5h50.1l15.6,26.4Z" />
                                             </svg>
                                         </div>
-                                        <div class="flex-grow-1">
+                                        <div class="flex-grow-1 fw-bold">
                                             {{ $content->title }}
                                         </div>
                                     </button>
-                                    <div class="collapse multi-collapse" id="content{{$content->id}}">
-                                        <div class="card card-body">
+                                    <div class="collapse multi-collapse mt-2" id="content{{$content->id}}">
+                                        <div class="card card-body p-4" style="border-left: 4px solid #6f4e7c;">
                                             {!! $content->content !!}
                                         </div>
                                     </div>
