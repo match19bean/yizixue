@@ -64,9 +64,8 @@
                     <li class="l-header-2__li nav-item"><a class="nav-link scrollFunction"
                             href="{{route('login')}}">註冊｜登入</a></li>
                     <li class="l-header-2_li nav-item">
-                        <svg class="l-header-2__thumbNail" viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                            <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
-                        </svg>
+                        <img src="{{asset('uploads/images/default_avatar.png')}}"
+                             width="80" height="80">
                     </li>
                     @endif
                 </ul>
@@ -109,9 +108,8 @@
                         </svg>
                     </a>
                     @else
-                    <svg class="l-header-2__thumbNail" viewbox="0 0 80 80">
-                        <circle r="30" cx="40" cy="40" fill="#C1C1C1" />
-                    </svg>
+                        <img src="{{asset('uploads/images/default_avatar.png')}}"
+                             width="60" height="60">
                     @endif
                 </div>
             </div>
